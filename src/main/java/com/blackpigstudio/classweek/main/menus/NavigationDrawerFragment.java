@@ -169,6 +169,7 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                showGlobalContextActionBar();
             }
         };
 
