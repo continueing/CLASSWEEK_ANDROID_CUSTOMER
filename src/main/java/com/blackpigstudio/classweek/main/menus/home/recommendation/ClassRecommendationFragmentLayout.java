@@ -12,14 +12,14 @@ import com.blackpigstudio.classweek.R;
  * Created by continueing on 2014. 3. 26..
  */
 
-public class ClassRecommendationView extends LinearLayout {
+public class ClassRecommendationFragmentLayout extends LinearLayout {
 
-    public ClassRecommendationView(Context context, ViewGroup container) {
+    public ClassRecommendationFragmentLayout(Context context, ViewGroup container) {
         super(context);
         initViews(container);
     }
 
-    public ClassRecommendationView(Context context, AttributeSet attrs, ViewGroup container) {
+    public ClassRecommendationFragmentLayout(Context context, AttributeSet attrs, ViewGroup container) {
         super(context, attrs);
         initViews(container);
     }
@@ -27,5 +27,6 @@ public class ClassRecommendationView extends LinearLayout {
     public void initViews(ViewGroup container)
     {
         View root = inflate(getContext(), R.layout.fragment_class_recommendation, container);
+
     }
 }

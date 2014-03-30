@@ -11,5 +11,4 @@
         android:layout_height="wrap_content"
         android:text="Now taking class"
         android:layout_gravity="center_vertical" />
-
 </LinearLayout>

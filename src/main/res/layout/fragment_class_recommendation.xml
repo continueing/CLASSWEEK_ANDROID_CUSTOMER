@@ -2,13 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.blackpigstudio.classweek.main.menus.home.recommendation.ClassRecommendationFragment"
     android:background="#ffd9ba">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/siv_recommendation_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:background="#fff95a"
+        />
+
+    <uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ptr_class_recommendation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
+            <ListView
+                android:id="@+id/lv_class"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+        </ScrollView>
+
+    </uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout>
+
 
 </LinearLayout>

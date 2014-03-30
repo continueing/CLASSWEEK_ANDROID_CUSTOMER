@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.menus.home.spinner;
+package com.blackpigstudio.classweek.main.menus.home.module.subcategoryspinner;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -16,8 +16,19 @@ import com.blackpigstudio.classweek.R;
 public class HomeSpinnerAdapter implements SpinnerAdapter {
     private LayoutInflater inflater;
     public static final String[] categories= {"추천","음악","댄스"};
+    private static HomeSpinnerAdapter instance;
 
-    public HomeSpinnerAdapter(Context context)
+    public static HomeSpinnerAdapter getInstance(Context context)
+    {
+        if(instance == null)
+        {
+            instance = new HomeSpinnerAdapter(context);
+        }
+        return instance;
+    }
+
+
+    private HomeSpinnerAdapter(Context context)
     {
         this.inflater = LayoutInflater.from(context);
     }

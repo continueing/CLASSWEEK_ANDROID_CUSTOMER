@@ -16,11 +16,12 @@ import com.blackpigstudio.classweek.main.menus.home.recommendation.ClassRecommen
 import com.blackpigstudio.classweek.main.menus.nowtaking.NowTakingClassesFragment;
 
 
+
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
-
+    private int currentMenuIndex=-1;
 
     private CharSequence mTitle;
 
@@ -41,21 +42,23 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        switch (position)
-        {
-            case 0:
-                transaction.replace(R.id.container, new ClassRecommendationFragment()).commit();
-                break;
-            case 1:
-                transaction.replace(R.id.container, new NowTakingClassesFragment()).commit();
-                break;
-            default:
-                Log.e(this.getClass().getCanonicalName(),"onNavigationDrawerItemSelected: there's no fragment");
-                System.exit(-1);
-                break;
+        int previousMenuIndex = currentMenuIndex;
+        currentMenuIndex = position;
+        if(currentMenuIndex != previousMenuIndex) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            switch (position) {
+                case 0:
+                    transaction.replace(R.id.container, new ClassRecommendationFragment()).commit();
+                    break;
+                case 1:
+                    transaction.replace(R.id.container, new NowTakingClassesFragment()).commit();
+                    break;
+                default:
+                    Log.e(this.getClass().getCanonicalName(), "onNavigationDrawerItemSelected: there's no fragment");
+                    System.exit(-1);
+                    break;
+            }
         }
     }
 
@@ -72,6 +75,7 @@ public class MainActivity extends ActionBarActivity
                 break;
         }
     }
+
 
 
     @Override
