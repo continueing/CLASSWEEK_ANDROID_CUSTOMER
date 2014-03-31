@@ -2,7 +2,7 @@ package com.blackpigstudio.classweek.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.blackpigstudio.classweek.main.MainActivity;
+import com.blackpigstudio.classweek.main.ui.MainActivity;
 
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {

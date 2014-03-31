@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.menus.home.recommendation.ClassRecommendationFragment"
+    tools:context="com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment"
     android:background="#ffd9ba">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,16 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="false">
+
             <ListView
-                android:id="@+id/lv_class"
+                android:id="@+id/lv_class_summary_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </ListView>
-        </ScrollView>
+
 
     </uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout>
 

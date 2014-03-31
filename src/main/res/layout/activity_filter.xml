@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.menus.home.filter.FilterActivity"
+    tools:context="com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity"
     android:background="#f3ffb1">
 
 

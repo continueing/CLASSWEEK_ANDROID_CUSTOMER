@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.menus.home.filter;
+package com.blackpigstudio.classweek.main.ui.menus.home.filter;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.blackpigstudio.classweek.R;

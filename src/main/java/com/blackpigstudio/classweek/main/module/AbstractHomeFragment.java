@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.menus.home.module;
+package com.blackpigstudio.classweek.main.module;
 
 
 
@@ -15,11 +15,11 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.MainActivity;
-import com.blackpigstudio.classweek.main.menus.home.module.subcategoryspinner.HomeSpinnerAdapter;
-import com.blackpigstudio.classweek.main.menus.home.dance.SubcategoryFragment;
-import com.blackpigstudio.classweek.main.menus.home.filter.FilterActivity;
-import com.blackpigstudio.classweek.main.menus.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.MainActivity;
+import com.blackpigstudio.classweek.main.module.subcategoryspinner.HomeSpinnerAdapter;
+import com.blackpigstudio.classweek.main.ui.menus.home.dance.SubcategoryFragment;
+import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
+import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
 
 
 abstract public class AbstractHomeFragment extends Fragment {
@@ -39,6 +39,7 @@ abstract public class AbstractHomeFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.home, menu);
+
         ActionBar actionBar  = ((MainActivity)getActivity()).getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter spinnerAdapter = HomeSpinnerAdapter.getInstance(getActivity().getApplicationContext());
@@ -48,10 +49,10 @@ abstract public class AbstractHomeFragment extends Fragment {
                 if(i != spinnerItemIndexOfThisFragment) {
                     switch (i) {
                         case 0:
-                            ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.container, new ClassRecommendationFragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
                             break;
                         case 1:
-                            ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubcategoryFragment()).commit();
+                            ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.container, SubcategoryFragment.getInstance()).commit();
                             break;
                         case 2:
                             break;

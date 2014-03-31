@@ -1,19 +1,17 @@
-package com.blackpigstudio.classweek.main;
+package com.blackpigstudio.classweek.main.ui;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.menus.NavigationDrawerFragment;
-import com.blackpigstudio.classweek.main.menus.home.recommendation.ClassRecommendationFragment;
-import com.blackpigstudio.classweek.main.menus.nowtaking.NowTakingClassesFragment;
+import com.blackpigstudio.classweek.main.ui.menus.NavigationDrawerFragment;
+import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.menus.nowtaking.NowTakingClassesFragment;
 
 
 
@@ -49,7 +47,7 @@ public class MainActivity extends ActionBarActivity
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (position) {
                 case 0:
-                    transaction.replace(R.id.container, new ClassRecommendationFragment()).commit();
+                    transaction.replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
                     break;
                 case 1:
                     transaction.replace(R.id.container, new NowTakingClassesFragment()).commit();

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.menus.nowtaking.NowTakingClassesFragment"
+    tools:context="com.blackpigstudio.classweek.main.ui.menus.nowtaking.NowTakingClassesFragment"
     android:background="#b6ffc2">
 
     <!-- TODO: Update blank fragment layout -->

@@ -1,7 +1,6 @@
-package com.blackpigstudio.classweek.main.menus.home.filter;
+package com.blackpigstudio.classweek.main.ui.menus.home.filter;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,8 +14,8 @@ public class FilterActivity extends ActionBarActivity implements FilterActivityL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        filterActivityLayout = new FilterActivityLayout(this);
-        setContentView(filterActivityLayout);
+        filterActivityLayout = new FilterActivityLayout(this,this,this);
+        setContentView(filterActivityLayout.getRoot());
         locationSettingDialog = new LocationSettingDialog(this, filterActivityLayout);
     }
 

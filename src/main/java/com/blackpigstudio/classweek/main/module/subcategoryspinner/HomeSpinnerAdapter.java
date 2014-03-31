@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.menus.home.module.subcategoryspinner;
+package com.blackpigstudio.classweek.main.module.subcategoryspinner;
 
 import android.content.Context;
 import android.database.DataSetObserver;

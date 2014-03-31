@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.menus;
+package com.blackpigstudio.classweek.main.ui.menus;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
