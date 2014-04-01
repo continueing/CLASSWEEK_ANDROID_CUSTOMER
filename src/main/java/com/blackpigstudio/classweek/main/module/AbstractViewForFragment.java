@@ -19,16 +19,19 @@ public abstract class AbstractViewForFragment {
     {
         this.context = context;
         root = inflate(layoutInflater, container);
-        initView();
+        initViews();
+        setEvents();
     }
 
     abstract protected View inflate(LayoutInflater inflater, ViewGroup container);
-    abstract protected void initView();
+    abstract protected void initViews();
+    abstract protected void setEvents();
 
     protected View findViewById(int aResourceId)
     {
         return root.findViewById(aResourceId);
     }
+
     public Context getContext(){return this.context;}
     public View getRoot(){return root;}
 }

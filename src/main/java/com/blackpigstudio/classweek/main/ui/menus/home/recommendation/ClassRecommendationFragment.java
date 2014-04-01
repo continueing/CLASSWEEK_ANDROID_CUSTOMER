@@ -2,14 +2,12 @@ package com.blackpigstudio.classweek.main.ui.menus.home.recommendation;
 
 
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackpigstudio.classweek.main.module.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.homeui.AbstractHomeFragment;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.

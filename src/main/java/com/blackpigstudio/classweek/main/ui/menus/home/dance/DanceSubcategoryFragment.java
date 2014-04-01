@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackpigstudio.classweek.main.module.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.homeui.AbstractHomeFragment;
 
 public class DanceSubcategoryFragment extends AbstractHomeFragment {
     public static final int SPINNER_ITEM_INDEX = 2;

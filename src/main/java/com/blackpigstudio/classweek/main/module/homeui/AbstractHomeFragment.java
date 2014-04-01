@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module;
+package com.blackpigstudio.classweek.main.module.homeui;
 
 
 
@@ -19,6 +19,7 @@ import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.module.subcategoryspinner.HomeSpinnerAdapter;
 import com.blackpigstudio.classweek.main.ui.menus.home.dance.DanceSubcategoryFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
+import com.blackpigstudio.classweek.main.ui.menus.home.music.MusicSubcategoryFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
 
 
@@ -52,7 +53,7 @@ abstract public class AbstractHomeFragment extends Fragment {
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
                             break;
                         case 1:
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, DanceSubcategoryFragment.getInstance()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, MusicSubcategoryFragment.getInstance()).commit();
                             break;
                         case 2:
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, DanceSubcategoryFragment.getInstance()).commit();

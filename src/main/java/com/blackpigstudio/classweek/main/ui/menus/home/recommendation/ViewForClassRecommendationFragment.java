@@ -37,7 +37,7 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
     }
 
     @Override
-    protected void initView() {
+    protected void initViews() {
         ArrayAdapterForClassSummaryInfoListViewWithImageViewPager arrayAdapterForClassSummaryInfoListViewWithImageViewPager = new ArrayAdapterForClassSummaryInfoListViewWithImageViewPager(getContext(),R.layout.item_class_summary_information);
         for(int i = 0 ; i< 3 ;i++)
         {
@@ -49,6 +49,9 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
 
 
     }
+
+    @Override
+    protected void setEvents(){}
 
 
 }
