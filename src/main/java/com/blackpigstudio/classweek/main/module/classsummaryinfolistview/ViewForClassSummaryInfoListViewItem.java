@@ -12,8 +12,8 @@ import com.loopj.android.image.SmartImageView;
 /**
  * Created by continueing on 2014. 3. 31..
  */
-public class ClassSummaryInfoLayout extends LinearLayout{
-    private IClassSummaryInfo iClassSummaryInfo;
+public class ViewForClassSummaryInfoListViewItem extends LinearLayout{
+    private IClassSummaryInfoItem iClassSummaryInfoItem;
 
     private SmartImageView siv_class_introduction;
     private TextView tv_detail_location;
@@ -22,11 +22,11 @@ public class ClassSummaryInfoLayout extends LinearLayout{
     private TextView tv_day_price;
     private TextView tv_month_price;
 
-    public ClassSummaryInfoLayout(Context context) {
+    public ViewForClassSummaryInfoListViewItem(Context context) {
         this(context, null);
     }
 
-    public ClassSummaryInfoLayout(Context context, AttributeSet attrs) {
+    public ViewForClassSummaryInfoListViewItem(Context context, AttributeSet attrs) {
         super(context);
         initViews();
     }
@@ -42,19 +42,19 @@ public class ClassSummaryInfoLayout extends LinearLayout{
         tv_month_price = (TextView)root.findViewById(R.id.tv_class_summary_info_month_price);
     }
 
-    public void setData(IClassSummaryInfo aIClassSummaryInfo)
+    public void setData(IClassSummaryInfoItem aIClassSummaryInfoItem)
     {
-        iClassSummaryInfo = aIClassSummaryInfo;
-        siv_class_introduction.setImageUrl(aIClassSummaryInfo.getURLOfImage());
-        tv_detail_location.setText(aIClassSummaryInfo.getDetailLocation());
-        tv_title.setText(aIClassSummaryInfo.getTitle());
-        tv_hook_sentence.setText(aIClassSummaryInfo.getHookSentence());
-        tv_day_price.setText(aIClassSummaryInfo.getDayPrice());
-        tv_month_price.setText(aIClassSummaryInfo.getMonthPrice());
+        iClassSummaryInfoItem = aIClassSummaryInfoItem;
+        siv_class_introduction.setImageUrl(aIClassSummaryInfoItem.getURLOfImage());
+        tv_detail_location.setText(aIClassSummaryInfoItem.getDetailLocation());
+        tv_title.setText(aIClassSummaryInfoItem.getTitle());
+        tv_hook_sentence.setText(aIClassSummaryInfoItem.getHookSentence());
+        tv_day_price.setText(aIClassSummaryInfoItem.getDayPrice());
+        tv_month_price.setText(aIClassSummaryInfoItem.getMonthPrice());
     }
 
 
-    public interface IClassSummaryInfo
+    public interface IClassSummaryInfoItem
     {
         public String getTitle();
         public String getHookSentence();

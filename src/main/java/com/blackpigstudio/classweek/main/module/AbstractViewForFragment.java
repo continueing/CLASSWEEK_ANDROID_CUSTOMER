@@ -11,11 +11,11 @@ import android.view.ViewGroup;
  */
 
 
-public abstract class AbstractFragmentView {
+public abstract class AbstractViewForFragment {
     private Context context;
     private View root;
 
-    public AbstractFragmentView(Context context, LayoutInflater layoutInflater, ViewGroup container)
+    public AbstractViewForFragment(Context context, LayoutInflater layoutInflater, ViewGroup container)
     {
         this.context = context;
         root = inflate(layoutInflater, container);

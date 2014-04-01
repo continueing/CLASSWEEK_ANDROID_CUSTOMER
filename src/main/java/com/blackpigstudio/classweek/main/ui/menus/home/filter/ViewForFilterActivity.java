@@ -14,7 +14,7 @@ import com.blackpigstudio.classweek.R;
  * Created by continueing on 2014. 3. 28..
  */
 
-public class FilterActivityLayout implements LocationSettingDialog.LocationReceiver{
+public class ViewForFilterActivity implements LocationSettingDialog.LocationReceiver{
     private View root;
     private Context context;
 
@@ -37,7 +37,7 @@ public class FilterActivityLayout implements LocationSettingDialog.LocationRecei
     /*
         constructor
      */
-    public FilterActivityLayout(Context context, OnSubmitButtonClickListener onSubmitButtonClickListener, OnLocationSettingDialogPopupRequestListener onLocationSettingDialogPopupRequestListener) {
+    public ViewForFilterActivity(Context context, OnSubmitButtonClickListener onSubmitButtonClickListener, OnLocationSettingDialogPopupRequestListener onLocationSettingDialogPopupRequestListener) {
         this.context = context;
         this.onSubmitButtonClickListener = onSubmitButtonClickListener;
         this.onLocationSettingDialogPopupRequestListener = onLocationSettingDialogPopupRequestListener;

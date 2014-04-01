@@ -9,26 +9,26 @@ import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.main.module.AbstractHomeFragment;
 
-public class SubcategoryFragment extends AbstractHomeFragment {
-    public static final int SPINNER_ITEM_INDEX = 1;
-    private static SubcategoryFragment instance;
-    private SubcategoryFragment() {
+public class DanceSubcategoryFragment extends AbstractHomeFragment {
+    public static final int SPINNER_ITEM_INDEX = 2;
+    private static DanceSubcategoryFragment instance;
+
+    private DanceSubcategoryFragment() {
         super(SPINNER_ITEM_INDEX);
     }
 
-    public static SubcategoryFragment getInstance()
+    public static DanceSubcategoryFragment getInstance()
     {
         if(instance == null)
-            instance = new SubcategoryFragment();
+            instance = new DanceSubcategoryFragment();
         return instance;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SubcategoryFragmentView subcategoryFragmentLayout = new SubcategoryFragmentView(getActivity(), inflater, container);
-        return subcategoryFragmentLayout.getRoot();
+        ViewForDanceSubcategoryFragment subcategoryFragmentView = new ViewForDanceSubcategoryFragment(getActivity(), inflater, container);
+        return subcategoryFragmentView.getRoot();
     }
 
 }

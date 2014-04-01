@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AbstractFragmentView;
+import com.blackpigstudio.classweek.main.module.AbstractViewForFragment;
 import com.loopj.android.image.SmartImageView;
 
 /**
  * Created by continueing on 2014. 3. 29..
  */
-public class SubcategoryFragmentView extends AbstractFragmentView {
+public class ViewForDanceSubcategoryFragment extends AbstractViewForFragment {
 
-    public SubcategoryFragmentView(Context context, LayoutInflater layoutInflater, ViewGroup container) {
+    public ViewForDanceSubcategoryFragment(Context context, LayoutInflater layoutInflater, ViewGroup container) {
         super(context,layoutInflater,container);
     }
 
