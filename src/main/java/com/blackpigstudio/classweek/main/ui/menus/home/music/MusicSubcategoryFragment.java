@@ -16,14 +16,15 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
- *
  */
 public class MusicSubcategoryFragment extends AbstractHomeFragment implements ViewForMusicSubcategoryFragment.OnSubCategoryChooseListener {
     public static final int SPINNER_ITEM_INDEX = 1;
+
     private static MusicSubcategoryFragment instance;
 
+
     public MusicSubcategoryFragment() {
-        super(SPINNER_ITEM_INDEX);
+
     }
 
     public static MusicSubcategoryFragment getInstance()
@@ -37,7 +38,7 @@ public class MusicSubcategoryFragment extends AbstractHomeFragment implements Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewForMusicSubcategoryFragment viewForMusicSubcategoryFragment = new ViewForMusicSubcategoryFragment(getActivity(),inflater,container, this);
-
+        Bundle bundle = getArguments();
         return viewForMusicSubcategoryFragment.getRoot();
     }
 

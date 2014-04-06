@@ -14,7 +14,6 @@ public class DanceSubcategoryFragment extends AbstractHomeFragment {
     private static DanceSubcategoryFragment instance;
 
     public DanceSubcategoryFragment() {
-        super(SPINNER_ITEM_INDEX);
     }
 
     public static DanceSubcategoryFragment getInstance()
@@ -28,6 +27,7 @@ public class DanceSubcategoryFragment extends AbstractHomeFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewForDanceSubcategoryFragment subcategoryFragmentView = new ViewForDanceSubcategoryFragment(getActivity(), inflater, container);
+        Bundle bundle = getArguments();
         return subcategoryFragmentView.getRoot();
     }
 }

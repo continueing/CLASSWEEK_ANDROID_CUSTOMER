@@ -22,13 +22,21 @@ import com.blackpigstudio.classweek.main.ui.menus.home.dance.DanceSubcategoryFra
 import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
 import com.blackpigstudio.classweek.main.ui.menus.home.music.MusicSubcategoryFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.menus.home.subcategory.SubcategoryFragment;
 
 
 abstract public class AbstractHomeFragment extends AbstractFilterActionFragment {
+    public static final String BUNDLE_PARM_OF_URL = "url";
+
     private int spinnerItemIndexOfThisFragment;
 
-    public AbstractHomeFragment(int aSpinnerItemIndex) {
-        this.spinnerItemIndexOfThisFragment = aSpinnerItemIndex;
+    public AbstractHomeFragment() {
+        spinnerItemIndexOfThisFragment = -1;
+    }
+
+    protected void setSpinnerItemIndex(int aIndex)
+    {
+        this.spinnerItemIndexOfThisFragment = aIndex;
     }
 
     @Override
@@ -47,10 +55,12 @@ abstract public class AbstractHomeFragment extends AbstractFilterActionFragment 
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
                             break;
                         case 1:
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, MusicSubcategoryFragment.getInstance()).commit();
-                            break;
                         case 2:
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, DanceSubcategoryFragment.getInstance()).commit();
+                            SubcategoryFragment subcategoryFragment= new SubcategoryFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt(SubcategoryFragment.BUNDLE_PARM_OF_SPINNER_INDEX,i);
+                            subcategoryFragment.setArguments(bundle);
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, subcategoryFragment).commit();
                             break;
                         default:
                             Log.e(this.getClass().getCanonicalName(), "OnNavigationListener.onNavigationItemSelected: unexpected spinner item index");

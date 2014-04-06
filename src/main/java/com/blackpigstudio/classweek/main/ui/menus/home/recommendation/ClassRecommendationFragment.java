@@ -18,7 +18,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment  {
     private static ClassRecommendationFragment instance;
 
     public ClassRecommendationFragment() {
-        super(SPINNER_ITEM_INDEX);
+        setSpinnerItemIndex(SPINNER_ITEM_INDEX);
     }
 
     public static ClassRecommendationFragment getInstance()
