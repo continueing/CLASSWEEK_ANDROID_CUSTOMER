@@ -13,7 +13,7 @@ public class DanceSubcategoryFragment extends AbstractHomeFragment {
     public static final int SPINNER_ITEM_INDEX = 2;
     private static DanceSubcategoryFragment instance;
 
-    private DanceSubcategoryFragment() {
+    public DanceSubcategoryFragment() {
         super(SPINNER_ITEM_INDEX);
     }
 
@@ -30,5 +30,4 @@ public class DanceSubcategoryFragment extends AbstractHomeFragment {
         ViewForDanceSubcategoryFragment subcategoryFragmentView = new ViewForDanceSubcategoryFragment(getActivity(), inflater, container);
         return subcategoryFragmentView.getRoot();
     }
-
 }

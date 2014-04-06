@@ -13,6 +13,7 @@ import com.loopj.android.image.SmartImageView;
  * Created by continueing on 2014. 3. 31..
  */
 public class ViewForClassSummaryInfoListViewItem extends LinearLayout{
+    private View root;
     private IClassSummaryInfoItem iClassSummaryInfoItem;
 
     private SmartImageView siv_class_introduction;
@@ -28,12 +29,13 @@ public class ViewForClassSummaryInfoListViewItem extends LinearLayout{
 
     public ViewForClassSummaryInfoListViewItem(Context context, AttributeSet attrs) {
         super(context);
+        root = inflate(getContext(), R.layout.item_class_summary_information, this);
         initViews();
     }
 
     private void initViews()
     {
-        View root = inflate(getContext(), R.layout.item_class_summary_information, this);
+
         siv_class_introduction = (SmartImageView)root.findViewById(R.id.siv_class_introduction);
         tv_detail_location = (TextView)findViewById(R.id.tv_class_summary_info_detail_location);
         tv_hook_sentence = (TextView)root.findViewById(R.id.tv_class_summary_info_hook_sentence);
@@ -51,6 +53,21 @@ public class ViewForClassSummaryInfoListViewItem extends LinearLayout{
         tv_hook_sentence.setText(aIClassSummaryInfoItem.getHookSentence());
         tv_day_price.setText(aIClassSummaryInfoItem.getDayPrice());
         tv_month_price.setText(aIClassSummaryInfoItem.getMonthPrice());
+    }
+
+    public void setEvents()
+    {
+//        root.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+    }
+
+    public IClassSummaryInfoItem getIClassSummaryInfoItem()
+    {
+        return iClassSummaryInfoItem;
     }
 
 

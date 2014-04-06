@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import com.blackpigstudio.classweek.main.ui.menus.home.music.MusicSubcategoryFra
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
 
 
-abstract public class AbstractHomeFragment extends Fragment {
+abstract public class AbstractHomeFragment extends AbstractFilterActionFragment {
     private int spinnerItemIndexOfThisFragment;
 
     public AbstractHomeFragment(int aSpinnerItemIndex) {
@@ -31,17 +32,10 @@ abstract public class AbstractHomeFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.home, menu);
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
 
-        ActionBar actionBar  = ((MainActivity)getActivity()).getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter spinnerAdapter = HomeSpinnerAdapter.getInstance(getActivity().getApplicationContext());
         actionBar.setListNavigationCallbacks(spinnerAdapter, new ActionBar.OnNavigationListener() {
@@ -63,6 +57,7 @@ abstract public class AbstractHomeFragment extends Fragment {
                             System.exit(-1);
                             break;
                     }
+
                 }
                 return false;
             }
@@ -70,32 +65,5 @@ abstract public class AbstractHomeFragment extends Fragment {
         actionBar.setSelectedNavigationItem(spinnerItemIndexOfThisFragment);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.action_class_filter:
-                Intent intent = new Intent(getActivity(), FilterActivity.class);
-                startActivityForResult(intent,FilterActivity.REQUEST_CODE_GET_QUERY);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == FilterActivity.REQUEST_CODE_GET_QUERY)
-        {
-            if(resultCode == Activity.RESULT_OK)
-            {
-                //TODO: should call filtered fragment.
-                Log.e("Test", "test");
-                String result = data.getStringExtra(FilterActivity.INTENT_PARM_QUERY);
-                Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
-            }
-        }
-    }
 
 }

@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".main.ui.MainActivity"
+            android:name="com.blackpigstudio.classweek.main.ui.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.ui.menus.home.filter.FilterActivity"
+            android:name="com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity"
             android:label="@string/title_activity_filter" >
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity"
+            android:label="@string/title_activity_class_summray_info_inventory" >
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info.ClassDetailInfoActivity"
+            android:label="@string/title_activity_class_detail_info" >
         </activity>
     </application>
 

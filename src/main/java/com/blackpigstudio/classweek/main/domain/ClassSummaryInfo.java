@@ -1,17 +1,23 @@
 package com.blackpigstudio.classweek.main.domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.blackpigstudio.classweek.main.module.classsummaryinfolistview.ViewForClassSummaryInfoListViewItem;
+
+import java.io.Serializable;
 
 /**
  * Created by continueing on 2014. 3. 30..
  */
-public class ClassSummaryInfo implements ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem {
+public class ClassSummaryInfo  implements ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem , Serializable{
     private String detail_location = "역삼역 2번 출구";
     private String hook_sentence = "몸짱이 될 수 있습니다.\n몸치를 탈출하세요.";
     private String title ="A학원 속성 줌바";
     private int day_price = 12000;
     private int month_price = 200000;
     private String url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg" ;
+    private String detail_url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg";
 
     public ClassSummaryInfo(int aPrice)
     {
@@ -47,5 +53,7 @@ public class ClassSummaryInfo implements ViewForClassSummaryInfoListViewItem.ICl
     public String getURLOfImage() {
         return this.url;
     }
+
+
 
 }

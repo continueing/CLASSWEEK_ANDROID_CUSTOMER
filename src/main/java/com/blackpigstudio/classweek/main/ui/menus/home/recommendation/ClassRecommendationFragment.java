@@ -17,7 +17,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment  {
     public static final int SPINNER_ITEM_INDEX = 0;
     private static ClassRecommendationFragment instance;
 
-    private ClassRecommendationFragment() {
+    public ClassRecommendationFragment() {
         super(SPINNER_ITEM_INDEX);
     }
 

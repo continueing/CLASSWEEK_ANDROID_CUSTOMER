@@ -1,15 +1,12 @@
 package com.blackpigstudio.classweek.main.ui.menus.home.music;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.templatemethodview.AbstractViewForFragment;
 import com.loopj.android.image.SmartImageView;
 
 /**

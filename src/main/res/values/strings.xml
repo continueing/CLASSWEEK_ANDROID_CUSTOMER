@@ -15,4 +15,7 @@
     <string name="filter_location_setting_default">위치 선택하기</string>
     <string name="location_gangnam">강남</string>
     <string name="location_gangbuk">강북</string>
+    <string name="title_activity_class_summray_info_inventory">ClassSummrayInfoInventoryActivity</string>
+    <string name="title_activity_class_detail_info">클래스 상세정보</string>
+
 </resources>

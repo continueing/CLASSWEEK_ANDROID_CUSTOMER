@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.templatemethodview.AbstractViewForFragment;
 import com.loopj.android.image.SmartImageView;
 
 /**

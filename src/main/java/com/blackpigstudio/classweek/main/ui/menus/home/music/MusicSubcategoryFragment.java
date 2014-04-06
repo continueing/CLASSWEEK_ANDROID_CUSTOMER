@@ -2,15 +2,17 @@ package com.blackpigstudio.classweek.main.ui.menus.home.music;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -20,7 +22,7 @@ public class MusicSubcategoryFragment extends AbstractHomeFragment implements Vi
     public static final int SPINNER_ITEM_INDEX = 1;
     private static MusicSubcategoryFragment instance;
 
-    private MusicSubcategoryFragment() {
+    public MusicSubcategoryFragment() {
         super(SPINNER_ITEM_INDEX);
     }
 
@@ -35,12 +37,14 @@ public class MusicSubcategoryFragment extends AbstractHomeFragment implements Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewForMusicSubcategoryFragment viewForMusicSubcategoryFragment = new ViewForMusicSubcategoryFragment(getActivity(),inflater,container, this);
+
         return viewForMusicSubcategoryFragment.getRoot();
     }
 
 
     @Override
     public void onSubCategoryChoose(int index) {
-        // Change Fragment
+        Intent intent = new Intent(getActivity(), ClassSummeryInfoInventoryActivity.class);
+        startActivity(intent);
     }
 }

@@ -14,7 +14,7 @@
         android:background="#5cffd9">
 
         <ListView
-            android:id="@+id/lv_class_summary_info"
+            android:id="@+id/lv_recommendation_class_summary_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>
