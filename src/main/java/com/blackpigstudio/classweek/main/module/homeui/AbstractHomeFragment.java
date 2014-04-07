@@ -2,30 +2,22 @@ package com.blackpigstudio.classweek.main.module.homeui;
 
 
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.SpinnerAdapter;
-import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.module.subcategoryspinner.HomeSpinnerAdapter;
-import com.blackpigstudio.classweek.main.ui.menus.home.dance.DanceSubcategoryFragment;
-import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
-import com.blackpigstudio.classweek.main.ui.menus.home.music.MusicSubcategoryFragment;
+import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.subcategory.SubcategoryFragment;
 
 
-abstract public class AbstractHomeFragment extends AbstractFilterActionFragment {
+abstract public class AbstractHomeFragment extends Fragment {
     public static final String BUNDLE_PARM_OF_URL = "url";
 
     private int spinnerItemIndexOfThisFragment;
@@ -39,9 +31,20 @@ abstract public class AbstractHomeFragment extends AbstractFilterActionFragment 
         this.spinnerItemIndexOfThisFragment = aIndex;
     }
 
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.home,menu);
+
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
