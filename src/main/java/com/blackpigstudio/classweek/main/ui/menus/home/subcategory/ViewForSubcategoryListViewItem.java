@@ -1,19 +1,18 @@
 package com.blackpigstudio.classweek.main.ui.menus.home.subcategory;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
 import com.loopj.android.image.SmartImageView;
 
 /**
  * Created by continueing on 2014. 4. 7..
  */
-public class ViewForSubcategoryListViewItem extends LinearLayout {
-    private View root;
+public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem {
+
     private ISubcategory iSubcategory;
 
     private TextView tv_subcategory_title;
@@ -21,29 +20,33 @@ public class ViewForSubcategoryListViewItem extends LinearLayout {
 
 
     public ViewForSubcategoryListViewItem(Context context) {
-        this(context,null);
-    }
-
-    public ViewForSubcategoryListViewItem(Context context, AttributeSet attrs) {
         super(context);
-        root = inflate(getContext(), R.layout.item_subcategory, this);
-        initViews();
     }
 
-    private void initViews() {
-        tv_subcategory_title = (TextView)root.findViewById(R.id.tv_subcategory_title);
-        siv_subcategory_front = (SmartImageView)root.findViewById(R.id.siv_subcategory_front);
+    @Override
+    protected View inflate() {
+        return inflate(getContext(), R.layout.item_subcategory, this);
     }
 
+    @Override
+    protected void initViews() {
+        tv_subcategory_title = (TextView) findViewById_(R.id.tv_subcategory_title);
+        siv_subcategory_front = (SmartImageView) findViewById_(R.id.siv_subcategory_front);
+    }
 
-    public void setData(ISubcategory aISubcategory)
-    {
-        this.iSubcategory = aISubcategory;
+    @Override
+    protected void setEvents() {
+
+    }
+
+    @Override
+    protected void setData(IListViewItem aIListViewItem) {
+        this.iSubcategory = (ISubcategory)aIListViewItem;
         tv_subcategory_title.setText(iSubcategory.getTitle());
         siv_subcategory_front.setImageUrl(iSubcategory.getFrontImageUrl());
     }
 
-    public static interface ISubcategory
+    public static interface ISubcategory extends IListViewItem
     {
         public String getTitle();
         public String getFrontImageUrl();
