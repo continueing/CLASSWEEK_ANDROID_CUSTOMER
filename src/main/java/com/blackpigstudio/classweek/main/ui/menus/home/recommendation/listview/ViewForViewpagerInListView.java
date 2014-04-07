@@ -13,12 +13,12 @@ import java.util.ArrayList;
 /**
  * Created by continueing on 2014. 4. 1..
  */
-public class ViewForViewpagerInListView extends LinearLayout {
-    public ViewForViewpagerInListView(Context context) {
+public class ViewForViewPagerInListView extends LinearLayout {
+    public ViewForViewPagerInListView(Context context) {
         this(context, null);
     }
 
-    public ViewForViewpagerInListView(Context context, AttributeSet attrs) {
+    public ViewForViewPagerInListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
@@ -31,7 +31,7 @@ public class ViewForViewpagerInListView extends LinearLayout {
         urls.add("http://www.maastrichtuniversity.nl/upload_mm/2/3/9/3675823_UM%20Sport%202013%20-%20jump-6_830x455.jpg");
         urls.add("http://www.maastrichtuniversity.nl/upload_mm/2/3/9/3675823_UM%20Sport%202013%20-%20jump-6_830x455.jpg");
         urls.add("http://www.maastrichtuniversity.nl/upload_mm/2/3/9/3675823_UM%20Sport%202013%20-%20jump-6_830x455.jpg");
-        RecommendationViewPagerAdapter recommendationViewPagerAdapter = new RecommendationViewPagerAdapter(urls,getContext());
-        viewPager.setAdapter(recommendationViewPagerAdapter);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(urls,getContext());
+        viewPager.setAdapter(viewPagerAdapter);
     }
 }
