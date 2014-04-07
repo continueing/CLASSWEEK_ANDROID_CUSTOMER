@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.music;
+package com.blackpigstudio.classweek.main.menus.home.dance;
 
 
 
@@ -14,10 +14,10 @@ import com.blackpigstudio.classweek.R;
  * A simple {@link android.support.v4.app.Fragment} subclass.
  *
  */
-public class ClassSummaryInfoInventoryFragment extends Fragment {
+public class SubCategoryFragment extends Fragment {
 
 
-    public ClassSummaryInfoInventoryFragment() {
+    public SubCategoryFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class ClassSummaryInfoInventoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class_summary_info_inventory, container, false);
+        return inflater.inflate(R.layout.fragment_sub_category, container, false);
     }
 
 
