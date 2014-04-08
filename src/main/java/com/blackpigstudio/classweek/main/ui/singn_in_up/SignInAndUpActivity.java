@@ -11,7 +11,9 @@ public class SignInAndUpActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in_and_up);
+        ViewForSignInAndUpActivity viewForSignInAndUpActivity = new ViewForSignInAndUpActivity(getApplicationContext());
+        setContentView(viewForSignInAndUpActivity.getRoot());
+
     }
 
 

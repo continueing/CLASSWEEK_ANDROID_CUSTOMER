@@ -1,6 +1,5 @@
 package com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,9 @@ import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
-import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 
 import java.util.ArrayList;
 
@@ -37,14 +36,14 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
         return LayoutInflater.from(getContext()).inflate(R.layout.activity_class_summery_info_inventory, null);
     }
 
-    @SuppressLint("NewApi")
     @Override
     protected void initViews() {
         lv_class_summary_info = (ListView)findViewById(R.id.lv_class_summary_info);
         this.progressbarFooter = new ProgressbarFooter(lv_class_summary_info,LayoutInflater.from(getContext()));
-        setProgressbarVisibility(true);
         arrayAdapterForClassSummaryInfoListView = new ArrayAdapterForClassSummaryInfoListView(getContext(),R.layout.item_class_summary_information);
+        setProgressbarVisibility(true); // should be placed before set adapter
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListView);
+
     }
 
     @Override

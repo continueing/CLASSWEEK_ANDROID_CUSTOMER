@@ -33,7 +33,8 @@
         </activity>
         <activity
             android:name="com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity"
-            android:label="@string/title_activity_sign_in_and_up" >
+            android:label="@string/title_activity_sign_in_and_up"
+            android:windowSoftInputMode="stateVisible|adjustPan">
         </activity>
     </application>
 
