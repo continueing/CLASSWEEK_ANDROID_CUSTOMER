@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForActivity{
     private ArrayAdapterForClassSummaryInfoListView arrayAdapterForClassSummaryInfoListView;
     private OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
-    private View footer;
+    private ProgressbarFooter progressbarFooter;
     ListView lv_class_summary_info;
 
 
@@ -40,7 +41,7 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
     @Override
     protected void initViews() {
         lv_class_summary_info = (ListView)findViewById(R.id.lv_class_summary_info);
-        footer = LayoutInflater.from(getContext()).inflate(R.layout.footer_progressbar,null,false);
+        this.progressbarFooter = new ProgressbarFooter(lv_class_summary_info,LayoutInflater.from(getContext()));
         setProgressbarVisibility(true);
         arrayAdapterForClassSummaryInfoListView = new ArrayAdapterForClassSummaryInfoListView(getContext(),R.layout.item_class_summary_information);
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListView);
@@ -58,14 +59,7 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
 
     public void setProgressbarVisibility(boolean aVisibility)
     {
-        if(aVisibility)
-        {
-            lv_class_summary_info.addFooterView(footer,null,false);
-        }
-        else
-        {
-            lv_class_summary_info.removeFooterView(footer);
-        }
+        this.progressbarFooter.setVisibility(aVisibility);
     }
 
     public void addClassSummaryInfoItemArrayList(ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> iClassSummaryInfoItems)
