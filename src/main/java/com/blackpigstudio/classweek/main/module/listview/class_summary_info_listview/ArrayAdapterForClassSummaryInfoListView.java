@@ -1,9 +1,6 @@
-package com.blackpigstudio.classweek.main.module.classsummaryinfolistview;
+package com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.blackpigstudio.classweek.main.module.listview.AbstractArrayAdapter;
 import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;

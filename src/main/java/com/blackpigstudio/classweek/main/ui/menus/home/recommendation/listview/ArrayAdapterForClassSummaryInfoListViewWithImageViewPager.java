@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackpigstudio.classweek.main.module.classsummaryinfolistview.ArrayAdapterForClassSummaryInfoListView;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 
 /**
  * Created by continueing on 2014. 4. 1..

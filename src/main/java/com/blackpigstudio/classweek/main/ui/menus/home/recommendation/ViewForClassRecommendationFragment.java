@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
-import com.blackpigstudio.classweek.main.module.templatemethodview.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
 /**

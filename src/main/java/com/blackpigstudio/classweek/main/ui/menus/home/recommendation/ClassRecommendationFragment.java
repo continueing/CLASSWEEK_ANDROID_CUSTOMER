@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackpigstudio.classweek.main.module.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.

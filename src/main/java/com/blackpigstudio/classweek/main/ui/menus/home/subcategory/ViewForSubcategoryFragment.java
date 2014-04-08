@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.templatemethodview.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 
 import java.util.ArrayList;
 

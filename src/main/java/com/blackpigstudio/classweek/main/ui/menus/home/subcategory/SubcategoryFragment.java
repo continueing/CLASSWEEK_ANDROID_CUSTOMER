@@ -6,20 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.Subcategory;
-import com.blackpigstudio.classweek.main.module.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
-import com.blackpigstudio.classweek.main.ui.MainActivity;
-import com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity;
 
 import org.json.JSONObject;

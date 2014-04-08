@@ -8,14 +8,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
-import com.blackpigstudio.classweek.main.module.classsummaryinfolistview.ViewForClassSummaryInfoListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
@@ -43,8 +42,8 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
     }
 
     private void requestClassSummaryInfoFromServer(String url) {
-        setSupportProgressBarIndeterminateVisibility(true);
         HttpRequester.foo(this, url);
+        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
     }
 
     @Override
@@ -52,7 +51,6 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         getMenuInflater().inflate(R.menu.class_summray_info_inventory, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -98,12 +96,10 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         @Override
         public void handleMessage(Message msg) {
             ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> classSummaryInfoItems = new ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem>();
-            for(int i = 1; i < 80; i++ )
+            for(int i = 1; i < 10; i++ )
                 classSummaryInfoItems.add(new ClassSummaryInfo(i));
             viewForClassSummeryInfoInventoryActivity.addClassSummaryInfoItemArrayList(classSummaryInfoItems);
-
-            setSupportProgressBarIndeterminateVisibility(false);
-
+            viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(false);
         }
     };
 

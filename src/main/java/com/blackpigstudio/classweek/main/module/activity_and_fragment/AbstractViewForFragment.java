@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.templatemethodview;
+package com.blackpigstudio.classweek.main.module.activity_and_fragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;

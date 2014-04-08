@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.classsummaryinfolistview;
+package com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview;
 
 import android.content.Context;
 import android.view.View;

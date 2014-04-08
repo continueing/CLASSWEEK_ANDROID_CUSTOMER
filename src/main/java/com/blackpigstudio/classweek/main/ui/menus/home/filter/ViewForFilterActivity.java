@@ -1,7 +1,6 @@
 package com.blackpigstudio.classweek.main.ui.menus.home.filter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.templatemethodview.AbstractViewForActivity;
+import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 
 /**
  * Created by continueing on 2014. 3. 28..

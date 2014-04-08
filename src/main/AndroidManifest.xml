@@ -31,6 +31,10 @@
             android:name="com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info.ClassDetailInfoActivity"
             android:label="@string/title_activity_class_detail_info" >
         </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity"
+            android:label="@string/title_activity_sign_in_and_up" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,9 +1,6 @@
 package com.blackpigstudio.classweek.main.domain;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.blackpigstudio.classweek.main.module.classsummaryinfolistview.ViewForClassSummaryInfoListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 
 import java.io.Serializable;
 

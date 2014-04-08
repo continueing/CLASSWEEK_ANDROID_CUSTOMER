@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.homeui;
+package com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui;
 
 
 
@@ -11,7 +11,6 @@ import android.view.MenuInflater;
 import android.widget.SpinnerAdapter;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.subcategoryspinner.HomeSpinnerAdapter;
 import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menus.home.subcategory.SubcategoryFragment;
