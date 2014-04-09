@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory;
+package com.blackpigstudio.classweek.main.ui.home.class_summary_info_inventory;
 
 import android.content.Context;
 import android.view.LayoutInflater;

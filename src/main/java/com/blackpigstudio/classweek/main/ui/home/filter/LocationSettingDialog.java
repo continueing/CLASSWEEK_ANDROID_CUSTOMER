@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.filter;
+package com.blackpigstudio.classweek.main.ui.home.filter;
 
 import android.app.Dialog;
 import android.content.Context;

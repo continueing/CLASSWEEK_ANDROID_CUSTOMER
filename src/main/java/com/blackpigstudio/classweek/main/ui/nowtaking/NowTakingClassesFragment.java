@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.nowtaking;
+package com.blackpigstudio.classweek.main.ui.nowtaking;
 
 
 

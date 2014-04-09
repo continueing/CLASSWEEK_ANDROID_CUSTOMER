@@ -1,6 +1,6 @@
 package com.blackpigstudio.classweek.main.domain;
 
-import com.blackpigstudio.classweek.main.ui.menus.home.subcategory.ViewForSubcategoryListViewItem;
+import com.blackpigstudio.classweek.main.ui.home.subcategory.ViewForSubcategoryListViewItem;
 
 /**
  * Created by continueing on 2014. 4. 7..

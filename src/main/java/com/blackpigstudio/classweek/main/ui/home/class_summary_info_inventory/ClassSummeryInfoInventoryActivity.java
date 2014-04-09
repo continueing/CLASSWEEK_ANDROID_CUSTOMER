@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory;
+package com.blackpigstudio.classweek.main.ui.home.class_summary_info_inventory;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,8 +16,8 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
-import com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info.ClassDetailInfoActivity;
-import com.blackpigstudio.classweek.main.ui.menus.home.filter.FilterActivity;
+import com.blackpigstudio.classweek.main.ui.home.class_detail_info.ClassDetailInfoActivity;
+import com.blackpigstudio.classweek.main.ui.home.filter.FilterActivity;
 
 import org.json.JSONObject;
 

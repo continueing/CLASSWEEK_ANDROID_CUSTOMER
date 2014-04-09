@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.recommendation.listview;
+package com.blackpigstudio.classweek.main.ui.home.recommendation.listview;
 
 import android.content.Context;
 import android.view.View;

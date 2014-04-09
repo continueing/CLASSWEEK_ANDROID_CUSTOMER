@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment"
+    tools:context="com.blackpigstudio.classweek.main.ui.home.recommendation.ClassRecommendationFragment"
     android:background="#ffd9ba">
 
     <uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout

@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.subcategory;
+package com.blackpigstudio.classweek.main.ui.home.subcategory;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.subcategory;
+package com.blackpigstudio.classweek.main.ui.home.subcategory;
 
 
 
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.blackpigstudio.classweek.main.domain.Subcategory;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
-import com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity;
+import com.blackpigstudio.classweek.main.ui.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity;
 
 import org.json.JSONObject;
 

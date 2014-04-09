@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.class_detail_info;
+package com.blackpigstudio.classweek.main.ui.home.class_detail_info;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;

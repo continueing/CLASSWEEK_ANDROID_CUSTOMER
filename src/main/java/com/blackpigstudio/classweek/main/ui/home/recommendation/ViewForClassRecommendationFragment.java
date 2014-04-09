@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.recommendation;
+package com.blackpigstudio.classweek.main.ui.home.recommendation;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.ListView;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
-import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
+import com.blackpigstudio.classweek.main.ui.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
 /**
  * Created by continueing on 2014. 3. 26..

@@ -10,8 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.ui.menus.NavigationDrawerFragment;
-import com.blackpigstudio.classweek.main.ui.menus.home.recommendation.ClassRecommendationFragment;
-import com.blackpigstudio.classweek.main.ui.menus.nowtaking.NowTakingClassesFragment;
+import com.blackpigstudio.classweek.main.ui.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.nowtaking.NowTakingClassesFragment;
 
 
 

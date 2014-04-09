@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.recommendation;
+package com.blackpigstudio.classweek.main.ui.home.recommendation;
 
 
 

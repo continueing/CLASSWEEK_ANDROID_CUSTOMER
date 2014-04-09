@@ -1,9 +1,6 @@
-package com.blackpigstudio.classweek.main.ui.menus.home.subcategory;
+package com.blackpigstudio.classweek.main.ui.home.subcategory;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.blackpigstudio.classweek.main.module.listview.AbstractArrayAdapter;
 import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;

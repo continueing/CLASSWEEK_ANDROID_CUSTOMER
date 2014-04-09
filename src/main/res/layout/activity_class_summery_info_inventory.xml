@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.menus.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity">
+    tools:context="com.blackpigstudio.classweek.main.ui.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity">
 
     <ListView
         android:id="@+id/lv_class_summary_info"
