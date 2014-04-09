@@ -1,5 +1,7 @@
 package com.blackpigstudio.classweek.main.module.network;
 
+import com.loopj.android.http.AsyncHttpClient;
+
 import org.json.JSONObject;
 
 /**
