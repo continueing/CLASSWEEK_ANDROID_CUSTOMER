@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/siv_took_before_class_front"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="#a2fbff" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:orientation="vertical"
+        android:background="#ffd257">
+        <TextView
+            android:id="@+id/tv_took_before_class_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[헤이브레드]에서 향긋한 아침을 맞.." />
+
+
+        <TextView
+            android:id="@+id/tv_took_before_class_time_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간"
+            android:layout_below="@+id/tv_took_before_class_title"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/tv_took_before_class_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="월 17:00-19:00, 수 17:00-19:00"
+            android:layout_below="@+id/tv_took_before_class_title"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_took_before_class_start_date_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작일"
+            android:layout_below="@+id/tv_took_before_class_time_prefix"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/tv_took_before_class_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2014.04.08 화"
+            android:layout_below="@+id/tv_took_before_class_time_prefix"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_took_before_class_end_date_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종료일"
+            android:layout_below="@+id/tv_took_before_class_start_date_prefix"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/tv_took_before_class_end_date_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2014.05.09 화"
+            android:layout_below="@+id/tv_took_before_class_start_date_prefix"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>    
+    
+</LinearLayout>

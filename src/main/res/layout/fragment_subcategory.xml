@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.home.subcategory.SubcategoryFragment">
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.subcategory.SubcategoryFragment">
 
 
     <ListView

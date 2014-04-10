@@ -9,10 +9,10 @@ import android.view.Menu;
 import android.support.v4.widget.DrawerLayout;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.ui.menus.NavigationDrawerFragment;
-import com.blackpigstudio.classweek.main.ui.home.recommendation.ClassRecommendationFragment;
-import com.blackpigstudio.classweek.main.ui.nowtaking.NowTakingClassesFragment;
-
+import com.blackpigstudio.classweek.main.ui.menu.NavigationDrawerFragment;
+import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment;
+import com.blackpigstudio.classweek.main.ui.menu.took_before.TookBeforeClassFragment;
 
 
 public class MainActivity extends ActionBarActivity
@@ -50,7 +50,10 @@ public class MainActivity extends ActionBarActivity
                     transaction.replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
                     break;
                 case 1:
-                    transaction.replace(R.id.container, new NowTakingClassesFragment()).commit();
+                    transaction.replace(R.id.container, new NowTakingClassFragment()).commit();
+                    break;
+                case 2:
+                    transaction.replace(R.id.container, new TookBeforeClassFragment()).commit();
                     break;
                 default:
                     Log.e(this.getClass().getCanonicalName(), "onNavigationDrawerItemSelected: there's no fragment");

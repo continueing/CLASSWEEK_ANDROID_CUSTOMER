@@ -1,14 +1,15 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity">
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment"
+    android:background="#b6ffc2">
 
     <ListView
-        android:id="@+id/lv_class_summary_info"
+        android:id="@+id/lv_now_taking_class"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#a6ff91">
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>

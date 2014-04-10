@@ -12,8 +12,8 @@ import android.widget.SpinnerAdapter;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.ui.MainActivity;
-import com.blackpigstudio.classweek.main.ui.home.recommendation.ClassRecommendationFragment;
-import com.blackpigstudio.classweek.main.ui.home.subcategory.SubcategoryFragment;
+import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
+import com.blackpigstudio.classweek.main.ui.menu.home.subcategory.SubcategoryFragment;
 
 
 abstract public class AbstractHomeFragment extends Fragment {
