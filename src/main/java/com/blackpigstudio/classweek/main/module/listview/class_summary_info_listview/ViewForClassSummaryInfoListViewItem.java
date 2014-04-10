@@ -32,7 +32,7 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
 
     @Override
     protected void initViews() {
-        siv_class_introduction = (SmartImageView) findViewById_(R.id.siv_class_introduction);
+        siv_class_introduction = (SmartImageView) findViewById_(R.id.siv_class_summary_info_front);
         tv_detail_location = (TextView) findViewById_(R.id.tv_class_summary_info_detail_location);
         tv_hook_sentence = (TextView) findViewById_(R.id.tv_class_summary_info_hook_sentence);
         tv_title = (TextView) findViewById_(R.id.tv_class_summary_info_title);

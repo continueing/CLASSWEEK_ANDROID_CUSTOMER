@@ -5,7 +5,7 @@
     android:layout_height="150dp">
 
     <com.loopj.android.image.SmartImageView
-        android:id="@+id/siv_class_introduction"
+        android:id="@+id/siv_class_summary_info_front"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:background="#a2fbff" />

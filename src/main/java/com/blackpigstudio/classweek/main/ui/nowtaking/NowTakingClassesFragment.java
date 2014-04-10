@@ -18,16 +18,14 @@ public class NowTakingClassesFragment extends Fragment {
 
 
     public NowTakingClassesFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_now_taking_classes, container, false);
+        ViewForNowTakingClassesFragment viewForNowTakingClassesFragment = new ViewForNowTakingClassesFragment(getActivity().getApplicationContext(),inflater,container);
+        return  viewForNowTakingClassesFragment.getRoot();
     }
-
 
 }

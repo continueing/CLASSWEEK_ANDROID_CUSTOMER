@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 
 /**
  * Created by continueing on 2014. 4. 1..
- * Responsibility: V of MVC. Kind of base class for concrete View Classes.
+ * Responsibility: View of MVC. Kind of base class for concrete View class of Fragment.
+ * This View(MVC) has inflated views(Android) initially. Don't have to inflate additionally.
  */
 
 
