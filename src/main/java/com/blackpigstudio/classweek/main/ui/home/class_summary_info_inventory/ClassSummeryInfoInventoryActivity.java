@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
+import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.ui.home.class_detail_info.ClassDetailInfoActivity;
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements ViewForClassSummeryInfoInventoryActivity.OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener{
+public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements ViewForClassSummeryInfoInventoryActivity.OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
     private ViewForClassSummeryInfoInventoryActivity viewForClassSummeryInfoInventoryActivity;
     public static final String BUNDLE_PARM_OF_TITLE = "title";
     public static final String BUNDLE_PARM_OF_URL_KEY = "url";
@@ -33,17 +34,17 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
-        viewForClassSummeryInfoInventoryActivity = new ViewForClassSummeryInfoInventoryActivity(this,this);
+        viewForClassSummeryInfoInventoryActivity = new ViewForClassSummeryInfoInventoryActivity(this,this, this);
         setContentView(viewForClassSummeryInfoInventoryActivity.getRoot());
 
         Intent intent = getIntent();
         setTitle(intent.getStringExtra(BUNDLE_PARM_OF_TITLE));
-        requestClassSummaryInfoFromServer(" classweek/" + intent.getStringExtra(BUNDLE_PARM_OF_URL_KEY));
+        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
+        requestClassSummaryInfoFromServer("load more");
     }
 
     private void requestClassSummaryInfoFromServer(String url) {
         HttpRequester.foo(this, url);
-        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
     }
 
     @Override
@@ -96,27 +97,32 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         @Override
         public void handleMessage(Message msg) {
             ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> classSummaryInfoItems = new ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem>();
-            for(int i = 1; i < 10; i++ )
+            for(int i = 1; i < 4; i++ )
                 classSummaryInfoItems.add(new ClassSummaryInfo(i));
             viewForClassSummeryInfoInventoryActivity.addClassSummaryInfoItemArrayList(classSummaryInfoItems);
             viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(false);
+
         }
     };
-
-
-
 
     @Override
     public void onSuccess(JSONObject jsonObject) {
         tmp.sendEmptyMessage(0);
         /*
             should parse jsonObject to ArrayList of <ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> and send to this ArrayList To view
+            if the number of class Item are less than 10, FooterProgressbar should be hide.
          */
-
     }
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
 
+    }
+
+    @Override
+    public void atScrollIsOnEndItem() {
+
+        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
+        requestClassSummaryInfoFromServer("load more");
     }
 }

@@ -3,12 +3,15 @@ package com.blackpigstudio.classweek.main.ui.home.class_summary_info_inventory;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
+import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 
@@ -20,13 +23,15 @@ import java.util.ArrayList;
 public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForActivity{
     private ArrayAdapterForClassSummaryInfoListView arrayAdapterForClassSummaryInfoListView;
     private OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
+    private OnScrollOfListViewListener onScrollOfListViewListener;
     private ProgressbarFooter progressbarFooter;
     ListView lv_class_summary_info;
 
 
-    public ViewForClassSummeryInfoInventoryActivity(Context context, OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener) {
+    public ViewForClassSummeryInfoInventoryActivity(Context context, OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener, OnScrollOfListViewListener onScrollOfListViewListener) {
         super(context);
         this.onClassSummeryInfoChooseListener = onClassSummeryInfoChooseListener;
+        this.onScrollOfListViewListener = onScrollOfListViewListener;
         initViews();
         setEvent();
     }
@@ -54,6 +59,26 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
                 onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(((ViewForClassSummaryInfoListViewItem)view).getIClassSummaryInfoItem());
             }
         });
+
+        lv_class_summary_info.setOnScrollListener(new AbsListView.OnScrollListener() {
+            private boolean visibilityOfLastItem = false;
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int aScrollState) {
+                if(aScrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE)
+                {
+                    if(aScrollState== AbsListView.OnScrollListener.SCROLL_STATE_IDLE && visibilityOfLastItem)
+                    {
+                        onScrollOfListViewListener.atScrollIsOnEndItem();
+                    }
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int aFirstVisibleItem, int aVisibleItemCount, int aTotalItemCount)
+            {
+                visibilityOfLastItem = aFirstVisibleItem + aVisibleItemCount >= aTotalItemCount;
+            }
+        });
     }
 
     public void setProgressbarVisibility(boolean aVisibility)
@@ -71,4 +96,6 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
     {
         public void onClassSummeryInfoChoose(ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem iClassSummaryInfoItem);
     }
+
+
 }
