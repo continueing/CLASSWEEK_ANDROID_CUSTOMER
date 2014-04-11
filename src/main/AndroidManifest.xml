@@ -20,21 +20,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity"
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity"
             android:label="@string/title_activity_filter" >
         </activity>
         <activity
-            android:name=".main.ui.menu.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity"
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity"
             android:label="@string/title_activity_class_summray_info_inventory" >
         </activity>
         <activity
-            android:name=".main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity"
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity"
             android:label="@string/title_activity_class_detail_info" >
         </activity>
         <activity
             android:name="com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity"
             android:label="@string/title_activity_sign_in_and_up"
-            android:windowSoftInputMode="stateVisible|adjustPan">
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.inquiry.InquiryActivity"
+            android:label="@string/title_activity_inquiry" >
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.order_confirmation.OrderConfirmationActivity"
+            android:label="@string/title_activity_order_confirmation" >
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.booking.BookingActivity"
+            android:label="@string/title_activity_booking"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
     </application>
 
