@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;

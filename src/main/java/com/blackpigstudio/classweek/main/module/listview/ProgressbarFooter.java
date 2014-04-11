@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module;
+package com.blackpigstudio.classweek.main.module.listview;
 
 import android.view.LayoutInflater;
 import android.view.View;
