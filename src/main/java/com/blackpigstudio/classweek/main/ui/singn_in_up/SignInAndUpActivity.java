@@ -2,8 +2,8 @@ package com.blackpigstudio.classweek.main.ui.singn_in_up;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -12,6 +12,7 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,11 +20,13 @@ import org.json.JSONObject;
 public class SignInAndUpActivity extends ActionBarActivity  {
     public final static String INTENT_PARM_LOGIN_RESULT = "intent_parm_login_result";
     private MenuItem mi_submitSignInAndUp;
+    private UserRequest userRequest;
     private ViewForSignInAndUpActivity view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.userRequest = new UserRequest();
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         view = new ViewForSignInAndUpActivity(getApplicationContext());
         setContentView(view.getRoot());
@@ -48,9 +51,8 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     private void requestLogin()
     {
         prepareUIForRequest();
-        UserRequest userRequest = new UserRequest();
         try {
-            userRequest.login(view.getEmail(),view.getPassword(),loginListener);
+            this.userRequest.login(view.getEmail(),view.getPassword(),loginListener);
         } catch (JSONException e) {
             AppTerminator.error(SignInAndUpActivity.this, "requestLogin()- userRequest.login(view.getEmail(),view.getPassword(),this): " + e.toString());
         }
@@ -59,9 +61,8 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     private void requestSignUp()
     {
         prepareUIForRequest();
-        UserRequest userRequest = new UserRequest();
         try {
-            userRequest.signUp(view.getEmail(), view.getPassword(), view.getPasswordConfirm(), signUpListener);
+            this.userRequest.signUp(view.getEmail(), view.getPassword(), view.getPasswordConfirm(), signUpListener);
         } catch (JSONException e) {
             AppTerminator.error(SignInAndUpActivity.this, "requestSignUp()-userRequest.signUp(view.getEmail(),view.getPassword(), view.getPasswordConfirm(), this): " + e.toString());
         }
@@ -71,7 +72,8 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     HttpRequester.NetworkResponseListener loginListener = new HttpRequester.NetworkResponseListener() {
         @Override
         public void onSuccess(JSONObject jsonObject) {
-            // should store preference
+            UserPreference userPreference = new UserPreference(getApplicationContext());
+            userPreference.login(view.getEmail(),view.getPassword());
 
             Intent intent = new Intent();
             intent.putExtra(INTENT_PARM_LOGIN_RESULT,true);
@@ -83,7 +85,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         public void onFail(JSONObject jsonObject, int errorCode) {
             restoreUIAfterRequest();
 
-            if(true)// if theres no id
+            if(true)// if there's no this account, should signup.
             {
                 prepareUIForRequest();
                 requestSignUp();

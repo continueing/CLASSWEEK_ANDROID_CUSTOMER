@@ -3,12 +3,14 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_invent
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 
 public class ClassDetailInfoActivity extends ActionBarActivity {
@@ -17,14 +19,6 @@ public class ClassDetailInfoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_detail_info);
-        Button bt_signup = (Button)findViewById(R.id.bt_sign_up);
-        bt_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ClassDetailInfoActivity.this, SignInAndUpActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
