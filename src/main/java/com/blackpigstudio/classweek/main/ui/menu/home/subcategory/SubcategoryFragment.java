@@ -54,15 +54,12 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
 
     @Override
-    public void onSubCategoryChoose(int index) {
+    public void onSubCategoryChoose(int index, String aTitle) {
         Intent intent = new Intent(getActivity().getApplicationContext(), ClassSummeryInfoInventoryActivity.class);
-        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_TITLE,""+index);
-        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_URL_KEY,""+index);
+        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_TITLE,aTitle);
+        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_URL_KEY, urlToQuery+"/"+index);
         startActivity(intent);
     }
-
-
-
 
     /*
         temporal handler for dummy ClassSummaryInfos

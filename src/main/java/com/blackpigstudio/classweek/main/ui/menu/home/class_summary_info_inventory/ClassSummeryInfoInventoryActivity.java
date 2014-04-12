@@ -26,8 +26,26 @@ import java.util.ArrayList;
 
 public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements ViewForClassSummeryInfoInventoryActivity.OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
     private ViewForClassSummeryInfoInventoryActivity viewForClassSummeryInfoInventoryActivity;
-    public static final String BUNDLE_PARM_OF_TITLE = "title";
-    public static final String BUNDLE_PARM_OF_URL_KEY = "url";
+    public static final String BUNDLE_PARM_OF_TITLE = "TITLE";
+    public static final String BUNDLE_PARM_OF_URL_KEY = "URL";
+    private String urlToQuery;
+
+    private String urlKeyLocation;
+
+    private boolean urlKeyMon;
+    private boolean urlKeyTue;
+    private boolean urlKeyWen;
+    private boolean urlKeyTur;
+    private boolean urlKeyFri;
+    private boolean urlKeySat;
+    private boolean urlKeySun;
+
+    private boolean urlKeyMorning;
+    private boolean urlKeyAfternoon;
+    private boolean urlKeyEvening;
+
+    private int urlKeyPrice;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +54,9 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
 
         viewForClassSummeryInfoInventoryActivity = new ViewForClassSummeryInfoInventoryActivity(this,this, this);
         setContentView(viewForClassSummeryInfoInventoryActivity.getRoot());
-
         Intent intent = getIntent();
         setTitle(intent.getStringExtra(BUNDLE_PARM_OF_TITLE));
+        this.urlToQuery = intent.getStringExtra(BUNDLE_PARM_OF_URL_KEY);
         viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
         requestClassSummaryInfoFromServer("load more");
     }
@@ -73,9 +91,12 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         {
             if(resultCode == Activity.RESULT_OK)
             {
-                //TODO: should call filtered fragment.
-                Log.e("Test", "test");
-                String result = data.getStringExtra(FilterActivity.INTENT_PARM_QUERY);
+                //TODO: should set urlKey variables and then refresh class items
+                String result = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_LOCATION_KEY);
+                if(data.getBooleanExtra(FilterActivity.BUNDLE_PARM_OF_URL_AFTERNOON_KEY,false))
+                    result += " O";
+                else
+                    result += " X";
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
             }
         }
@@ -121,7 +142,6 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
 
     @Override
     public void atScrollIsOnEndItem() {
-
         viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
         requestClassSummaryInfoFromServer("load more");
     }

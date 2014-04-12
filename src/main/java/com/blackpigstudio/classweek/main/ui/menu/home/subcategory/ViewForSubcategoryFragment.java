@@ -42,7 +42,7 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
         lv_subcategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onSubCategoryChooseListener.onSubCategoryChoose(i);
+                onSubCategoryChooseListener.onSubCategoryChoose(i, arrayAdapterForSubcategoryListView.getItem(i).getTitle());
             }
         });
     }
@@ -54,6 +54,6 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
 
     public interface OnSubCategoryChooseListener
     {
-        public void onSubCategoryChoose(int index);
+        public void onSubCategoryChoose(int index, String aTitle);
     }
 }

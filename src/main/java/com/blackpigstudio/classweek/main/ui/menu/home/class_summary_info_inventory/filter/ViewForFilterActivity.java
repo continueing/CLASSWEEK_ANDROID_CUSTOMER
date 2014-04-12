@@ -108,17 +108,10 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         bt_search.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // result format "장소:강남/요일:OXOXXOO/시간:OXX/금액:123123원"
-                String query = "";
-                if(getContext().getResources().getString(R.string.filter_location_setting_default).equals(bt_location_setting.getText()))
-                    query = ""+ bt_location_setting.getText();
-                else
-                    query = "장소:"+ bt_location_setting.getText()+"/";
-
-                query += "요일:" + parseValueOfCheckBoxes(cb_days) +"/";
-                query += "시간:" + parseValueOfCheckBoxes(cb_times)+"/";
-                query += "금액:" + sb_price_controller.getProgress() + "원" ;
-                onSubmitButtonClickListener.onSearchQueryDelivered(query);
+                String location = "";
+                if(!getContext().getResources().getString(R.string.filter_location_setting_default).equals(bt_location_setting.getText()))
+                    location = bt_location_setting.getText().toString();
+                onSubmitButtonClickListener.onSearchConditionDelivered(location,cb_days[0].isChecked(),cb_days[1].isChecked(),cb_days[2].isChecked(),cb_days[3].isChecked(),cb_days[4].isChecked(),cb_days[5].isChecked(),cb_days[6].isChecked(),cb_times[0].isChecked(),cb_times[1].isChecked(),cb_times[2].isChecked(), sb_price_controller.getProgress());
             }
         });
 
@@ -164,7 +157,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
      */
     public interface OnSubmitButtonClickListener
     {
-        void onSearchQueryDelivered(String aQuery);
+        void onSearchConditionDelivered(String aLocation, boolean mon, boolean tue, boolean wen, boolean tur, boolean fri, boolean sat, boolean sun, boolean morning, boolean afternoon, boolean evening, int aPrice  );
     }
 
     public interface OnLocationSettingDialogPopupRequestListener
