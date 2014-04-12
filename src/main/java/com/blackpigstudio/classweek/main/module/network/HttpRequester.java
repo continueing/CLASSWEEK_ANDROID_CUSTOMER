@@ -34,7 +34,7 @@ public class HttpRequester {
                 synchronized (this)
                 {
                     try {
-                        wait(1000);
+                        wait(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

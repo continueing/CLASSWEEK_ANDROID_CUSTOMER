@@ -17,7 +17,6 @@ import com.blackpigstudio.classweek.main.ui.menu.home.subcategory.SubcategoryFra
 
 
 abstract public class AbstractHomeFragment extends Fragment {
-    public static final String BUNDLE_PARM_OF_URL = "url";
 
     private int spinnerItemIndexOfThisFragment;
 
@@ -61,6 +60,13 @@ abstract public class AbstractHomeFragment extends Fragment {
                             SubcategoryFragment subcategoryFragment= new SubcategoryFragment();
                             Bundle bundle = new Bundle();
                             bundle.putInt(SubcategoryFragment.BUNDLE_PARM_OF_SPINNER_INDEX,i);
+                            if(i == 1) // Music
+                            {
+                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_URL, "music");
+                            }else if(i == 2) // Dance
+                            {
+                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_URL, "dance");
+                            }
                             subcategoryFragment.setArguments(bundle);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, subcategoryFragment).commit();
                             break;

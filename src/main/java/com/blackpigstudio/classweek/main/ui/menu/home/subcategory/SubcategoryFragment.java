@@ -24,8 +24,10 @@ import java.util.ArrayList;
  *
  */
 public class SubcategoryFragment extends AbstractHomeFragment implements ViewForSubcategoryFragment.OnSubCategoryChooseListener, HttpRequester.NetworkResponseListener{
-    public static final String BUNDLE_PARM_OF_SPINNER_INDEX = "spinner_index";
+    public static final String BUNDLE_PARM_OF_SPINNER_INDEX = "SPINNER_INDEX";
+    public static final String BUNDLE_PARM_OF_URL = "URL";
     private ViewForSubcategoryFragment viewForSubcategoryFragment;
+    private String urlToQuery;
 
 
     public SubcategoryFragment() { }
@@ -35,9 +37,9 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
                              Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         setSpinnerItemIndex(bundle.getInt(BUNDLE_PARM_OF_SPINNER_INDEX));
-        getActivity().setTitle(bundle.getInt(BUNDLE_PARM_OF_SPINNER_INDEX)+"");
+        urlToQuery = bundle.getString(BUNDLE_PARM_OF_URL);
         viewForSubcategoryFragment = new ViewForSubcategoryFragment(getActivity().getApplicationContext(),inflater,container,this);
-        requestClassSummaryInfoFromServer(" classweek/" );
+        requestClassSummaryInfoFromServer(urlToQuery);
         return viewForSubcategoryFragment.getRoot();
     }
 
