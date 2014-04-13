@@ -2,20 +2,25 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  *
  */
-public class ClassRecommendationFragment extends AbstractHomeFragment  {
+public class ClassRecommendationFragment extends AbstractHomeFragment implements OnClassSummeryInfoChooseListener{
     public static final int SPINNER_ITEM_INDEX = 0;
     private static ClassRecommendationFragment instance;
+    private ViewForClassRecommendationFragment classRecommendationFragmentView;
 
     public ClassRecommendationFragment() {
         setSpinnerItemIndex(SPINNER_ITEM_INDEX);
@@ -31,10 +36,14 @@ public class ClassRecommendationFragment extends AbstractHomeFragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewForClassRecommendationFragment classRecommendationFragmentView = new ViewForClassRecommendationFragment( getActivity(), inflater,container);
+        classRecommendationFragmentView = new ViewForClassRecommendationFragment( getActivity(), inflater,container, this);
         return classRecommendationFragmentView.getRoot();
     }
 
 
-
+    @Override
+    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
+        Intent intent = new Intent(getActivity(),ClassDetailInfoActivity.class);
+        startActivity(intent);
+    }
 }

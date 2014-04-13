@@ -11,6 +11,7 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
@@ -22,9 +23,12 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
     private ProgressbarFooter progressbarFooter;
     private LayoutInflater layoutInflater;
     private ListView lv_class_summary_info;
+    private ArrayAdapterForClassSummaryInfoListViewWithImageViewPager arrayAdapterForClassSummaryInfoListViewWithImageViewPager;
+    OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
 
-    public ViewForClassRecommendationFragment(Context context, LayoutInflater layoutInflater, ViewGroup container) {
+    public ViewForClassRecommendationFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, OnClassSummeryInfoChooseListener anOnClassSummeryInfoChooseListener) {
         super(context, layoutInflater, container);
+        this.onClassSummeryInfoChooseListener = anOnClassSummeryInfoChooseListener;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
 
     @Override
     protected void initViews() {
-        ArrayAdapterForClassSummaryInfoListViewWithImageViewPager arrayAdapterForClassSummaryInfoListViewWithImageViewPager = new ArrayAdapterForClassSummaryInfoListViewWithImageViewPager(getContext(),R.layout.item_class_summary_information);
+        arrayAdapterForClassSummaryInfoListViewWithImageViewPager = new ArrayAdapterForClassSummaryInfoListViewWithImageViewPager(getContext(),R.layout.item_class_summary_information);
         for(int i = 0 ; i< 3 ;i++)
         {
             arrayAdapterForClassSummaryInfoListViewWithImageViewPager.add(new ClassSummaryInfo(i));
@@ -43,10 +47,8 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
 
         lv_class_summary_info = (ListView)findViewById(R.id.lv_recommendation_class_summary_info);
         progressbarFooter = new ProgressbarFooter(lv_class_summary_info,layoutInflater);
+        setProgressbarVisibility(true);
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListViewWithImageViewPager);
-        progressbarFooter.setVisibility(true);
-
-
     }
 
     @Override
@@ -55,11 +57,15 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
         lv_class_summary_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(arrayAdapterForClassSummaryInfoListViewWithImageViewPager.getItem(i));
             }
         });
     }
 
+    public void setProgressbarVisibility(boolean aVisibility)
+    {
+        this.progressbarFooter.setVisibility(aVisibility);
+    }
 
 
 }
