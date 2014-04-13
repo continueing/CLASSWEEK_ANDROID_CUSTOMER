@@ -5,6 +5,6 @@ package com.blackpigstudio.classweek.main.module.listview.class_summary_info_lis
  */
 public interface OnClassSummeryInfoChooseListener {
 
-    public void onClassSummeryInfoChoose(ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem iClassSummaryInfoItem);
+    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem);
 
 }

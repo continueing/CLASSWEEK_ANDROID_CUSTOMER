@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.IListViewItem;
 
 /**
  * Created by continueing on 2014. 4. 10..

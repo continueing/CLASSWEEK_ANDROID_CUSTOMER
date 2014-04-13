@@ -1,13 +1,13 @@
 package com.blackpigstudio.classweek.main.domain;
 
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 
 import java.io.Serializable;
 
 /**
  * Created by continueing on 2014. 3. 30..
  */
-public class ClassSummaryInfo  implements ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem , Serializable{
+public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     private String detail_location = "역삼역 2번 출구";
     private String hook_sentence = "몸짱이 될 수 있습니다.\n몸치를 탈출하세요.";
     private String title ="A학원 속성 줌바";

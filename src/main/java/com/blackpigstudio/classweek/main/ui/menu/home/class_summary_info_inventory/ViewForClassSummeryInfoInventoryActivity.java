@@ -12,6 +12,7 @@ import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 
@@ -86,7 +87,7 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
         this.progressbarFooter.setVisibility(aVisibility);
     }
 
-    public void addClassSummaryInfoItemArrayList(ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> iClassSummaryInfoItems)
+    public void addClassSummaryInfoItemArrayList(ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems)
     {
         this.arrayAdapterForClassSummaryInfoListView.addAll(iClassSummaryInfoItems);
     }

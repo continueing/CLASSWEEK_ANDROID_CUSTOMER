@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.IListViewItem;
 import com.loopj.android.image.SmartImageView;
 
 /**
@@ -61,13 +62,4 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
         return iClassSummaryInfoItem;
     }
 
-    public interface IClassSummaryInfoItem extends IListViewItem
-    {
-        public String getTitle();
-        public String getHookSentence();
-        public String getDetailLocation();
-        public String getDayPrice();
-        public String getMonthPrice();
-        public String getURLOfImage();
-    }
 }

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.IListViewItem;
 import com.loopj.android.image.SmartImageView;
 
 /**

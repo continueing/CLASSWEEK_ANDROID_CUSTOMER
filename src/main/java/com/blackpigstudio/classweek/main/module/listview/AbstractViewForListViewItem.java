@@ -27,10 +27,4 @@ public abstract class AbstractViewForListViewItem extends LinearLayout {
         return root.findViewById(aResourceId);
     }
 
-    public static interface IListViewItem
-    {
-
-    }
-
-
 }

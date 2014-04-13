@@ -8,7 +8,7 @@ import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListView
 /**
  * Created by continueing on 2014. 3. 31..
  */
-public class ArrayAdapterForClassSummaryInfoListView extends AbstractArrayAdapter<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> {
+public class ArrayAdapterForClassSummaryInfoListView extends AbstractArrayAdapter<IClassSummaryInfoItem> {
 
     public ArrayAdapterForClassSummaryInfoListView(Context context, int resource) {
         super(context, resource);

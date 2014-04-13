@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
@@ -104,7 +105,7 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
     }
 
     @Override
-    public void onClassSummeryInfoChoose(ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem iClassSummaryInfoItem) {
+    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
         Intent intent = new Intent(getApplicationContext(), ClassDetailInfoActivity.class);
         startActivity(intent);
     }
@@ -118,7 +119,7 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
     {
         @Override
         public void handleMessage(Message msg) {
-            ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem> classSummaryInfoItems = new ArrayList<ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem>();
+            ArrayList<IClassSummaryInfoItem> classSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
             for(int i = 1; i < 4; i++ )
                 classSummaryInfoItems.add(new ClassSummaryInfo(i));
             viewForClassSummeryInfoInventoryActivity.addClassSummaryInfoItemArrayList(classSummaryInfoItems);

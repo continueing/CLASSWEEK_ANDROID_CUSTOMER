@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
  * Created by continueing on 2014. 4. 7..
  *
  */
-abstract public class AbstractArrayAdapter<T extends AbstractViewForListViewItem.IListViewItem> extends ArrayAdapter<T>{
+abstract public class AbstractArrayAdapter<T extends IListViewItem> extends ArrayAdapter<T>{
 
     public AbstractArrayAdapter(Context context, int resource) {
         super(context, resource);
