@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements ViewForClassSummeryInfoInventoryActivity.OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
+public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
     private ViewForClassSummeryInfoInventoryActivity viewForClassSummeryInfoInventoryActivity;
     public static final String BUNDLE_PARM_OF_TITLE = "TITLE";
     public static final String BUNDLE_PARM_OF_URL_KEY = "URL";

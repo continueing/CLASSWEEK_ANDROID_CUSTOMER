@@ -12,6 +12,7 @@ import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 
 import java.util.ArrayList;
@@ -91,10 +92,6 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
     }
 
 
-    public static interface OnClassSummeryInfoChooseListener
-    {
-        public void onClassSummeryInfoChoose(ViewForClassSummaryInfoListViewItem.IClassSummaryInfoItem iClassSummaryInfoItem);
-    }
 
 
 }

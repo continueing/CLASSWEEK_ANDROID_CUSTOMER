@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
 /**
@@ -16,7 +19,9 @@ import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.Ar
  */
 
 public class ViewForClassRecommendationFragment extends AbstractViewForFragment {
-
+    private ProgressbarFooter progressbarFooter;
+    private LayoutInflater layoutInflater;
+    private ListView lv_class_summary_info;
 
     public ViewForClassRecommendationFragment(Context context, LayoutInflater layoutInflater, ViewGroup container) {
         super(context, layoutInflater, container);
@@ -24,7 +29,8 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
 
     @Override
     protected View inflate(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_class_recommendation, container, false);
+        layoutInflater = inflater;
+        return layoutInflater.inflate(R.layout.fragment_class_recommendation, container, false);
     }
 
     @Override
@@ -35,14 +41,25 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
             arrayAdapterForClassSummaryInfoListViewWithImageViewPager.add(new ClassSummaryInfo(i));
         }
 
-        ListView lv_class_summary_info = (ListView)findViewById(R.id.lv_recommendation_class_summary_info);
+        lv_class_summary_info = (ListView)findViewById(R.id.lv_recommendation_class_summary_info);
+        progressbarFooter = new ProgressbarFooter(lv_class_summary_info,layoutInflater);
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListViewWithImageViewPager);
+        progressbarFooter.setVisibility(true);
 
 
     }
 
     @Override
-    protected void setEvents(){}
+    protected void setEvents()
+    {
+        lv_class_summary_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
+    }
+
 
 
 }
