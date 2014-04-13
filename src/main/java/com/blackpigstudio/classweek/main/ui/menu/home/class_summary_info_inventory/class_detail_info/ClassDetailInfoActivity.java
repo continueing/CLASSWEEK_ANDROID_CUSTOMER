@@ -12,12 +12,15 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_invento
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.order_confirmation.OrderConfirmationActivity;
 
 public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.OnInquiryChooseListener, ViewForClassDetailInfoActivity.OnBookingChooseListener {
+    public static final String BUNDLE_PARM_URL = "URL";
+    private String urlToQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        urlToQuery = intent.getStringExtra(BUNDLE_PARM_URL);
         ViewForClassDetailInfoActivity view = new ViewForClassDetailInfoActivity(getApplicationContext(), this, this);
-//        setTitle();
         setContentView(view.getRoot());
     }
 
