@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by continueing on 2014. 4. 2..
  */
-public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForActivity{
+public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForActivity{
     private ArrayAdapterForClassSummaryInfoListView arrayAdapterForClassSummaryInfoListView;
     private OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
     private OnScrollOfListViewListener onScrollOfListViewListener;
@@ -29,7 +29,7 @@ public class ViewForClassSummeryInfoInventoryActivity extends AbstractViewForAct
     ListView lv_class_summary_info;
 
 
-    public ViewForClassSummeryInfoInventoryActivity(Context context, OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener, OnScrollOfListViewListener onScrollOfListViewListener) {
+    public ViewForClassSummaryInfoInventoryActivity(Context context, OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener, OnScrollOfListViewListener onScrollOfListViewListener) {
         super(context);
         this.onClassSummeryInfoChooseListener = onClassSummeryInfoChooseListener;
         this.onScrollOfListViewListener = onScrollOfListViewListener;

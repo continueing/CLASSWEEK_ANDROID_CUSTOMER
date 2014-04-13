@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.blackpigstudio.classweek.main.domain.Subcategory;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
-import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity;
 
 import org.json.JSONObject;
 
@@ -55,9 +55,9 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
     @Override
     public void onSubCategoryChoose(int index, String aTitle) {
-        Intent intent = new Intent(getActivity().getApplicationContext(), ClassSummeryInfoInventoryActivity.class);
-        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_TITLE,aTitle);
-        intent.putExtra(ClassSummeryInfoInventoryActivity.BUNDLE_PARM_OF_URL_KEY, urlToQuery+"/"+index);
+        Intent intent = new Intent(getActivity().getApplicationContext(), ClassSummaryInfoInventoryActivity.class);
+        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_TITLE,aTitle);
+        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_URL_KEY, urlToQuery+"/"+index);
         startActivity(intent);
     }
 

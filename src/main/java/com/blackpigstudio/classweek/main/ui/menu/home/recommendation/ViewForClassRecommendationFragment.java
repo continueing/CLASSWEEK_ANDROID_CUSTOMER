@@ -57,7 +57,7 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
         lv_class_summary_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(arrayAdapterForClassSummaryInfoListViewWithImageViewPager.getItem(i));
+                onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(arrayAdapterForClassSummaryInfoListViewWithImageViewPager.getItem(i-1));
             }
         });
     }

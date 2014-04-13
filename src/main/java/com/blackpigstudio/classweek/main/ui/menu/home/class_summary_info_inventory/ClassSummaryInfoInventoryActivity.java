@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -17,7 +16,6 @@ import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity;
@@ -26,8 +24,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClassSummeryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
-    private ViewForClassSummeryInfoInventoryActivity viewForClassSummeryInfoInventoryActivity;
+public class ClassSummaryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
+    private ViewForClassSummaryInfoInventoryActivity viewForClassSummaryInfoInventoryActivity;
     public static final String BUNDLE_PARM_OF_TITLE = "TITLE";
     public static final String BUNDLE_PARM_OF_URL_KEY = "URL";
     private String urlToQuery;
@@ -54,12 +52,12 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
-        viewForClassSummeryInfoInventoryActivity = new ViewForClassSummeryInfoInventoryActivity(this,this, this);
-        setContentView(viewForClassSummeryInfoInventoryActivity.getRoot());
+        viewForClassSummaryInfoInventoryActivity = new ViewForClassSummaryInfoInventoryActivity(this,this, this);
+        setContentView(viewForClassSummaryInfoInventoryActivity.getRoot());
         Intent intent = getIntent();
         setTitle(intent.getStringExtra(BUNDLE_PARM_OF_TITLE));
         this.urlToQuery = intent.getStringExtra(BUNDLE_PARM_OF_URL_KEY);
-        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
+        viewForClassSummaryInfoInventoryActivity.setProgressbarVisibility(true);
         requestClassSummaryInfoFromServer("load more");
     }
 
@@ -122,8 +120,8 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
             ArrayList<IClassSummaryInfoItem> classSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
             for(int i = 1; i < 4; i++ )
                 classSummaryInfoItems.add(new ClassSummaryInfo(i));
-            viewForClassSummeryInfoInventoryActivity.addClassSummaryInfoItemArrayList(classSummaryInfoItems);
-            viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(false);
+            viewForClassSummaryInfoInventoryActivity.addClassSummaryInfoItemArrayList(classSummaryInfoItems);
+            viewForClassSummaryInfoInventoryActivity.setProgressbarVisibility(false);
 
         }
     };
@@ -144,7 +142,7 @@ public class ClassSummeryInfoInventoryActivity extends ActionBarActivity impleme
 
     @Override
     public void atScrollIsOnEndItem() {
-        viewForClassSummeryInfoInventoryActivity.setProgressbarVisibility(true);
+        viewForClassSummaryInfoInventoryActivity.setProgressbarVisibility(true);
         requestClassSummaryInfoFromServer("load more");
     }
 }

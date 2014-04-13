@@ -24,7 +24,7 @@
             android:label="@string/title_activity_filter" >
         </activity>
         <activity
-            android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummeryInfoInventoryActivity"
+            android:name=".main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity"
             android:label="@string/title_activity_class_summray_info_inventory" >
         </activity>
         <activity
