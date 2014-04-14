@@ -33,8 +33,6 @@ public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForAct
         super(context);
         this.onClassSummeryInfoChooseListener = onClassSummeryInfoChooseListener;
         this.onScrollOfListViewListener = onScrollOfListViewListener;
-        initViews();
-        setEvent();
     }
 
     @Override

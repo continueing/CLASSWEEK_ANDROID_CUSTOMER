@@ -12,8 +12,9 @@ import java.util.ArrayList;
 public class BookingActivity extends Activity {
     public static final String BUNDLE_PARM_ONE_DAY_SCHEDULES = "ONE_DAY_SCHEDULES";
     public static final String BUNDLE_PARM_ONE_MONTH_SCHEDULES = "ONE_MONTH_SCHEDULES";
-    public ArrayList<Schedule> dayScheduleArrayList;
-    public ArrayList<Schedule> monthScheduleArrayList;
+    private ArrayList<Schedule> dayScheduleArrayList;
+    private ArrayList<Schedule> monthScheduleArrayList;
+    private ViewForBookingActivity view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class BookingActivity extends Activity {
         Intent intent = getIntent();
         dayScheduleArrayList = (ArrayList<Schedule>)intent.getSerializableExtra(BUNDLE_PARM_ONE_DAY_SCHEDULES);
         monthScheduleArrayList = (ArrayList<Schedule>)intent.getSerializableExtra(BUNDLE_PARM_ONE_MONTH_SCHEDULES);
-        setContentView(R.layout.activity_booking);
-
+        view = new ViewForBookingActivity(getApplicationContext());
+        setContentView(view.getRoot());
     }
 }

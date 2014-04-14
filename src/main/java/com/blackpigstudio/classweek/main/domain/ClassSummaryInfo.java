@@ -13,6 +13,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     private String title ="A학원 속성 줌바";
     private int day_price = 12000;
     private int month_price = 200000;
+    private int classTimesOfWeek = 2;
     private String url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg" ;
     private String detail_url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg";
 

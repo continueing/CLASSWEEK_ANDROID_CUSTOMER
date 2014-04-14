@@ -21,8 +21,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         super(context);
         this.onInquiryChooseListener = anOnInquiryChooseListener;
         this.onBookingChooseListener = anOnBookingChooseListener;
-        initViews();
-        setEvent();
     }
 
     @Override

@@ -15,6 +15,8 @@ abstract public class AbstractViewForActivity {
     {
         this.context = context;
         this.root = inflate();
+        initViews();
+        setEvent();
     }
 
     public View findViewById(int aResourceId)

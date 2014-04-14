@@ -19,7 +19,6 @@ public class ViewForSignInAndUpActivity extends AbstractViewForActivity {
     public ViewForSignInAndUpActivity(Context context)
     {
         super(context);
-        initViews();
     }
 
     @Override

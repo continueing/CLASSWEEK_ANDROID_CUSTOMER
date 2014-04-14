@@ -20,8 +20,19 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         view members
      */
     private Button bt_location_setting;
-    private CheckBox[] cb_days;
-    private CheckBox[] cb_times;
+
+    private CheckBox cb_mon;
+    private CheckBox cb_tue;
+    private CheckBox cb_wen;
+    private CheckBox cb_thu;
+    private CheckBox cb_fri;
+    private CheckBox cb_sat;
+    private CheckBox cb_sun;
+
+    private CheckBox cb_morning;
+    private CheckBox cb_afternoon;
+    private CheckBox cb_evening;
+
     private TextView tv_price_value;
     private SeekBar sb_price_controller;
     private Button bt_search;
@@ -35,12 +46,6 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         super(context);
         this.onSubmitButtonClickListener = onSubmitButtonClickListener;
         this.onLocationSettingDialogPopupRequestListener = onLocationSettingDialogPopupRequestListener;
-
-        cb_times = new CheckBox[3];
-        cb_days = new CheckBox[7];
-
-        initViews();
-        setEvent();
     }
 
     @Override
@@ -56,18 +61,18 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         bt_location_setting = (Button) findViewById(R.id.bt_filter_location_setting);
 
         // Day setting
-        cb_days[0] = (CheckBox)findViewById(R.id.cb_mon);
-        cb_days[1] = (CheckBox)findViewById(R.id.cb_tue);
-        cb_days[2] = (CheckBox)findViewById(R.id.cb_wen);
-        cb_days[3] = (CheckBox)findViewById(R.id.cb_thu);
-        cb_days[4] = (CheckBox)findViewById(R.id.cb_fri);
-        cb_days[5] = (CheckBox)findViewById(R.id.cb_sat);
-        cb_days[6] = (CheckBox)findViewById(R.id.cb_sun);
+        cb_mon = (CheckBox)findViewById(R.id.cb_mon);
+        cb_tue = (CheckBox)findViewById(R.id.cb_tue);
+        cb_wen = (CheckBox)findViewById(R.id.cb_wen);
+        cb_thu = (CheckBox)findViewById(R.id.cb_thu);
+        cb_fri  = (CheckBox)findViewById(R.id.cb_fri);
+        cb_sat = (CheckBox)findViewById(R.id.cb_sat);
+        cb_sun = (CheckBox)findViewById(R.id.cb_sun);
 
         // Time setting
-        cb_times[0] = (CheckBox)findViewById(R.id.cb_morning);
-        cb_times[1] = (CheckBox)findViewById(R.id.cb_daytime);
-        cb_times[2] = (CheckBox)findViewById(R.id.cb_evening);
+        cb_morning = (CheckBox)findViewById(R.id.cb_morning);
+        cb_afternoon = (CheckBox)findViewById(R.id.cb_daytime);
+        cb_evening = (CheckBox)findViewById(R.id.cb_evening);
 
         // Price
         tv_price_value = (TextView)findViewById(R.id.tv_filter_seekbar_value);
@@ -97,8 +102,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
             @Override
             public void onClick(View view) {
                 // should write the logic of reset
-                releaseAllCheckBoxes(cb_days);
-                releaseAllCheckBoxes(cb_times);
+                releaseAllCheckBoxes();
                 tv_price_value.setText("10000원");
                 sb_price_controller.setProgress(10000);
                 bt_location_setting.setText("위치 선택하기");
@@ -111,7 +115,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
                 String location = "";
                 if(!getContext().getResources().getString(R.string.filter_location_setting_default).equals(bt_location_setting.getText()))
                     location = bt_location_setting.getText().toString();
-                onSubmitButtonClickListener.onSearchConditionDelivered(location,cb_days[0].isChecked(),cb_days[1].isChecked(),cb_days[2].isChecked(),cb_days[3].isChecked(),cb_days[4].isChecked(),cb_days[5].isChecked(),cb_days[6].isChecked(),cb_times[0].isChecked(),cb_times[1].isChecked(),cb_times[2].isChecked(), sb_price_controller.getProgress());
+                onSubmitButtonClickListener.onSearchConditionDelivered(location,cb_mon.isChecked(),cb_tue.isChecked(),cb_wen.isChecked(),cb_thu.isChecked(),cb_fri.isChecked(),cb_sat.isChecked(),cb_sun.isChecked(),cb_morning.isChecked(),cb_afternoon.isChecked(),cb_evening.isChecked(), sb_price_controller.getProgress());
             }
         });
 
@@ -144,12 +148,19 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         return result;
     }
 
-    public void releaseAllCheckBoxes(CheckBox[] checkBoxes)
+    public void releaseAllCheckBoxes()
     {
-        for(CheckBox aCheckBox : checkBoxes)
-        {
-            aCheckBox.setChecked(false);
-        }
+        cb_morning.setChecked(false);
+        cb_afternoon.setChecked(false);
+        cb_evening.setChecked(false);
+
+        cb_mon.setChecked(false);
+        cb_tue.setChecked(false);
+        cb_wen.setChecked(false);
+        cb_thu.setChecked(false);
+        cb_fri.setChecked(false);
+        cb_sat.setChecked(false);
+        cb_sun.setChecked(false);
     }
 
     /*
