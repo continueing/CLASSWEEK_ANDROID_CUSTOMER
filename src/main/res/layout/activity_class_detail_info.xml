@@ -23,47 +23,291 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            android:background="#ef78ff"></LinearLayout>
+                            android:background="#ef78ff">
+                            <android.support.v4.view.ViewPager
+                                android:id="@+id/vp_class_detial_images"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#ff6ad6"/>
+                            </LinearLayout>
                         <!--학원 제목-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:background="#66ff3e"></LinearLayout>
+
                         <!--시간-->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#ef78ff"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="시간"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="[수업시작 시간]"/>
+                                <TextView
+                                    android:id="@+id/tv_class_detail_start_time_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="월 - 오후7시"/>
+                                <TextView
+                                    android:id="@+id/tv_class_detail_start_time_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="수 - 오후9시"/>
+                                <TextView
+                                    android:id="@+id/tv_class_detail_start_time_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="금 - 오후7시"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:text="[수업 시간]"/>
+                                <TextView
+                                    android:id="@+id/tv_class_detail_duration"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1시간 30분"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--수강료-->
                         <LinearLayout
+                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#66ff3e"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="수강료"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_one_day_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="12,500원/CLASS"/>
+                                <TextView
+                                    android:layout_marginTop="15dp"
+                                    android:id="@+id/tv_class_detail_month_day_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="125,000원/8CLASSES"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--위치-->
+                        <LinearLayout
+                            android:layout_marginTop="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="위치"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="역삼동(역삼역 2번출구에서 30m직진)"
+                                    android:textStyle="bold|italic"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--소개-->
                         <LinearLayout
+                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#ef78ff"></LinearLayout>
-                        <!--수강료-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#66ff3e"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="소개"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_description"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="몸매 탈출은 물론, 몸매관리까지 데프 댄스와 함께!"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--준비사항-->
                         <LinearLayout
+                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#ef78ff"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="준비사항"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_prerequsite"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="준비물1, 준비물2"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--시설정보-->
                         <LinearLayout
+                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#66ff3e"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="준비사항"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:id="@+id/tv_class_detail_facility_toilet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_go"/>
+                                <ImageView
+                                    android:id="@+id/iv_class_detail_facility_bathroom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_go"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--환불정보-->
                         <LinearLayout
+                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#ef78ff"></LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/abc_ic_voice_search"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center"
+                                    android:text="환불정보"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="40dp">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_refund_info"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7일 환불 가능상품(구매 시점으로부터 7일) 유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
 
 

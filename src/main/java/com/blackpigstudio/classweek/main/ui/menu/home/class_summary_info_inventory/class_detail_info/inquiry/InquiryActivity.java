@@ -15,5 +15,9 @@ public class InquiryActivity extends ActionBarActivity {
         setContentView(view.getRoot());
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.inquiry,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

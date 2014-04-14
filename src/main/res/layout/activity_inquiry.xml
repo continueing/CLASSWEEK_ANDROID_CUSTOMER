@@ -15,15 +15,4 @@
       android:textColor="@color/abc_search_url_text_normal"
       android:gravity="top|left"/>
 
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="69dp"
-        android:layout_marginBottom="71dp" />
-
 </RelativeLayout>
