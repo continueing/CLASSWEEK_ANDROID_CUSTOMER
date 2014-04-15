@@ -17,21 +17,22 @@
         android:orientation="vertical"
         android:background="#ffd257">
         <TextView
-            android:id="@+id/tv_class_summary_info_detail_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="역삼역 3번 출구" />
-        <TextView
-            android:id="@+id/tv_class_summary_info_hook_sentence"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="몸치 탈출\n몸짱이 될 수 있어요!"
-            android:layout_marginTop="10dp"/>
-        <TextView
             android:id="@+id/tv_class_summary_info_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="삼성 댄스학원 줌바 수업"
+            android:text="삼성 댄스학원 줌바 초급 수업"
+            android:layout_marginTop="3dp"/>
+        <TextView
+            android:id="@+id/tv_class_summary_info_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="월 오후 7시, 수 오후 9시(1시간 30분)"
+            android:layout_marginTop="3dp"/>
+        <TextView
+            android:id="@+id/tv_class_summary_info_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="헤이브리드(삼성역)"
             android:layout_marginTop="3dp"/>
         <TextView
             android:id="@+id/tv_class_summary_info_day_price"
