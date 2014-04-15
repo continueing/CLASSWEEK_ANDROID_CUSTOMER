@@ -14,13 +14,13 @@ import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractVi
 public class ViewForBookingActivity extends AbstractViewForActivity {
     private Button bt_class_type_selection;
     private Button bt_schedule_selection;
-    private OnClassTypeSelectionRequestListener onClassTypeSelectionRequestListener;
-    private OnScheduleSelectionRequestListener onScheduleSelectionRequestListener;
+    private Button bt_payment;
+    private IViewListener iViewListener;
 
-    public ViewForBookingActivity(Context context, OnClassTypeSelectionRequestListener anOnClassTypeSelectionRequestListener, OnScheduleSelectionRequestListener anOnScheduleSelectionRequestListener) {
+
+    public ViewForBookingActivity(Context context, IViewListener anIViewListener) {
         super(context);
-        onClassTypeSelectionRequestListener  = anOnClassTypeSelectionRequestListener;
-        onScheduleSelectionRequestListener = anOnScheduleSelectionRequestListener;
+        iViewListener = anIViewListener;
 
     }
 
@@ -33,6 +33,8 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
     protected void initViews() {
         bt_class_type_selection = (Button) findViewById(R.id.bt_booking_class_type_selection);
         bt_schedule_selection= (Button) findViewById(R.id.bt_booking_schedule_selection);
+        bt_payment = (Button)findViewById(R.id.bt_booking_payment);
+        bt_payment.setEnabled(false);
     }
 
     @Override
@@ -40,25 +42,35 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
         bt_class_type_selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClassTypeSelectionRequestListener.onClassTypeSelectionRequested();
+                iViewListener.onClassTypeSelectionRequested();
             }
         });
 
         bt_schedule_selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onScheduleSelectionRequestListener.onScheduleSelectionRequested();
+                iViewListener.onScheduleSelectionRequested();
+            }
+        });
+
+        bt_payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iViewListener.onPaymentRequested();
             }
         });
     }
 
-    public static interface OnClassTypeSelectionRequestListener
+    public void enablePayment()
     {
-        public void onClassTypeSelectionRequested();
+        this.bt_payment.setEnabled(true);
     }
 
-    public static interface OnScheduleSelectionRequestListener
+    public static interface IViewListener
     {
         public void onScheduleSelectionRequested();
+        public void onClassTypeSelectionRequested();
+        public void onPaymentRequested();
     }
+
 }

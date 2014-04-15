@@ -37,14 +37,10 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public void onBookingChoose() {
         Intent intent = new Intent(this, BookingActivity.class);
         ArrayList<Schedule> schedules = new ArrayList<Schedule>();
-        schedules.add(new Schedule(Schedule.DAY_SCHEDULE_TYPE,10000,1,"월",4,20,22,0,23,0));
-        schedules.add(new Schedule(Schedule.DAY_SCHEDULE_TYPE,10000,1,"수",4,23,21,0,22,0));
-        schedules.add(new Schedule(Schedule.DAY_SCHEDULE_TYPE,10000,1,"월",4,27,22,0,23,0));
-        intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_DAY_SCHEDULES,schedules);
-        schedules = new ArrayList<Schedule>();
-        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,70000,8,"월",4,20,22,0,23,0));
-        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,70000,8,"수",4,23,22,0,23,0));
-        intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_DAY_SCHEDULES,schedules);
+        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"월",4,20,22,0,23,0));
+        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"수",4,23,21,0,22,0));
+        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"월",4,27,22,0,23,0));
+        intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_MONTH_SCHEDULES,schedules);
         startActivity(intent);
     }
 }

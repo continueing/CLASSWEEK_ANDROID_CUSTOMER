@@ -3,17 +3,15 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_invent
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  * Created by continueing on 2014. 4. 14..
@@ -22,11 +20,18 @@ import java.util.GregorianCalendar;
 public class ScheduleSelectionDialog extends Dialog {
     private ArrayList<Schedule> schedules;
     private RadioGroup rg_schedule_selection;
-    private RadioButton rb_selected_schedule;
+    private OnScheduleSelectionListener onScheduleSelectionListener;
+    private int selectedSchedule;
+    private Button bt_schedule_select;
 
-    public ScheduleSelectionDialog(Context context, ArrayList<Schedule> aSchedules) {
+    public ScheduleSelectionDialog(Context context, OnScheduleSelectionListener anOnScheduleSelectionListener) {
         super(context);
         this.schedules = new ArrayList<Schedule>();
+        this.onScheduleSelectionListener = anOnScheduleSelectionListener;
+    }
+
+    public void setSchedules(ArrayList<Schedule> aSchedules)
+    {
         this.schedules.addAll(aSchedules);
     }
 
@@ -40,6 +45,7 @@ public class ScheduleSelectionDialog extends Dialog {
 
     private void initViews()
     {
+        bt_schedule_select = (Button)findViewById(R.id.bt_dialog_schedule_selection_select);
         rg_schedule_selection = (RadioGroup) findViewById(R.id.rg_schedule_selection);
         addRadioButtons();
     }
@@ -53,6 +59,8 @@ public class ScheduleSelectionDialog extends Dialog {
             radio_btn.setId(i++);
             radio_btn.setText(aSchedule.toString());
             rg_schedule_selection.addView(radio_btn);
+            if(i==0)
+                radio_btn.setChecked(true);
         }
     }
 
@@ -62,9 +70,21 @@ public class ScheduleSelectionDialog extends Dialog {
         rg_schedule_selection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                rb_selected_schedule = (RadioButton)radioGroup.getChildAt(i);
-                Toast.makeText(getContext(),rb_selected_schedule.getText(),Toast.LENGTH_LONG).show();
+                selectedSchedule = i;
             }
         });
+
+        bt_schedule_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onScheduleSelectionListener.onScheduleSelected(schedules.get(selectedSchedule));
+                dismiss();
+            }
+        });
+    }
+
+    public static interface OnScheduleSelectionListener
+    {
+        public void onScheduleSelected(Schedule aSchedule);
     }
 }
