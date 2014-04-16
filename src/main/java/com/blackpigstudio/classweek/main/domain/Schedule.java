@@ -1,5 +1,7 @@
 package com.blackpigstudio.classweek.main.domain;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +24,11 @@ public class Schedule implements Serializable {
         this.type = aType;
         this.startDateTime = aStartDateTime;
         this.endDateTime = anEndDateTime;
+    }
+
+    public Schedule(JSONObject aJsonObject)
+    {
+
     }
 
     public int getId()

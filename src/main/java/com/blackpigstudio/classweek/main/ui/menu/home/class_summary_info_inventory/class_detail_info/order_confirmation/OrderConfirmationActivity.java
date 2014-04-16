@@ -3,10 +3,9 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_invent
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
+import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 
 public class OrderConfirmationActivity extends ActionBarActivity {

@@ -49,12 +49,12 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
     @Override
     protected void setData(IListViewItem aIListViewItem) {
         iClassSummaryInfoItem = (IClassSummaryInfoItem)aIListViewItem;
-        siv_class_introduction.setImageUrl(iClassSummaryInfoItem.getURLOfImage());
+        siv_class_introduction.setImageUrl(iClassSummaryInfoItem.getFrontImageUrl());
         tv_title.setText(iClassSummaryInfoItem.getTitle());
         tv_time.setText(iClassSummaryInfoItem.getTime());
-        tv_company.setText(iClassSummaryInfoItem.getCompany() + "(" + iClassSummaryInfoItem.getLocation()+")");
-        tv_day_price.setText(iClassSummaryInfoItem.getDayPrice());
-        tv_month_price.setText(iClassSummaryInfoItem.getMonthPrice());
+        tv_company.setText(iClassSummaryInfoItem.getCompany() + "(" + iClassSummaryInfoItem.getShortLocation()+")");
+        tv_day_price.setText(iClassSummaryInfoItem.getOneDayPrice());
+        tv_month_price.setText(iClassSummaryInfoItem.getOneMonthPrice());
     }
 
     public IClassSummaryInfoItem getIClassSummaryInfoItem()

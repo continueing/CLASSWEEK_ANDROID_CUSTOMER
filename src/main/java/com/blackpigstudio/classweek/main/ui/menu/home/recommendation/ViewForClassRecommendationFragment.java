@@ -8,11 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.ClassSummaryInfo;
+import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
 /**

@@ -10,9 +10,9 @@ public interface IClassSummaryInfoItem extends IListViewItem {
     public String getTitle();
     public String getTime();
     public String getCompany();
-    public String getLocation();
-    public String getDayPrice();
-    public String getMonthPrice();
+    public String getShortLocation();
+    public String getOneDayPrice();
+    public String getOneMonthPrice();
     public double getDiscountRatio();
-    public String getURLOfImage();
+    public String getFrontImageUrl();
 }
