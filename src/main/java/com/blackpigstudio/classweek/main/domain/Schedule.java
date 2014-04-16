@@ -1,5 +1,6 @@
 package com.blackpigstudio.classweek.main.domain;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -13,27 +14,24 @@ public class Schedule implements Serializable {
     public static final int DAY_SCHEDULE_TYPE = 0;
     public static final int MONTH_SCHEDULE_TYPE = 1;
 
-    private int id;
+    public static final String JSON_KEY_START_DATE_TIME = "title_eng";
+    public static final String JSON_KEY_END_DATE_TIME = "title_kor";
+
     private int type;
     private String startDateTime;
     private String endDateTime;
 
-    public Schedule(int anId, int aType, String aStartDateTime, String anEndDateTime)
+    public Schedule(int aId, int aType, String aStartDateTime, String anEndDateTime)
     {
-        this.id = anId;
         this.type = aType;
         this.startDateTime = aStartDateTime;
         this.endDateTime = anEndDateTime;
     }
 
-    public Schedule(JSONObject aJsonObject)
-    {
-
-    }
-
-    public int getId()
-    {
-        return this.id;
+    public Schedule(JSONObject aJsonObject) throws JSONException {
+        this.type = MONTH_SCHEDULE_TYPE;
+        this.startDateTime = aJsonObject.getString(JSON_KEY_START_DATE_TIME);
+        this.endDateTime = aJsonObject.getString(JSON_KEY_END_DATE_TIME);
     }
 
     public String getStartDateTime()

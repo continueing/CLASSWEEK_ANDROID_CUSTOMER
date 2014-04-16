@@ -31,7 +31,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     private String shortLocation = "역삼역";
     private int one_day_price = 12000;
     private int one_month_price = 200000;
-    private double discountRatio = 0.2;
+    private int discountRatio = 20;
     private String front_image_url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg" ;
 
     public ClassSummaryInfo(int aPrice)
@@ -54,7 +54,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         this.shortLocation = aJsonObject.getString(JSON_KEY_SHORT_LOCATION);
         this.one_day_price = aJsonObject.getInt(JSON_KEY_ONE_DAY_PRICE);
         this.one_month_price = aJsonObject.getInt(JSON_KEY_ONE_MONTH_PRICE);
-        this.discountRatio = aJsonObject.getDouble(JSON_KEY_DISCOUNT_RATIO);
+        this.discountRatio = aJsonObject.getInt(JSON_KEY_DISCOUNT_RATIO);
         this.front_image_url = aJsonObject.getString(JSON_KEY_FRONT_IMAGE_URL);
     }
 
