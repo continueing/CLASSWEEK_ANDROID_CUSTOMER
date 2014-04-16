@@ -37,9 +37,9 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public void onBookingChoose() {
         Intent intent = new Intent(this, BookingActivity.class);
         ArrayList<Schedule> schedules = new ArrayList<Schedule>();
-        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"월",4,20,22,0,23,0));
-        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"수",4,23,21,0,22,0));
-        schedules.add(new Schedule(Schedule.MONTH_SCHEDULE_TYPE,120000,1,"월",4,27,22,0,23,0));
+        schedules.add(new Schedule(1, Schedule.MONTH_SCHEDULE_TYPE, "03-19(수) 19:00","04-19(수) 19:00"));
+        schedules.add(new Schedule(2, Schedule.MONTH_SCHEDULE_TYPE, "03-24(월) 19:00","04-24(월) 19:00"));
+        schedules.add(new Schedule(3, Schedule.MONTH_SCHEDULE_TYPE, "03-26(수) 19:00","05-1(월) 19:00"));
         intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_MONTH_SCHEDULES,schedules);
         startActivity(intent);
     }

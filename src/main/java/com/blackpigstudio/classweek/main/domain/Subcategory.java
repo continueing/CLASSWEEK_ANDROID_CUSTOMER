@@ -7,6 +7,7 @@ import com.blackpigstudio.classweek.main.ui.menu.home.subcategory.ViewForSubcate
  */
 public class Subcategory implements ViewForSubcategoryListViewItem.ISubcategory{
 
+
     @Override
     public String getTitle() {
         return "kkk";
@@ -15,5 +16,15 @@ public class Subcategory implements ViewForSubcategoryListViewItem.ISubcategory{
     @Override
     public String getFrontImageUrl() {
         return "http://cfs9.tistory.com/upload_control/download.blog?fhandle=YmxvZzYzOTUyQGZzOS50aXN0b3J5LmNvbTovYXR0YWNoLzAvMTkwMDAwMDAwMDAwLmpwZw%3D%3D";
+    }
+
+    @Override
+    public String getSubCategoryName() {
+        return "sala";
+    }
+
+    @Override
+    public String getDescription() {
+        return "우와앙";
     }
 }

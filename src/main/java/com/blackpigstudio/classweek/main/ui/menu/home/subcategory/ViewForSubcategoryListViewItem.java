@@ -51,5 +51,7 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
     {
         public String getTitle();
         public String getFrontImageUrl();
+        public String getSubCategoryName();
+        public String getDescription();
     }
 }

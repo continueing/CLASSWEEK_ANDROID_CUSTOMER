@@ -57,7 +57,7 @@ public class ScheduleSelectionDialog extends Dialog {
         {
             RadioButton radio_btn = new RadioButton(getContext());
             radio_btn.setId(i++);
-            radio_btn.setText(aSchedule.toString());
+            radio_btn.setText(aSchedule.getStartDateTime());
             rg_schedule_selection.addView(radio_btn);
             if(i==0)
                 radio_btn.setChecked(true);
