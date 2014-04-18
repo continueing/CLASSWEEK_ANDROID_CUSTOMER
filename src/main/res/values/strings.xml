@@ -23,5 +23,6 @@
     <string name="title_activity_order_confirmation">OrderConfirmationActivity</string>
     <string name="title_activity_booking">예약</string>
     <string name="action_inquiry_submit">전송</string>
+    <string name="title_activity_payment_web_view">PaymentWebViewActivity</string>
 
 </resources>

@@ -9,10 +9,13 @@ import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking.BookingActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
 
 import java.util.ArrayList;
 
 public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.OnInquiryChooseListener, ViewForClassDetailInfoActivity.OnBookingChooseListener {
+    public static final int REQUEST_CODE_SELECT_SCHEDULE = 0;
+    public static final int REQUEST_CODE_ORDER_CONFIRM = 1;
     public static final String BUNDLE_PARM_URL = "URL";
     private String urlToQuery;
 
@@ -39,19 +42,24 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         schedules.add(new Schedule(2, Schedule.MONTH_SCHEDULE_TYPE, "03-24(월) 19:00","04-24(월) 19:00"));
         schedules.add(new Schedule(3, Schedule.MONTH_SCHEDULE_TYPE, "03-26(수) 19:00","05-1(월) 19:00"));
         intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_MONTH_SCHEDULES,schedules);
-        startActivityForResult(intent, BookingActivity.REQUEST_CODE_SELECT_SCHEDULE);
+        startActivityForResult(intent, REQUEST_CODE_SELECT_SCHEDULE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == BookingActivity.REQUEST_CODE_SELECT_SCHEDULE)
+        if(requestCode == REQUEST_CODE_SELECT_SCHEDULE)
         {
             if(resultCode == Activity.RESULT_OK)
             {
                 //TODO: should set parameter to be sent.
                 Intent intent = new Intent(this, OrderConfirmationActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_ORDER_CONFIRM);
             }
+        }
+        else if(requestCode == REQUEST_CODE_ORDER_CONFIRM)
+        {
+            Intent intent = new Intent(this, PaymentWebViewActivity.class);
+            startActivity(intent);
         }
     }
 }

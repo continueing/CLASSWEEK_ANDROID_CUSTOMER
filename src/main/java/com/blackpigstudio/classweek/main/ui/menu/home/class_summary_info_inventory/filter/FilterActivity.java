@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
 public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener {
-    public static final int REQUEST_CODE_GET_QUERY = 0;
+
 
     public static final String BUNDLE_PARM_OF_URL_LOCATION_KEY = "LOCATION";
 

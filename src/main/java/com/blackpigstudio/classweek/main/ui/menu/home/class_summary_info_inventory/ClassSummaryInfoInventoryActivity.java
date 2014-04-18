@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ClassSummaryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
+    public static final int REQUEST_CODE_GET_QUERY = 0;
     private ViewForClassSummaryInfoInventoryActivity viewForClassSummaryInfoInventoryActivity;
     public static final String BUNDLE_PARM_OF_TITLE = "TITLE";
     public static final String BUNDLE_PARM_OF_URL_KEY = "URL";
@@ -77,7 +78,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         {
             case R.id.action_class_filter:
                 Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
-                startActivityForResult(intent,FilterActivity.REQUEST_CODE_GET_QUERY);
+                startActivityForResult(intent,REQUEST_CODE_GET_QUERY);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -87,7 +88,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == FilterActivity.REQUEST_CODE_GET_QUERY)
+        if(requestCode == REQUEST_CODE_GET_QUERY)
         {
             if(resultCode == Activity.RESULT_OK)
             {

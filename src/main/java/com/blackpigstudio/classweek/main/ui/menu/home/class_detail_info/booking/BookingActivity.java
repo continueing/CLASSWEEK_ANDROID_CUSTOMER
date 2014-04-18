@@ -10,7 +10,6 @@ import com.blackpigstudio.classweek.main.domain.Schedule;
 import java.util.ArrayList;
 
 public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener {
-    public static final int REQUEST_CODE_SELECT_SCHEDULE = 0;
     public static final String BUNDLE_PARM_ONE_MONTH_SCHEDULES = "ONE_MONTH_SCHEDULES";
 
     private ViewForBookingActivity view;
