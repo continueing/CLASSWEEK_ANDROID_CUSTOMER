@@ -4,17 +4,20 @@ package com.blackpigstudio.classweek.main.ui.menu.home.subcategory;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.main.domain.Subcategory;
+import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -25,9 +28,9 @@ import java.util.ArrayList;
  */
 public class SubcategoryFragment extends AbstractHomeFragment implements ViewForSubcategoryFragment.OnSubCategoryChooseListener, HttpRequester.NetworkResponseListener{
     public static final String BUNDLE_PARM_OF_SPINNER_INDEX = "SPINNER_INDEX";
-    public static final String BUNDLE_PARM_OF_URL = "URL";
-    private ViewForSubcategoryFragment viewForSubcategoryFragment;
-    private String urlToQuery;
+    public static final String BUNDLE_PARM_OF_CATEGORY_NAME = "CATEGORY_NAME";
+    private ViewForSubcategoryFragment view;
+    private String category;
 
 
     public SubcategoryFragment() { }
@@ -37,51 +40,69 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
                              Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         setSpinnerItemIndex(bundle.getInt(BUNDLE_PARM_OF_SPINNER_INDEX));
-        urlToQuery = bundle.getString(BUNDLE_PARM_OF_URL);
-        viewForSubcategoryFragment = new ViewForSubcategoryFragment(getActivity().getApplicationContext(),inflater,container,this);
-        requestClassSummaryInfoFromServer(urlToQuery);
-        return viewForSubcategoryFragment.getRoot();
+        category = bundle.getString(BUNDLE_PARM_OF_CATEGORY_NAME);
+        view = new ViewForSubcategoryFragment(getActivity().getApplicationContext(),inflater,container,this);
+        requestClassSummaryInfoFromServer(category);
+        return view.getRoot();
     }
 
 
 
 
 
-    private void requestClassSummaryInfoFromServer(String url)
+    private void requestClassSummaryInfoFromServer(String aCategory)
     {
-        HttpRequester.foo(this, url);
+        ClassRequest classRequest = new ClassRequest();
+        try {
+            classRequest.getSubcategories(aCategory,this);
+        } catch (JSONException e) {
+            AppTerminator.error(this,"ClassRequest.getSubcategories(): " + e.toString());
+        }
     }
 
 
     @Override
-    public void onSubCategoryChoose(int index, String aTitle) {
+    public void onSubCategoryChoose(String aSubcategoryForUrl, String aSubcategoryForKor) {
         Intent intent = new Intent(getActivity().getApplicationContext(), ClassSummaryInfoInventoryActivity.class);
-        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_TITLE,aTitle);
-        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_URL_KEY, urlToQuery+"/"+index);
+        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_SUBCATEGORY_FOR_URL, aSubcategoryForUrl);
+        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_CATEGORY_URL, category );
+        intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_SUBCATEGORY_KOR, aSubcategoryForKor);
         startActivity(intent);
     }
 
-    /*
-        temporal handler for dummy ClassSummaryInfos
-     */
-    Handler tmp = new Handler()
-    {
-        @Override
-        public void handleMessage(Message msg) {
-            ArrayList<ViewForSubcategoryListViewItem.ISubcategory> subcategories = new ArrayList<ViewForSubcategoryListViewItem.ISubcategory>();
-            for(int i = 1; i < 80; i++ )
-                subcategories.add(new Subcategory());
-            viewForSubcategoryFragment.addISubcategoryArrayList(subcategories);
-        }
-    };
 
     @Override
     public void onSuccess(JSONObject jsonObject) {
-        tmp.sendEmptyMessage(0);
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "JSONObject.getJSONArray(): " + e.toString());
+        }
+
+        ArrayList<ViewForSubcategoryListViewItem.ISubcategory> iSubcategories = new ArrayList<ViewForSubcategoryListViewItem.ISubcategory>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject object = null;
+            try {
+                object = jsonArray.getJSONObject(i);
+            } catch (JSONException e) {
+                AppTerminator.error(this, "jsonArray.getJSONObject: " + e.toString());
+            }
+
+            try {
+                iSubcategories.add(new Subcategory(object));
+            } catch (JSONException e) {
+                AppTerminator.error(this, "Subcategory.new: " + e.toString());
+            }
+        }
+
+        view.addISubcategoryArrayList(iSubcategories);
+        view.setProgressbarVisibility(false);
     }
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-
+        AppTerminator.error(this, "classRequest.getSubcategories fail : " + errorCode);
     }
 }

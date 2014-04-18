@@ -17,7 +17,7 @@ public class HttpRequester {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        Log.e("", "url: "+url + "\nParms: " + params.toString());
+        Log.i("", "url: "+url + "\nParms: " + params.toString());
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
@@ -25,26 +25,6 @@ public class HttpRequester {
         return BASE_URL + relativeUrl;
     }
 
-
-    public static void foo(final NetworkResponseListener networkResponseListener, String url)
-    {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (this)
-                {
-                    try {
-                        wait(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                networkResponseListener.onSuccess(new JSONObject());
-            }
-        });
-
-        thread.start();
-    }
 
     public static interface NetworkResponseListener
     {

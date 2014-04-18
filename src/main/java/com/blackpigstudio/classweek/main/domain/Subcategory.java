@@ -9,10 +9,10 @@ import org.json.JSONObject;
  * Created by continueing on 2014. 4. 7..
  */
 public class Subcategory implements ViewForSubcategoryListViewItem.ISubcategory{
-    public static final String JSON_KEY_TITLE_ENG = "title_eng";
-    public static final String JSON_KEY_TITLE_KOR = "title_kor";
-    public static final String JSON_KEY_FRONT_IMAGE_URL = "front_image_url";
-    public static final String JSON_KEY_DESCRIPTION = "title";
+    public static final String JSON_KEY_TITLE_ENG = "name";
+    public static final String JSON_KEY_TITLE_KOR = "name_kor";
+    public static final String JSON_KEY_FRONT_IMAGE_URL = "image_url";
+    public static final String JSON_KEY_DESCRIPTION = "description";
 
     private String title_eng;
     private String title_kor;
@@ -30,22 +30,22 @@ public class Subcategory implements ViewForSubcategoryListViewItem.ISubcategory{
     }
 
     @Override
-    public String getTitle() {
-        return "kkk";
+    public String getKorTitle() {
+        return this.title_kor;
     }
 
     @Override
     public String getFrontImageUrl() {
-        return "http://cfs9.tistory.com/upload_control/download.blog?fhandle=YmxvZzYzOTUyQGZzOS50aXN0b3J5LmNvbTovYXR0YWNoLzAvMTkwMDAwMDAwMDAwLmpwZw%3D%3D";
+        return this.frontImageUrl;
     }
 
     @Override
-    public String getSubCategoryName() {
-        return "sala";
+    public String getEngTitle() {
+        return this.title_eng;
     }
 
     @Override
     public String getDescription() {
-        return "우와앙";
+        return this.description;
     }
 }

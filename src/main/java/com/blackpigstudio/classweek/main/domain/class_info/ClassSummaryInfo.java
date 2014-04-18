@@ -13,26 +13,31 @@ import java.util.ArrayList;
  * Created by continueing on 2014. 3. 30..
  */
 public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
+    public static final String JSON_KEY_SCHEDULE_ID = "schedule_id";
+    public static final String JSON_KEY_FRONT_IMAGE_URL = "image_url";
     public static final String JSON_KEY_TITLE = "title";
-    public static final String JSON_KEY_TIMES = "times";
     public static final String JSON_KEY_DURATION = "duration";
     public static final String JSON_KEY_COMPANY = "company";
-    public static final String JSON_KEY_SHORT_LOCATION = "short_location";
-    public static final String JSON_KEY_ONE_DAY_PRICE = "one_day_price";
-    public static final String JSON_KEY_ONE_MONTH_PRICE = "one_month_price";
-    public static final String JSON_KEY_DISCOUNT_RATIO = "discount_ratio";
-    public static final String JSON_KEY_FRONT_IMAGE_URL = "front_image_url";
+    public static final String JSON_KEY_TIMES = "times";
+    public static final String JSON_KEY_SHORT_LOCATION = "nearby_station";
+    public static final String JSON_KEY_ONE_DAY_PRICE = "price_of_day";
+    public static final String JSON_KEY_ONE_MONTH_PRICE = "price_of_month";
+    public static final String JSON_KEY_DISCOUNT_RATIO = "discount_rate";
 
-    private int classId = 1;
-    private String title ="A학원 속성 줌바";
+
+
+    private int scheduleId;
+    private String front_image_url;
+    private String title;
+    private String duration;
+    private String company;
     private ArrayList<String> times;
-    private String duration = "1시간 30분";
-    private String company = "헤이브래드";
-    private String shortLocation = "역삼역";
-    private int one_day_price = 12000;
-    private int one_month_price = 200000;
+    private int one_day_price;
+    private int one_month_price;
+    private String shortLocation;
     private int discountRatio = 20;
-    private String front_image_url = "http://img.lifestyler.co.kr/uploadfiles/user/review//201304/file7814092940901153310.jpg" ;
+    private int classId;
+
 
     public ClassSummaryInfo(int aPrice)
     {
@@ -41,6 +46,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     }
 
     public ClassSummaryInfo(JSONObject aJsonObject) throws JSONException {
+        this.scheduleId = aJsonObject.getInt(JSON_KEY_SCHEDULE_ID);
         this.classId = aJsonObject.getInt(ClassInfo.JSON_KEY_CLASS_ID);
         this.title = aJsonObject.getString(JSON_KEY_TITLE);
         this.times = new ArrayList<String>();

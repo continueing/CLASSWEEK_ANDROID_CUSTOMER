@@ -14,9 +14,11 @@ import org.json.JSONObject;
  */
 public class JsonResponseHandler extends JsonHttpResponseHandler {
     private HttpRequester.NetworkResponseListener networkResponseListener;
-    private final String PARM_RESULT = "result";
-    private final String RESULT_SUCCESS = "success";
-    private final String RESULT_FAIL = "fail";
+    private static final String PARM_RESULT = "result";
+    private static final String RESULT_SUCCESS = "success";
+    private static final String RESULT_FAIL = "fail";
+    private static final String PARM_ERROR_CODE = "error_code";
+    public static final String PARM_DATA = "data";
 
     public JsonResponseHandler(HttpRequester.NetworkResponseListener aNetworkResponseListener)
     {
@@ -25,12 +27,12 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
 
     @Override
     public void onSuccess(JSONObject response) {
-        Log.e("JsonResponseHandler",""+response.toString());
+        Log.i("JsonResponseHandler",""+response.toString());
         try {
             if(response.getString(PARM_RESULT).equals(RESULT_SUCCESS))
                 this.networkResponseListener.onSuccess(response);
             else if(response.getString(PARM_RESULT).equals(RESULT_FAIL))
-                this.networkResponseListener.onFail(response,0);
+                this.networkResponseListener.onFail(response,response.getInt(PARM_ERROR_CODE));
         } catch (JSONException e) {
             AppTerminator.error(this, "onSuccess: while parsing json response - " + e.toString());
         }

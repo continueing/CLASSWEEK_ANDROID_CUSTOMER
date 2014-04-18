@@ -17,6 +17,7 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
     private ISubcategory iSubcategory;
 
     private TextView tv_subcategory_title;
+    private TextView tv_description;
     private SmartImageView siv_subcategory_front;
 
 
@@ -32,6 +33,7 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
     @Override
     protected void initViews() {
         tv_subcategory_title = (TextView) findViewById_(R.id.tv_subcategory_title);
+        tv_description = (TextView) findViewById(R.id.tv_subcategory_description);
         siv_subcategory_front = (SmartImageView) findViewById_(R.id.siv_subcategory_front);
     }
 
@@ -43,15 +45,16 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
     @Override
     protected void setData(IListViewItem aIListViewItem) {
         this.iSubcategory = (ISubcategory)aIListViewItem;
-        tv_subcategory_title.setText(iSubcategory.getTitle());
+        tv_subcategory_title.setText(iSubcategory.getKorTitle());
+        tv_description.setText(iSubcategory.getDescription());
         siv_subcategory_front.setImageUrl(iSubcategory.getFrontImageUrl());
     }
 
     public static interface ISubcategory extends IListViewItem
     {
-        public String getTitle();
+        public String getKorTitle();
         public String getFrontImageUrl();
-        public String getSubCategoryName();
+        public String getEngTitle();
         public String getDescription();
     }
 }

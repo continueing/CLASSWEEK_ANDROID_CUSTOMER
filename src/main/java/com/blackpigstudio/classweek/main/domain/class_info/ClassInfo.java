@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by continueing on 2014. 4. 16..
  */
 public class ClassInfo implements Serializable {
-    public static final String JSON_KEY_CLASS_ID = "class_id";
+    public static final String JSON_KEY_CLASS_ID = "id";
     public static final String JSON_KEY_ONE_MONTH_SCHEDULES = "one_month_schedule";
     public static final String JSON_KEY_ = "";
 

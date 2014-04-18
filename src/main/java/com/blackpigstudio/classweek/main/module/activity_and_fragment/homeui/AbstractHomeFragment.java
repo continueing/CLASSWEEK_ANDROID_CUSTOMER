@@ -62,10 +62,10 @@ abstract public class AbstractHomeFragment extends Fragment {
                             bundle.putInt(SubcategoryFragment.BUNDLE_PARM_OF_SPINNER_INDEX,i);
                             if(i == 1) // Music
                             {
-                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_URL, "music");
+                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_CATEGORY_NAME, "music");
                             }else if(i == 2) // Dance
                             {
-                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_URL, "dance");
+                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_CATEGORY_NAME, "dance");
                             }
                             subcategoryFragment.setArguments(bundle);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, subcategoryFragment).commit();

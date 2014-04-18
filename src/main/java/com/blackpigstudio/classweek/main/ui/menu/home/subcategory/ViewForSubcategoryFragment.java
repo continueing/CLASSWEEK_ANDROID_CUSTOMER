@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
+import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
     private OnSubCategoryChooseListener onSubCategoryChooseListener;
     private ListView lv_subcategory;
     private ArrayAdapterForSubcategoryListView arrayAdapterForSubcategoryListView;
+    private ProgressbarFooter progressbarFooter;
 
     public ViewForSubcategoryFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, OnSubCategoryChooseListener onSubCategoryChooseListener) {
         super(context, layoutInflater, container);
@@ -33,7 +35,9 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
     @Override
     protected void initViews() {
         lv_subcategory = (ListView)findViewById(R.id.lv_subcategory);
+        this.progressbarFooter = new ProgressbarFooter(lv_subcategory,LayoutInflater.from(getContext()));
         arrayAdapterForSubcategoryListView = new ArrayAdapterForSubcategoryListView(getContext(),R.layout.item_subcategory);
+        setProgressbarVisibility(true);
         lv_subcategory.setAdapter(arrayAdapterForSubcategoryListView);
     }
 
@@ -42,9 +46,15 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
         lv_subcategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onSubCategoryChooseListener.onSubCategoryChoose(i, arrayAdapterForSubcategoryListView.getItem(i).getTitle());
+                ViewForSubcategoryListViewItem.ISubcategory iSubcategory = arrayAdapterForSubcategoryListView.getItem(i);
+                onSubCategoryChooseListener.onSubCategoryChoose(iSubcategory.getEngTitle(),iSubcategory.getKorTitle());
             }
         });
+    }
+
+    public void setProgressbarVisibility(boolean aVisibility)
+    {
+        this.progressbarFooter.setVisibility(aVisibility);
     }
 
     public void addISubcategoryArrayList(ArrayList<ViewForSubcategoryListViewItem.ISubcategory> aISubcategories)
@@ -54,6 +64,6 @@ public class ViewForSubcategoryFragment extends AbstractViewForFragment {
 
     public interface OnSubCategoryChooseListener
     {
-        public void onSubCategoryChoose(int index, String aTitle);
+        public void onSubCategoryChoose(String aSubcategoryForUrl, String aSubcategoryForKor);
     }
 }
