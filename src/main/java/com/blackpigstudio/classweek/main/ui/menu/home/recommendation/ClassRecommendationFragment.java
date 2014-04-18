@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
-import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.

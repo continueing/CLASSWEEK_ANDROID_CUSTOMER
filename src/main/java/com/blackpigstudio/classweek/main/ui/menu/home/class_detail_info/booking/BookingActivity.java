@@ -1,11 +1,10 @@
-package com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.booking;
+package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 
 import java.util.ArrayList;

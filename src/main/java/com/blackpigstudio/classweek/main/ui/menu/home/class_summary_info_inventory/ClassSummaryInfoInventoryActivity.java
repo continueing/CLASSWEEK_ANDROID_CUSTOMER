@@ -17,7 +17,7 @@ import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListe
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
-import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity;
 
 import org.json.JSONObject;

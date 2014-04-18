@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.order_confirmation;
+package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.class_detail_info.ClassDetailInfoActivity"
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity"
     android:weightSum="1">
 
     <LinearLayout
