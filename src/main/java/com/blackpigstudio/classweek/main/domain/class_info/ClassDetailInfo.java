@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by continueing on 2014. 4. 16..
  */
 public class ClassDetailInfo {
-    public static final String JSON_KEY_DETAIL_IMAGE_URLS = "detail_image_urls";
-    public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "number_of_class_per_month";
+    public static final String JSON_KEY_DETAIL_IMAGE_URLS = "detail_image_url";
+    public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "count_of_month";
     public static final String JSON_KEY_ADDRESS = "address";
     public static final String JSON_KEY_DESCRIPTION = "description";
-    public static final String JSON_KEY_PREREQUISITE = "prerequisite";
+    public static final String JSON_KEY_PREREQUISITE = "preparation";
     public static final String JSON_KEY_REFUND_INFO = "refund_info";
 
 

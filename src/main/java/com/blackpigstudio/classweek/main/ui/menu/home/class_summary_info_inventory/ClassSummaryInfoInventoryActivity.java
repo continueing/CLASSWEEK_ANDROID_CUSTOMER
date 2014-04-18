@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.domain.class_info.ClassDetailInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
@@ -80,7 +81,6 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -123,10 +123,10 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     @Override
     public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
         Intent intent = new Intent(getApplicationContext(), ClassDetailInfoActivity.class);
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_CLASS_ID, iClassSummaryInfoItem.getClassId());
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());
         startActivity(intent);
     }
-
-
 
     @Override
     public void onSuccess(JSONObject jsonObject) {

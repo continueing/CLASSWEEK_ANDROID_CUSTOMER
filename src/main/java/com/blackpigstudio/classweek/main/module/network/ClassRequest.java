@@ -21,4 +21,11 @@ public class ClassRequest {
         RequestParams requestParams = new RequestParams();
         HttpRequester.post(URL_BASE +"/"+aCategory + "/" + aSubcategory + "/"+ aPage,requestParams,new JsonResponseHandler(aNetworkResponseListener));
     }
+
+    public void getClassDetail(int aClassId, int aScheduleId, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        HttpRequester.post(URL_BASE +"/"+aClassId + "/" + aScheduleId ,requestParams,new JsonResponseHandler(aNetworkResponseListener));
+    }
+
 }

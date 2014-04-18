@@ -15,4 +15,5 @@ public interface IClassSummaryInfoItem extends IListViewItem {
     public String getOneMonthPrice();
     public double getDiscountRatio();
     public String getFrontImageUrl();
+    public int getScheduleId();
 }

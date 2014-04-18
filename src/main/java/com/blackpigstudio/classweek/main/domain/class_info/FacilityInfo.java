@@ -7,13 +7,13 @@ import org.json.JSONObject;
  * Created by continueing on 2014. 4. 16..
  */
 public class FacilityInfo {
-    public static final String JSON_KEY_TOILET = "";
-    public static final String JSON_KEY_FITTING_ROOM = "";
-    public static final String JSON_KEY_SHOWER_STALL = "";
-    public static final String JSON_KEY_LOCKER = "";
-    public static final String JSON_KEY_PARKING_LOT = "";
-    public static final String JSON_KEY_PRACTICE_ROOM = "";
-    public static final String JSON_KEY_INSTRUMENT_RENTAL = "";
+    public static final String JSON_KEY_TOILET = "toilet";
+    public static final String JSON_KEY_FITTING_ROOM = "fitting_room";
+    public static final String JSON_KEY_SHOWER_STALL = "shower_stall";
+    public static final String JSON_KEY_LOCKER = "locker";
+    public static final String JSON_KEY_PARKING_LOT = "parking_lot";
+    public static final String JSON_KEY_PRACTICE_ROOM = "practice_room";
+    public static final String JSON_KEY_INSTRUMENT_RENTAL = "instrument_rental";
 
     private boolean toilet;
     private boolean fittingRoom;

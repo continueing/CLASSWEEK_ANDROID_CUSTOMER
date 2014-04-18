@@ -82,6 +82,11 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         return result;
     }
 
+    public ArrayList<String> getTimes()
+    {
+        return this.times;
+    }
+
     @Override
     public String getCompany() {
         return this.company;
@@ -112,6 +117,10 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         return this.front_image_url;
     }
 
+    @Override
+    public int getScheduleId() {
+        return this.scheduleId;
+    }
 
 
 }

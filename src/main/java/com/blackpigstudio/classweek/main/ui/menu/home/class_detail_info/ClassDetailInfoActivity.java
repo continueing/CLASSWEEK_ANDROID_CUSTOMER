@@ -6,26 +6,49 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
 import com.blackpigstudio.classweek.main.domain.Schedule;
+import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
+import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.network.ClassRequest;
+import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking.BookingActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.OnInquiryChooseListener, ViewForClassDetailInfoActivity.OnBookingChooseListener {
+public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.OnInquiryChooseListener, ViewForClassDetailInfoActivity.OnBookingChooseListener, HttpRequester.NetworkResponseListener {
     public static final int REQUEST_CODE_SELECT_SCHEDULE = 0;
     public static final int REQUEST_CODE_ORDER_CONFIRM = 1;
-    public static final String BUNDLE_PARM_URL = "URL";
-    private String urlToQuery;
+    public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
+    public static final String BUNDLE_PARM_SCHEDULE_ID = "schedule_id";
+    ViewForClassDetailInfoActivity view;
+    private int classId;
+    private int scheduleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        urlToQuery = intent.getStringExtra(BUNDLE_PARM_URL);
-        ViewForClassDetailInfoActivity view = new ViewForClassDetailInfoActivity(getApplicationContext(), this, this);
+        classId = intent.getIntExtra(BUNDLE_PARM_CLASS_ID, -1);
+        scheduleId = intent.getIntExtra(BUNDLE_PARM_SCHEDULE_ID, -1);
+        view = new ViewForClassDetailInfoActivity(getApplicationContext(), this, this);
+        requestClassDetailInfoFromServer();
         setContentView(view.getRoot());
+    }
+
+    public void requestClassDetailInfoFromServer()
+    {
+        ClassRequest classRequest = new ClassRequest();
+        try {
+            classRequest.getClassDetail(this.classId,this.scheduleId,this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -61,5 +84,31 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
             Intent intent = new Intent(this, PaymentWebViewActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onSuccess(JSONObject jsonObject) {
+        JSONObject jsonClassInfoObject = null;
+
+        try {
+            jsonClassInfoObject = jsonObject.getJSONObject(JsonResponseHandler.PARM_DATA);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "JSONObject.getJSONObject(): " + e.toString());
+        }
+
+        ClassInfo classInfo = null;
+        try {
+            classInfo = new ClassInfo(jsonClassInfoObject);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "ClassInfo.new: " + e.toString());
+        }
+        view.setData(classInfo.getClassDetailInfo(),classInfo.getClassSummaryInfo(),classInfo.getFacilityInfo());
+
+        //TODO: should store schedule data
+    }
+
+    @Override
+    public void onFail(JSONObject jsonObject, int errorCode) {
+
     }
 }

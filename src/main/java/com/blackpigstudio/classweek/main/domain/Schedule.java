@@ -14,8 +14,8 @@ public class Schedule implements Serializable {
     public static final int DAY_SCHEDULE_TYPE = 0;
     public static final int MONTH_SCHEDULE_TYPE = 1;
 
-    public static final String JSON_KEY_START_DATE_TIME = "title_eng";
-    public static final String JSON_KEY_END_DATE_TIME = "title_kor";
+    public static final String JSON_KEY_START_DATE_TIME = "start_date_time";
+    public static final String JSON_KEY_END_DATE_TIME = "end_date_time";
 
     private int type;
     private String startDateTime;

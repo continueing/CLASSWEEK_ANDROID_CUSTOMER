@@ -34,8 +34,13 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:background="#66ff3e"></LinearLayout>
-
+                            android:background="#66ff3e">
+                            <TextView
+                                android:id="@+id/tv_class_detail_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"/>
+                        </LinearLayout>
                         <!--시간-->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -230,7 +235,7 @@
                                 android:paddingLeft="40dp"
                                 android:orientation="vertical">
                                 <TextView
-                                    android:id="@+id/tv_class_detail_prerequsite"
+                                    android:id="@+id/tv_class_detail_prerequisite"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="준비물1, 준비물2"/>
@@ -258,22 +263,53 @@
                                     android:gravity="center"
                                     android:text="준비사항"/>
                             </LinearLayout>
-                            <LinearLayout
+                            
+                            <HorizontalScrollView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
-                                android:orientation="horizontal">
-                                <ImageView
-                                    android:id="@+id/tv_class_detail_facility_toilet"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_go"/>
-                                <ImageView
-                                    android:id="@+id/iv_class_detail_facility_bathroom"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_go"/>
-                            </LinearLayout>
+                                    android:paddingLeft="40dp"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:id="@+id/tv_class_detail_facility_toilet"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_fitting_room"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_shower_stall"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_locker"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_parking_lot"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_practice_room"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                    <ImageView
+                                        android:id="@+id/iv_class_detail_facility_instrument_rental"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/abc_ic_go"/>
+                                </LinearLayout>
+                            </HorizontalScrollView>
+
                         </LinearLayout>
 
                         <!--환불정보-->

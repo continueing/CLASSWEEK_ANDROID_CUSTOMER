@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
+
+import org.json.JSONException;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -37,9 +40,18 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         classRecommendationFragmentView = new ViewForClassRecommendationFragment( getActivity(), inflater,container, this);
+        requestRecommendedClassSummaryInfoFromServer();
         return classRecommendationFragmentView.getRoot();
     }
 
+    private void requestRecommendedClassSummaryInfoFromServer() {
+//        ClassRequest classRequest = new ClassRequest();
+//        try {
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+    }
 
     @Override
     public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {

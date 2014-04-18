@@ -36,8 +36,8 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                         "P_UNAME=ing&" +
                         "P_NOTI=asdjlas&" +
                         "P_NEXT_URL=http://m.classweek.kr/Pay/Recv/inicis/SmartPhonePayReceivePage.php&" +
-                        "P_NOTI_URL=http://www.classweek.kr/pay_result.html&" +
-                        "P_RETURN_URL=http://m.classweek.kr/api/shop/pgsuccess&" +
+//                        "P_NOTI_URL=http://www.classweek.kr/pay_result.html&" +
+//                        "P_RETURN_URL=http://m.classweek.kr/api/shop/pgsuccess&" +
                         "P_GOODS=asdasd&" +
                         "P_MOBILE=010-4527-9272&" +
                         "P_EMAIL=continueing@gmail.com&" +
