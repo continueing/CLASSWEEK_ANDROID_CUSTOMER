@@ -10,6 +10,7 @@ import com.blackpigstudio.classweek.main.domain.Schedule;
 import java.util.ArrayList;
 
 public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener {
+    public static final int REQUEST_CODE_SELECT_SCHEDULE = 0;
     public static final String BUNDLE_PARM_ONE_MONTH_SCHEDULES = "ONE_MONTH_SCHEDULES";
 
     private ViewForBookingActivity view;
@@ -36,7 +37,9 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onPaymentRequested() {
-        // finish and activity result should be delivered
+        Intent intent = new Intent();
+        // TODO: deliver selected schedule and datetime String.
+        setResult(Activity.RESULT_OK,intent);
         finish();
     }
 
@@ -65,7 +68,6 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onScheduleSelected(Schedule aSchedule) {
-        Toast.makeText(getApplicationContext(),aSchedule.toString(),Toast.LENGTH_SHORT).show();
         view.enablePayment();
     }
 }

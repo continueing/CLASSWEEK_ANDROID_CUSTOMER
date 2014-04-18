@@ -20,7 +20,8 @@ public class OrderConfirmationActivity extends ActionBarActivity {
         Intent intent = getIntent();
         classSummaryInfo = (ClassSummaryInfo)intent.getSerializableExtra(BUNDLE_PARM_CLASS_SUMMARY_INFO);
         schedule = (Schedule)intent.getSerializableExtra(BUNDLE_PARM_SCHEDULES);
-        setContentView(R.layout.activity_order_confirmation);
+        ViewForOrderConfirmationActivity view = new ViewForOrderConfirmationActivity(getApplicationContext());
+        setContentView(view.getRoot());
     }
 
 

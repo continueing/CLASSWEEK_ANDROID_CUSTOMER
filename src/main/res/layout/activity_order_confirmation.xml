@@ -1,16 +1,264 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:orientation="horizontal">
+        <com.loopj.android.image.SmartImageView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@color/default_progress_bar_color"/>
 
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/abc_search_url_text_normal">
+                <TextView
+                    android:id="@+id/tv_order_confirmation_class_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="[헤이브레드]에서 향긋한 아침을 맞.." />
+
+
+                <TextView
+                    android:id="@+id/tv_order_confirmation_time_prefix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간"
+                    android:layout_below="@+id/tv_order_confirmation_class_title"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/tv_order_confirmation_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="월 17:00-19:00, 수 17:00-19:00"
+                    android:layout_below="@+id/tv_order_confirmation_class_title"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"/>
+
+
+                <TextView
+                    android:id="@+id/tv_order_confirmation_start_date_prefix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시작일"
+                    android:layout_below="@+id/tv_order_confirmation_time_prefix"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/tv_order_confirmation_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2014.04.08 화"
+                    android:layout_below="@+id/tv_order_confirmation_time_prefix"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"/>
+
+
+                <TextView
+                    android:id="@+id/tv_order_confirmation_end_date_prefix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="종료일"
+                    android:layout_below="@+id/tv_order_confirmation_start_date_prefix"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/tv_order_confirmation_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2014.05.09 화"
+                    android:layout_below="@+id/tv_order_confirmation_start_date_prefix"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/tv_order_confirmation_payment_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="80,000원"
+                    android:layout_below="@+id/tv_order_confirmation_start_date_prefix"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffff4451" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--이름-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/default_progress_bar_color">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="성함"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/et_order_confirmation_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"/>
+    </LinearLayout>
+
+    <!--생일-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="생일"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/et_order_confirmation_birth_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="date"
+            android:ems="10"/>
+    </LinearLayout>
+
+    <!--성별-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/default_progress_bar_color">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="성별"
+            android:gravity="center"/>
+        <RadioGroup
+            android:id="@+id/rg_order_confirmation_sex"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/rb_order_confirmation_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="여자"/>
+                <RadioButton
+                    android:id="@+id/rb_order_confirmation_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="남자"/>
+            </RadioGroup>
+    </LinearLayout>
+
+    <!--휴대폰-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="휴대폰"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/et_order_confirmation_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="phone"
+            android:ems="10"/>
+    </LinearLayout>
+
+    <!--약관-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@color/default_progress_bar_color">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="20dp"
+                android:text="약관"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:paddingRight="40dp"
+                android:gravity="center"
+                android:text="모두 체크"/>
+        </RelativeLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Agree to terms"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Agree to terms"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Agree to terms"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--버튼-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/bt_order_confirmation_payment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="결제"/>
+    </LinearLayout>
+
+
+</LinearLayout>
