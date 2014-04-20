@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity" >
 
-    <item android:id="@+id/action_class_filter"
-        android:title="@string/action_class_filter"
+    <item android:id="@+id/action_inquiry"
+        android:title="@string/action_inquiry_submit"
         android:icon="@drawable/abc_ic_go"
         app:showAsAction="always" />
 </menu>

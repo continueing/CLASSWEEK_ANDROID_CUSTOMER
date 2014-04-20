@@ -38,6 +38,7 @@
         </activity>
         <activity
             android:name="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity"
+            android:windowSoftInputMode="stateVisible"
             android:label="@string/title_activity_inquiry" >
         </activity>
         <activity

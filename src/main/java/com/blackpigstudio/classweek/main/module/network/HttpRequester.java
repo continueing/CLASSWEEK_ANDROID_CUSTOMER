@@ -1,9 +1,11 @@
 package com.blackpigstudio.classweek.main.module.network;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
@@ -16,8 +18,11 @@ public class HttpRequester {
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
-    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+
+    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler/*, Context aContext*/) {
         Log.i("", "url: "+url + "\nParms: " + params.toString());
+//        PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
+//        client.setCookieStore(persistentCookieStore);
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
