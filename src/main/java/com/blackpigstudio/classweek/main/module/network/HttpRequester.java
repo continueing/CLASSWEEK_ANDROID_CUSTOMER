@@ -19,10 +19,10 @@ public class HttpRequester {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
 
-    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler/*, Context aContext*/) {
+    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler, Context aContext) {
         Log.i("", "url: "+url + "\nParms: " + params.toString());
-//        PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
-//        client.setCookieStore(persistentCookieStore);
+        PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
+        client.setCookieStore(persistentCookieStore);
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 

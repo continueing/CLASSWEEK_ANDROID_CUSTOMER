@@ -43,7 +43,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
 
     public void requestClassDetailInfoFromServer()
     {
-        ClassRequest classRequest = new ClassRequest();
+        ClassRequest classRequest = new ClassRequest(getApplicationContext());
         try {
             classRequest.getClassDetail(this.classId,this.scheduleId,this);
         } catch (JSONException e) {
@@ -55,7 +55,6 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public void onInquiryChoose() {
         Intent intent = new Intent(this, InquiryActivity.class);
         intent.putExtra(InquiryActivity.BUNDLE_PARM_CLASS_ID, this.classId);
-        intent.putExtra(InquiryActivity.BUNDLE_PARM_SCHEDULE_ID, this.scheduleId);
         startActivity(intent);
     }
 

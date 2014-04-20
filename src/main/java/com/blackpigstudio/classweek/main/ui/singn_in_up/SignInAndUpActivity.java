@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
@@ -19,6 +20,11 @@ import org.json.JSONObject;
 
 public class SignInAndUpActivity extends ActionBarActivity  {
     public final static String INTENT_PARM_LOGIN_RESULT = "intent_parm_login_result";
+    public final static String JSON_KEY_NAME = "name";
+    public final static String JSON_KEY_GENDER = "gender";
+    public final static String JSON_KEY_BIRTHDAY = "birthday";
+    public final static String JSON_KEY_PHONE_NUMBER = "phonenumber";
+
     private MenuItem mi_submitSignInAndUp;
     private UserRequest userRequest;
     private ViewForSignInAndUpActivity view;
@@ -26,7 +32,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.userRequest = new UserRequest();
+        this.userRequest = new UserRequest(getApplicationContext());
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         view = new ViewForSignInAndUpActivity(getApplicationContext());
         setContentView(view.getRoot());
@@ -74,6 +80,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         public void onSuccess(JSONObject jsonObject) {
             UserPreference userPreference = new UserPreference(getApplicationContext());
             userPreference.login(view.getEmail(),view.getPassword());
+            storeUserData(jsonObject, userPreference);
 
             Intent intent = new Intent();
             intent.putExtra(INTENT_PARM_LOGIN_RESULT,true);
@@ -93,6 +100,42 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         }
     };
 
+    private void storeUserData(JSONObject aJsonObject, UserPreference aUserPreference)
+    {
+
+        try {
+            if(!aJsonObject.isNull(JSON_KEY_NAME))
+            {
+                aUserPreference.setName(aJsonObject.getString(JSON_KEY_NAME));
+            }
+            if(!aJsonObject.isNull(JSON_KEY_GENDER))
+            {
+                String gender = aJsonObject.getString(JSON_KEY_GENDER);
+                if(gender.equals('M'))
+                {
+                    aUserPreference.setSex(aUserPreference.VALUE_SEX_MALE);
+                }
+                else
+                {
+                    aUserPreference.setSex(aUserPreference.VALUE_SEX_FEMALE);
+                }
+            }
+            if(!aJsonObject.isNull(JSON_KEY_BIRTHDAY))
+            {
+                // yyyy-mm-dd
+                String birthday = aJsonObject.getString(JSON_KEY_BIRTHDAY);
+                aUserPreference.setBirthYear( Integer.valueOf(birthday.substring(0,4)));
+                aUserPreference.setBirthMonth(Integer.valueOf(birthday.substring(5, 7)));
+                aUserPreference.setBirthDay( Integer.valueOf(birthday.substring(8,10)));
+            }
+            if(!aJsonObject.isNull(JSON_KEY_PHONE_NUMBER))
+            {
+                aUserPreference.setPhoneNumber(aJsonObject.getString(JSON_KEY_PHONE_NUMBER));
+            }
+        } catch (JSONException e) {
+            AppTerminator.error(this,e.getMessage());
+        }
+    }
 
     HttpRequester.NetworkResponseListener signUpListener = new HttpRequester.NetworkResponseListener() {
         @Override

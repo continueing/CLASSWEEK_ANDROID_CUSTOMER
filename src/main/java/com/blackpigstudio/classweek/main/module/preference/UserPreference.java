@@ -91,8 +91,6 @@ public class UserPreference extends PreferenceHelper {
         setString(KEY_PHONE_NUMBER, aPhoneNumber);
     }
 
-
-
    /*
         getter
     */
@@ -103,7 +101,7 @@ public class UserPreference extends PreferenceHelper {
 
     public String getBirth()
     {
-        return "" + getInt(KEY_BIRTH_YEAR, -1) + getInt(KEY_BIRTH_MONTH, -1) + getInt(KEY_BIRTH_DAY, -1);
+        return  getInt(KEY_BIRTH_YEAR, -1)  + "-" + getInt(KEY_BIRTH_MONTH, -1)  + "-" + getInt(KEY_BIRTH_DAY, -1);
     }
 
     public int getSex()
@@ -130,7 +128,5 @@ public class UserPreference extends PreferenceHelper {
     {
         return getString(KEY_PASSWORD, null);
     }
-
-
 
 }

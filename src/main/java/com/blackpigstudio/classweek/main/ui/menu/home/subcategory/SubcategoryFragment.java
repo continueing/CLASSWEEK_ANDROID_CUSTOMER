@@ -52,7 +52,7 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
     private void requestClassSummaryInfoFromServer(String aCategory)
     {
-        ClassRequest classRequest = new ClassRequest();
+        ClassRequest classRequest = new ClassRequest(getActivity());
         try {
             classRequest.getSubcategories(aCategory,this);
         } catch (JSONException e) {

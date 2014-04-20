@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
@@ -18,27 +19,31 @@ import org.json.JSONObject;
 
 public class InquiryActivity extends ActionBarActivity implements HttpRequester.NetworkResponseListener {
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
-    public static final String BUNDLE_PARM_SCHEDULE_ID = "schedule_id";
 
     private MenuItem mi_inquiry;
     private ViewForInquiryActivity view;
     private ClassRequest classRequest;
     private UserPreference userPreference;
     private int classId;
-    private int scheduleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         userPreference = new UserPreference(getApplicationContext());
-        classRequest = new ClassRequest();
+        classRequest = new ClassRequest(getApplicationContext());
 
-        Intent intent = getIntent();
-        classId = intent.getIntExtra(BUNDLE_PARM_CLASS_ID, -1);
-        scheduleId = intent.getIntExtra(BUNDLE_PARM_SCHEDULE_ID, -1);
+        Intent receivedIntent = getIntent();
+        classId = receivedIntent.getIntExtra(BUNDLE_PARM_CLASS_ID, -1);
 
         view = new ViewForInquiryActivity(getApplicationContext());
         setContentView(view.getRoot());
+
+        if(!this.userPreference.isLoggedIn())
+        {
+            Intent intent = new Intent(this, SignInAndUpActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -67,7 +72,7 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     {
         prepareUIForRequest();
         try {
-            this.classRequest.inquire(classId, scheduleId, view.getInquiryText(), this);
+            this.classRequest.inquire(classId, view.getInquiryText(), this);
         } catch (JSONException e) {
             AppTerminator.error(this,"ClassRequest.inquire : " + e.toString());
         }

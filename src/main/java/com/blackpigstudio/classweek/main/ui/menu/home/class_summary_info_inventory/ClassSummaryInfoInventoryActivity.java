@@ -75,7 +75,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
 
     private void requestClassSummaryInfoFromServer() {
         isRequestingHttpNow = true;
-        ClassRequest classRequest = new ClassRequest();
+        ClassRequest classRequest = new ClassRequest(getApplicationContext());
         try {
             classRequest.getClassSummaryInfos(this.category, this.subcategory, nextPage, this);
         } catch (JSONException e) {
