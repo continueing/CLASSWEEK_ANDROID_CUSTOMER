@@ -6,24 +6,27 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.main.domain.Schedule;
+import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 
 import java.util.ArrayList;
 
 public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener {
-    public static final String BUNDLE_PARM_ONE_MONTH_SCHEDULES = "ONE_MONTH_SCHEDULES";
+    public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
 
     private ViewForBookingActivity view;
     private ClassTypeSelectionDialog classTypeSelectionDialog;
     private ScheduleSelectionDialog scheduleSelectionDialog;
     private boolean isScheduleDialogReady;
+    private ClassInfo classInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        classTypeSelectionDialog = new ClassTypeSelectionDialog(this,this);
+        classInfo = (ClassInfo)intent.getSerializableExtra(BUNDLE_PARM_CLASS_INFO);
+        classTypeSelectionDialog = new ClassTypeSelectionDialog(this,this, classInfo.getOneDayPrice(), classInfo.getOneMonthPrice(), classInfo.getNumberOfClassPerMonth());
         scheduleSelectionDialog = new ScheduleSelectionDialog(this, this);
-        scheduleSelectionDialog.setSchedules((ArrayList<Schedule>)intent.getSerializableExtra(BUNDLE_PARM_ONE_MONTH_SCHEDULES));
+        scheduleSelectionDialog.setSchedules(classInfo.getSchedules());
         isScheduleDialogReady = false;
         view = new ViewForBookingActivity(getApplicationContext(),this);
         setContentView(view.getRoot());
@@ -62,11 +65,12 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     @Override
     public void onOneMonthSelected() {
        isScheduleDialogReady = true;
-        // Button Test 변경해야함, 이 함수의 parameter로 String 받으면 좋을 듯
+       view.setClassTypeAndPriceTextView( classInfo.getNumberOfClassPerMonth() + "회(1개월)",classInfo.getOneMonthPrice());
     }
 
     @Override
     public void onScheduleSelected(Schedule aSchedule) {
+        view.setScheduleTextView(aSchedule.getStartDateTime());
         view.enablePayment();
     }
 }

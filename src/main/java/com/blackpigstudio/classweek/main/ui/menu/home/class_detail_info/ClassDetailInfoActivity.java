@@ -26,9 +26,11 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public static final int REQUEST_CODE_ORDER_CONFIRM = 1;
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
     public static final String BUNDLE_PARM_SCHEDULE_ID = "schedule_id";
+
     ViewForClassDetailInfoActivity view;
     private int classId;
     private int scheduleId;
+    private ClassInfo classInfo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     @Override
     public void onBookingChoose() {
         Intent intent = new Intent(this, BookingActivity.class);
-        ArrayList<Schedule> schedules = new ArrayList<Schedule>();
-        schedules.add(new Schedule(1, Schedule.MONTH_SCHEDULE_TYPE, "03-19(수) 19:00","04-19(수) 19:00"));
-        schedules.add(new Schedule(2, Schedule.MONTH_SCHEDULE_TYPE, "03-24(월) 19:00","04-24(월) 19:00"));
-        schedules.add(new Schedule(3, Schedule.MONTH_SCHEDULE_TYPE, "03-26(수) 19:00","05-1(월) 19:00"));
-        intent.putExtra(BookingActivity.BUNDLE_PARM_ONE_MONTH_SCHEDULES,schedules);
+        intent.putExtra(BookingActivity.BUNDLE_PARM_CLASS_INFO,classInfo);
         startActivityForResult(intent, REQUEST_CODE_SELECT_SCHEDULE);
     }
 
@@ -97,15 +95,12 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
             AppTerminator.error(this, "JSONObject.getJSONObject(): " + e.toString());
         }
 
-        ClassInfo classInfo = null;
         try {
             classInfo = new ClassInfo(jsonClassInfoObject);
         } catch (JSONException e) {
             AppTerminator.error(this, "ClassInfo.new: " + e.toString());
         }
         view.setData(classInfo.getClassDetailInfo(),classInfo.getClassSummaryInfo(),classInfo.getFacilityInfo());
-
-        //TODO: should store schedule data
     }
 
     @Override

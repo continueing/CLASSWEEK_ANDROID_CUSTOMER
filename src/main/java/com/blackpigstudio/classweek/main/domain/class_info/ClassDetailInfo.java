@@ -4,12 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by continueing on 2014. 4. 16..
  */
-public class ClassDetailInfo {
+public class ClassDetailInfo implements Serializable {
     public static final String JSON_KEY_DETAIL_IMAGE_URLS = "detail_image_url";
     public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "count_of_month";
     public static final String JSON_KEY_ADDRESS = "address";

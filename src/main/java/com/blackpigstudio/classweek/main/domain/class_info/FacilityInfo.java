@@ -3,10 +3,12 @@ package com.blackpigstudio.classweek.main.domain.class_info;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by continueing on 2014. 4. 16..
  */
-public class FacilityInfo {
+public class FacilityInfo implements Serializable {
     public static final String JSON_KEY_TOILET = "toilet";
     public static final String JSON_KEY_FITTING_ROOM = "fitting_room";
     public static final String JSON_KEY_SHOWER_STALL = "shower_stall";

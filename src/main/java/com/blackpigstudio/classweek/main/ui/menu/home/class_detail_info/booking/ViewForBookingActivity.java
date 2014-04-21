@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
@@ -12,8 +14,12 @@ import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractVi
  * Created by continueing on 2014. 4. 14..
  */
 public class ViewForBookingActivity extends AbstractViewForActivity {
-    private Button bt_class_type_selection;
-    private Button bt_schedule_selection;
+    private RelativeLayout rl_class_type_selection;
+    private TextView tv_selected_class_type;
+    private TextView tv_selected_class_price;
+
+    private RelativeLayout rl_booking_schedule_selection;
+    private TextView tv_selected_schedule;
     private Button bt_payment;
     private IViewListener iViewListener;
 
@@ -31,22 +37,27 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
 
     @Override
     protected void initViews() {
-        bt_class_type_selection = (Button) findViewById(R.id.bt_booking_class_type_selection);
-        bt_schedule_selection= (Button) findViewById(R.id.bt_booking_schedule_selection);
+        rl_class_type_selection = (RelativeLayout) findViewById(R.id.rl_booking_class_type_selection);
+        tv_selected_class_type = (TextView) findViewById(R.id.tv_booking_selected_class_type);
+        tv_selected_class_price = (TextView) findViewById(R.id.tv_booking_selected_class_price);
+
+        rl_booking_schedule_selection = (RelativeLayout) findViewById(R.id.rl_booking_schedule_selection);
+        tv_selected_schedule = (TextView) findViewById(R.id.tv_booking_selected_schedule);
+
         bt_payment = (Button)findViewById(R.id.bt_booking_payment);
         bt_payment.setEnabled(false);
     }
 
     @Override
     protected void setEvent() {
-        bt_class_type_selection.setOnClickListener(new View.OnClickListener() {
+        rl_class_type_selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 iViewListener.onClassTypeSelectionRequested();
             }
         });
 
-        bt_schedule_selection.setOnClickListener(new View.OnClickListener() {
+        rl_booking_schedule_selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 iViewListener.onScheduleSelectionRequested();
@@ -59,6 +70,33 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
                 iViewListener.onPaymentRequested();
             }
         });
+    }
+
+    public void setClassTypeAndPriceTextView(String aClassType, String aPrice)
+    {
+        this.tv_selected_class_type.setText(aClassType);
+        this.tv_selected_class_price.setText(aPrice+"원");
+    }
+
+    public boolean isSetClassTypeTextView()
+    {
+        if(this.tv_selected_class_type.equals(getContext().getResources().getString(R.string.class_selection)))
+            return false;
+        else
+            return true;
+    }
+
+    public void setScheduleTextView(String aSchedule)
+    {
+        this.tv_selected_schedule.setText(aSchedule);
+    }
+
+    public boolean isSetScheduleTextView()
+    {
+        if(this.tv_selected_schedule.equals(getContext().getResources().getString(R.string.schedule_selection)))
+            return false;
+        else
+            return true;
     }
 
     public void enablePayment()

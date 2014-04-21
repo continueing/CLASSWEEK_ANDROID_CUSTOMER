@@ -60,5 +60,29 @@ public class ClassInfo implements Serializable {
        return schedules.get(anIndex);
     }
 
+    public String getOneMonthPrice()
+    {
+        return classSummaryInfo.getOneMonthPrice();
+    }
+
+    public String getOneDayPrice()
+    {
+        return classSummaryInfo.getOneDayPrice();
+    }
+
+    public int getNumberOfClassPerMonth()
+    {
+        return classDetailInfo.getNumberOfClassPerMonth();
+    }
+
+    public ArrayList<Schedule> getSchedules()
+    {
+        return schedules;
+    }
+
+
+
+
+
 
 }

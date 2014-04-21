@@ -2,9 +2,12 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -38,6 +41,7 @@ public class ScheduleSelectionDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_schedule_selection);
         initViews();
         setEvents();
@@ -57,7 +61,16 @@ public class ScheduleSelectionDialog extends Dialog {
         {
             RadioButton radio_btn = new RadioButton(getContext());
             radio_btn.setId(i++);
-            radio_btn.setText(aSchedule.getStartDateTime());
+            radio_btn.setText( "          " + aSchedule.getStartDateTime());
+            radio_btn.setButtonDrawable(R.drawable.btn_check_style);
+            radio_btn.setBackgroundResource(R.drawable.bg_dropdown_style);
+            radio_btn.setTextColor(Color.BLACK);
+            radio_btn.setPadding(10, 8, 10, 0);
+            radio_btn.setTextSize(14);
+//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
+//            radio_btn.setLayoutParams(params);
+            radio_btn.setWidth(335*2);
+            radio_btn.setHeight(48*2);
             rg_schedule_selection.addView(radio_btn);
             if(i==0)
                 radio_btn.setChecked(true);
