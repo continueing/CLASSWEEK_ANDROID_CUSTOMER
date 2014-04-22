@@ -7,35 +7,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="258.5dp"
         android:layout_alignParentBottom="true"
-        android:background="#ecffb6"
+        android:background="@drawable/bg_content"
+        android:paddingLeft="12.5dp"
+        android:paddingRight="12.5dp"
         android:orientation="vertical">
         <RelativeLayout
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="38dp">
             <TextView
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/abc_search_url_text_selected"
+                android:layout_height="match_parent"
+                android:textColor="#282a34"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
                 android:text="결제하기"/>
             <Button
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/abc_ic_clear"/>
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:text="취소"
+                android:textSize="14sp"
+                android:background="@drawable/bg_content"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_booking_class_type_selection"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="12.5dp"
-            android:layout_marginRight="12.5dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/bg_dropdown_style">
@@ -45,16 +47,16 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="17dp"
                 android:text="@string/class_selection"
                 android:textColor="#747788"
-                android:textSize="14sp"/>
+                android:textSize="16sp"/>
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="19dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="13dp"
                 android:background="@drawable/arrow_dropdown"/>
             <TextView
                 android:id="@+id/tv_booking_selected_class_price"
@@ -62,15 +64,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="40dp"
-                android:textColor="#ffff2323" />
+                android:layout_marginRight="41dp"
+                android:textSize="16dp"
+                android:textColor="#f25354" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_booking_schedule_selection"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="12.5dp"
-            android:layout_marginRight="12.5dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/bg_dropdown_style">
@@ -80,32 +81,29 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="17dp"
                 android:text="@string/schedule_selection"
                 android:textColor="#747788"
-                android:textSize="14sp"/>
+                android:textSize="16sp"/>
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="19dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="13dp"
                 android:background="@drawable/arrow_dropdown"/>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_marginTop="8dp"
+        <Button
+            android:id="@+id/bt_booking_payment"
+            android:layout_marginTop="27.5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000">
-            <Button
-                android:id="@+id/bt_booking_payment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="결제하기"
-                android:gravity="center"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+            android:layout_height="40dp"
+            android:text="결제하기"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_02_style"/>
+
     </LinearLayout>
 
 </RelativeLayout>

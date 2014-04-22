@@ -21,11 +21,14 @@ import java.util.ArrayList;
  */
 
 public class ScheduleSelectionDialog extends Dialog {
+    private static final int NUM_OF_PREPARED_RADIO_BUTTONS = 16;
+
     private ArrayList<Schedule> schedules;
     private RadioGroup rg_schedule_selection;
+    private RadioButton []rb_schedules  = new RadioButton[NUM_OF_PREPARED_RADIO_BUTTONS];
     private OnScheduleSelectionListener onScheduleSelectionListener;
     private int selectedSchedule;
-    private Button bt_schedule_select;
+
 
     public ScheduleSelectionDialog(Context context, OnScheduleSelectionListener anOnScheduleSelectionListener) {
         super(context);
@@ -49,8 +52,23 @@ public class ScheduleSelectionDialog extends Dialog {
 
     private void initViews()
     {
-        bt_schedule_select = (Button)findViewById(R.id.bt_dialog_schedule_selection_select);
         rg_schedule_selection = (RadioGroup) findViewById(R.id.rg_schedule_selection);
+        rb_schedules[0] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_1);
+        rb_schedules[1] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_2);
+        rb_schedules[2] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_3);
+        rb_schedules[3] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_4);
+        rb_schedules[4] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_5);
+        rb_schedules[5] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_6);
+        rb_schedules[6] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_7);
+        rb_schedules[7] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_8);
+        rb_schedules[8] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_9);
+        rb_schedules[9] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_10);
+        rb_schedules[10] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_11);
+        rb_schedules[11] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_12);
+        rb_schedules[12] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_13);
+        rb_schedules[13] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_14);
+        rb_schedules[14] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_15);
+        rb_schedules[15] = (RadioButton) findViewById(R.id.rb_dialog_schedule_selection_16);
         addRadioButtons();
     }
 
@@ -59,21 +77,10 @@ public class ScheduleSelectionDialog extends Dialog {
         int i =0;
         for(Schedule aSchedule : schedules)
         {
-            RadioButton radio_btn = new RadioButton(getContext());
-            radio_btn.setId(i++);
-            radio_btn.setText( "          " + aSchedule.getStartDateTime());
-            radio_btn.setButtonDrawable(R.drawable.btn_check_style);
-            radio_btn.setBackgroundResource(R.drawable.bg_dropdown_style);
-            radio_btn.setTextColor(Color.BLACK);
-            radio_btn.setPadding(10, 8, 10, 0);
-            radio_btn.setTextSize(14);
-//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
-//            radio_btn.setLayoutParams(params);
-            radio_btn.setWidth(335*2);
-            radio_btn.setHeight(48*2);
-            rg_schedule_selection.addView(radio_btn);
-            if(i==0)
-                radio_btn.setChecked(true);
+            rb_schedules[i].setId(i);
+            rb_schedules[i].setText(aSchedule.getStartDateTime());
+            rb_schedules[i].setVisibility(View.VISIBLE);
+            i++;
         }
     }
 
@@ -84,12 +91,6 @@ public class ScheduleSelectionDialog extends Dialog {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 selectedSchedule = i;
-            }
-        });
-
-        bt_schedule_select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 onScheduleSelectionListener.onScheduleSelected(schedules.get(selectedSchedule));
                 dismiss();
             }
