@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.support.v4.widget.DrawerLayout;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.ui.menu.NavigationDrawerFragment;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment;
@@ -56,8 +57,7 @@ public class MainActivity extends ActionBarActivity
                     transaction.replace(R.id.container, new TookBeforeClassFragment()).commit();
                     break;
                 default:
-                    Log.e(this.getClass().getCanonicalName(), "onNavigationDrawerItemSelected: there's no fragment");
-                    System.exit(-1);
+                    AppTerminator.error(this,"onNavigationDrawerItemSelected: there's no fragment");
                     break;
             }
         }

@@ -2,13 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity">
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity"
+    android:background="#ff2e3036">
 
     <ListView
         android:id="@+id/lv_class_summary_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#a6ff91">
+        android:divider="#ffd8d9e3"
+        android:dividerHeight="0.5dp"
+        android:background="#ff2e3036"
+        android:smoothScrollbar="true">
     </ListView>
 
 </RelativeLayout>

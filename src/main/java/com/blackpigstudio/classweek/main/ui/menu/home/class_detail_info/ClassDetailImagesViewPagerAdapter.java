@@ -1,7 +1,8 @@
-package com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview;
+package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,16 +12,16 @@ import com.loopj.android.image.SmartImageView;
 import java.util.ArrayList;
 
 /**
- * Created by continueing on 2014. 4. 1..
+ * Created by continueing on 2014. 4. 23..
  */
-public class ViewPagerAdapter extends PagerAdapter{
+public class ClassDetailImagesViewPagerAdapter extends PagerAdapter {
     private ArrayList<String> urls;
     private Context context;
 
-    public ViewPagerAdapter(ArrayList<String> aUrls, Context context)
-    {
-        this.urls = aUrls;
-        this.context = context;
+    public ClassDetailImagesViewPagerAdapter(Context aContext, ArrayList<String> aUrls) {
+        this.context = aContext;
+        this.urls = new ArrayList<String>();
+        this.urls.addAll(aUrls);
     }
 
     @Override

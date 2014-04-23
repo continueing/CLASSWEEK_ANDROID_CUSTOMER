@@ -23,13 +23,13 @@
                         <!--사진-->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="281dp"
-                            android:background="#ef78ff">
+                            android:layout_height="250dp"
+                            android:orientation="vertical">
+
                             <android.support.v4.view.ViewPager
-                                android:id="@+id/vp_class_detial_images"
+                                android:id="@+id/vp_class_detail_images"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="#ff6ad6"/>
+                                android:layout_height="match_parent"/>
                             </LinearLayout>
                         <!--학원 제목-->
                         <LinearLayout
@@ -188,6 +188,49 @@
                             </LinearLayout>
                         </LinearLayout>
 
+                        <!--준비사항-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_content_rule"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
+                                    android:text="레슨 방식"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/tv_class_detail_progress_type"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
+                                    android:text="그룹 레슨"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--위치-->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -217,12 +260,15 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
+                                android:paddingLeft="26dp"
                                 android:orientation="vertical">
                                 <TextView
                                     android:id="@+id/tv_class_detail_location"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
                                     android:text="역삼동(역삼역 2번출구에서 30m직진)"
                                     android:textStyle="bold|italic"/>
                             </LinearLayout>
@@ -230,7 +276,6 @@
 
                         <!--소개-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="16dp"
@@ -274,7 +319,6 @@
 
                         <!--준비사항-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="16dp"
@@ -318,7 +362,6 @@
 
                         <!--시설정보-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="16dp"
@@ -367,7 +410,7 @@
                                         android:id="@+id/tv_class_detail_facility_fitting_room"
                                         android:layout_width="wrap_content"
                                         android:layout_height="20dp"
-                                        android:text="샤워실"
+                                        android:text="탈의실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
                                         android:gravity="center"
@@ -377,7 +420,7 @@
                                         android:id="@+id/tv_class_detail_facility_shower_stall"
                                         android:layout_width="wrap_content"
                                         android:layout_height="20dp"
-                                        android:text="주차장"
+                                        android:text="샤워실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
                                         android:gravity="center"
@@ -397,7 +440,7 @@
                                         android:id="@+id/tv_class_detail_facility_parking_lot"
                                         android:layout_width="wrap_content"
                                         android:layout_height="20dp"
-                                        android:text="악기대여"
+                                        android:text="주차장"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
                                         android:gravity="center"
@@ -407,12 +450,20 @@
                                         android:id="@+id/tv_class_detail_facility_practice_room"
                                         android:layout_width="wrap_content"
                                         android:layout_height="20dp"
+                                        android:text="연습실"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
                                         android:background="@drawable/bg_contents_info"
                                         android:layout_marginLeft="10dp"/>
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_instrument_rental"
                                         android:layout_width="wrap_content"
                                         android:layout_height="20dp"
+                                        android:text="악기대여"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
                                         android:background="@drawable/bg_contents_info"
                                         android:layout_marginLeft="10dp"/>
                                 </LinearLayout>
@@ -422,7 +473,6 @@
 
                         <!--환불정보-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="16dp"
@@ -477,19 +527,17 @@
         android:background="#ff37373d">
         <Button
             android:id="@+id/bt_detail_info_inquiry"
-            android:layout_width="175dp"
+            android:layout_width="173dp"
             android:layout_height="40dp"
             android:background="@drawable/btn_01_style"
             android:text="문의하기" />
         <Button
             android:id="@+id/bt_detail_info_booking"
-            android:layout_width="175dp"
+            android:layout_width="173dp"
             android:layout_height="40dp"
             android:layout_marginLeft="13dp"
             android:background="@drawable/btn_02_style"
             android:text="예약하기" />
     </LinearLayout>
-
-
 
 </LinearLayout>

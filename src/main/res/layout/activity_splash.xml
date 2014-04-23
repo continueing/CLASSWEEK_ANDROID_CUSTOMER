@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.blackpigstudio.classweek.main.ui.SplashActivity">
+
+    <ImageView
+        android:id="@+id/iv_splash"
+        android:layout_marginTop="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_splash"
+    />
+
+    <TextView
+        android:id="@+id/tv_first"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="17.5dp"
+        android:textColor="#8a8fa7"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/iv_splash"
+        android:text="직장인을 위한"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="17.5dp"
+        android:textColor="#f47273"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/tv_first"
+        android:text="매주 새로운 클래스!"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_classweek"
+        android:paddingBottom="16dp"/>
+
+</RelativeLayout>

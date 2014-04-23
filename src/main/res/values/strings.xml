@@ -26,5 +26,6 @@
     <string name="title_activity_payment_web_view">PaymentWebViewActivity</string>
     <string name="class_selection">클래스 선택</string>
     <string name="schedule_selection">시간 선택</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>

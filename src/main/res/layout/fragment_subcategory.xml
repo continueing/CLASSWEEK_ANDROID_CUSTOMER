@@ -9,7 +9,8 @@
         android:id="@+id/lv_subcategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffdf68">
+        android:divider="#ffd8d9e3"
+        android:dividerHeight="1dp">
     </ListView>
 
 </RelativeLayout>

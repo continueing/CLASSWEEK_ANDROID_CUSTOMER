@@ -80,6 +80,12 @@ public class ClassInfo implements Serializable {
         return schedules;
     }
 
+    public ArrayList<String> getDetailImageUrl()
+    {
+        return this.classDetailInfo.getDetailImageUrl();
+    }
+
+
 
 
 

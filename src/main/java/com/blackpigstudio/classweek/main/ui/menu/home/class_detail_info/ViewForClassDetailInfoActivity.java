@@ -1,6 +1,7 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
  * Created by continueing on 2014. 4. 11..
  */
 public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
+    private ViewPager vp_class_detail_images;
     private Button bt_inquiry;
     private Button bt_booking;
     private OnInquiryChooseListener onInquiryChooseListener;
@@ -32,6 +34,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_description;
     private TextView tv_prerequisite;
     private TextView tv_refund_info;
+    private TextView tv_progress_type;
 
     private TextView tv_toilet;
     private TextView tv_fitting_room;
@@ -40,11 +43,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_parking_lot;
     private TextView tv_practice_room;
     private TextView tv_instrument_rental;
-
-
-
-
-
 
 
     public ViewForClassDetailInfoActivity(Context context, OnInquiryChooseListener anOnInquiryChooseListener, OnBookingChooseListener anOnBookingChooseListener) {
@@ -60,6 +58,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
 
     @Override
     protected void initViews() {
+        vp_class_detail_images = (ViewPager) findViewById(R.id.vp_class_detail_images);
         bt_inquiry = (Button) findViewById(R.id.bt_detail_info_inquiry);
         bt_booking = (Button) findViewById(R.id.bt_detail_info_booking);
         tv_title = (TextView)findViewById(R.id.tv_class_detail_title);
@@ -72,6 +71,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_description = (TextView)findViewById(R.id.tv_class_detail_description);
         tv_prerequisite = (TextView)findViewById(R.id.tv_class_detail_prerequisite);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
+        tv_progress_type = (TextView)findViewById(R.id.tv_class_detail_progress_type);
 
         tv_toilet = (TextView)findViewById(R.id.tv_class_detail_facility_toilet);
         tv_fitting_room = (TextView)findViewById(R.id.tv_class_detail_facility_fitting_room);
@@ -104,16 +104,40 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
 
     public void setData(ClassDetailInfo aClassDetailInfo, ClassSummaryInfo aClassSummaryInfo, FacilityInfo aFacilityInfo)
     {
+        vp_class_detail_images.setAdapter(new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl()));
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원");
         tv_one_month_price.setText(aClassSummaryInfo.getOneMonthPrice()+"원");
+        if(aClassDetailInfo.isPersonal())
+            tv_progress_type.setText("개인 레슨");
+        else
+            tv_progress_type.setText("그룹 레슨");
         tv_location.setText(aClassDetailInfo.getAddress());
         tv_description.setText(aClassDetailInfo.getDescriptions());
         tv_prerequisite.setText(aClassDetailInfo.getPrerequisite());
+
+        if(!aFacilityInfo.isFittingRoom())
+            tv_fitting_room.setVisibility(View.GONE);
+        if(!aFacilityInfo.isInstrumentRental())
+            tv_instrument_rental.setVisibility(View.GONE);
+        if(!aFacilityInfo.isLocker())
+            tv_locker.setVisibility(View.GONE);
+        if(!aFacilityInfo.isParkingLot())
+            tv_parking_lot.setVisibility(View.GONE);
+        if(!aFacilityInfo.isPracticeRoom())
+            tv_practice_room.setVisibility(View.GONE);
+        if(!aFacilityInfo.isShowerStall())
+            tv_shower_stall.setVisibility(View.GONE);
+        if(!aFacilityInfo.isToilet())
+            tv_toilet.setVisibility(View.GONE);
+
         tv_refund_info.setText(aClassDetailInfo.getRefundInfo());
+
+
         ArrayList<String> times = new ArrayList<String>();
         times.addAll(aClassSummaryInfo.getTimes());
         setTimeTextVies(times);
+
 
     }
 
@@ -137,6 +161,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
             tv_start_time_3.setVisibility(View.GONE);
         }
     }
+
 
     public static interface OnInquiryChooseListener
     {

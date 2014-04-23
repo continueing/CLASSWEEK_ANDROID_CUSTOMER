@@ -17,6 +17,9 @@ public class ClassDetailInfo implements Serializable {
     public static final String JSON_KEY_DESCRIPTION = "description";
     public static final String JSON_KEY_PREREQUISITE = "preparation";
     public static final String JSON_KEY_REFUND_INFO = "refund_info";
+    public static final String JSON_KEY_PROGRESS_TYPE= "person_or_group";
+    public static final String PROGRESS_TYPE_VALUE_PERSONAL= "personal";
+
 
 
     private int classId;
@@ -26,6 +29,7 @@ public class ClassDetailInfo implements Serializable {
     private String descriptions;
     private String prerequisite;
     private String refundInfo;
+    private boolean isPersonal;
 
 
     public ClassDetailInfo(JSONObject aJsonObject) throws JSONException {
@@ -41,6 +45,14 @@ public class ClassDetailInfo implements Serializable {
         this.descriptions = aJsonObject.getString(JSON_KEY_DESCRIPTION);
         this.prerequisite= aJsonObject.getString(JSON_KEY_PREREQUISITE);
         this.refundInfo = aJsonObject.getString(JSON_KEY_REFUND_INFO);
+        if(aJsonObject.getString(JSON_KEY_PROGRESS_TYPE).equals(PROGRESS_TYPE_VALUE_PERSONAL))
+        {
+            isPersonal = true;
+        }
+        else
+        {
+            isPersonal = false;
+        }
     }
 
     public int getClassId()
@@ -74,7 +86,15 @@ public class ClassDetailInfo implements Serializable {
         return this.refundInfo;
     }
 
+    public ArrayList<String> getDetailImageUrl()
+    {
+        ArrayList<String> result = new ArrayList<String>();
+        result.addAll(this.imageUrls);
+        return result;
+    }
 
-
-
+    public boolean isPersonal()
+    {
+        return this.isPersonal;
+    }
 }
