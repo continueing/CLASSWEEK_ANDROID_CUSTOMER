@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
@@ -34,13 +33,13 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_prerequisite;
     private TextView tv_refund_info;
 
-    private ImageView iv_toilet;
-    private ImageView iv_fitting_room;
-    private ImageView iv_shower_stall;
-    private ImageView iv_locker;
-    private ImageView iv_parking_lot;
-    private ImageView iv_practice_room;
-    private ImageView iv_instrument_rental;
+    private TextView tv_toilet;
+    private TextView tv_fitting_room;
+    private TextView tv_shower_stall;
+    private TextView tv_locker;
+    private TextView tv_parking_lot;
+    private TextView tv_practice_room;
+    private TextView tv_instrument_rental;
 
 
 
@@ -74,13 +73,13 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_prerequisite = (TextView)findViewById(R.id.tv_class_detail_prerequisite);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
 
-        iv_toilet = (ImageView)findViewById(R.id.tv_class_detail_facility_toilet);
-        iv_fitting_room = (ImageView)findViewById(R.id.iv_class_detail_facility_fitting_room);
-        iv_shower_stall = (ImageView)findViewById(R.id.iv_class_detail_facility_shower_stall);
-        iv_locker = (ImageView)findViewById(R.id.iv_class_detail_facility_locker);
-        iv_parking_lot = (ImageView)findViewById(R.id.iv_class_detail_facility_parking_lot);
-        iv_practice_room = (ImageView)findViewById(R.id.iv_class_detail_facility_practice_room);
-        iv_instrument_rental = (ImageView)findViewById(R.id.iv_class_detail_facility_instrument_rental);
+        tv_toilet = (TextView)findViewById(R.id.tv_class_detail_facility_toilet);
+        tv_fitting_room = (TextView)findViewById(R.id.tv_class_detail_facility_fitting_room);
+        tv_shower_stall = (TextView)findViewById(R.id.tv_class_detail_facility_shower_stall);
+        tv_locker = (TextView)findViewById(R.id.tv_class_detail_facility_locker);
+        tv_parking_lot = (TextView)findViewById(R.id.tv_class_detail_facility_parking_lot);
+        tv_practice_room = (TextView)findViewById(R.id.tv_class_detail_facility_practice_room);
+        tv_instrument_rental = (TextView)findViewById(R.id.tv_class_detail_facility_instrument_rental);
         
     }
 

@@ -6,5 +6,5 @@
         android:drawable="@drawable/btn_check_sel"/>
     <item
         android:state_checked="false"
-        android:drawable="@drawable/btn_check_sel"/>
+        android:drawable="@drawable/btn_check_nor"/>
 </selector>

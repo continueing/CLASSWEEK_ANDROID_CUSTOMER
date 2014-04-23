@@ -10,19 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:background="#fff050"
-        android:layout_weight="0.90">
+        android:layout_weight="0.89"
+        android:background="#ffffffff">
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="#fff4f5fa">
                         <!--사진-->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="281dp"
                             android:background="#ef78ff">
                             <android.support.v4.view.ViewPager
                                 android:id="@+id/vp_class_detial_images"
@@ -33,131 +34,184 @@
                         <!--학원 제목-->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:background="#66ff3e">
+                            android:layout_height="63.5dp"
+                            android:paddingRight="18dp"
+                            android:paddingLeft="18dp"
+                            android:orientation="vertical"
+                            android:background="#fffefefe">
                             <TextView
                                 android:id="@+id/tv_class_detail_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"/>
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="17sp"
+                                android:textColor="#1f2129"
+                                android:gravity="center_vertical|left"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#ffd8d9e3"/>
                         </LinearLayout>
                         <!--시간-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="20dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:src="@drawable/ic_content_time"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="시간"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
                                 android:orientation="vertical">
                                 <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="[수업시작 시간]"/>
+                                    android:layout_width="match_parent"
+                                    android:layout_height="15dp"
+                                    android:text="[수업시작 시간]"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"/>
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#f25354"
                                     android:text="월 - 오후7시"/>
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#f25354"
                                     android:text="수 - 오후9시"/>
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_3"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#f25354"
                                     android:text="금 - 오후7시"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="17dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
                                     android:text="[수업 시간]"/>
                                 <TextView
                                     android:id="@+id/tv_class_detail_duration"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#f25354"
                                     android:text="1시간 30분"/>
                             </LinearLayout>
                         </LinearLayout>
 
                         <!--수강료-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_content_price"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="수강료"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_height="36dp"
+                                android:gravity="center_vertical|left"
+                                android:textSize="13sp"
+                                android:textColor="#f25354"
                                 android:orientation="vertical">
                                 <TextView
                                     android:id="@+id/tv_class_detail_one_day_price"
+                                    android:gravity="center_vertical|left"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="19dp"
+                                    android:textSize="15sp"
+                                    android:textColor="#f25354"
                                     android:text="12,500원/CLASS"/>
                                 <TextView
-                                    android:layout_marginTop="15dp"
                                     android:id="@+id/tv_class_detail_month_day_price"
+                                    android:gravity="center_vertical|left"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="19dp"
+                                    android:textSize="15sp"
+                                    android:textColor="#f25354"
                                     android:text="125,000원/8CLASSES"/>
                             </LinearLayout>
                         </LinearLayout>
 
                         <!--위치-->
                         <LinearLayout
-                            android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_content_rocation"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="위치"/>
                             </LinearLayout>
                             <LinearLayout
@@ -179,31 +233,41 @@
                             android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="20dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:src="@drawable/ic_content_noti"/>
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="소개"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
                                 android:orientation="vertical">
                                 <TextView
                                     android:id="@+id/tv_class_detail_description"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
                                     android:text="몸매 탈출은 물론, 몸매관리까지 데프 댄스와 함께!"/>
                             </LinearLayout>
                         </LinearLayout>
@@ -213,31 +277,41 @@
                             android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="20dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:src="@drawable/ic_content_supply"/>
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="준비사항"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="40dp"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
                                 android:orientation="vertical">
                                 <TextView
                                     android:id="@+id/tv_class_detail_prerequisite"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="15dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
                                     android:text="준비물1, 준비물2"/>
                             </LinearLayout>
                         </LinearLayout>
@@ -247,66 +321,100 @@
                             android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="20dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:src="@drawable/ic_content_info"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="준비사항"/>
                             </LinearLayout>
                             
                             <HorizontalScrollView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp">
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:paddingLeft="40dp"
                                     android:orientation="horizontal">
-                                    <ImageView
+                                    <TextView
                                         android:id="@+id/tv_class_detail_facility_toilet"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_fitting_room"
+                                        android:layout_height="20dp"
+                                        android:text="화장실"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_fitting_room"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_shower_stall"
+                                        android:layout_height="20dp"
+                                        android:text="샤워실"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_shower_stall"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_locker"
+                                        android:layout_height="20dp"
+                                        android:text="주차장"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_locker"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_parking_lot"
+                                        android:layout_height="20dp"
+                                        android:text="사물함"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_parking_lot"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_practice_room"
+                                        android:layout_height="20dp"
+                                        android:text="악기대여"
+                                        android:textSize="13sp"
+                                        android:textColor="#8a8fa7"
+                                        android:gravity="center"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_practice_room"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
-                                    <ImageView
-                                        android:id="@+id/iv_class_detail_facility_instrument_rental"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_facility_instrument_rental"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/abc_ic_go"/>
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/bg_contents_info"
+                                        android:layout_marginLeft="10dp"/>
                                 </LinearLayout>
                             </HorizontalScrollView>
 
@@ -317,30 +425,40 @@
                             android:layout_marginTop="30dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="20dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/abc_ic_voice_search"/>
+                                    android:src="@drawable/ic_content_refund"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
                                     android:text="환불정보"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="40dp">
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp">
                                 <TextView
                                     android:id="@+id/tv_class_detail_refund_info"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#8a8fa7"
                                     android:text="7일 환불 가능상품(구매 시점으로부터 7일) 유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
                             </LinearLayout>
                         </LinearLayout>
@@ -349,29 +467,28 @@
 
             </ScrollView>
         </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
         android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="#55f3ff">
+        android:padding="8dp"
+        android:layout_weight="0.11"
+        android:background="#ff37373d">
         <Button
             android:id="@+id/bt_detail_info_inquiry"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_01_style"
             android:text="문의하기" />
         <Button
             android:id="@+id/bt_detail_info_booking"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/btn_02_style"
             android:text="예약하기" />
     </LinearLayout>
-
-
 
 
 
