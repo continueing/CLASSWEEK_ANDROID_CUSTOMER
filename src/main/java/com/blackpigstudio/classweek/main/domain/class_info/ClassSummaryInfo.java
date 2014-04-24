@@ -122,5 +122,9 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         return this.scheduleId;
     }
 
+    public String getDuration()
+    {
+        return this.duration;
+    }
 
 }

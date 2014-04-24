@@ -85,6 +85,26 @@ public class ClassInfo implements Serializable {
         return this.classDetailInfo.getDetailImageUrl();
     }
 
+    public String getTitle()
+    {
+        return this.classSummaryInfo.getTitle();
+    }
+
+    public String getTime()
+    {
+        return  this.classSummaryInfo.getTime();
+    }
+
+    public String getFrontImageUrl()
+    {
+        return this.classSummaryInfo.getFrontImageUrl();
+    }
+
+    public String getDuration()
+    {
+        return this.classSummaryInfo.getDuration();
+    }
+
 
 
 

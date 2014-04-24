@@ -15,10 +15,10 @@
             android:orientation="horizontal"
             android:background="@drawable/bg_popup">
             <com.loopj.android.image.SmartImageView
-                android:id="@+id/tv_order_confirmation_class_front"
+                android:id="@+id/siv_order_confirmation_class_front"
                 android:layout_width="94dp"
-                android:layout_height="match_parent"/>
-
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -189,7 +189,7 @@
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:background="@drawable/bg_textfield"
-                android:hint="예시) 19900202"
+                android:hint="예시) 1990-02-02"
                 android:textSize="14sp"
                 android:textColor="#1f2129"
                 android:ems="10"/>
@@ -272,7 +272,7 @@
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:background="@drawable/bg_textfield"
-                android:hint="예시) 01045279272"
+                android:hint="예시) 010-4527-9272"
                 android:textSize="14sp"
                 android:textColor="#1f2129"
                 android:ems="10"/>

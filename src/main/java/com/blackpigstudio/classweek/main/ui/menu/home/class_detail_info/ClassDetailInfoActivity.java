@@ -11,10 +11,12 @@ import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking.BookingActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
+import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +28,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public static final int REQUEST_CODE_ORDER_CONFIRM = 1;
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
     public static final String BUNDLE_PARM_SCHEDULE_ID = "schedule_id";
+    public static final String BUNDLE_PARM_SELECTED_SCHEDULE= "SELECTED_SCHEDULES";
 
     ViewForClassDetailInfoActivity view;
     private int classId;
@@ -62,9 +65,17 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
 
     @Override
     public void onBookingChoose() {
-        Intent intent = new Intent(this, BookingActivity.class);
-        intent.putExtra(BookingActivity.BUNDLE_PARM_CLASS_INFO,classInfo);
-        startActivityForResult(intent, REQUEST_CODE_SELECT_SCHEDULE);
+        UserPreference userPreference = new UserPreference(getApplicationContext());
+        if(userPreference.isLoggedIn()) {
+            Intent intent = new Intent(this, BookingActivity.class);
+            intent.putExtra(BookingActivity.BUNDLE_PARM_CLASS_INFO, classInfo);
+            startActivityForResult(intent, REQUEST_CODE_SELECT_SCHEDULE);
+        }
+        else
+        {
+            Intent intent = new Intent(this, SignInAndUpActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -73,15 +84,19 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         {
             if(resultCode == Activity.RESULT_OK)
             {
-                //TODO: should set parameter to be sent.
                 Intent intent = new Intent(this, OrderConfirmationActivity.class);
+                intent.putExtra(OrderConfirmationActivity.BUNDLE_PARM_CLASS_INFO, classInfo);
+                intent.putExtra(OrderConfirmationActivity.BUNDLE_PARM_SELECTED_SCHEDULES, data.getSerializableExtra(BUNDLE_PARM_SELECTED_SCHEDULE));
                 startActivityForResult(intent, REQUEST_CODE_ORDER_CONFIRM);
             }
         }
         else if(requestCode == REQUEST_CODE_ORDER_CONFIRM)
         {
-            Intent intent = new Intent(this, PaymentWebViewActivity.class);
-            startActivity(intent);
+            if(resultCode == Activity.RESULT_OK)
+            {
+                Intent intent = new Intent(this, PaymentWebViewActivity.class);
+                startActivity(intent);
+            }
         }
     }
 

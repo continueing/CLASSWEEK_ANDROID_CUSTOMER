@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     private ScheduleSelectionDialog scheduleSelectionDialog;
     private boolean isScheduleDialogReady;
     private ClassInfo classInfo;
+    private Schedule selectedSchedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,8 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     @Override
     public void onPaymentRequested() {
         Intent intent = new Intent();
-        // TODO: deliver selected schedule and datetime String.
-        setResult(Activity.RESULT_OK,intent);
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SELECTED_SCHEDULE, this.selectedSchedule);
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 
@@ -70,6 +72,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onScheduleSelected(Schedule aSchedule) {
+        selectedSchedule = aSchedule;
         view.setScheduleTextView(aSchedule.getStartDateTime());
         view.enablePayment();
     }
