@@ -20,7 +20,8 @@ public class HttpRequester {
 
 
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler, Context aContext) {
-        Log.i("", "url: "+url + "\nParms: " + params.toString());
+        Log.i("request", "Url: "+url);
+        Log.i("request", "Parms: " + params.toString());
         PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
         client.setCookieStore(persistentCookieStore);
         client.post(getAbsoluteUrl(url), params, responseHandler);

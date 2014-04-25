@@ -13,6 +13,13 @@ public class ClassRequest {
     private static final String URL_BASE = "/classes";
     private static final String URL_INQUIRE = "/inquire";
     private static final String PARM_KEY_CONTENTS_INQUIRE = "content";
+    private static final String PARM_KEY_WEEKDAY = "weekday";
+    private static final String PARM_KEY_LOCATION = "location";
+    private static final String PARM_KEY_TIME = "time";
+    private static final String PARM_KEY_PRICE = "price";
+
+
+
     private Context context;
 
     public ClassRequest(Context aContext)
@@ -26,9 +33,18 @@ public class ClassRequest {
         HttpRequester.post(URL_BASE +"/"+aCategory,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
-    public void getClassSummaryInfos(String aCategory, String aSubcategory, int aPage, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    public void getClassSummaryInfos(String aCategory, String aSubcategory, String aWeekDay, String aLocation, String aTime, String aPrice, int aPage, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
         RequestParams requestParams = new RequestParams();
+        if(aWeekDay != null)
+            requestParams.put(PARM_KEY_WEEKDAY, aWeekDay);
+        if(aLocation != null)
+            requestParams.put(PARM_KEY_LOCATION, aLocation);
+        if(aTime != null)
+            requestParams.put(PARM_KEY_TIME, aTime);
+        if(aPrice != null)
+            requestParams.put(PARM_KEY_PRICE, aPrice);
+
         HttpRequester.post(URL_BASE +"/"+aCategory + "/" + aSubcategory + "/"+ aPage,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 

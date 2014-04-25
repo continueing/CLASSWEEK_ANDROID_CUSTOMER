@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -34,28 +35,18 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     public static final String BUNDLE_PARM_OF_CATEGORY_URL = "CATEGORY_FOR_URL";
     public static final String BUNDLE_PARM_OF_SUBCATEGORY_FOR_URL = "SUBCATEGORY_FOR_URL";
     public static final String BUNDLE_PARM_OF_SUBCATEGORY_KOR = "SUBCATEGORY_KOR";
+
     private int nextPage = 1;
     private boolean isFinalPage = false;
     private boolean isRequestingHttpNow = false;
 
     private String category;
     private String subcategory;
+    private String weekDay=null;
+    private String location=null;
+    private String time=null;
+    private String price=null;
 
-    private String urlKeyLocation;
-
-    private boolean urlKeyMon;
-    private boolean urlKeyTue;
-    private boolean urlKeyWen;
-    private boolean urlKeyTur;
-    private boolean urlKeyFri;
-    private boolean urlKeySat;
-    private boolean urlKeySun;
-
-    private boolean urlKeyMorning;
-    private boolean urlKeyAfternoon;
-    private boolean urlKeyEvening;
-
-    private int urlKeyPrice;
 
 
     @Override
@@ -77,11 +68,13 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         isRequestingHttpNow = true;
         ClassRequest classRequest = new ClassRequest(getApplicationContext());
         try {
-            classRequest.getClassSummaryInfos(this.category, this.subcategory, nextPage, this);
+            classRequest.getClassSummaryInfos(this.category, this.subcategory, weekDay, location, time, price, nextPage, this);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,13 +102,16 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         {
             if(resultCode == Activity.RESULT_OK)
             {
-                //TODO: should set urlKey variables and then refresh class items
-                String result = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_LOCATION_KEY);
-                if(data.getBooleanExtra(FilterActivity.BUNDLE_PARM_OF_URL_AFTERNOON_KEY,false))
-                    result += " O";
-                else
-                    result += " X";
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                nextPage=1;
+                isFinalPage = false;
+                isRequestingHttpNow = false;
+                view.clearListViewItems();
+                view.setProgressbarVisibility(true);
+                weekDay = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_WEEK_DAY_KEY);
+                location = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_LOCATION_KEY);
+                time = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_TIME_KEY);
+                price = data.getStringExtra(FilterActivity.BUNDLE_PARM_OF_URL_PRICE_KEY);
+                requestClassSummaryInfoFromServer();
             }
         }
     }

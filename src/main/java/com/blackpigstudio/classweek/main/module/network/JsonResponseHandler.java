@@ -40,6 +40,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
 
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-        AppTerminator.error(this, "status code :" + statusCode + "\nreponse : " + responseBody.toString());
+        //TODO: handle network not enable
+        AppTerminator.error(this, "status code :" + statusCode );
     }
 }

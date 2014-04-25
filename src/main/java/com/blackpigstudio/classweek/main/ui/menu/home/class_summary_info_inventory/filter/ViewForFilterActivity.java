@@ -17,7 +17,7 @@ import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractVi
  * Created by continueing on 2014. 3. 28..
  */
 
-public class ViewForFilterActivity extends AbstractViewForActivity implements LocationSettingDialog.LocationReceiver{
+public class ViewForFilterActivity extends AbstractViewForActivity implements LocationSettingDialog.ILocationReceiver {
     /*
         view members
      */
@@ -105,10 +105,9 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         bt_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // should write the logic of reset
                 releaseAllCheckBoxes();
-                tv_price_value.setText("10000원");
-                sb_price_controller.setProgress(10000);
+                tv_price_value.setText("100000원");
+                sb_price_controller.setProgress(100000);
                 tv_location.setText("");
             }
         });
@@ -116,7 +115,12 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         bt_search.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onSubmitButtonClickListener.onSearchConditionDelivered(tv_location.getText().toString(), cb_mon.isChecked(), cb_tue.isChecked(), cb_wen.isChecked(), cb_thu.isChecked(), cb_fri.isChecked(), cb_sat.isChecked(), cb_sun.isChecked(), cb_morning.isChecked(), cb_afternoon.isChecked(), cb_evening.isChecked(), sb_price_controller.getProgress());
+                if(isSearchable())
+                    onSubmitButtonClickListener.onSearchConditionDelivered(tv_location.getText().toString(), cb_mon.isChecked(), cb_tue.isChecked(), cb_wen.isChecked(), cb_thu.isChecked(), cb_fri.isChecked(), cb_sat.isChecked(), cb_sun.isChecked(), cb_morning.isChecked(), cb_afternoon.isChecked(), cb_evening.isChecked(), sb_price_controller.getProgress());
+                else
+                {
+                    Toast.makeText(getContext(),"가능한 위치, 요일, 시간을 지정해 주세요.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -125,29 +129,12 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
             @Override
             public void onClick(View view) {
                 onLocationSettingDialogPopupRequestListener.onPopupRequestDelivered();
+
             }
         });
     }
 
 
-
-
-    /*
-        about check box related functions
-     */
-    public String parseValueOfCheckBoxes(CheckBox[] aCheckBoxs)
-    {
-        String result = "";
-
-        for(CheckBox checkbox : aCheckBoxs) {
-            if (checkbox.isChecked() == true) {
-                result += "O";
-            } else {
-                result += "X";
-            }
-        }
-        return result;
-    }
 
     public void releaseAllCheckBoxes()
     {
@@ -162,6 +149,30 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         cb_fri.setChecked(false);
         cb_sat.setChecked(false);
         cb_sun.setChecked(false);
+    }
+
+    public boolean isSearchable()
+    {
+        if(
+          !(cb_morning.isChecked()  ||
+            cb_afternoon.isChecked()||
+            cb_evening.isChecked())  )
+            return false;
+
+        if(
+          !(cb_mon.isChecked()||
+            cb_tue.isChecked()||
+            cb_wen.isChecked()||
+            cb_thu.isChecked()||
+            cb_fri.isChecked()||
+            cb_sat.isChecked()||
+            cb_sun.isChecked()))
+            return false;
+
+        if("".equals(tv_location.getText()))
+            return false;
+
+        return true;
     }
 
     /*
@@ -179,7 +190,6 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
 
     private OnSubmitButtonClickListener onSubmitButtonClickListener;
     private OnLocationSettingDialogPopupRequestListener onLocationSettingDialogPopupRequestListener;
-
 
 
     /*

@@ -4,25 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener {
 
 
-    public static final String BUNDLE_PARM_OF_URL_LOCATION_KEY = "LOCATION";
-
-    public static final String BUNDLE_PARM_OF_URL_MON_KEY = "MON";
-    public static final String BUNDLE_PARM_OF_URL_TUE_KEY = "TUE";
-    public static final String BUNDLE_PARM_OF_URL_WEN_KEY = "WEN";
-    public static final String BUNDLE_PARM_OF_URL_TUR_KEY = "TUR";
-    public static final String BUNDLE_PARM_OF_URL_FRI_KEY = "FRI";
-    public static final String BUNDLE_PARM_OF_URL_SAT_KEY = "SAT";
-    public static final String BUNDLE_PARM_OF_URL_SUN_KEY = "SUN";
-
-    public static final String BUNDLE_PARM_OF_URL_MORNING_KEY = "MORNING";
-    public static final String BUNDLE_PARM_OF_URL_AFTERNOON_KEY = "AFTERNOON";
-    public static final String BUNDLE_PARM_OF_URL_EVENING_KEY = "EVENING";
-
-    public static final String BUNDLE_PARM_OF_URL_PRICE_KEY = "PRICE";
+    public static final String BUNDLE_PARM_OF_URL_LOCATION_KEY = "LOCATION_KEY";
+    public static final String BUNDLE_PARM_OF_URL_WEEK_DAY_KEY = "WEEK_DAY_KEY";
+    public static final String BUNDLE_PARM_OF_URL_TIME_KEY = "TIME_KEY";
+    public static final String BUNDLE_PARM_OF_URL_PRICE_KEY = "PRICE_KEY";
 
     private ViewForFilterActivity viewForFilterActivity;
     private LocationSettingDialog locationSettingDialog;
@@ -41,19 +31,37 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
         Intent intent = new Intent();
         intent.putExtra(BUNDLE_PARM_OF_URL_LOCATION_KEY, aLocation);
 
-        intent.putExtra(BUNDLE_PARM_OF_URL_MON_KEY, mon);
-        intent.putExtra(BUNDLE_PARM_OF_URL_TUE_KEY, tue);
-        intent.putExtra(BUNDLE_PARM_OF_URL_WEN_KEY, wen);
-        intent.putExtra(BUNDLE_PARM_OF_URL_TUR_KEY, tur);
-        intent.putExtra(BUNDLE_PARM_OF_URL_FRI_KEY, fri);
-        intent.putExtra(BUNDLE_PARM_OF_URL_SAT_KEY, sat);
-        intent.putExtra(BUNDLE_PARM_OF_URL_SUN_KEY, sun);
+        String weekDay = "";
 
-        intent.putExtra(BUNDLE_PARM_OF_URL_MORNING_KEY, morning);
-        intent.putExtra(BUNDLE_PARM_OF_URL_AFTERNOON_KEY, afternoon);
-        intent.putExtra(BUNDLE_PARM_OF_URL_EVENING_KEY, evening);
+        if(mon)
+            weekDay+="0";
+        if(tue)
+            weekDay+="1";
+        if(wen)
+            weekDay+="2";
+        if(tur)
+            weekDay+="3";
+        if(fri)
+            weekDay+="4";
+        if(sat)
+            weekDay+="5";
+        if(sun)
+            weekDay+="6";
 
-        intent.putExtra(BUNDLE_PARM_OF_URL_PRICE_KEY, aPrice);
+        intent.putExtra(BUNDLE_PARM_OF_URL_WEEK_DAY_KEY, weekDay);
+
+        String time = "";
+
+        if(morning)
+            time += "0";
+        if(afternoon)
+            time += "1";
+        if(evening)
+            time += "2";
+
+        intent.putExtra(BUNDLE_PARM_OF_URL_TIME_KEY, time);
+
+        intent.putExtra(BUNDLE_PARM_OF_URL_PRICE_KEY, String.valueOf(aPrice));
 
         setResult(Activity.RESULT_OK,intent);
         finish();

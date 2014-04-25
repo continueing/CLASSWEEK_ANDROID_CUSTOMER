@@ -180,6 +180,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="점심"
                     android:id="@+id/cb_daytime" />
                 <CheckBox
@@ -240,8 +241,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="8dp"
-                android:max="50000"
-                android:progress="10000"
+                android:max="250000"
+                android:progress="100000"
                 android:thumb="@drawable/btn_progress"
                 android:id="@+id/sb_price_controller"/>
         </LinearLayout>

@@ -90,7 +90,9 @@ public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForAct
         this.arrayAdapterForClassSummaryInfoListView.addAll(iClassSummaryInfoItems);
     }
 
-
-
+    public void clearListViewItems()
+    {
+        this.arrayAdapterForClassSummaryInfoListView.clear();
+    }
 
 }
