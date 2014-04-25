@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
@@ -19,7 +21,8 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
     /*
         view members
      */
-    private Button bt_location_setting;
+    private RelativeLayout rl_location_setting;
+    private TextView tv_location;
 
     private CheckBox cb_mon;
     private CheckBox cb_tue;
@@ -58,7 +61,8 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
          */
     @Override
     protected void initViews() {
-        bt_location_setting = (Button) findViewById(R.id.bt_filter_location_setting);
+        rl_location_setting = (RelativeLayout) findViewById(R.id.rl_filter_location_setting);
+        tv_location = (TextView)findViewById(R.id.tv_filter_location);
 
         // Day setting
         cb_mon = (CheckBox)findViewById(R.id.cb_mon);
@@ -105,22 +109,19 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
                 releaseAllCheckBoxes();
                 tv_price_value.setText("10000원");
                 sb_price_controller.setProgress(10000);
-                bt_location_setting.setText("위치 선택하기");
+                tv_location.setText("");
             }
         });
 
         bt_search.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String location = "";
-                if(!getContext().getResources().getString(R.string.filter_location_setting_default).equals(bt_location_setting.getText()))
-                    location = bt_location_setting.getText().toString();
-                onSubmitButtonClickListener.onSearchConditionDelivered(location,cb_mon.isChecked(),cb_tue.isChecked(),cb_wen.isChecked(),cb_thu.isChecked(),cb_fri.isChecked(),cb_sat.isChecked(),cb_sun.isChecked(),cb_morning.isChecked(),cb_afternoon.isChecked(),cb_evening.isChecked(), sb_price_controller.getProgress());
+                onSubmitButtonClickListener.onSearchConditionDelivered(tv_location.getText().toString(), cb_mon.isChecked(), cb_tue.isChecked(), cb_wen.isChecked(), cb_thu.isChecked(), cb_fri.isChecked(), cb_sat.isChecked(), cb_sun.isChecked(), cb_morning.isChecked(), cb_afternoon.isChecked(), cb_evening.isChecked(), sb_price_controller.getProgress());
             }
         });
 
 
-        bt_location_setting.setOnClickListener(new View.OnClickListener() {
+        rl_location_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onLocationSettingDialogPopupRequestListener.onPopupRequestDelivered();
@@ -187,7 +188,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
 
     @Override
     public void setLocation(String aLocation) {
-        bt_location_setting.setText(aLocation);
+        tv_location.setText(aLocation);
     }
 
 
