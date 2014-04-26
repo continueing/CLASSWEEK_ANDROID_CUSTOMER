@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menu;
+package com.blackpigstudio.classweek.main.ui.navigation_drawer_menu;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -90,25 +90,31 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mDrawerListView = (ListView) inflater.inflate(
-                R.layout.fragment_navigation_drawer, container, false);
+        View root = inflater.inflate(R.layout.fragment_navigation_drawer,container,false);
+
+
+        mDrawerListView = (ListView)root.findViewById(R.id.lv_navigation_drawer_menu );
+
+
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
+
+        ArrayAdapterForNavigationDrawerMenuListView arrayAdapter = new ArrayAdapterForNavigationDrawerMenuListView(getActivity(),R.layout.item_navigation_drawer_menu);
+
+        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_home,"홈"));
+        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_register,"신청한 클래스"));
+        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_finish,"종료된 클래스"));
+        //TODO : should implement setting page
+//        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_set,"설정"));
+
+
+        mDrawerListView.setAdapter(arrayAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        return mDrawerListView;
+        return root;
     }
 
     public boolean isDrawerOpen() {

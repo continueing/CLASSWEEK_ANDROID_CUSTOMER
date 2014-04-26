@@ -1,6 +1,6 @@
 package com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview;
 
-import com.blackpigstudio.classweek.main.module.listview.IListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.mvc_base.IListViewItem;
 
 /**
  * Created by continueing on 2014. 4. 13..

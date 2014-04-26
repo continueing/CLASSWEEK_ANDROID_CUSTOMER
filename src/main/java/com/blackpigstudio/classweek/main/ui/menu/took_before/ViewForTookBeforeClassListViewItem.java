@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
-import com.blackpigstudio.classweek.main.module.listview.IListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.mvc_base.AbstractViewForListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.mvc_base.IListViewItem;
 
 /**
  * Created by continueing on 2014. 4. 10..

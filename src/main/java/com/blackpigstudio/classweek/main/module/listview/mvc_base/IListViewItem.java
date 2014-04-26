@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.listview;
+package com.blackpigstudio.classweek.main.module.listview.mvc_base;
 
 /**
  * Created by continueing on 2014. 4. 13..

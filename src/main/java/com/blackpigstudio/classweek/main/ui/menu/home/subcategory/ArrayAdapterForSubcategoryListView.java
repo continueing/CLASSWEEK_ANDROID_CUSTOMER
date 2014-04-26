@@ -2,8 +2,8 @@ package com.blackpigstudio.classweek.main.ui.menu.home.subcategory;
 
 import android.content.Context;
 
-import com.blackpigstudio.classweek.main.module.listview.AbstractArrayAdapter;
-import com.blackpigstudio.classweek.main.module.listview.AbstractViewForListViewItem;
+import com.blackpigstudio.classweek.main.module.listview.mvc_base.AbstractArrayAdapter;
+import com.blackpigstudio.classweek.main.module.listview.mvc_base.AbstractViewForListViewItem;
 
 /**
  * Created by continueing on 2014. 4. 7..

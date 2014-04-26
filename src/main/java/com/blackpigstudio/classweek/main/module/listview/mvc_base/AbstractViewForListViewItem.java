@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.listview;
+package com.blackpigstudio.classweek.main.module.listview.mvc_base;
 
 import android.content.Context;
 import android.view.View;
