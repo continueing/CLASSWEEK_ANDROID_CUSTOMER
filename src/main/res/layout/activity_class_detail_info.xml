@@ -313,6 +313,8 @@
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
+                                    android:singleLine="false"
+                                    android:inputType="textMultiLine"
                                     android:text="몸매 탈출은 물론, 몸매관리까지 데프 댄스와 함께!"/>
                             </LinearLayout>
                         </LinearLayout>
@@ -509,6 +511,10 @@
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
+                                    android:singleLine="false"
+                                    android:inputType="textMultiLine"
+                                    android:maxLines="30"
+                                    android:lines="2"
                                     android:text="7일 환불 가능상품(구매 시점으로부터 7일) 유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
                             </LinearLayout>
                         </LinearLayout>
