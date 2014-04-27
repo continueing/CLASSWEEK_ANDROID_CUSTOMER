@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -30,13 +32,19 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
     private TextView tv_end_date;
     private TextView tv_payment_price;
 
-    private EditText et_name;
-    private EditText et_birth_date;
-    private EditText et_phone_number;
+    private CheckBox cb_agree_all;
+    private CheckBox cb_agreement;
+    private CheckBox cb_personal_information_handling_policy;
+    private CheckBox cb_precautions_of_payment;
 
     private RadioGroup rg_sex;
 
     // TODO: should determine what kinds of conditions and term are. Then, add to private members
+
+    private EditText et_name;
+    private EditText et_birth_date;
+    private EditText et_phone_number;
+
 
     private Button bt_payment;
 
@@ -54,6 +62,7 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
     @Override
     protected void initViews() {
         bt_payment = (Button) findViewById(R.id.bt_order_confirmation_payment);
+        bt_payment.setEnabled(false);
         tv_class_title = (TextView) findViewById(R.id.tv_order_confirmation_class_title);
         tv_time = (TextView) findViewById(R.id.tv_order_confirmation_time);
         tv_start_date = (TextView) findViewById(R.id.tv_order_confirmation_start_date);
@@ -64,10 +73,57 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
         et_name = (EditText) findViewById(R.id.et_order_confirmation_name);
         et_birth_date = (EditText) findViewById(R.id.et_order_confirmation_birth_date);
         et_phone_number = (EditText) findViewById(R.id.et_order_confirmation_phone_number);
+
+        cb_agree_all = (CheckBox)findViewById(R.id.cb_agree_all);
+        cb_agreement = (CheckBox)findViewById(R.id.cb_agreement);
+        cb_personal_information_handling_policy  = (CheckBox)findViewById(R.id.cb_personal_information_handling_policy);
+        cb_precautions_of_payment  = (CheckBox)findViewById(R.id.cb_precautions_of_payment);
     }
 
     @Override
     protected void setEvent() {
+        cb_agree_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    cb_agreement.setChecked(true);
+                    cb_personal_information_handling_policy.setChecked(true);
+                    cb_precautions_of_payment.setChecked(true);
+                }
+                else
+                {
+                    cb_agreement.setChecked(false);
+                    cb_personal_information_handling_policy.setChecked(false);
+                    cb_precautions_of_payment.setChecked(false);
+                }
+
+                bt_payment.setEnabled(canSubmitButtonBeEnable());
+
+            }
+        });
+
+        cb_agreement.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                bt_payment.setEnabled(canSubmitButtonBeEnable());
+            }
+        });
+
+        cb_personal_information_handling_policy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                bt_payment.setEnabled(canSubmitButtonBeEnable());
+            }
+        });
+
+        cb_precautions_of_payment.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                bt_payment.setEnabled(canSubmitButtonBeEnable());
+            }
+        });
+
         bt_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +150,18 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
             }
         });
     }
+
+    public boolean canSubmitButtonBeEnable()
+    {
+        if(!cb_agreement.isChecked())
+            return false;
+        if(!cb_personal_information_handling_policy.isChecked())
+            return false;
+        if(!cb_precautions_of_payment.isChecked())
+            return false;
+        return true;
+    }
+
 
     public boolean isValidDate(String aYYYYMMdd)
     {
