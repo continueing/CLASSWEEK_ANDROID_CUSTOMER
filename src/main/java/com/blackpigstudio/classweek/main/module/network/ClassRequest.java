@@ -12,6 +12,8 @@ import org.json.JSONException;
 public class ClassRequest {
     private static final String URL_BASE = "/classes";
     private static final String URL_INQUIRE = "/inquire";
+    private static final String URL_RECOMMEND_CLASSES = "/recommend/classes";
+
     private static final String PARM_KEY_CONTENTS_INQUIRE = "content";
     private static final String PARM_KEY_WEEKDAY = "weekday";
     private static final String PARM_KEY_LOCATION = "location";
@@ -48,6 +50,12 @@ public class ClassRequest {
         HttpRequester.post(URL_BASE +"/"+aCategory + "/" + aSubcategory + "/"+ aPage,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
+    public void getRecommendedClassSummaryInfos(HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        HttpRequester.post(URL_BASE + URL_RECOMMEND_CLASSES ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
+
     public void getClassDetail(int aClassId, int aScheduleId, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
         RequestParams requestParams = new RequestParams();
@@ -61,5 +69,7 @@ public class ClassRequest {
         requestParams.put(PARM_KEY_CONTENTS_INQUIRE, aContents);
         HttpRequester.post(URL_BASE +"/"+aClassId + URL_INQUIRE ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
+
+
 
 }

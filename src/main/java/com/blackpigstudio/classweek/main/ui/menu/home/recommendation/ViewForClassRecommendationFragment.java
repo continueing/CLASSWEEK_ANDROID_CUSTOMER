@@ -11,8 +11,11 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
+
+import java.util.ArrayList;
 
 /**
  * Created by continueing on 2014. 3. 26..
@@ -39,15 +42,16 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
     @Override
     protected void initViews() {
         arrayAdapterForClassSummaryInfoListViewWithImageViewPager = new ArrayAdapterForClassSummaryInfoListViewWithImageViewPager(getContext(),R.layout.item_class_summary_information);
-        for(int i = 0 ; i< 3 ;i++)
-        {
-            arrayAdapterForClassSummaryInfoListViewWithImageViewPager.add(new ClassSummaryInfo(i));
-        }
-
         lv_class_summary_info = (ListView)findViewById(R.id.lv_recommendation_class_summary_info);
         progressbarFooter = new ProgressbarFooter(lv_class_summary_info,layoutInflater);
         setProgressbarVisibility(true);
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListViewWithImageViewPager);
+    }
+
+    public void setData(ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems)
+    {
+        this.arrayAdapterForClassSummaryInfoListViewWithImageViewPager.addAll(iClassSummaryInfoItems);
+        setProgressbarVisibility(false);
     }
 
     @Override
