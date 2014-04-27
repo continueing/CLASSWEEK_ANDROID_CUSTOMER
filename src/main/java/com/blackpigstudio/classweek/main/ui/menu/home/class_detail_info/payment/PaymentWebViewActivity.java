@@ -30,7 +30,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         myWebView.getSettings().setJavaScriptEnabled(true);
 
         String postData =
-                "P_MID=CAEblac956&" +
+                "P_MID=ECAblac956&" +
                         "P_OID=20140417-0000184&" +
                         "P_AMT=123&" +
                         "P_UNAME=ing&" +
