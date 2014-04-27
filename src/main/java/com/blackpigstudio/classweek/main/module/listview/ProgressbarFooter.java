@@ -33,14 +33,21 @@ public class ProgressbarFooter {
 
     public void setVisibility(boolean aVisibility)
     {
-        this.visibility = aVisibility;
+
         if(aVisibility)
         {
-            this.listView.addFooterView(this.footer,null,false);
+            if(!this.visibility) {
+                this.listView.addFooterView(this.footer, null, false);
+                this.visibility = aVisibility;
+            }
+
         }
         else
         {
-            this.listView.removeFooterView(this.footer);
+            if(this.visibility) {
+                this.listView.removeFooterView(this.footer);
+                this.visibility = aVisibility;
+            }
         }
     }
 
