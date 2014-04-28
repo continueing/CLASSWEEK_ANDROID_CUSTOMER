@@ -9,11 +9,9 @@ public class UserPreference extends PreferenceHelper {
     private static final String FILE_NAME ="CLASSWEEK_USER";
 
     private static final String KEY_NAME ="NAME";
-    private static final String KEY_BIRTH_YEAR ="BIRTH_YEAR";
-    private static final String KEY_BIRTH_MONTH ="BIRTH_MONTH";
-    private static final String KEY_BIRTH_DAY ="BIRTH_DAY";
+    private static final String KEY_BIRTH_DATE ="BIRTH_DATE"; // YYYY-MM-dd
     private static final String KEY_SEX ="SEX";
-    private static final String KEY_PHONE_NUMBER ="PHONE_NUMBER";
+    private static final String KEY_PHONE_NUMBER ="PHONE_NUMBER"; // 010-4527-9272
     private static final String KEY_EMAIL ="EMAIL";
     private static final String KEY_PASSWORD ="PASSWORD";
     private static final String KEY_IS_LOGIN ="IS_LOGIN";
@@ -66,19 +64,9 @@ public class UserPreference extends PreferenceHelper {
         setString(KEY_NAME,aName);
     }
 
-    public void setBirthYear(int aYear)
+    public void setBirthDate(String aBirthDate)
     {
-        setInt(KEY_BIRTH_YEAR, aYear);
-    }
-
-    public void setBirthMonth(int aMonth)
-    {
-        setInt(KEY_BIRTH_MONTH, aMonth);
-    }
-
-    public void setBirthDay(int aDay)
-    {
-        setInt(KEY_BIRTH_DAY, aDay);
+        setString(KEY_BIRTH_DATE, aBirthDate);
     }
 
     public void setSex(int aValueOfSex)
@@ -101,7 +89,7 @@ public class UserPreference extends PreferenceHelper {
 
     public String getBirth()
     {
-        return  getInt(KEY_BIRTH_YEAR, -1)  + "-" + getInt(KEY_BIRTH_MONTH, -1)  + "-" + getInt(KEY_BIRTH_DAY, -1);
+        return  getString(KEY_BIRTH_DATE,"");
     }
 
     public int getSex()

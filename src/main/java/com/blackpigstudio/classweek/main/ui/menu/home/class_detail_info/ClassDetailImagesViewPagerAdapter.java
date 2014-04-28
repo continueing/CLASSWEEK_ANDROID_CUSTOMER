@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.blackpigstudio.classweek.R;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.ArrayList;

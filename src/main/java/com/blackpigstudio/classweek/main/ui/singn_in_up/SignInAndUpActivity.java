@@ -122,11 +122,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
             }
             if(!aJsonObject.isNull(JSON_KEY_BIRTHDAY))
             {
-                // yyyy-mm-dd
-                String birthday = aJsonObject.getString(JSON_KEY_BIRTHDAY);
-                aUserPreference.setBirthYear( Integer.valueOf(birthday.substring(0,4)));
-                aUserPreference.setBirthMonth(Integer.valueOf(birthday.substring(5, 7)));
-                aUserPreference.setBirthDay( Integer.valueOf(birthday.substring(8,10)));
+                aUserPreference.setBirthDate(aJsonObject.getString(JSON_KEY_BIRTHDAY));
             }
             if(!aJsonObject.isNull(JSON_KEY_PHONE_NUMBER))
             {

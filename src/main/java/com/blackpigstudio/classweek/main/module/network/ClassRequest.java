@@ -1,6 +1,7 @@
 package com.blackpigstudio.classweek.main.module.network;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.loopj.android.http.RequestParams;
 
@@ -64,7 +65,7 @@ public class ClassRequest {
 
     public void inquire(int aClassId, String aContents, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
-
+        Log.i("thos", "success");
         RequestParams requestParams = new RequestParams();
         requestParams.put(PARM_KEY_CONTENTS_INQUIRE, aContents);
         HttpRequester.post(URL_BASE +"/"+aClassId + URL_INQUIRE ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);

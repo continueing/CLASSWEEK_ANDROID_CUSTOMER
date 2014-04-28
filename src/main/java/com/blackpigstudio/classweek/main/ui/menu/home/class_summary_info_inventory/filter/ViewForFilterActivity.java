@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
+import com.blackpigstudio.classweek.main.module.button.CheckButton;
 
 /**
  * Created by continueing on 2014. 3. 28..
@@ -24,17 +25,17 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
     private RelativeLayout rl_location_setting;
     private TextView tv_location;
 
-    private CheckBox cb_mon;
-    private CheckBox cb_tue;
-    private CheckBox cb_wen;
-    private CheckBox cb_thu;
-    private CheckBox cb_fri;
-    private CheckBox cb_sat;
-    private CheckBox cb_sun;
+    private CheckButton cb_mon;
+    private CheckButton cb_tue;
+    private CheckButton cb_wen;
+    private CheckButton cb_thu;
+    private CheckButton cb_fri;
+    private CheckButton cb_sat;
+    private CheckButton cb_sun;
 
-    private CheckBox cb_morning;
-    private CheckBox cb_afternoon;
-    private CheckBox cb_evening;
+    private CheckButton cb_morning;
+    private CheckButton cb_afternoon;
+    private CheckButton cb_evening;
 
     private TextView tv_price_value;
     private SeekBar sb_price_controller;
@@ -65,18 +66,18 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
         tv_location = (TextView)findViewById(R.id.tv_filter_location);
 
         // Day setting
-        cb_mon = (CheckBox)findViewById(R.id.cb_mon);
-        cb_tue = (CheckBox)findViewById(R.id.cb_tue);
-        cb_wen = (CheckBox)findViewById(R.id.cb_wen);
-        cb_thu = (CheckBox)findViewById(R.id.cb_thu);
-        cb_fri  = (CheckBox)findViewById(R.id.cb_fri);
-        cb_sat = (CheckBox)findViewById(R.id.cb_sat);
-        cb_sun = (CheckBox)findViewById(R.id.cb_sun);
+        cb_mon = (CheckButton)findViewById(R.id.cb_mon);
+        cb_tue = (CheckButton)findViewById(R.id.cb_tue);
+        cb_wen = (CheckButton)findViewById(R.id.cb_wen);
+        cb_thu = (CheckButton)findViewById(R.id.cb_thu);
+        cb_fri  = (CheckButton)findViewById(R.id.cb_fri);
+        cb_sat = (CheckButton)findViewById(R.id.cb_sat);
+        cb_sun = (CheckButton)findViewById(R.id.cb_sun);
 
         // Time setting
-        cb_morning = (CheckBox)findViewById(R.id.cb_morning);
-        cb_afternoon = (CheckBox)findViewById(R.id.cb_daytime);
-        cb_evening = (CheckBox)findViewById(R.id.cb_evening);
+        cb_morning = (CheckButton)findViewById(R.id.cb_morning);
+        cb_afternoon = (CheckButton)findViewById(R.id.cb_daytime);
+        cb_evening = (CheckButton)findViewById(R.id.cb_evening);
 
         // Price
         tv_price_value = (TextView)findViewById(R.id.tv_filter_seekbar_value);

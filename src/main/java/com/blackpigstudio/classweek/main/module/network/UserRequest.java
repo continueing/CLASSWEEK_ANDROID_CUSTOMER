@@ -2,12 +2,9 @@ package com.blackpigstudio.classweek.main.module.network;
 
 import android.content.Context;
 
-import com.blackpigstudio.classweek.main.module.AppTerminator;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by continueing on 2014. 4. 11..
@@ -15,12 +12,18 @@ import org.json.JSONObject;
 public class UserRequest {
     private static String URL_BASE = "/user";
     private static String URL_LOGIN =  "/login";
-    private static String URL_SINGUP =  "/registration";
+    private static String URL_SIGN_UP =  "/registration";
+    private static String URL_UPDATE =  "/update";
     private Context context;
 
     public static String PARM_EMAIL = "email";
     public static String PARM_PASSWORD = "password";
     public static String PARM_PASSWORD_CONFIRM = "password_confirm";
+
+    public static String PARM_NAME = "name";
+    public static String PARM_BIRTH_DAY = "birthday";
+    public static String PARM_PHONE_NUMBER = "phone_number";
+    public static String PARM_GENDER = "gender";
 
 
     public UserRequest(Context aContext)
@@ -42,7 +45,17 @@ public class UserRequest {
         requestParams.put(PARM_EMAIL, anEmail);
         requestParams.put(PARM_PASSWORD, aPassword);
         requestParams.put(PARM_PASSWORD_CONFIRM,aPasswordConfirmation);
-        HttpRequester.post(URL_BASE +URL_SINGUP,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+        HttpRequester.post(URL_BASE + URL_SIGN_UP,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
+
+    public void update(String aName, String aBirthDay, String aPhone_number, String aGender, final HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put(PARM_NAME, aName);
+        requestParams.put(PARM_BIRTH_DAY, aBirthDay);
+        requestParams.put(PARM_PHONE_NUMBER,aPhone_number);
+        requestParams.put(PARM_GENDER,aGender);
+        HttpRequester.post(URL_BASE + URL_UPDATE,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
 }

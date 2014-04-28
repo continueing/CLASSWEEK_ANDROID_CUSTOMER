@@ -88,53 +88,81 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="34dp"
                 android:layout_marginTop="17dp"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="5dp">
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="월"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
                     android:id="@+id/cb_mon" />
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="화"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="16dp"
                     android:id="@+id/cb_tue" />
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="수"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="16dp"
                     android:id="@+id/cb_wen"
                     />
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="목"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="16dp"
                     android:id="@+id/cb_thu" />
 
-                <CheckBox
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginBottom="15dp">
+
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="금"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
                     android:id="@+id/cb_fri"/>
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="토"
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="16dp"
                     android:id="@+id/cb_sat" />
 
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일"
-                    android:id="@+id/cb_sun" />
+                    android:textSize="15sp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="16dp"
+                    android:id="@+id/cb_sun" />s
             </LinearLayout>
+
         </LinearLayout>
 
         <View
@@ -166,27 +194,35 @@
                     android:textSize="14sp"
                     android:textColor="#1f2129" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:orientation="horizontal"
                 android:layout_marginTop="17dp"
                 android:layout_marginBottom="15dp">
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="아침"
+                    android:layout_height="match_parent"
+                    android:text="오전(06시-12시)"
+                    android:textSize="13sp"
+                    android:textColor="#ffffffff"
                     android:id="@+id/cb_morning" />
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="점심"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:text="점심(12시-18시)"
+                    android:textSize="13sp"
+                    android:textColor="#ffffffff"
                     android:id="@+id/cb_daytime" />
-                <CheckBox
+                <com.blackpigstudio.classweek.main.module.button.CheckButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="저녁"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:text="저녁(18시-24시)"
+                    android:textSize="13sp"
+                    android:textColor="#ffffffff"
                     android:id="@+id/cb_evening" />
             </LinearLayout>
         </LinearLayout>
@@ -253,7 +289,6 @@
             android:background="#ffd8d9e3"/>
     </LinearLayout>
 
-    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -262,7 +297,8 @@
         android:layout_marginTop="50dp"
         android:padding="8dp"
         android:orientation="horizontal"
-        android:background="#ff37373d">
+        android:background="#ff37373d"
+        android:id="@+id/relativeLayout">
             <Button
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
