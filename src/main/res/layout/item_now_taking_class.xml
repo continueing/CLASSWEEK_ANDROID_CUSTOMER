@@ -2,83 +2,120 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="94dp">
 
     <com.loopj.android.image.SmartImageView
         android:id="@+id/siv_now_taking_class_front"
-        android:layout_width="100dp"
+        android:layout_width="109dp"
         android:layout_height="match_parent"
         android:background="#a2fbff" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:orientation="vertical"
-        android:background="#ffd257">
+        android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/tv_now_taking_class_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="13dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="18dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="#1f2129"
             android:text="[헤이브레드]에서 향긋한 아침을 맞" />
-
 
         <TextView
             android:id="@+id/tv_now_taking_class_time_prefix"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_width="30dp"
+            android:layout_height="13dp"
             android:text="시간"
+            android:textSize="11sp"
+            android:textColor="#8a8fa7"
+            android:gravity="center_vertical"
             android:layout_below="@+id/tv_now_taking_class_title"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"/>
+            android:layout_alignParentLeft="true"/>
+
         <TextView
             android:id="@+id/tv_now_taking_class_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="49dp"
+            android:layout_marginRight="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
             android:text="월 17:00-19:00, 수 17:00-19:00"
+            android:textSize="11sp"
+            android:textColor="#1f2129"
             android:layout_below="@+id/tv_now_taking_class_title"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"/>
-
+            android:layout_alignParentLeft="true"/>
 
         <TextView
             android:id="@+id/tv_now_taking_class_start_date_prefix"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginLeft="11dp"
+            android:layout_width="30dp"
+            android:layout_height="13dp"
             android:text="시작일"
+            android:textSize="11sp"
+            android:textColor="#8a8fa7"
+            android:gravity="center_vertical"
             android:layout_below="@+id/tv_now_taking_class_time_prefix"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"/>
+            android:layout_alignParentLeft="true"/>
+
         <TextView
             android:id="@+id/tv_now_taking_class_start_date"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginLeft="49dp"
+            android:layout_marginRight="13dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2014.04.08 화"
+            android:textSize="11sp"
+            android:textColor="#1f2129"
+            android:gravity="center_vertical"
             android:layout_below="@+id/tv_now_taking_class_time_prefix"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"/>
-
+            android:layout_alignParentLeft="true"/>
 
         <TextView
             android:id="@+id/tv_now_taking_class_end_date_prefix"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginLeft="11dp"
+            android:layout_width="30dp"
+            android:layout_height="13dp"
             android:text="종료일"
+            android:textSize="11sp"
+            android:textColor="#8a8fa7"
+            android:gravity="center_vertical"
             android:layout_below="@+id/tv_now_taking_class_start_date_prefix"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"/>
+            android:layout_alignParentLeft="true"/>
+
         <TextView
             android:id="@+id/tv_now_taking_class_end_date_"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginLeft="49dp"
+            android:layout_marginRight="13dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2014.05.09 화"
+            android:textSize="11sp"
+            android:textColor="#1f2129"
+            android:gravity="center_vertical"
             android:layout_below="@+id/tv_now_taking_class_start_date_prefix"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_alignParentLeft="true"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="#ef4d4e"
+            android:textSize="16sp"
+            android:text="신청 처리중.."/>
     </RelativeLayout>
 
 </LinearLayout>

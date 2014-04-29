@@ -20,6 +20,7 @@
             android:textColor="#8a8fa7"
             android:text="위치"/>
         <TextView
+            android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -38,17 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="21dp"
-        android:paddingRight="21dp"
         android:divider="#ffd8d9e3"
         android:gravity="center_horizontal">
         <RadioButton
             android:id="@+id/rb_filter_location_gangnam"
             android:layout_width="match_parent"
             android:layout_height="49.5dp"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
             android:textSize="15sp"
             android:button="@null"
             android:drawableRight="@drawable/btn_check_style"
+            android:background="@drawable/bg_dropdown_style"
             android:checked="true"
             android:gravity="center_vertical"
             android:text="@string/location_gangnam"/>
@@ -58,7 +60,10 @@
             android:layout_height="49.5dp"
             android:textSize="15sp"
             android:button="@null"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
             android:drawableRight="@drawable/btn_check_style"
+            android:background="@drawable/bg_dropdown_style"
             android:gravity="center_vertical"
             android:text="@string/location_gangbuk"/>
     </RadioGroup>

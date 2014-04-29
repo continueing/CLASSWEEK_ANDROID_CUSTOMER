@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment"
-    android:background="#b6ffc2">
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment">
 
     <ListView
         android:id="@+id/lv_now_taking_class"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#a6ff91">
+        android:divider="#ffd8d9e3"
+        android:dividerHeight="0.5dp">
     </ListView>
 
 </LinearLayout>

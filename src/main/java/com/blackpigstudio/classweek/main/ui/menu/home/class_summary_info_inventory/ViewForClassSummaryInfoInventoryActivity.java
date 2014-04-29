@@ -37,7 +37,7 @@ public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForAct
 
     @Override
     protected View inflate() {
-        return LayoutInflater.from(getContext()).inflate(R.layout.activity_class_summery_info_inventory, null);
+        return LayoutInflater.from(getContext()).inflate(R.layout.activity_class_summary_info_inventory, null);
     }
 
     @Override

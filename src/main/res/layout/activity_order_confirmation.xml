@@ -23,7 +23,7 @@
                 android:background="@drawable/bg_popup">
                 <com.loopj.android.image.SmartImageView
                     android:id="@+id/siv_order_confirmation_class_front"
-                    android:layout_width="94dp"
+                    android:layout_width="109dp"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"/>
                 <RelativeLayout
