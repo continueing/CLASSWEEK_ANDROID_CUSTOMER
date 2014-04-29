@@ -2,6 +2,7 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_c
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +49,14 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
     private EditText et_phone_number;
     private RadioGroup radioGroup;
 
+    private ScrollView sv_entire;
+    private ScrollView sv_agreement;
+    private ScrollView sv_personal_information_handling_policy;
+    private ScrollView sv_precautions_of_payment;
+
+
     private SubmitButton bt_payment;
+
 
 
     public ViewForOrderConfirmationActivity(Context context, IController anIController) {
@@ -80,6 +89,11 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
         cb_agreement = (CheckBox)findViewById(R.id.cb_agreement);
         cb_personal_information_handling_policy  = (CheckBox)findViewById(R.id.cb_personal_information_handling_policy);
         cb_precautions_of_payment  = (CheckBox)findViewById(R.id.cb_precautions_of_payment);
+
+        sv_entire = (ScrollView)findViewById(R.id.sv_order_confirmation_entire);
+        sv_agreement = (ScrollView)findViewById(R.id.sv_order_confirmation_agreement);
+        sv_personal_information_handling_policy = (ScrollView)findViewById(R.id.sv_order_confirmation_personal_information_handling_policy);
+        sv_precautions_of_payment = (ScrollView)findViewById(R.id.sv_order_confirmation_precautions_of_payment);
 
         bt_payment = (SubmitButton) findViewById(R.id.bt_order_confirmation_payment);
         bt_payment.init((ProgressBar)findViewById(R.id.pg_order_confirmation_payment));
@@ -161,6 +175,39 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
                     return;
                 }
                 iController.onPaymentRequested();
+            }
+        });
+
+        sv_entire.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                sv_agreement.getParent().requestDisallowInterceptTouchEvent(false);
+                sv_personal_information_handling_policy.getParent().requestDisallowInterceptTouchEvent(false);
+                sv_precautions_of_payment.getParent().requestDisallowInterceptTouchEvent(false);
+
+                return false;
+            }
+        });
+
+        sv_agreement.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        sv_precautions_of_payment.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        sv_personal_information_handling_policy.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
     }

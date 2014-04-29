@@ -1,7 +1,10 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.subcategory;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
@@ -20,6 +23,7 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
     private TextView tv_description;
     private SmartImageView siv_subcategory_front;
 
+    private RelativeLayout rl_dim;
 
     public ViewForSubcategoryListViewItem(Context context) {
         super(context);
@@ -35,10 +39,14 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
         tv_subcategory_title = (TextView) findViewById_(R.id.tv_subcategory_title);
         tv_description = (TextView) findViewById(R.id.tv_subcategory_description);
         siv_subcategory_front = (SmartImageView) findViewById_(R.id.siv_subcategory_front);
+        rl_dim = (RelativeLayout) findViewById(R.id.rl_subcategory_dim);
     }
+
 
     @Override
     protected void setEvents() {
+
+
 
     }
 

@@ -41,4 +41,10 @@
         android:layout_centerVertical="true"
         android:src="@drawable/arrow_img"/>
 
+    <RelativeLayout
+        android:id="@+id/rl_subcategory_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#77000000"
+        android:visibility="invisible"/>
 </RelativeLayout>

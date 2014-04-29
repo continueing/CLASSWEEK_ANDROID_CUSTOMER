@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener {
+public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener, LocationSettingDialog.ILocationReceiver {
 
 
     public static final String BUNDLE_PARM_OF_URL_LOCATION_KEY = "LOCATION_KEY";
@@ -23,7 +24,7 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
         super.onCreate(savedInstanceState);
         viewForFilterActivity = new ViewForFilterActivity(this,this,this);
         setContentView(viewForFilterActivity.getRoot());
-        locationSettingDialog = new LocationSettingDialog(this, viewForFilterActivity);
+        locationSettingDialog = new LocationSettingDialog(this, this);
     }
 
     @Override
@@ -70,5 +71,17 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
     @Override
     public void onPopupRequestDelivered() {
         locationSettingDialog.show();
+    }
+
+    @Override
+    public void setLocation(String aLocation) {
+        if(!"강남".equals(aLocation))
+        {
+            Toast.makeText(getApplicationContext(),"죄송합니다. 아직 " + aLocation + " 지역은 준비 단계에 있습니다.",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            viewForFilterActivity.setLocation(aLocation);
+        }
     }
 }

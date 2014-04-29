@@ -18,7 +18,7 @@ import com.blackpigstudio.classweek.main.module.button.CheckButton;
  * Created by continueing on 2014. 3. 28..
  */
 
-public class ViewForFilterActivity extends AbstractViewForActivity implements LocationSettingDialog.ILocationReceiver {
+public class ViewForFilterActivity extends AbstractViewForActivity {
     /*
         view members
      */
@@ -125,7 +125,6 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
             }
         });
 
-
         rl_location_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,8 +195,6 @@ public class ViewForFilterActivity extends AbstractViewForActivity implements Lo
     /*
         not categorized yet
      */
-
-    @Override
     public void setLocation(String aLocation) {
         tv_location.setText(aLocation);
     }

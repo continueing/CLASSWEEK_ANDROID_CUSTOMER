@@ -3,13 +3,16 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 
 import com.blackpigstudio.classweek.R;
@@ -20,15 +23,18 @@ import java.net.URISyntaxException;
 
 public class PaymentWebViewActivity extends ActionBarActivity {
 
+    private Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_web_view);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.setWebViewClient(new SampleWebView());
+        myWebView.setWebChromeClient(new ChromeClient());
+        myWebView.setWebViewClient(new MyWebViewClient());
         myWebView.getSettings().setJavaScriptEnabled(true);
-
+        myWebView.addJavascriptInterface(new AndroidBridge(),"myInterface");
         String postData =
                 "P_MID=ECAblac956&" +
                         "P_OID=20140417-0000184&" +
@@ -45,7 +51,6 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                         "paymethod=wcard&" +
                         "inipaymobile_type=web" ;
         String url = "https://mobile.inicis.com/smart/wcard/";
-//        myWebView.loadUrl("http://naver.com");
         myWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
 
     }
@@ -71,10 +76,9 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class SampleWebView extends WebViewClient {
+    private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
 
             /*
 	    	 * URL별로 분기가 필요합니다. 어플리케이션을 로딩하는것과
@@ -84,7 +88,6 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 	    	 */
             if( !url.startsWith("http://") && !url.startsWith("https://") && !url.startsWith("javascript:") )
             {
-                Log.e("if", url);
                 Intent intent;
 
                 try{
@@ -93,8 +96,6 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                 } catch (URISyntaxException ex) {
                     Log.e("<INICIS_TEST>", "URI syntax error : " + url + ":" + ex.getMessage());
                     return false;
-
-
                 }
 
                 Uri uri = Uri.parse(intent.getDataString());
@@ -146,4 +147,21 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         }
     }
 
+    private class ChromeClient extends WebChromeClient {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            PaymentWebViewActivity.this.setProgress(newProgress * 1000);
+        }
+    }
+
+    private class AndroidBridge {
+
+        public void callAndroid(final String arg) {
+            handler.post(new Runnable() {
+                public void run() {
+                    finish();
+                }
+            });
+        }
+    }
 }
