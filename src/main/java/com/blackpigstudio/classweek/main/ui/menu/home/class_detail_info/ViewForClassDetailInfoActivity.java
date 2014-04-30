@@ -111,8 +111,8 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     {
         vp_class_detail_images.setAdapter(new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl()));
         tv_title.setText(aClassSummaryInfo.getTitle());
-        tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원");
-        tv_one_month_price.setText(aClassSummaryInfo.getOneMonthPrice()+"원");
+        tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
+        tv_one_month_price.setText(aClassSummaryInfo.getOneMonthPrice()+"원 / " );
         if(aClassDetailInfo.isPersonal())
             tv_progress_type.setText("개인 레슨");
         else

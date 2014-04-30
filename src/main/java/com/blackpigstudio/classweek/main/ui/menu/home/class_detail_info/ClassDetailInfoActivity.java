@@ -58,9 +58,18 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
 
     @Override
     public void onInquiryChoose() {
-        Intent intent = new Intent(this, InquiryActivity.class);
-        intent.putExtra(InquiryActivity.BUNDLE_PARM_CLASS_ID, this.classId);
-        startActivity(intent);
+        UserPreference userPreference = new UserPreference(getApplicationContext());
+        if(userPreference.isLoggedIn())
+        {
+            Intent intent = new Intent(this, InquiryActivity.class);
+            intent.putExtra(InquiryActivity.BUNDLE_PARM_CLASS_ID, this.classId);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(this, SignInAndUpActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

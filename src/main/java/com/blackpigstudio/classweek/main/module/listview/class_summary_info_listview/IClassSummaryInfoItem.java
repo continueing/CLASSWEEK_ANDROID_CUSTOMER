@@ -16,4 +16,5 @@ public interface IClassSummaryInfoItem extends IListViewItem {
     public double getDiscountRatio();
     public String getFrontImageUrl();
     public int getScheduleId();
+
 }

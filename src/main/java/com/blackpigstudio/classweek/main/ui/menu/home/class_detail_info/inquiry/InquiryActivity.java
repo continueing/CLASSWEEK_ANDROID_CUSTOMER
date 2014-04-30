@@ -24,7 +24,6 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     private MenuItem mi_inquiry;
     private ViewForInquiryActivity view;
     private ClassRequest classRequest;
-    private UserPreference userPreference;
     private int classId;
 
     @Override
@@ -32,7 +31,6 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         getActionBar().setIcon(android.R.color.transparent);
-        userPreference = new UserPreference(getApplicationContext());
         classRequest = new ClassRequest(getApplicationContext());
 
         Intent receivedIntent = getIntent();
@@ -40,12 +38,6 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
 
         view = new ViewForInquiryActivity(getApplicationContext());
         setContentView(view.getRoot());
-
-        if(!this.userPreference.isLoggedIn())
-        {
-            Intent intent = new Intent(this, SignInAndUpActivity.class);
-            startActivity(intent);
-        }
     }
 
     @Override
@@ -58,13 +50,7 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_inquiry) {
-            if(this.userPreference.isLoggedIn()) {
-                requestInquiry();
-            }
-            else {
-                Intent intent = new Intent(this, SignInAndUpActivity.class);
-                startActivity(intent);
-            }
+            requestInquiry();
             return true;
         }
         return super.onOptionsItemSelected(item);

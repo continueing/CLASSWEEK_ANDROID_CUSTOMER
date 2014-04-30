@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
@@ -123,6 +124,8 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     @Override
     public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
         Intent intent = new Intent(getActivity(),ClassDetailInfoActivity.class);
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_CLASS_ID, iClassSummaryInfoItem.getClassId());
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());
         startActivity(intent);
     }
 
@@ -158,7 +161,10 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-        AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE)
+            AppTerminator.errorWithToast(this, "통신을 확인해 주세요" + errorCode, getActivity());
+        else
+            AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
     }
 
     private void setDataIfPossible()

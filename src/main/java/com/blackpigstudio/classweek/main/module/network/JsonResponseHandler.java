@@ -19,6 +19,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     private static final String RESULT_FAIL = "fail";
     private static final String PARM_ERROR_CODE = "error_code";
     public static final String PARM_DATA = "data";
+    public static final int ERROR_CODE_NETWORK_UNAVAILABLE = -1;
 
     public JsonResponseHandler(HttpRequester.NetworkResponseListener aNetworkResponseListener)
     {
@@ -41,6 +42,12 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
         //TODO: handle network not enable
-        AppTerminator.error(this, "status code :" + statusCode );
+        if(statusCode == 0)
+        {
+            this.networkResponseListener.onFail(new JSONObject(), ERROR_CODE_NETWORK_UNAVAILABLE);
+        }
+        else {
+            AppTerminator.error(this, "status code :" + statusCode);
+        }
     }
 }

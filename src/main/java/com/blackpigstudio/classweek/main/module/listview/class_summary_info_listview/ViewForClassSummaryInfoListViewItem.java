@@ -21,6 +21,7 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
     private TextView tv_company;
     private TextView tv_day_price;
     private TextView tv_month_price;
+    private TextView tv_discount_ratio;
 
     public ViewForClassSummaryInfoListViewItem(Context context) {
         super(context);
@@ -39,6 +40,8 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
         tv_company = (TextView) findViewById_(R.id.tv_class_summary_info_company);
         tv_day_price = (TextView) findViewById_(R.id.tv_class_summary_info_day_price);
         tv_month_price = (TextView) findViewById_(R.id.tv_class_summary_info_month_price);
+        tv_discount_ratio = (TextView) findViewById(R.id.tv_class_summary_info_discount_ratio);
+
     }
 
     @Override
@@ -53,8 +56,9 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
         tv_title.setText(iClassSummaryInfoItem.getTitle());
         tv_time.setText(iClassSummaryInfoItem.getTime());
         tv_company.setText(iClassSummaryInfoItem.getCompany() + "(" + iClassSummaryInfoItem.getShortLocation()+")");
-        tv_day_price.setText(iClassSummaryInfoItem.getOneDayPrice() +"원");
-        tv_month_price.setText(iClassSummaryInfoItem.getOneMonthPrice()+ "원");
+        tv_day_price.setText(iClassSummaryInfoItem.getOneDayPrice() +"원 / 1회" );
+        tv_month_price.setText(iClassSummaryInfoItem.getOneMonthPrice()+ "원 / 8회");
+        tv_discount_ratio.setText(iClassSummaryInfoItem.getDiscountRatio()+"%");
     }
 
     public IClassSummaryInfoItem getIClassSummaryInfoItem()

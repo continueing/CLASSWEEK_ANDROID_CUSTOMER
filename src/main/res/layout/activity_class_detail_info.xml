@@ -85,7 +85,7 @@
                                 android:orientation="vertical">
                                 <TextView
                                     android:layout_width="match_parent"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:text="[수업시작 시간]"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
@@ -93,7 +93,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_1"
                                     android:layout_width="match_parent"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#f25354"
@@ -101,7 +101,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#f25354"
@@ -109,7 +109,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_start_time_3"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#f25354"
@@ -117,7 +117,7 @@
 
                                 <TextView
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="17dp"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
@@ -126,7 +126,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_duration"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#f25354"
@@ -145,7 +145,7 @@
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="20dp"
+                                android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:layout_width="20dp"
@@ -153,7 +153,7 @@
                                     android:src="@drawable/ic_content_price"/>
                                 <TextView
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginLeft="6dp"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
@@ -164,7 +164,7 @@
                                 android:layout_width="match_parent"
                                 android:paddingLeft="26dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_height="36dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center_vertical|left"
                                 android:textSize="13sp"
                                 android:textColor="#f25354"
@@ -173,7 +173,7 @@
                                     android:id="@+id/tv_class_detail_one_day_price"
                                     android:gravity="center_vertical|left"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="19dp"
+                                    android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="#f25354"
                                     android:text="12,500원/CLASS"/>
@@ -181,7 +181,7 @@
                                     android:id="@+id/tv_class_detail_month_day_price"
                                     android:gravity="center_vertical|left"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="19dp"
+                                    android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="#f25354"
                                     android:text="125,000원/8CLASSES"/>
@@ -199,7 +199,7 @@
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="20dp"
+                                android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:layout_width="20dp"
@@ -223,7 +223,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_progress_type"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
@@ -258,6 +258,7 @@
                                     android:text="위치(아래 주소를 눌러주세요)"/>
                             </LinearLayout>
                             <LinearLayout
+                                android:layout_marginTop="8dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="26dp"
@@ -287,7 +288,7 @@
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="20dp"
+                                android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:layout_width="20dp"
@@ -311,7 +312,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_description"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
@@ -356,7 +357,7 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_prerequisite"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
@@ -403,7 +404,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_toilet"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="화장실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -413,7 +414,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_fitting_room"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="탈의실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -423,7 +424,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_shower_stall"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="샤워실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -433,7 +434,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_locker"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="사물함"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -443,7 +444,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_parking_lot"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="주차장"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -453,7 +454,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_practice_room"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="연습실"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -463,7 +464,7 @@
                                     <TextView
                                         android:id="@+id/tv_class_detail_facility_instrument_rental"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_height="wrap_content"
                                         android:text="악기대여"
                                         android:textSize="13sp"
                                         android:textColor="#8a8fa7"
@@ -486,7 +487,7 @@
                             android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="20dp"
+                                android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:layout_width="20dp"
