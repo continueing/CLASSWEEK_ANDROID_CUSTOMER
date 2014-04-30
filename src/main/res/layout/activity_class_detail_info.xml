@@ -1,14 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity"
-    android:weightSum="1">
+    tools:context="com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity">
 
     <LinearLayout
+        android:layout_above="@+id/ll_class_detail_info_bottom"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="0.89"
         android:background="#ffffffff">
@@ -525,9 +525,11 @@
         </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_class_detail_info_bottom"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="56dp"
         android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:padding="8dp"
         android:layout_weight="0.11"
         android:background="#ff37373d">
@@ -546,4 +548,4 @@
             android:text="예약하기" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

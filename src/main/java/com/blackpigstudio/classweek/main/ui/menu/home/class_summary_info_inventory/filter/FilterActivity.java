@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener, LocationSettingDialog.ILocationReceiver {
 
 
@@ -22,6 +24,7 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setIcon(android.R.color.transparent);
         viewForFilterActivity = new ViewForFilterActivity(this,this,this);
         setContentView(viewForFilterActivity.getRoot());
         locationSettingDialog = new LocationSettingDialog(this, this);
@@ -83,5 +86,18 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
         {
             viewForFilterActivity.setLocation(aLocation);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

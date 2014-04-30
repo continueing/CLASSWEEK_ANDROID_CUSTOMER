@@ -30,6 +30,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setIcon(android.R.color.transparent);
         Intent intent = getIntent();
         classInfo = (ClassInfo)intent.getSerializableExtra(BUNDLE_PARM_CLASS_INFO);
         schedule = (Schedule)intent.getSerializableExtra(BUNDLE_PARM_SELECTED_SCHEDULES);
@@ -72,6 +73,13 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
 }

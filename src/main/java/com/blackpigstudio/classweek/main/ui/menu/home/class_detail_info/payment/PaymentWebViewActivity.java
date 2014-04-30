@@ -29,6 +29,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setIcon(android.R.color.transparent);
         setContentView(R.layout.activity_payment_web_view);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -138,10 +139,6 @@ public class PaymentWebViewActivity extends ActionBarActivity {
             return true;
         }
 
-
-
-
-
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             Log.e("onReceivedError",  "error code : "+errorCode+ "\n description: " + description + "\n failingUrl: "+ failingUrl );
 
@@ -169,6 +166,13 @@ public class PaymentWebViewActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
 }

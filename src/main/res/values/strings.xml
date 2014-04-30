@@ -2,9 +2,9 @@
 <resources>
 
     <string name="app_name">CLASSWEEK</string>
-    <string name="title_section1">홈</string>
-    <string name="title_section2">배우는 중</string>
-    <string name="title_section3">지난</string>
+    <string name="title_section1">홈                            </string>
+    <string name="title_section2">신청한 클래스                    </string>
+    <string name="title_section3">종료된 클래스                    </string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_class_filter">filter</string>

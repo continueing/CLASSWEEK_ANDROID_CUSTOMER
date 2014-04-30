@@ -7,6 +7,6 @@
 
     <item android:id="@+id/action_inquiry"
         android:title="@string/action_inquiry_submit"
-        android:icon="@drawable/abc_ic_go"
+        android:icon="@drawable/abc_ic_cab_done_holo_dark"
         app:showAsAction="always" />
 </menu>

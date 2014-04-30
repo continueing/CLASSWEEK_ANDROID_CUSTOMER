@@ -35,6 +35,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         super.onCreate(savedInstanceState);
         this.userRequest = new UserRequest(getApplicationContext());
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        getActionBar().setIcon(android.R.color.transparent);
         view = new ViewForSignInAndUpActivity(getApplicationContext());
         setContentView(view.getRoot());
     }
@@ -166,6 +167,13 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
 }

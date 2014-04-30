@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
@@ -51,6 +52,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         view = new ViewForClassRecommendationFragment( getActivity(), inflater,container, this);
         View result = view.getRoot();
         requestRecommendedClassSummaryInfoFromServer();
+        getActivity().getActionBar().setTitle(R.string.title_section1);
         return result;
     }
 

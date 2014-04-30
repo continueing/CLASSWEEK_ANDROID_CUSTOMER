@@ -54,7 +54,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-
+        getActionBar().setIcon(android.R.color.transparent);
         view = new ViewForClassSummaryInfoInventoryActivity(this,this, this);
         setContentView(view.getRoot());
         Intent intent = getIntent();
@@ -181,6 +181,13 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
 }

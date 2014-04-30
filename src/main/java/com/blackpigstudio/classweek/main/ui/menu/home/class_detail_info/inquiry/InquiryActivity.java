@@ -31,6 +31,7 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        getActionBar().setIcon(android.R.color.transparent);
         userPreference = new UserPreference(getApplicationContext());
         classRequest = new ClassRequest(getApplicationContext());
 
@@ -107,6 +108,13 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
 }
