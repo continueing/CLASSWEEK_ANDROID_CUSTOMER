@@ -255,7 +255,7 @@
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#1f2129"
-                                    android:text="위치"/>
+                                    android:text="위치(아래 주소를 눌러주세요)"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -265,10 +265,12 @@
                                 <TextView
                                     android:id="@+id/tv_class_detail_location"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="15dp"
+                                    android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
+                                    android:padding="3dp"
+                                    android:background="@drawable/btn_01_style"
                                     android:text="역삼동(역삼역 2번출구에서 30m직진)"
                                     android:textStyle="bold|italic"/>
                             </LinearLayout>

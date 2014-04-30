@@ -18,7 +18,6 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
-import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +33,8 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     public static final int SPINNER_ITEM_INDEX = 0;
     private static ClassRecommendationFragment instance;
     private ViewForClassRecommendationFragment view;
+    ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems = null;
+    ArrayList<String> imageUrls = null;
 
     public ClassRecommendationFragment() {
         setSpinnerItemIndex(SPINNER_ITEM_INDEX);
@@ -52,6 +53,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         view = new ViewForClassRecommendationFragment( getActivity(), inflater,container, this);
         View result = view.getRoot();
         requestRecommendedClassSummaryInfoFromServer();
+        requestRecommendedSubcategoryFromServer();
         getActivity().getActionBar().setTitle(R.string.title_section1);
         return result;
     }
@@ -64,6 +66,59 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
             e.printStackTrace();
         }
     }
+
+    private void requestRecommendedSubcategoryFromServer() {
+        ClassRequest classRequest = new ClassRequest(getActivity());
+        try {
+            classRequest.getRecommendedSubcategories(getRecommendedSubcategories);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    HttpRequester.NetworkResponseListener getRecommendedSubcategories = new HttpRequester.NetworkResponseListener() {
+        @Override
+        public void onSuccess(JSONObject jsonObject) {
+
+            JSONArray jsonArray = null;
+
+            try {
+                jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
+            } catch (JSONException e) {
+                AppTerminator.error(this, "JSONObject.getJSONArray(): " + e.toString());
+            }
+
+            imageUrls = new ArrayList<String>();
+
+            for(int i = 0 ; i < jsonArray.length() ; i++)
+            {
+                JSONObject jsonSubcategoryObject = null;
+                try {
+                    jsonSubcategoryObject = jsonArray.getJSONObject(i);
+                } catch (JSONException e) {
+                    AppTerminator.error(this, "jsonArray.getJSONObject: " + e.toString());
+                }
+
+                try {
+                    imageUrls.add(jsonSubcategoryObject.getString("image_url"));
+                } catch (JSONException e) {
+                    AppTerminator.error(this, "jsonSubcategoryObject.getString(\"image_url\"): " + e.toString());
+                }
+            }
+            setDataIfPossible();
+        }
+
+        @Override
+        public void onFail(JSONObject jsonObject, int errorCode) {
+
+        }
+    };
+
+
+
 
     @Override
     public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
@@ -81,7 +136,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
             AppTerminator.error(this, "JSONObject.getJSONArray(): " + e.toString());
         }
 
-        ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
+        iClassSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
 
         for(int i = 0 ; i < jsonArray.length() ; i++)
         {
@@ -98,7 +153,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
                 AppTerminator.error(this, "ClassSummaryInfo.new: " + e.toString());
             }
         }
-        view.setData(iClassSummaryInfoItems);
+        setDataIfPossible();
     }
 
     @Override
@@ -106,9 +161,11 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
+    private void setDataIfPossible()
+    {
+        if(imageUrls != null && iClassSummaryInfoItems != null)
+            view.setData(iClassSummaryInfoItems, imageUrls);
     }
+
+
 }

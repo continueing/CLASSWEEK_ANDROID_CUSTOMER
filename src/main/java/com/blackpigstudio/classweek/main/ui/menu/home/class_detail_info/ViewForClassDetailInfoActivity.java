@@ -1,6 +1,8 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +24,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private ViewPager vp_class_detail_images;
     private Button bt_inquiry;
     private Button bt_booking;
-    private OnInquiryChooseListener onInquiryChooseListener;
-    private OnBookingChooseListener onBookingChooseListener;
+    private IController iController;
     private TextView tv_title;
     private TextView tv_start_time_1;
     private TextView tv_start_time_2;
@@ -45,10 +46,9 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_instrument_rental;
 
 
-    public ViewForClassDetailInfoActivity(Context context, OnInquiryChooseListener anOnInquiryChooseListener, OnBookingChooseListener anOnBookingChooseListener) {
+    public ViewForClassDetailInfoActivity(Context context, IController anIController) {
         super(context);
-        this.onInquiryChooseListener = anOnInquiryChooseListener;
-        this.onBookingChooseListener = anOnBookingChooseListener;
+        this.iController = anIController;
     }
 
     @Override
@@ -88,18 +88,23 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         bt_inquiry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onInquiryChooseListener.onInquiryChoose();
+                iController.onInquiryChoose();
             }
         });
 
         bt_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBookingChooseListener.onBookingChoose();
+                iController.onBookingChoose();
             }
         });
 
-
+        tv_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iController.onLocationSearchRequested(tv_location.getText().toString());
+            }
+        });
     }
 
     public void setData(ClassDetailInfo aClassDetailInfo, ClassSummaryInfo aClassSummaryInfo, FacilityInfo aFacilityInfo)
@@ -163,14 +168,10 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     }
 
 
-    public static interface OnInquiryChooseListener
+    public static interface IController
     {
         public void onInquiryChoose();
-    }
-
-    public static interface OnBookingChooseListener
-    {
         public void onBookingChoose();
+        public void onLocationSearchRequested(String aLocation);
     }
-
 }

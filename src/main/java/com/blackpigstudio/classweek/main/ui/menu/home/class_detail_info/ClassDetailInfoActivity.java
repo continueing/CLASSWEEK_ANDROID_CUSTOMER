@@ -2,10 +2,10 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
-import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
@@ -22,9 +22,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.OnInquiryChooseListener, ViewForClassDetailInfoActivity.OnBookingChooseListener, HttpRequester.NetworkResponseListener {
+public class ClassDetailInfoActivity extends ActionBarActivity implements ViewForClassDetailInfoActivity.IController, HttpRequester.NetworkResponseListener {
     public static final int REQUEST_CODE_SELECT_SCHEDULE = 0;
     public static final int REQUEST_CODE_ORDER_CONFIRM = 1;
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
@@ -39,10 +37,11 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setIcon(android.R.color.transparent);
         Intent intent = getIntent();
         classId = intent.getIntExtra(BUNDLE_PARM_CLASS_ID, -1);
         scheduleId = intent.getIntExtra(BUNDLE_PARM_SCHEDULE_ID, -1);
-        view = new ViewForClassDetailInfoActivity(getApplicationContext(), this, this);
+        view = new ViewForClassDetailInfoActivity(getApplicationContext(), this);
         requestClassDetailInfoFromServer();
         setContentView(view.getRoot());
     }
@@ -77,6 +76,14 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
             Intent intent = new Intent(this, SignInAndUpActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onLocationSearchRequested(String aLocation) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("geo:0,0?q=" + aLocation));
+        startActivity(intent);
     }
 
     @Override

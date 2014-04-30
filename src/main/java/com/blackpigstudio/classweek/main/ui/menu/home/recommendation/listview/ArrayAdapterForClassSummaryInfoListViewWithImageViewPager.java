@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 
+import java.util.ArrayList;
+
 /**
  * Created by continueing on 2014. 4. 1..
  */
@@ -35,5 +37,10 @@ public class ArrayAdapterForClassSummaryInfoListViewWithImageViewPager extends A
             else
                 return super.getView(position -1, convertView, parent);
         }
+    }
+
+    public void setData(ArrayList<String> anUrls)
+    {
+        viewForViewPagerInListView.setData(anUrls);
     }
 }

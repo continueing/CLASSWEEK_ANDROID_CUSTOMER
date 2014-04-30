@@ -13,7 +13,9 @@ import org.json.JSONException;
 public class ClassRequest {
     private static final String URL_BASE = "/classes";
     private static final String URL_INQUIRE = "/inquire";
-    private static final String URL_RECOMMEND_CLASSES = "/recommend/classes";
+    private static final String URL_RECOMMEND = "/recommend";
+    private static final String URL_CLASSES = "/classes";
+    private static final String URL_SUBCATEGORY = "/subcategory";
 
     private static final String PARM_KEY_CONTENTS_INQUIRE = "content";
     private static final String PARM_KEY_WEEKDAY = "weekday";
@@ -35,6 +37,11 @@ public class ClassRequest {
         RequestParams requestParams = new RequestParams();
         HttpRequester.post(URL_BASE +"/"+aCategory,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
+    public void getRecommendedSubcategories( HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        HttpRequester.post(URL_BASE + URL_RECOMMEND + URL_SUBCATEGORY ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
 
     public void getClassSummaryInfos(String aCategory, String aSubcategory, String aWeekDay, String aLocation, String aTime, String aPrice, int aPage, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
@@ -54,7 +61,7 @@ public class ClassRequest {
     public void getRecommendedClassSummaryInfos(HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
         RequestParams requestParams = new RequestParams();
-        HttpRequester.post(URL_BASE + URL_RECOMMEND_CLASSES ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+        HttpRequester.post(URL_BASE + URL_RECOMMEND + URL_CLASSES ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
     public void getClassDetail(int aClassId, int aScheduleId, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException

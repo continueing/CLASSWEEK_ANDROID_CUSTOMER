@@ -48,9 +48,10 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
         lv_class_summary_info.setAdapter(arrayAdapterForClassSummaryInfoListViewWithImageViewPager);
     }
 
-    public void setData(ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems)
+    public void setData(ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems, ArrayList<String> anUrls)
     {
         this.arrayAdapterForClassSummaryInfoListViewWithImageViewPager.addAll(iClassSummaryInfoItems);
+        this.arrayAdapterForClassSummaryInfoListViewWithImageViewPager.setData(anUrls);
         setProgressbarVisibility(false);
     }
 
