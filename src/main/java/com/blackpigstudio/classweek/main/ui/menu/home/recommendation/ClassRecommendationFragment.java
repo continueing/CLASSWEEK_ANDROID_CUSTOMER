@@ -17,6 +17,7 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,5 +102,11 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
     }
 }

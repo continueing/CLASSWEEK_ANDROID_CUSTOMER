@@ -13,6 +13,7 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -101,5 +102,11 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         releaseUIAfterRequest();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

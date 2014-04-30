@@ -22,6 +22,7 @@ import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -175,5 +176,11 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         if(!isRequestingHttpNow && !isFinalPage ) {
             requestClassSummaryInfoFromServer();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

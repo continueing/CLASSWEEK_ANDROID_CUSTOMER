@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.blackpigstudio.classweek.R;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.apache.http.util.EncodingUtils;
 
@@ -163,5 +164,11 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import java.util.ArrayList;
 
@@ -75,5 +76,11 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
         selectedSchedule = aSchedule;
         view.setScheduleTextView(aSchedule.getStartDateTime());
         view.enablePayment();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

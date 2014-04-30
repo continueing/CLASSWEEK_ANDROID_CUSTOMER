@@ -14,6 +14,7 @@ import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -160,5 +161,11 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         setSupportProgressBarIndeterminateVisibility(false);
         mi_submitSignInAndUp.setVisible(true);
         view.releaseAllEditTexts();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

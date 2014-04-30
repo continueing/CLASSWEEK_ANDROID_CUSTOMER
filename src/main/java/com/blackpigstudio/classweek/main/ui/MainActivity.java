@@ -13,6 +13,7 @@ import com.blackpigstudio.classweek.main.ui.navigation_drawer_menu.NavigationDra
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment;
 import com.blackpigstudio.classweek.main.ui.menu.took_before.TookBeforeClassFragment;
+import com.google.analytics.tracking.android.EasyTracker;
 
 
 public class MainActivity extends ActionBarActivity
@@ -70,4 +71,9 @@ public class MainActivity extends ActionBarActivity
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
 }

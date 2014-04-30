@@ -15,6 +15,7 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,5 +67,11 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }
