@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class ClassDetailInfo implements Serializable {
     public static final String JSON_KEY_DETAIL_IMAGE_URLS = "detail_image_url";
-    public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "count_of_month";
     public static final String JSON_KEY_ADDRESS = "address";
     public static final String JSON_KEY_DESCRIPTION = "description";
     public static final String JSON_KEY_PREREQUISITE = "preparation";
@@ -20,11 +19,8 @@ public class ClassDetailInfo implements Serializable {
     public static final String JSON_KEY_PROGRESS_TYPE= "person_or_group";
     public static final String PROGRESS_TYPE_VALUE_PERSONAL= "personal";
 
-
-
     private int classId;
     private ArrayList<String> imageUrls;
-    private int numberOfClassPerMonth;
     private String address;
     private String descriptions;
     private String prerequisite;
@@ -40,7 +36,6 @@ public class ClassDetailInfo implements Serializable {
         {
             imageUrls.add(jsonDetailImageArray.getString(i));
         }
-        this.numberOfClassPerMonth = aJsonObject.getInt(JSON_KEY_NUMBER_OF_CLASS_PER_MONTH);
         this.address = aJsonObject.getString(JSON_KEY_ADDRESS);
         this.descriptions = aJsonObject.getString(JSON_KEY_DESCRIPTION);
         this.prerequisite= aJsonObject.getString(JSON_KEY_PREREQUISITE);
@@ -63,11 +58,6 @@ public class ClassDetailInfo implements Serializable {
     public String getDetailImageUrlAt(int anIndex)
     {
         return this.imageUrls.get(anIndex);
-    }
-
-    public int getNumberOfClassPerMonth()
-    {
-        return this.numberOfClassPerMonth;
     }
 
     public String getAddress() {

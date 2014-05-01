@@ -13,8 +13,8 @@ public interface IClassSummaryInfoItem extends IListViewItem {
     public String getShortLocation();
     public String getOneDayPrice();
     public String getOneMonthPrice();
-    public double getDiscountRatio();
+    public int getDiscountRatio();
     public String getFrontImageUrl();
     public int getScheduleId();
-
+    public int getNumberOfClassPerMonth();
 }

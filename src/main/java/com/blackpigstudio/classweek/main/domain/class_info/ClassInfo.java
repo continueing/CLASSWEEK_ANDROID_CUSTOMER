@@ -72,7 +72,7 @@ public class ClassInfo implements Serializable {
 
     public int getNumberOfClassPerMonth()
     {
-        return classDetailInfo.getNumberOfClassPerMonth();
+        return classSummaryInfo.getNumberOfClassPerMonth();
     }
 
     public ArrayList<Schedule> getSchedules()
@@ -104,11 +104,5 @@ public class ClassInfo implements Serializable {
     {
         return this.classSummaryInfo.getDuration();
     }
-
-
-
-
-
-
 
 }

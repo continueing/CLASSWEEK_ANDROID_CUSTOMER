@@ -57,7 +57,7 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
         tv_time.setText(iClassSummaryInfoItem.getTime());
         tv_company.setText(iClassSummaryInfoItem.getCompany() + "(" + iClassSummaryInfoItem.getShortLocation()+")");
         tv_day_price.setText(iClassSummaryInfoItem.getOneDayPrice() +"원 / 1회" );
-        tv_month_price.setText(iClassSummaryInfoItem.getOneMonthPrice()+ "원 / 8회");
+        tv_month_price.setText(iClassSummaryInfoItem.getOneMonthPrice()+ "원 / " + iClassSummaryInfoItem.getNumberOfClassPerMonth() + "회");
         tv_discount_ratio.setText(iClassSummaryInfoItem.getDiscountRatio()+"%");
     }
 

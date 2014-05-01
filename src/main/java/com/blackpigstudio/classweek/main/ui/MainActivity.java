@@ -26,6 +26,7 @@ public class MainActivity extends ActionBarActivity
     private int currentMenuIndex=-1;
     private boolean isReadyToFinish = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -23,7 +23,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     public static final String JSON_KEY_ONE_DAY_PRICE = "price_of_day";
     public static final String JSON_KEY_ONE_MONTH_PRICE = "price_of_month";
     public static final String JSON_KEY_DISCOUNT_RATIO = "discount_rate";
-
+    public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "count_of_month";
 
 
     private int scheduleId;
@@ -37,6 +37,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     private String shortLocation;
     private int discountRatio = 20;
     private int classId;
+    private int numberOfClassPerMonth;
 
 
     public ClassSummaryInfo(int aPrice)
@@ -62,6 +63,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         this.one_month_price = aJsonObject.getInt(JSON_KEY_ONE_MONTH_PRICE);
         this.discountRatio = aJsonObject.getInt(JSON_KEY_DISCOUNT_RATIO);
         this.front_image_url = aJsonObject.getString(JSON_KEY_FRONT_IMAGE_URL);
+        this.numberOfClassPerMonth = aJsonObject.getInt(JSON_KEY_NUMBER_OF_CLASS_PER_MONTH);
     }
 
     @Override
@@ -108,7 +110,7 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     }
 
     @Override
-    public double getDiscountRatio() {
+    public int getDiscountRatio() {
         return this.discountRatio;
     }
 
@@ -120,6 +122,11 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     @Override
     public int getScheduleId() {
         return this.scheduleId;
+    }
+
+    @Override
+    public int getNumberOfClassPerMonth() {
+        return this.numberOfClassPerMonth;
     }
 
     public String getDuration()
