@@ -22,6 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="18dp"
             android:gravity="center_vertical"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="15sp"
             android:textColor="#1f2129"
             android:text="[헤이브레드]에서 향긋한 아침을 맞" />

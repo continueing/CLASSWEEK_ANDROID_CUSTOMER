@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -89,6 +91,13 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         releaseUIAfterRequest();
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            Toast.makeText(this, "인터넷 연결을 확인해 주세요", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            AppTerminator.error(this, "classRequest.inquire fail : " + errorCode);
+        }
     }
 
     @Override

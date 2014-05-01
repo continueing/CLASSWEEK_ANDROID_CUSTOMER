@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
@@ -13,6 +14,7 @@ import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -67,7 +69,13 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            Toast.makeText(this, "인터넷 연결을 확인해 주세요", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            AppTerminator.error(this, "userRequest.update fail : " + errorCode);
+        }
     }
 
     @Override

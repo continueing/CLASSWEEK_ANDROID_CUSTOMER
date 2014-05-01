@@ -1,5 +1,6 @@
 package com.blackpigstudio.classweek.main.module;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -16,10 +17,9 @@ public class AppTerminator {
         System.exit(-1);
     }
 
-    public static void errorWithToast(Object anObject, String aMessage, Context anContext)
+    public static void finishActivityWithToast(String aMessage, Activity anActivity)
     {
-        Toast.makeText(anContext,aMessage,Toast.LENGTH_LONG).show();
-        Log.e(anObject.getClass().getCanonicalName(), aMessage);
-        System.exit(-1);
+        Toast.makeText(anActivity,aMessage,Toast.LENGTH_LONG).show();
+        anActivity.finish();
     }
 }

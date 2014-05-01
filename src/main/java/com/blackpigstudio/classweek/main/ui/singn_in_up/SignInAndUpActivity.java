@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -146,6 +147,14 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         @Override
         public void onFail(JSONObject jsonObject, int errorCode) {
             restoreUIAfterRequest();
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                Toast.makeText(SignInAndUpActivity.this,"인터넷 연결을 확인해 주세요",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                AppTerminator.error(this, "userRequest.signup fail : " + errorCode);
+            }
+
         }
     };
 

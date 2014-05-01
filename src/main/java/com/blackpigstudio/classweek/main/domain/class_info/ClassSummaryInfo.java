@@ -78,9 +78,10 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
 
     @Override
     public String getTime() {
-        String result = "";
-        for(String aTime : times)
-            result += aTime + " ";
+        String result = times.get(0);
+        for(int i = 1; i < times.size(); i++ ) {
+            result += ", " + times.get(i);
+        }
         return result;
     }
 

@@ -4,6 +4,7 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.blackpigstudio.classweek.main.module.listview.class_summary_info_list
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
+import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 
 import org.json.JSONArray;
@@ -114,7 +116,11 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
 
         @Override
         public void onFail(JSONObject jsonObject, int errorCode) {
-
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요",getActivity());
+            }
+            else
+                AppTerminator.error(this, "classRequest.getRecommendedSubcategories fail : " + errorCode);
         }
     };
 
@@ -161,8 +167,9 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE)
-            AppTerminator.errorWithToast(this, "통신을 확인해 주세요" + errorCode, getActivity());
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요",getActivity());
+        }
         else
             AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
     }

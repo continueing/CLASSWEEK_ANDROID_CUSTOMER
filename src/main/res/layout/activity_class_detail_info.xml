@@ -515,10 +515,10 @@
                                     android:textSize="13sp"
                                     android:textColor="#8a8fa7"
                                     android:singleLine="false"
-                                    android:inputType="textMultiLine"
+                                    android:inputType="textMultiLine|textImeMultiLine"
                                     android:maxLines="30"
                                     android:lines="2"
-                                    android:text="7일 환불 가능상품(구매 시점으로부터 7일) 유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
+                                    android:text="7일 환불 가능상품(구매 시점으로부터 7일)\n 유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

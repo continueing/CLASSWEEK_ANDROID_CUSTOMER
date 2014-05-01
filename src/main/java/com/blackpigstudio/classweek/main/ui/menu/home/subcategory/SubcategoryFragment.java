@@ -103,6 +103,10 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-        AppTerminator.error(this, "classRequest.getSubcategories fail : " + errorCode);
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요", getActivity());
+        }
+        else
+            AppTerminator.error(this, "classRequest.getSubcategories fail : " + errorCode);
     }
 }

@@ -168,7 +168,11 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
-        AppTerminator.error(this, "classRequest.getClassSummaryInfos fail : " + errorCode);
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요", this);
+        }
+        else
+            AppTerminator.error(this, "classRequest.getClassSummaryInfos fail : " + errorCode);
     }
 
     @Override

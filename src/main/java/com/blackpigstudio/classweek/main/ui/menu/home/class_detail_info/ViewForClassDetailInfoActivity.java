@@ -138,7 +138,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
 
         tv_refund_info.setText(aClassDetailInfo.getRefundInfo());
 
-
         ArrayList<String> times = new ArrayList<String>();
         times.addAll(aClassSummaryInfo.getTimes());
         setTimeTextVies(times);
