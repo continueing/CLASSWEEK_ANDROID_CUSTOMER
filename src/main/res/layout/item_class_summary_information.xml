@@ -84,14 +84,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_class_summary_info_month_price"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="150000원"
-                android:textSize="14sp"
-                android:textColor="#f25354"/>
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_class_summary_info_month_discount_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="150000원"
+                    android:textSize="14sp"
+                    android:textColor="#f25354"/>
+                <TextView
+                    android:id="@+id/tv_class_summary_info_month_original_price"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="(150000)"
+                    android:textSize="12sp"
+                    android:textColor="#8a8fa7"/>
+                <TextView
+                    android:id="@+id/tv_class_summary_info_count_of_class_per_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text=" / 4회"
+                    android:textSize="14sp"
+                    android:textColor="#f25354"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"

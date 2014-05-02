@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -105,17 +106,17 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
 
     @Override
     public String getOneDayPrice() {
-        return String.valueOf(this.one_day_price);
+        return NumberFormat.getInstance().format(this.one_day_price);
     }
 
     @Override
     public String getOneMonthDiscountPrice() {
-        return String.valueOf(this.one_month_discount_price);
+        return NumberFormat.getInstance().format(this.one_month_discount_price);
     }
 
     @Override
     public String getOneMonthOriginalPrice() {
-        return String.valueOf(this.one_month_original_price);
+        return NumberFormat.getInstance().format(this.one_month_original_price);
     }
 
     @Override
