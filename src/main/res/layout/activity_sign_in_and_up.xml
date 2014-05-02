@@ -26,6 +26,7 @@
             android:gravity="center_vertical"
             android:hint="이메일"
             android:lines="1"
+            android:textCursorDrawable="@null"
             android:background="@null"
             android:textColorHint="#8a8fa7"
             android:textColor="#000000" />
@@ -58,6 +59,7 @@
             android:hint="비밀번호"
             android:lines="1"
             android:background="@null"
+            android:textCursorDrawable="@null"
             android:textColorHint="#8a8fa7"
             android:textColor="#000000" />
     </LinearLayout>
@@ -85,6 +87,7 @@
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:id="@+id/et_password_confirmation"
+            android:textCursorDrawable="@null"
             android:gravity="center_vertical"
             android:hint="비밀번호 확인"
             android:lines="1"

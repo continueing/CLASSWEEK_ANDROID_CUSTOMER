@@ -45,5 +45,5 @@
         android:id="@+id/rl_subcategory_dim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/btn_01_style"/>
+        android:background="@drawable/bg_subcategory_style"/>
 </RelativeLayout>

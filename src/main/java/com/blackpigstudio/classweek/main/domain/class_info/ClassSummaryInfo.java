@@ -21,7 +21,8 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     public static final String JSON_KEY_TIMES = "times";
     public static final String JSON_KEY_SHORT_LOCATION = "nearby_station";
     public static final String JSON_KEY_ONE_DAY_PRICE = "price_of_day";
-    public static final String JSON_KEY_ONE_MONTH_PRICE = "price_of_month";
+    public static final String JSON_KEY_ONE_MONTH_DISCOUNT_PRICE = "discount_price_of_month";
+    public static final String JSON_KEY_ONE_MONTH_ORIGINAL_PRICE = "original_price_of_month";
     public static final String JSON_KEY_DISCOUNT_RATIO = "discount_rate";
     public static final String JSON_KEY_NUMBER_OF_CLASS_PER_MONTH = "count_of_month";
 
@@ -33,7 +34,8 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     private String company;
     private ArrayList<String> times;
     private int one_day_price;
-    private int one_month_price;
+    private int one_month_discount_price;
+    private int one_month_original_price;
     private String shortLocation;
     private int discountRatio = 20;
     private int classId;
@@ -60,7 +62,8 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
         this.company = aJsonObject.getString(JSON_KEY_COMPANY);
         this.shortLocation = aJsonObject.getString(JSON_KEY_SHORT_LOCATION);
         this.one_day_price = aJsonObject.getInt(JSON_KEY_ONE_DAY_PRICE);
-        this.one_month_price = aJsonObject.getInt(JSON_KEY_ONE_MONTH_PRICE);
+        this.one_month_discount_price = aJsonObject.getInt(JSON_KEY_ONE_MONTH_DISCOUNT_PRICE);
+        this.one_month_original_price = aJsonObject.getInt(JSON_KEY_ONE_MONTH_ORIGINAL_PRICE);
         this.discountRatio = aJsonObject.getInt(JSON_KEY_DISCOUNT_RATIO);
         this.front_image_url = aJsonObject.getString(JSON_KEY_FRONT_IMAGE_URL);
         this.numberOfClassPerMonth = aJsonObject.getInt(JSON_KEY_NUMBER_OF_CLASS_PER_MONTH);
@@ -106,8 +109,13 @@ public class ClassSummaryInfo  implements IClassSummaryInfoItem, Serializable{
     }
 
     @Override
-    public String getOneMonthPrice() {
-        return String.valueOf(this.one_month_price);
+    public String getOneMonthDiscountPrice() {
+        return String.valueOf(this.one_month_discount_price);
+    }
+
+    @Override
+    public String getOneMonthOriginalPrice() {
+        return String.valueOf(this.one_month_original_price);
     }
 
     @Override

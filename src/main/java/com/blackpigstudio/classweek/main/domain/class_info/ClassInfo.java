@@ -62,7 +62,7 @@ public class ClassInfo implements Serializable {
 
     public String getOneMonthPrice()
     {
-        return classSummaryInfo.getOneMonthPrice();
+        return classSummaryInfo.getOneMonthOriginalPrice();
     }
 
     public String getOneDayPrice()

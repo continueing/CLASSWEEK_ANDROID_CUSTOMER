@@ -1,6 +1,6 @@
 package com.blackpigstudio.classweek.main.domain;
 
-import com.blackpigstudio.classweek.main.ui.menu.now_taking.ViewForNowTakingClassListViewItem;
+import com.blackpigstudio.classweek.main.ui.menu.now_taking.listview.ViewForNowTakingClassListViewItem;
 import com.blackpigstudio.classweek.main.ui.menu.took_before.ViewForTookBeforeClassListViewItem;
 
 /**

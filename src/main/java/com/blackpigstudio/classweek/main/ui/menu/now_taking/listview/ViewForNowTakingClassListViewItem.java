@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.menu.now_taking;
+package com.blackpigstudio.classweek.main.ui.menu.now_taking.listview;
 
 import android.content.Context;
 import android.view.View;

@@ -39,6 +39,8 @@
                         android:gravity="center_vertical"
                         android:textSize="15sp"
                         android:textColor="#1f2129"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:text="[헤이브레드]에서 향긋한 아침을 맞.." />
                     <TextView
                         android:id="@+id/tv_order_confirmation_time_prefix"
@@ -49,6 +51,8 @@
                         android:text="시간"
                         android:textSize="11sp"
                         android:textColor="#8a8fa7"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:layout_below="@+id/tv_order_confirmation_class_title"
                         android:layout_alignParentLeft="true"
@@ -62,6 +66,8 @@
                         android:layout_height="13dp"
                         android:text="월 17:00-19:00, 수 17:00-19:00"
                         android:textSize="11sp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textColor="#1f2129"
                         android:layout_below="@+id/tv_order_confirmation_class_title"
                         android:layout_alignParentLeft="true"/>
@@ -75,6 +81,8 @@
                         android:layout_height="13dp"
                         android:text="시작일"
                         android:textSize="11sp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textColor="#8a8fa7"
                         android:gravity="center_vertical"
                         android:layout_below="@+id/tv_order_confirmation_time_prefix"
@@ -85,6 +93,8 @@
                         android:layout_marginLeft="49dp"
                         android:layout_marginRight="13dp"
                         android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:text="2014.04.08 화"
                         android:textSize="11sp"
@@ -166,6 +176,7 @@
                     android:textSize="14sp"
                     android:textColor="#1f2129"
                     android:textColorHint="#ffff4451"
+                    android:textCursorDrawable="@null"
                     android:ems="10"/>
             </LinearLayout>
 
@@ -200,6 +211,7 @@
                     android:hint="예시) 1990-02-02"
                     android:textSize="14sp"
                     android:textColor="#1f2129"
+                    android:textCursorDrawable="@null"
                     android:ems="10"/>
             </LinearLayout>
 
@@ -279,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="phone"
+                    android:textCursorDrawable="@null"
                     android:background="@drawable/bg_textfield"
                     android:hint="예시) 010-4527-9272"
                     android:textSize="14sp"

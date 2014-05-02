@@ -29,6 +29,7 @@ public class ViewForSignInAndUpActivity extends AbstractViewForActivity {
     @Override
     protected void initViews() {
         this.et_email = (EditText) findViewById(R.id.et_email);
+        this.et_email.requestFocus();
         this.et_password= (EditText) findViewById(R.id.et_password);
         this.et_passwordConfirmation = (EditText) findViewById(R.id.et_password_confirmation);
     }

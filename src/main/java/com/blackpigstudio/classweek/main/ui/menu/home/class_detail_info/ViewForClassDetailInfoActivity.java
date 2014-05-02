@@ -1,8 +1,7 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Paint;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +67,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_one_day_price = (TextView)findViewById(R.id.tv_class_detail_one_day_price);
         tv_one_month_price = (TextView)findViewById(R.id.tv_class_detail_month_day_price);
         tv_location = (TextView)findViewById(R.id.tv_class_detail_location);
+        tv_location.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_description = (TextView)findViewById(R.id.tv_class_detail_description);
         tv_prerequisite = (TextView)findViewById(R.id.tv_class_detail_prerequisite);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
@@ -112,7 +112,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         vp_class_detail_images.setAdapter(new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl()));
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
-        tv_one_month_price.setText(aClassSummaryInfo.getOneMonthPrice()+"원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
+        tv_one_month_price.setText(aClassSummaryInfo.getOneMonthOriginalPrice()+"원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
         if(aClassDetailInfo.isPersonal())
             tv_progress_type.setText("개인 레슨");
         else

@@ -31,9 +31,8 @@ public class ViewForTookBeforeClassFragment extends AbstractViewForFragment{
         this.lv_tookBeforeClass = (ListView)findViewById(R.id.lv_took_before_class);
         ArrayAdapterForTookBeforeClassListView arrayAdapterForTookBeforeClassListView = new ArrayAdapterForTookBeforeClassListView(getContext(),R.layout.item_took_before_class);
         this.lv_tookBeforeClass.setAdapter(arrayAdapterForTookBeforeClassListView);
-        arrayAdapterForTookBeforeClassListView.add(new MyClass());
-        arrayAdapterForTookBeforeClassListView.add(new MyClass());
-
+//        arrayAdapterForTookBeforeClassListView.add(new MyClass());
+//        arrayAdapterForTookBeforeClassListView.add(new MyClass());
     }
 
     @Override
