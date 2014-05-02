@@ -184,7 +184,7 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
                 sv_agreement.getParent().requestDisallowInterceptTouchEvent(false);
                 sv_personal_information_handling_policy.getParent().requestDisallowInterceptTouchEvent(false);
                 sv_precautions_of_payment.getParent().requestDisallowInterceptTouchEvent(false);
-
+                sv_entire.getParent().requestDisallowInterceptTouchEvent(false);
                 return false;
             }
         });

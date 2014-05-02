@@ -45,6 +45,5 @@
         android:id="@+id/rl_subcategory_dim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#77000000"
-        android:visibility="invisible"/>
+        android:background="@drawable/btn_01_style"/>
 </RelativeLayout>

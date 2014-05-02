@@ -45,7 +45,16 @@ public class ViewForSubcategoryListViewItem extends AbstractViewForListViewItem 
 
     @Override
     protected void setEvents() {
-
+        this.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    rl_dim.performClick();
+                }
+                return false;
+            }
+        });
 
 
     }
