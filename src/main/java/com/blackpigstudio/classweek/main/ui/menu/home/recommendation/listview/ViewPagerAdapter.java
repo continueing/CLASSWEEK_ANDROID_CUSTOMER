@@ -2,6 +2,7 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,7 +31,7 @@ public class ViewPagerAdapter extends PagerAdapter{
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((ImageView) object);
+        return view == ((SmartImageView) object);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class ViewPagerAdapter extends PagerAdapter{
         SmartImageView smartImageView = new SmartImageView(this.context);
         smartImageView.setImageUrl(urls.get(position));
         smartImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        container.addView(smartImageView,position);
+        ((ViewPager)container).addView(smartImageView, ((ViewPager) container).getChildCount() > position ? position : ((ViewPager) container).getChildCount());
         return smartImageView;
     }
 
