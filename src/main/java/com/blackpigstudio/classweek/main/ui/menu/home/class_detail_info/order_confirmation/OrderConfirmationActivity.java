@@ -70,7 +70,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-            Toast.makeText(this, "인터넷 연결을 확인해 주세요", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.network_check_alert), Toast.LENGTH_LONG).show();
         }
         else
         {

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
+import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
@@ -138,7 +139,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요",this);
+            AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),this);
         }
         else
             AppTerminator.error(this, "classRequest.getClassDetail fail : " + errorCode);

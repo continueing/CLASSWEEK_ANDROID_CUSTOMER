@@ -27,8 +27,6 @@ public class ViewForInquiryActivity  extends AbstractViewForActivity{
     @Override
     protected void initViews() {
         et_inquiry = (EditText)findViewById(R.id.et_inquiry);
-//        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//        imm.showSoftInput(et_inquiry, InputMethodManager.SHOW_FORCED);
     }
 
     @Override

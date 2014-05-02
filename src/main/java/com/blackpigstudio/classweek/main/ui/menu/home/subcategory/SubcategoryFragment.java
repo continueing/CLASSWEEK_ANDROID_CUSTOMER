@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.Subcategory;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
@@ -104,7 +105,7 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요", getActivity());
+            AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert), getActivity());
         }
         else
             AppTerminator.error(this, "classRequest.getSubcategories fail : " + errorCode);

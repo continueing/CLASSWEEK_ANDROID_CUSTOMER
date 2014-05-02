@@ -117,7 +117,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         @Override
         public void onFail(JSONObject jsonObject, int errorCode) {
             if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-                AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요",getActivity());
+                AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
             }
             else
                 AppTerminator.error(this, "classRequest.getRecommendedSubcategories fail : " + errorCode);
@@ -168,7 +168,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
         if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-            AppTerminator.finishActivityWithToast("인터넷 연결을 확인해 주세요",getActivity());
+            AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
         }
         else
             AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
