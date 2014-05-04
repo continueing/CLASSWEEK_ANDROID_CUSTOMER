@@ -26,6 +26,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     private ViewForOrderConfirmationActivity view;
     public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
     public static final String BUNDLE_PARM_SELECTED_SCHEDULES = "SELECTED_SCHEDULES";
+    UserPreference userPreference;
     private ClassInfo classInfo;
     private Schedule schedule;
 
@@ -38,14 +39,19 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
         schedule = (Schedule)intent.getSerializableExtra(BUNDLE_PARM_SELECTED_SCHEDULES);
         view = new ViewForOrderConfirmationActivity(getApplicationContext(),this);
         setContentView(view.getRoot());
-        view.setData(classInfo.getTitle(),classInfo.getTime()+"("+classInfo.getDuration()+")",schedule.getStartDateTime(), schedule.getEndDateTime(),classInfo.getOneMonthPrice()+"원",classInfo.getFrontImageUrl());
+        userPreference = new UserPreference(getApplicationContext());
+        view.setData(classInfo.getTitle(),classInfo.getTime()+"("+classInfo.getDuration()+")",schedule.getStartDateTime(), schedule.getEndDateTime(),classInfo.getOneMonthPrice()+"원",classInfo.getFrontImageUrl(),userPreference.getName(), userPreference.getBirth(), userPreference.getPhoneNumber(), userPreference.getSex());
     }
 
     @Override
     public void onPaymentRequested() {
         UserRequest request = new UserRequest(getApplicationContext());
         try {
-            request.update(view.getName(),view.getBirthDate(), view.getPhoneNumber(), view.getSex(), this);
+            if(view.getSex() == R.id.rb_order_confirmation_male)
+                request.update(view.getName(),view.getBirthDate(), view.getPhoneNumber(), "M", this);
+            else
+            request.update(view.getName(),view.getBirthDate(), view.getPhoneNumber(), "W", this);
+
         } catch (JSONException e) {
             AppTerminator.error(this, "ClassRequest.inquire : " + e.toString());
         }
@@ -53,14 +59,10 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
 
     @Override
     public void onSuccess(JSONObject jsonObject) {
-        UserPreference userPreference = new UserPreference(getApplicationContext());
         userPreference.setName(view.getName());
         userPreference.setBirthDate(view.getBirthDate());
         userPreference.setPhoneNumber(view.getPhoneNumber());
-        if(view.getSex().equals("M"))
-            userPreference.setSex(UserPreference.VALUE_SEX_MALE);
-        else
-            userPreference.setSex(UserPreference.VALUE_SEX_FEMALE);
+        userPreference.setSex(view.getSex());
         view.releaseSubmitButton();
         Intent intent = new Intent();
         setResult(Activity.RESULT_OK, intent);

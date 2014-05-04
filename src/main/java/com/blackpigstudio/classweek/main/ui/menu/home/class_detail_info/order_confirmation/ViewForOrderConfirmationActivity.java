@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.button.SubmitButton;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.loopj.android.image.SmartImageView;
 
 import java.text.ParseException;
@@ -47,7 +47,9 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
     private EditText et_name;
     private EditText et_birth_date;
     private EditText et_phone_number;
-    private RadioGroup radioGroup;
+    private RadioGroup rg_sex;
+    private RadioButton rb_male;
+    private RadioButton rb_female;
 
     private ScrollView sv_entire;
     private ScrollView sv_agreement;
@@ -82,7 +84,9 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
         et_birth_date = (EditText) findViewById(R.id.et_order_confirmation_birth_date);
         et_phone_number = (EditText) findViewById(R.id.et_order_confirmation_phone_number);
 
-        radioGroup = (RadioGroup)findViewById(R.id.rg_order_confirmation_sex);
+        rg_sex = (RadioGroup)findViewById(R.id.rg_order_confirmation_sex);
+        rb_female = (RadioButton)findViewById(R.id.rb_order_confirmation_female);
+        rb_male = (RadioButton)findViewById(R.id.rb_order_confirmation_male);
 
 
         cb_agree_all = (CheckBox)findViewById(R.id.cb_agree_all);
@@ -238,7 +242,7 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
 
     }
 
-    public void setData(String aClassTitle, String aTime, String aStartDate, String aEndDate, String aPaymentPrice, String aImageUrl)
+    public void setData(String aClassTitle, String aTime, String aStartDate, String aEndDate, String aPaymentPrice, String aImageUrl, String aName, String aBirthDate, String aPhoneNumber, int aSexValue)
     {
         tv_class_title.setText(aClassTitle);
         tv_time.setText(aTime);
@@ -246,7 +250,19 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
         tv_end_date.setText(aEndDate);
         tv_payment_price.setText(aPaymentPrice);
         siv_front.setImageUrl(aImageUrl);
+        et_name.setText(aName);
+        et_birth_date.setText(aBirthDate);
+        et_phone_number.setText(aPhoneNumber);
+        if(aSexValue == UserPreference.VALUE_SEX_FEMALE)
+        {
+            rb_female.setChecked(true);
+        }
+        else
+        {
+            rb_male.setChecked(true);
+        }
     }
+
 
     public String getName() {
         return et_name.getText().toString();
@@ -260,12 +276,12 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
         return et_phone_number.getText().toString();
     }
 
-    public String getSex()
+    public int getSex()
     {
-        if(radioGroup.getCheckedRadioButtonId() == R.id.rb_order_confirmation_male)
-            return "M";
+        if(rg_sex.getCheckedRadioButtonId() == R.id.rb_order_confirmation_male)
+            return UserPreference.VALUE_SEX_MALE;
         else
-            return "W";
+            return UserPreference.VALUE_SEX_FEMALE;
     }
 
     public void releaseSubmitButton()

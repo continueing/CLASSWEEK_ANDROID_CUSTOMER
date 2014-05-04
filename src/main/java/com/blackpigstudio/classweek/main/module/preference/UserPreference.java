@@ -84,7 +84,7 @@ public class UserPreference extends PreferenceHelper {
     */
     public String getName()
     {
-        return getString(KEY_NAME, null);
+        return getString(KEY_NAME, "");
     }
 
     public String getBirth()
@@ -94,12 +94,12 @@ public class UserPreference extends PreferenceHelper {
 
     public int getSex()
     {
-        return getInt(KEY_SEX, -1);
+        return getInt(KEY_SEX, VALUE_SEX_FEMALE);
     }
 
     public String getPhoneNumber()
     {
-        return getString(KEY_PHONE_NUMBER, null);
+        return getString(KEY_PHONE_NUMBER, "");
     }
 
     public boolean isLoggedIn()
