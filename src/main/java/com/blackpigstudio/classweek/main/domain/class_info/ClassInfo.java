@@ -105,4 +105,8 @@ public class ClassInfo implements Serializable {
         return this.classSummaryInfo.getDuration();
     }
 
+    public int getScheduleId()
+    {
+        return this.classSummaryInfo.getScheduleId();
+    }
 }

@@ -23,7 +23,7 @@ import org.apache.http.util.EncodingUtils;
 import java.net.URISyntaxException;
 
 public class PaymentWebViewActivity extends ActionBarActivity {
-
+    public static final String BUNDLE_PARM_INICIS_PAYMENT_INFO= "INICIS_PAYMENT_INFO";
     private Handler handler = new Handler();
 
     @Override

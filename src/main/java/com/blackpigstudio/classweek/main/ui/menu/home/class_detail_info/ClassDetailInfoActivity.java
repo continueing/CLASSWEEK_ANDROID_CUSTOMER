@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
@@ -29,11 +30,13 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
     public static final String BUNDLE_PARM_SCHEDULE_ID = "schedule_id";
     public static final String BUNDLE_PARM_SELECTED_SCHEDULE= "SELECTED_SCHEDULES";
+    public static final String BUNDLE_PARM_INICIS_PAYMENT_INFO= "INICIS_PAYMENT_INFO";
 
     ViewForClassDetailInfoActivity view;
     private int classId;
     private int scheduleId;
     private ClassInfo classInfo = null;
+    private InicisPaymentInfo inicisPaymentInfo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
                 Intent intent = new Intent(this, OrderConfirmationActivity.class);
                 intent.putExtra(OrderConfirmationActivity.BUNDLE_PARM_CLASS_INFO, classInfo);
                 intent.putExtra(OrderConfirmationActivity.BUNDLE_PARM_SELECTED_SCHEDULES, data.getSerializableExtra(BUNDLE_PARM_SELECTED_SCHEDULE));
+                inicisPaymentInfo = (InicisPaymentInfo)data.getSerializableExtra(BUNDLE_PARM_INICIS_PAYMENT_INFO);
                 startActivityForResult(intent, REQUEST_CODE_ORDER_CONFIRM);
             }
         }
@@ -113,6 +117,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
             if(resultCode == Activity.RESULT_OK)
             {
                 Intent intent = new Intent(this, PaymentWebViewActivity.class);
+                intent.putExtra(PaymentWebViewActivity.BUNDLE_PARM_INICIS_PAYMENT_INFO, inicisPaymentInfo );
                 startActivity(intent);
             }
         }

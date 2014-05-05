@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
+import com.blackpigstudio.classweek.main.module.button.SubmitButton;
 
 /**
  * Created by continueing on 2014. 4. 14..
@@ -20,7 +22,8 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
 
     private RelativeLayout rl_booking_schedule_selection;
     private TextView tv_selected_schedule;
-    private Button bt_payment;
+    private SubmitButton sbt_payment;
+    private ProgressBar pb_payment;
     private IViewListener iViewListener;
 
 
@@ -44,8 +47,10 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
         rl_booking_schedule_selection = (RelativeLayout) findViewById(R.id.rl_booking_schedule_selection);
         tv_selected_schedule = (TextView) findViewById(R.id.tv_booking_selected_schedule);
 
-        bt_payment = (Button)findViewById(R.id.bt_booking_payment);
-        bt_payment.setEnabled(false);
+        sbt_payment = (SubmitButton)findViewById(R.id.bt_booking_payment);
+        pb_payment = (ProgressBar)findViewById(R.id.pg_booking_payment);
+        sbt_payment.init(pb_payment);
+        sbt_payment.setEnabled(false);
     }
 
     @Override
@@ -64,7 +69,7 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
             }
         });
 
-        bt_payment.setOnClickListener(new View.OnClickListener() {
+        sbt_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 iViewListener.onPaymentRequested();
@@ -99,9 +104,15 @@ public class ViewForBookingActivity extends AbstractViewForActivity {
             return true;
     }
 
+    public void releaseSubmitButton()
+    {
+        this.sbt_payment.release();
+    }
+
+
     public void enablePayment()
     {
-        this.bt_payment.setEnabled(true);
+        this.sbt_payment.setEnabled(true);
     }
 
     public static interface IViewListener

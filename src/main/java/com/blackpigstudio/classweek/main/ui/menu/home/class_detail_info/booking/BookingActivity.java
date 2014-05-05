@@ -5,14 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
+import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener {
+public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener, HttpRequester.NetworkResponseListener {
     public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
 
     private ViewForBookingActivity view;
@@ -42,11 +49,9 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onPaymentRequested() {
-        Intent intent = new Intent();
-        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SELECTED_SCHEDULE, this.selectedSchedule);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
+        //TODO: request for webview.
     }
+
 
     @Override
     public void onScheduleSelectionRequested() {
@@ -89,5 +94,30 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     protected void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
+    }
+
+    @Override
+    public void onSuccess(JSONObject jsonObject) {
+        view.releaseSubmitButton();
+        //TODO: extract payment info from json
+        Intent intent = new Intent();
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SELECTED_SCHEDULE, this.selectedSchedule);
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_INICIS_PAYMENT_INFO, new InicisPaymentInfo());
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+
+
+    }
+
+    @Override
+    public void onFail(JSONObject jsonObject, int errorCode) {
+        view.releaseSubmitButton();
+        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+            Toast.makeText(this, getResources().getString(R.string.network_check_alert), Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            AppTerminator.error(this, "userRequest.update fail : " + errorCode);
+        }
     }
 }

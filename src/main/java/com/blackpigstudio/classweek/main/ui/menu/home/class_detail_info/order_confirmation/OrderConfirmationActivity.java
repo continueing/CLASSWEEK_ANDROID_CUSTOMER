@@ -71,6 +71,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
 
     @Override
     public void onFail(JSONObject jsonObject, int errorCode) {
+        view.releaseSubmitButton();
         if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
             Toast.makeText(this, getResources().getString(R.string.network_check_alert), Toast.LENGTH_LONG).show();
         }
