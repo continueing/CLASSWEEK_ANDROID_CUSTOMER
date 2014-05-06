@@ -26,8 +26,8 @@ public class ClassRequest {
     private static final String PARM_KEY_CLASSES_ID = "classes_id";
     private static final String PARM_KEY_SCHEDULE_ID = "schedule_id";
     private static final String PARM_KEY_DAY_OR_MONTH = "day_or_month";
-    private static final String PARM_KEY_START_DATE = "class_start_date";
-    private static final String PARM_KEY_END_DATE = "class_end_date";
+    private static final String PARM_KEY_START_DATE = "class_start_datetime";
+    private static final String PARM_KEY_END_DATE = "class_end_datetime";
 
 
 
@@ -90,6 +90,7 @@ public class ClassRequest {
         requestParams.put(PARM_KEY_SCHEDULE_ID, aScheduleId);
         requestParams.put(PARM_KEY_START_DATE, aStartDate);
         requestParams.put(PARM_KEY_END_DATE, aEndDate);
+        requestParams.put(PARM_KEY_DAY_OR_MONTH, "month");
         HttpRequester.post(URL_PAYMENT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
 
     }

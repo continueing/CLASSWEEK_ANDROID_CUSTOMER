@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.google.analytics.tracking.android.EasyTracker;
 
 import org.apache.http.util.EncodingUtils;
@@ -29,6 +30,8 @@ public class PaymentWebViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        InicisPaymentInfo inicisPaymentInfo = (InicisPaymentInfo)intent.getSerializableExtra(BUNDLE_PARM_INICIS_PAYMENT_INFO);
         getActionBar().setIcon(android.R.color.transparent);
         setContentView(R.layout.activity_payment_web_view);
 
@@ -38,18 +41,14 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.addJavascriptInterface(new AndroidBridge(),"myInterface");
         String postData =
-                "P_MID=ECAblac956&" +
-                        "P_OID=20140417-0000184&" +
-                        "P_AMT=123&" +
-                        "P_UNAME=ing&" +
-                        "P_NOTI=asdjlas&" +
-                        "P_NEXT_URL=http://m.classweek.kr/Pay/Recv/inicis/SmartPhonePayReceivePage.php&" +
-//                        "P_NOTI_URL=http://www.classweek.kr/pay_result.html&" +
-//                        "P_RETURN_URL=http://m.classweek.kr/api/shop/pgsuccess&" +
-                        "P_GOODS=asdasd&" +
-                        "P_MOBILE=010-4527-9272&" +
-                        "P_EMAIL=continueing@gmail.com&" +
-                        "P_HPP_METHOD=1&" +
+                "P_MID="+ inicisPaymentInfo.getMid()+"&" +
+                        "P_AMT="+inicisPaymentInfo.getAmount()+"&" +
+                        "P_UNAME="+inicisPaymentInfo.getUserName()+"&" +
+                        "P_NOTI="+inicisPaymentInfo.getNoti()+"&" +
+                        "P_NEXT_URL="+inicisPaymentInfo.getNextUrl()+"&" +
+                        "P_NOTI_URL="+inicisPaymentInfo.getNotiUrl()+"&" +
+                        "P_RETURN_URL="+inicisPaymentInfo.getReturnUrl()+"&" +
+                        "P_GOODS="+inicisPaymentInfo.getGoods()+"&" +
                         "paymethod=wcard&" +
                         "inipaymobile_type=web" ;
         String url = "https://mobile.inicis.com/smart/wcard/";
