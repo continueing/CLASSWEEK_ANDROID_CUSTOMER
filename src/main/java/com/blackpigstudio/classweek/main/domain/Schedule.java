@@ -15,23 +15,24 @@ public class Schedule implements Serializable {
     public static final int MONTH_SCHEDULE_TYPE = 1;
 
     public static final String JSON_KEY_START_DATE_TIME = "start_date_time";
+    public static final String JSON_KEY_START_DATE_TIME_FOR_PAYMENT = "start_date_time_unprocessed";
     public static final String JSON_KEY_END_DATE_TIME = "end_date_time";
+    public static final String JSON_KEY_END_DATE_TIME_FOR_PAYMENT = "end_date_time_unprocessed";
+
 
     private int type;
     private String startDateTime;
     private String endDateTime;
+    private String startDateTimeForPayment;
+    private String endDateTimeForPayment;
 
-    public Schedule(int aId, int aType, String aStartDateTime, String anEndDateTime)
-    {
-        this.type = aType;
-        this.startDateTime = aStartDateTime;
-        this.endDateTime = anEndDateTime;
-    }
 
     public Schedule(JSONObject aJsonObject) throws JSONException {
         this.type = MONTH_SCHEDULE_TYPE;
         this.startDateTime = aJsonObject.getString(JSON_KEY_START_DATE_TIME);
         this.endDateTime = aJsonObject.getString(JSON_KEY_END_DATE_TIME);
+        this.startDateTimeForPayment = aJsonObject.getString(JSON_KEY_START_DATE_TIME_FOR_PAYMENT);
+        this.endDateTimeForPayment = aJsonObject.getString(JSON_KEY_END_DATE_TIME_FOR_PAYMENT);
     }
 
     public String getStartDateTime()
@@ -42,6 +43,14 @@ public class Schedule implements Serializable {
     public String getEndDateTime()
     {
         return this.endDateTime;
+    }
+
+    public String getStartDateTimeForPayment() {
+        return startDateTimeForPayment;
+    }
+
+    public String getEndDateTimeForPayment() {
+        return endDateTimeForPayment;
     }
 
 

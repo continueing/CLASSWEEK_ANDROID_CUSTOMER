@@ -10,11 +10,13 @@ import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -49,7 +51,12 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onPaymentRequested() {
-        //TODO: request for webview.
+        ClassRequest classRequest = new ClassRequest(getApplicationContext());
+        try {
+            classRequest.getPaymentInfo(classInfo.getClassId()+"", classInfo.getScheduleId()+"",selectedSchedule.getStartDateTimeForPayment(),selectedSchedule.getEndDateTimeForPayment(),this);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "classRequest.getPaymentInfo fail :" + e.toString());
+        }
     }
 
 
@@ -99,10 +106,24 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     @Override
     public void onSuccess(JSONObject jsonObject) {
         view.releaseSubmitButton();
-        //TODO: extract payment info from json
+        JSONObject jsonPaymentInfoObject = null;
+
+        try {
+            jsonPaymentInfoObject = jsonObject.getJSONObject(JsonResponseHandler.PARM_DATA);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "JSONObject.getJSONObject(): " + e.toString());
+        }
+
+        InicisPaymentInfo inicisPaymentInfo = null;
+        try {
+            inicisPaymentInfo = new InicisPaymentInfo(jsonPaymentInfoObject);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "InicisPaymentInfo.new: " + e.toString());
+        }
+
         Intent intent = new Intent();
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SELECTED_SCHEDULE, this.selectedSchedule);
-        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_INICIS_PAYMENT_INFO, new InicisPaymentInfo());
+        intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_INICIS_PAYMENT_INFO, inicisPaymentInfo);
         setResult(Activity.RESULT_OK, intent);
         finish();
 

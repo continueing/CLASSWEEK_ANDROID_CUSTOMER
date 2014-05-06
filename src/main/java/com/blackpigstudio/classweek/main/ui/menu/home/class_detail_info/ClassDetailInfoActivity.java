@@ -56,7 +56,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         try {
             classRequest.getClassDetail(this.classId,this.scheduleId,this);
         } catch (JSONException e) {
-            e.printStackTrace();
+            AppTerminator.error(this, "classRequest.getClassDetail fail :"+ e.toString());
         }
     }
 

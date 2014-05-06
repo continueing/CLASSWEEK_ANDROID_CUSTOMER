@@ -16,12 +16,18 @@ public class ClassRequest {
     private static final String URL_RECOMMEND = "/recommend";
     private static final String URL_CLASSES = "/classes";
     private static final String URL_SUBCATEGORY = "/subcategory";
+    private static final String URL_PAYMENT = "/foradmin/before_payment";
 
     private static final String PARM_KEY_CONTENTS_INQUIRE = "content";
     private static final String PARM_KEY_WEEKDAY = "weekday";
     private static final String PARM_KEY_LOCATION = "location";
     private static final String PARM_KEY_TIME = "time";
     private static final String PARM_KEY_PRICE = "price";
+    private static final String PARM_KEY_CLASSES_ID = "classes_id";
+    private static final String PARM_KEY_SCHEDULE_ID = "schedule_id";
+    private static final String PARM_KEY_DAY_OR_MONTH = "day_or_month";
+    private static final String PARM_KEY_START_DATE = "class_start_date";
+    private static final String PARM_KEY_END_DATE = "class_end_date";
 
 
 
@@ -72,10 +78,20 @@ public class ClassRequest {
 
     public void inquire(int aClassId, String aContents, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
     {
-        Log.i("thos", "success");
         RequestParams requestParams = new RequestParams();
         requestParams.put(PARM_KEY_CONTENTS_INQUIRE, aContents);
         HttpRequester.post(URL_BASE +"/"+aClassId + URL_INQUIRE ,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
+
+    public void getPaymentInfo(String aClassId, String aScheduleId, String aStartDate, String aEndDate, HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put(PARM_KEY_CLASSES_ID, aClassId);
+        requestParams.put(PARM_KEY_SCHEDULE_ID, aScheduleId);
+        requestParams.put(PARM_KEY_START_DATE, aStartDate);
+        requestParams.put(PARM_KEY_END_DATE, aEndDate);
+        HttpRequester.post(URL_PAYMENT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+
     }
 
 
