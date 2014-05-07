@@ -14,6 +14,9 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.button.CheckButton;
 
+import java.text.NumberFormat;
+import java.util.Formatter;
+
 /**
  * Created by continueing on 2014. 3. 28..
  */
@@ -95,7 +98,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity {
         sb_price_controller.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_price_value.setText( i * 1000 + "원");
+                tv_price_value.setText( NumberFormat.getInstance().format(i * 1000) + "원");
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
@@ -107,7 +110,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity {
             @Override
             public void onClick(View view) {
                 releaseAllCheckBoxes();
-                tv_price_value.setText("100000원");
+                tv_price_value.setText("100,000원");
                 sb_price_controller.setProgress(100);
                 tv_location.setText("");
             }
