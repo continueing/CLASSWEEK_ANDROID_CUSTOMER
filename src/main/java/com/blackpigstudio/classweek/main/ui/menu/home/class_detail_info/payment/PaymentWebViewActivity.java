@@ -53,7 +53,8 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                         "paymethod=wcard&" +
                         "inipaymobile_type=web" ;
         String url = "https://mobile.inicis.com/smart/wcard/";
-        myWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
+//        myWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
+        myWebView.postUrl(url, EncodingUtils.getBytes(postData, "euc-kr"));
 
     }
 

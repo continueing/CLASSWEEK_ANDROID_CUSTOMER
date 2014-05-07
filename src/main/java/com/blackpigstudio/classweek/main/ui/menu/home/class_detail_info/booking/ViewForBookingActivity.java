@@ -3,14 +3,13 @@ package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
-import com.blackpigstudio.classweek.main.module.button.SubmitButton;
+import com.blackpigstudio.classweek.main.module.widget.button.SubmitButton;
 
 /**
  * Created by continueing on 2014. 4. 14..

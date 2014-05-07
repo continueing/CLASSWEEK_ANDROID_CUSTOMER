@@ -5,9 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.astuetz.PagerSlidingTabStrip;
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class ViewForViewPagerInListView extends LinearLayout {
     ViewPager viewPager;
     View root;
-    PagerSlidingTabStrip tabs;
+    ViewPagerIndexer viewPagerIndexer;
 
     public ViewForViewPagerInListView(Context context) {
         this(context, null);
@@ -32,19 +31,13 @@ public class ViewForViewPagerInListView extends LinearLayout {
     {
         root = inflate(getContext(), R.layout.item_recommendation_view_pager,this);
         viewPager = (ViewPager)root.findViewById(R.id.vp_class_recommendation_images);
-        tabs = (PagerSlidingTabStrip)root.findViewById(R.id.psts_recommendation_images);
+        viewPagerIndexer = (ViewPagerIndexer)root.findViewById(R.id.vpi_class_recommendation_images);
     }
 
     public void setData(ArrayList<String> anUrls)
     {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(anUrls,getContext());
         viewPager.setAdapter(viewPagerAdapter);
-        tabs.setTabBackground(android.R.color.background_dark);
-        tabs.setIndicatorColorResource(android.R.color.white);
-        tabs.setDividerPadding(30);
-//        tabs.setUnderlineHeight(30);
-        tabs.setIndicatorHeight(30);
-        tabs.setTabPaddingLeftRight(30);
-        tabs.setViewPager(viewPager);
+        viewPagerIndexer.init(viewPager,viewPagerAdapter);
     }
 }

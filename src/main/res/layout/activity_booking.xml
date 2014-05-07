@@ -98,7 +98,7 @@
             android:layout_marginTop="27.5dp"
             android:layout_width="match_parent"
             android:layout_height="40dp">
-            <com.blackpigstudio.classweek.main.module.button.SubmitButton
+            <com.blackpigstudio.classweek.main.module.widget.button.SubmitButton
                 android:id="@+id/bt_booking_payment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
-import com.blackpigstudio.classweek.main.module.button.SubmitButton;
+import com.blackpigstudio.classweek.main.module.widget.button.SubmitButton;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.loopj.android.image.SmartImageView;
 

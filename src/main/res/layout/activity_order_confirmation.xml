@@ -433,7 +433,7 @@
         android:paddingRight="12.5dp"
         android:background="@drawable/bg_textfield"
         android:id="@+id/linearLayout">
-        <com.blackpigstudio.classweek.main.module.button.SubmitButton
+        <com.blackpigstudio.classweek.main.module.widget.button.SubmitButton
             android:id="@+id/bt_order_confirmation_payment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

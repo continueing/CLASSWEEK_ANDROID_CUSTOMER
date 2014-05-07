@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -12,10 +11,9 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
-import com.blackpigstudio.classweek.main.module.button.CheckButton;
+import com.blackpigstudio.classweek.main.module.widget.button.CheckButton;
 
 import java.text.NumberFormat;
-import java.util.Formatter;
 
 /**
  * Created by continueing on 2014. 3. 28..

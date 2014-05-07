@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module.button;
+package com.blackpigstudio.classweek.main.module.widget.button;
 
 import android.content.Context;
 import android.util.AttributeSet;

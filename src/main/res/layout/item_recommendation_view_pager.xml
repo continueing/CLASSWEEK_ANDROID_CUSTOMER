@@ -3,19 +3,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="281dp">
-
-
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_class_recommendation_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/psts_recommendation_images"
-        android:layout_width="wrap_content"
-        android:layout_height="12dp"
+    <com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer
+        android:id="@+id/vpi_class_recommendation_images"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingEnd="15dp"
         android:layout_marginBottom="10dp"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
 </RelativeLayout>

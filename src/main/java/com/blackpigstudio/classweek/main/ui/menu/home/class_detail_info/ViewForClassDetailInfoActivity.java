@@ -13,6 +13,7 @@ import com.blackpigstudio.classweek.main.domain.class_info.ClassDetailInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.FacilityInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
+import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
  */
 public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private ViewPager vp_class_detail_images;
+    private ViewPagerIndexer vp_indexer;
     private Button bt_inquiry;
     private Button bt_booking;
     private IController iController;
@@ -58,6 +60,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     @Override
     protected void initViews() {
         vp_class_detail_images = (ViewPager) findViewById(R.id.vp_class_detail_images);
+        vp_indexer = (ViewPagerIndexer) findViewById(R.id.vpi_class_detail_images);
         bt_inquiry = (Button) findViewById(R.id.bt_detail_info_inquiry);
         bt_booking = (Button) findViewById(R.id.bt_detail_info_booking);
         tv_title = (TextView)findViewById(R.id.tv_class_detail_title);
@@ -80,7 +83,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_parking_lot = (TextView)findViewById(R.id.tv_class_detail_facility_parking_lot);
         tv_practice_room = (TextView)findViewById(R.id.tv_class_detail_facility_practice_room);
         tv_instrument_rental = (TextView)findViewById(R.id.tv_class_detail_facility_instrument_rental);
-        
+
     }
 
     @Override
@@ -109,7 +112,9 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
 
     public void setData(ClassDetailInfo aClassDetailInfo, ClassSummaryInfo aClassSummaryInfo, FacilityInfo aFacilityInfo)
     {
-        vp_class_detail_images.setAdapter(new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl()));
+        ClassDetailImagesViewPagerAdapter viewPagerAdapter = new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl());
+        vp_class_detail_images.setAdapter(viewPagerAdapter);
+        vp_indexer.init(vp_class_detail_images, viewPagerAdapter);
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
         tv_one_month_price.setText(aClassSummaryInfo.getOneMonthOriginalPrice() + "원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
