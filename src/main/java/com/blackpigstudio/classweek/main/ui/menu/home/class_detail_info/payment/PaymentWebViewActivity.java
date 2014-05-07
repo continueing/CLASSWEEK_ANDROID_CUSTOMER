@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -55,6 +56,8 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         myWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
 
     }
+
+
 
 
     @Override
@@ -142,6 +145,17 @@ public class PaymentWebViewActivity extends ActionBarActivity {
             Log.e("onReceivedError",  "error code : "+errorCode+ "\n description: " + description + "\n failingUrl: "+ failingUrl );
 
         }
+
+//        @Override
+//        public void onLoadResource(WebView view, String url) {
+//            super.onLoadResource(view, url);
+//            view.loadUrl(url);
+//        }
+
+//        @Override
+//        public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+//            return super.shouldInterceptRequest(view, url);
+//        }
     }
 
     private class ChromeClient extends WebChromeClient {

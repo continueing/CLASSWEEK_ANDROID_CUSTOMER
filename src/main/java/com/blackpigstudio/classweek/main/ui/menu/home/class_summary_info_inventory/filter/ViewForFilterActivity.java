@@ -95,7 +95,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity {
         sb_price_controller.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_price_value.setText( i + "원");
+                tv_price_value.setText( i * 1000 + "원");
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
@@ -108,7 +108,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity {
             public void onClick(View view) {
                 releaseAllCheckBoxes();
                 tv_price_value.setText("100000원");
-                sb_price_controller.setProgress(100000);
+                sb_price_controller.setProgress(100);
                 tv_location.setText("");
             }
         });
@@ -117,7 +117,7 @@ public class ViewForFilterActivity extends AbstractViewForActivity {
             @Override
             public void onClick(View view) {
                 if(isSearchable())
-                    onSubmitButtonClickListener.onSearchConditionDelivered(tv_location.getText().toString(), cb_mon.isChecked(), cb_tue.isChecked(), cb_wen.isChecked(), cb_thu.isChecked(), cb_fri.isChecked(), cb_sat.isChecked(), cb_sun.isChecked(), cb_morning.isChecked(), cb_afternoon.isChecked(), cb_evening.isChecked(), sb_price_controller.getProgress());
+                    onSubmitButtonClickListener.onSearchConditionDelivered(tv_location.getText().toString(), cb_mon.isChecked(), cb_tue.isChecked(), cb_wen.isChecked(), cb_thu.isChecked(), cb_fri.isChecked(), cb_sat.isChecked(), cb_sun.isChecked(), cb_morning.isChecked(), cb_afternoon.isChecked(), cb_evening.isChecked(), sb_price_controller.getProgress() * 1000);
                 else
                 {
                     Toast.makeText(getContext(),"가능한 위치, 요일, 시간을 지정해 주세요.",Toast.LENGTH_LONG).show();

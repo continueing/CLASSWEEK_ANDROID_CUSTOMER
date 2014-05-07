@@ -277,8 +277,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="8dp"
-                android:max="250000"
-                android:progress="100000"
+                android:max="250"
+                android:progress="100"
                 android:thumb="@drawable/btn_progress"
                 android:id="@+id/sb_price_controller"/>
         </LinearLayout>
