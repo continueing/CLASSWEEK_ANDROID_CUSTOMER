@@ -78,6 +78,11 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
 
     @Override
     public void onBookingChoose() {
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("http://175.126.82.184"));
+////        sendBroadcast(intent);
+//        startActivity(intent);
         UserPreference userPreference = new UserPreference(getApplicationContext());
         if(userPreference.isLoggedIn()) {
             Intent intent = new Intent(this, BookingActivity.class);

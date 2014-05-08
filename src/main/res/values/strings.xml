@@ -23,7 +23,7 @@
     <string name="title_activity_order_confirmation">결제 확인</string>
     <string name="title_activity_booking">예약</string>
     <string name="action_inquiry_submit">전송</string>
-    <string name="title_activity_payment_web_view">PaymentWebViewActivity</string>
+    <string name="title_activity_payment_web_view">신용카드 결제</string>
     <string name="class_selection">클래스 선택</string>
     <string name="schedule_selection">시간 선택</string>
     <string name="title_activity_splash">SplashActivity</string>
