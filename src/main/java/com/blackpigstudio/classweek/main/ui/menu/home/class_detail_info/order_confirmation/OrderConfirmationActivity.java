@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
-import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
-import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
@@ -46,15 +43,45 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     public void onPaymentRequested() {
         UserRequest request = new UserRequest(getApplicationContext());
+
+        String birthDate = makeBirthDateWithHyphen(view.getBirthDate());
+        String phoneNumber = makePhoneNumberWithHyphen(view.getPhoneNumber());
+
+        view.getPhoneNumber();
         try {
             if(view.getSex() == R.id.rb_order_confirmation_male)
-                request.update(view.getName(),view.getBirthDate(), view.getPhoneNumber(), "M", this);
+                request.update(view.getName(),birthDate, phoneNumber, "M", this);
             else
-            request.update(view.getName(),view.getBirthDate(), view.getPhoneNumber(), "W", this);
+            request.update(view.getName(),birthDate, phoneNumber, "W", this);
 
         } catch (JSONException e) {
             AppTerminator.error(this, "ClassRequest.inquire : " + e.toString());
         }
+    }
+
+    private String makeBirthDateWithHyphen(String aBirthDateWithoutHyphen)
+    {
+        StringBuffer birthDateStringBuffer = new StringBuffer();
+        birthDateStringBuffer.append(aBirthDateWithoutHyphen);
+        birthDateStringBuffer.insert(4, '-');
+        birthDateStringBuffer.insert(7, '-');
+        return birthDateStringBuffer.toString();
+    }
+
+    private String makePhoneNumberWithHyphen(String aPhoneNumberWithoutHyphen)
+    {
+        StringBuffer phoneNumberStringBuffer = new StringBuffer();
+        phoneNumberStringBuffer.append(aPhoneNumberWithoutHyphen);
+        phoneNumberStringBuffer.insert(3,'-');
+        if(aPhoneNumberWithoutHyphen.length()== 11) // ex. 010-4527-9272
+        {
+            phoneNumberStringBuffer.insert(8,'-');
+        }
+        else if(aPhoneNumberWithoutHyphen.length()== 10) // ex. 010-452-9272
+        {
+            phoneNumberStringBuffer.insert(7,'-');
+        }
+        return phoneNumberStringBuffer.toString();
     }
 
     @Override

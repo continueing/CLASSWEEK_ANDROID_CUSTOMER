@@ -208,7 +208,7 @@
                     android:layout_height="match_parent"
                     android:inputType="phone"
                     android:background="@drawable/bg_textfield"
-                    android:hint="예시) 1990-02-02"
+                    android:hint="예시) 19900202"
                     android:textSize="14sp"
                     android:textColor="#1f2129"
                     android:textCursorDrawable="@null"
@@ -293,7 +293,7 @@
                     android:inputType="phone"
                     android:textCursorDrawable="@null"
                     android:background="@drawable/bg_textfield"
-                    android:hint="예시) 010-4527-9272"
+                    android:hint="예시) 01045279272"
                     android:textSize="14sp"
                     android:textColor="#1f2129"
                     android:ems="10"/>

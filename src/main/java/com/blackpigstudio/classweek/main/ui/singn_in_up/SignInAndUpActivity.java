@@ -88,6 +88,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
             Intent intent = new Intent();
             intent.putExtra(INTENT_PARM_LOGIN_RESULT,true);
             setResult(Activity.RESULT_OK,intent);
+            Toast.makeText(getApplicationContext(),"로그인 하셨습니다.",Toast.LENGTH_LONG).show();
             finish();
         }
 
@@ -141,6 +142,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         public void onSuccess(JSONObject jsonObject)
         {
             restoreUIAfterRequest();
+            Toast.makeText(getApplicationContext(),"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show();
             requestLogin();
         }
 

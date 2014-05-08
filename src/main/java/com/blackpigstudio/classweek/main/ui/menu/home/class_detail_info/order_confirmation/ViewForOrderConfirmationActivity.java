@@ -166,15 +166,15 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
                 }
                 if(!isValidDate(et_birth_date.getText().toString()))
                 {
-                    Toast.makeText(getContext(),"생년월일(YYYY-MM-DD) 예시는 다음과 같습니다. 1990-02-02",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"생년월일 예시는 다음과 같습니다. 19900202",Toast.LENGTH_LONG).show();
                     releaseSubmitButton();
                     return;
                 }
-                pattern = Pattern.compile("^01(0|1|[6-9])-(\\d{3}|\\d{4})-\\d{4}$");
+                pattern = Pattern.compile("^01(0|1|[6-9])(\\d{3}|\\d{4})\\d{4}$");
                 matcher = pattern.matcher(et_phone_number.getText());
                 if(!matcher.matches())
                 {
-                    Toast.makeText(getContext(),"전화번호 예시는 다음과 같습니다. 010-4527-9272",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"전화번호 예시는 다음과 같습니다. 01045279272",Toast.LENGTH_LONG).show();
                     releaseSubmitButton();
                     return;
                 }
@@ -230,7 +230,7 @@ public class ViewForOrderConfirmationActivity extends AbstractViewForActivity {
 
     public boolean isValidDate(String aYYYYMMdd)
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         if (aYYYYMMdd == null) return false;
         String format = null;
         try {

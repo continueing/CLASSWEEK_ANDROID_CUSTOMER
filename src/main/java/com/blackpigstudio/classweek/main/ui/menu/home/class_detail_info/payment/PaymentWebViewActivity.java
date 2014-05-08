@@ -126,7 +126,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 	    			    조건을 걸어 종료하도록 하였습니다.*/
                     if( url.startsWith("ispmobile://"))
                     {
-                        finish();
+//                        finish();
                     }
 
                 }catch(ActivityNotFoundException e)
