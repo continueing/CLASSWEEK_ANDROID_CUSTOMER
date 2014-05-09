@@ -1,7 +1,6 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -38,7 +36,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         myWebView.setWebChromeClient(new ChromeClient());
         myWebView.setWebViewClient(new MyWebViewClient());
         myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.addJavascriptInterface(new AndroidBridge(),"myInterface");
+        myWebView.addJavascriptInterface(new AndroidBridge(),"BridgeToAndroid");
 
 
         Intent intent = getIntent();
@@ -50,7 +48,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
             InicisPaymentInfo inicisPaymentInfo = (InicisPaymentInfo) intent.getSerializableExtra(BUNDLE_PARM_INICIS_PAYMENT_INFO);
 
             String postData =
-                    "P_MID=" + inicisPaymentInfo.getMid() + "&" +
+                    "P_MID=" + inicisPaymentInfo.getMId() + "&" +
                             "P_AMT=" + inicisPaymentInfo.getAmount() + "&" +
                             "P_UNAME=" + inicisPaymentInfo.getUserName() + "&" +
                             "P_NOTI=" + inicisPaymentInfo.getNoti() + "&" +
@@ -157,17 +155,6 @@ public class PaymentWebViewActivity extends ActionBarActivity {
             Log.e("onReceivedError",  "error code : "+errorCode+ "\n description: " + description + "\n failingUrl: "+ failingUrl );
 
         }
-
-//        @Override
-//        public void onLoadResource(WebView view, String url) {
-//            super.onLoadResource(view, url);
-//            view.loadUrl(url);
-//        }
-
-//        @Override
-//        public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-//            return super.shouldInterceptRequest(view, url);
-//        }
     }
 
     private class ChromeClient extends WebChromeClient {
@@ -179,9 +166,18 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 
     private class AndroidBridge {
 
-        public void callAndroid(final String arg) {
+        public void sendSuccess() {
             handler.post(new Runnable() {
                 public void run() {
+                    Toast.makeText(getApplicationContext(),"결제를 완료하셨습니다. 현재 수강중 페이지에서 확인하실 수 있습니다.",Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+        }
+        public void sendFail() {
+            handler.post(new Runnable() {
+                public void run() {
+                    Toast.makeText(getApplicationContext(),"결제가 중단되었습니다..",Toast.LENGTH_LONG).show();
                     finish();
                 }
             });

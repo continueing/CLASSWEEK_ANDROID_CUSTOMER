@@ -71,7 +71,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         try {
             classRequest.getClassSummaryInfos(this.category, this.subcategory, weekDay, location, time, price, nextPage, this);
         } catch (JSONException e) {
-            e.printStackTrace();
+            AppTerminator.error(this, "classRequest.getClassSummaryInfos fail :"+ e.toString());
         }
     }
 

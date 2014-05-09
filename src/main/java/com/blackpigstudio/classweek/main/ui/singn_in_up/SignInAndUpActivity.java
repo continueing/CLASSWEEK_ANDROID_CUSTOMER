@@ -95,12 +95,20 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         @Override
         public void onFail(JSONObject jsonObject, int errorCode) {
             restoreUIAfterRequest();
-
-            if(true)// if there's no this account, should signup.
+            if(errorCode == JsonResponseHandler.ERROR_CODE_PASSWORD_INCORRECT)
+            {
+                Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
+            }
+            else if(errorCode == JsonResponseHandler.ERROR_CODE_ID_NOT_EXIST)// if there's no this account, should signup.
             {
                 prepareUIForRequest();
                 requestSignUp();
             }
+            else
+            {
+                AppTerminator.error(SignInAndUpActivity.this,"userRequset.login fail " + errorCode);
+            }
+
         }
     };
 
@@ -142,7 +150,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         public void onSuccess(JSONObject jsonObject)
         {
             restoreUIAfterRequest();
-            Toast.makeText(getApplicationContext(),"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),view.getEmail() + "로 회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show();
             requestLogin();
         }
 
@@ -151,6 +159,18 @@ public class SignInAndUpActivity extends ActionBarActivity  {
             restoreUIAfterRequest();
             if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
                 Toast.makeText(SignInAndUpActivity.this,getResources().getString(R.string.network_check_alert),Toast.LENGTH_LONG).show();
+            }
+            else if(errorCode == JsonResponseHandler.ERROR_CODE_PASSWORDS_ARE_NOT_IDENTICAL)
+            {
+                Toast.makeText(getApplicationContext(),"패스워드를 일치시켜 주세요.^^",Toast.LENGTH_LONG).show();
+            }
+            else if(errorCode == JsonResponseHandler.ERROR_CODE_MISSING_USERNAME)
+            {
+                Toast.makeText(getApplicationContext(),"가입하실 이메일을 입력해 주세요.^^",Toast.LENGTH_LONG).show();
+            }
+            else if(errorCode == JsonResponseHandler.ERROR_CODE_ALREADY_EXIST_USERNAME)
+            {
+                Toast.makeText(getApplicationContext(),"이미 가입된 이메일 주소입니다.",Toast.LENGTH_LONG).show();
             }
             else
             {

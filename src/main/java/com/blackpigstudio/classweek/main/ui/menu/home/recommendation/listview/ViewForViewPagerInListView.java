@@ -37,11 +37,10 @@ public class ViewForViewPagerInListView extends LinearLayout {
 
     public void setData(ArrayList<String> anUrls)
     {
-        // The null check is needed because list view recreate this class depending on memory usage. So, The this method(setData) would be called more than one time.
-        if(viewPagerAdapter == null) {
-            viewPagerAdapter = new ViewPagerAdapter(anUrls, getContext());
-            viewPager.setAdapter(viewPagerAdapter);
-            viewPagerIndexer.init(viewPager, viewPagerAdapter);
-        }
+
+        viewPagerAdapter = new ViewPagerAdapter(anUrls, getContext());
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPagerIndexer.init(viewPager, viewPagerAdapter);
+
     }
 }

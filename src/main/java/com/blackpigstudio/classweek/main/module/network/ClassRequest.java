@@ -17,6 +17,7 @@ public class ClassRequest {
     private static final String URL_CLASSES = "/classes";
     private static final String URL_SUBCATEGORY = "/subcategory";
     private static final String URL_PAYMENT = "/foradmin/before_payment";
+    private static final String URL_NOW_TAKING = "/now_taking";
 
     private static final String PARM_KEY_CONTENTS_INQUIRE = "content";
     private static final String PARM_KEY_WEEKDAY = "weekday";
@@ -93,6 +94,12 @@ public class ClassRequest {
         requestParams.put(PARM_KEY_DAY_OR_MONTH, "month");
         HttpRequester.post(URL_PAYMENT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
 
+    }
+
+    public void getNowTaking(HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        HttpRequester.post(URL_BASE + URL_NOW_TAKING,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
 

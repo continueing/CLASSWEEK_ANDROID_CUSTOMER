@@ -17,12 +17,10 @@ public class InicisPaymentInfo implements Serializable {
     private static final String P_AMT = "P_AMT";
     private static final String P_UNAME = "P_UNAME";
     private static final String P_NOTI = "P_NOTI";
-    private static final String P_USER_NAME_OF_NOTI = "username";
-    private static final String P_CLASSES_ID_OF_NOTI = "classes_id";
-    private static final String P_SCHEDULE_ID_OF_NOTI = "schedule_id";
+    private static final String P_OID = "P_OID";
 
 
-    private String mid;
+    private String mId;
     private int amount;
     private String userName;
     private String noti;
@@ -30,26 +28,23 @@ public class InicisPaymentInfo implements Serializable {
     private String notiUrl;
     private String returnUrl;
     private String goods;
+    private String oId;
 
     public InicisPaymentInfo(JSONObject aJsonObject) throws JSONException {
         goods = aJsonObject.getString(P_GOODS);
         returnUrl = aJsonObject.getString(P_RETURN_URL);
         nextUrl = aJsonObject.getString(P_NEXT_URL);
-        mid = aJsonObject.getString(P_MID);
+        mId = aJsonObject.getString(P_MID);
         notiUrl = aJsonObject.getString(P_NOTI_URL);
         amount = aJsonObject.getInt(P_AMT);
         userName = aJsonObject.getString(P_UNAME);
-        JSONObject notiJsonObject = aJsonObject.getJSONObject(P_NOTI);
-        noti = notiJsonObject.getString(P_USER_NAME_OF_NOTI);
-        noti += ",";
-        noti = notiJsonObject.getString(P_CLASSES_ID_OF_NOTI);
-        noti += ",";
-        noti = notiJsonObject.getString(P_SCHEDULE_ID_OF_NOTI);
+        noti = aJsonObject.getJSONObject(P_NOTI).toString();
+//        oId = aJsonObject.getString(oId);
     }
 
 
-    public String getMid() {
-        return mid;
+    public String getMId() {
+        return mId;
     }
 
     public int getAmount() {
@@ -78,7 +73,10 @@ public class InicisPaymentInfo implements Serializable {
         return noti;
     }
 
-
+    public String getOId()
+    {
+        return oId;
+    }
 
 
 }

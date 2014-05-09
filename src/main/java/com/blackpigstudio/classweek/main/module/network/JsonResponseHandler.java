@@ -20,6 +20,12 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     private static final String PARM_ERROR_CODE = "error_code";
     public static final String PARM_DATA = "data";
     public static final int ERROR_CODE_NETWORK_UNAVAILABLE = -1;
+    public static final int ERROR_CODE_PASSWORDS_ARE_NOT_IDENTICAL = 1;
+    public static final int ERROR_CODE_MISSING_USERNAME = 2;
+    public static final int ERROR_CODE_ALREADY_EXIST_USERNAME = 3;
+    public static final int ERROR_CODE_ID_NOT_EXIST = 4;
+    public static final int ERROR_CODE_PASSWORD_INCORRECT = 5;
+    public static final int ERROR_CODE_HAVE_TO_LOGIN = 7;
 
     public JsonResponseHandler(HttpRequester.NetworkResponseListener aNetworkResponseListener)
     {

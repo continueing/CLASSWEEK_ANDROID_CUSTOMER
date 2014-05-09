@@ -59,7 +59,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         try {
             classRequest.getRecommendedClassSummaryInfos(this);
         } catch (JSONException e) {
-            e.printStackTrace();
+            AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail :"+ e.toString());
         }
     }
 
@@ -68,7 +68,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         try {
             classRequest.getRecommendedSubcategories(getRecommendedSubcategories);
         } catch (JSONException e) {
-            e.printStackTrace();
+            AppTerminator.error(this, "classRequest.getRecommendedSubcategories fail :"+ e.toString());
         }
     }
 

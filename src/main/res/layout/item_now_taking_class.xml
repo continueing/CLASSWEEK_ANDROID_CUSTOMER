@@ -2,13 +2,14 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="94dp">
+    android:layout_height="94dp"
+    android:background="@drawable/bg_item_style">
 
     <com.loopj.android.image.SmartImageView
         android:id="@+id/siv_now_taking_class_front"
         android:layout_width="109dp"
-        android:layout_height="match_parent"
-        android:background="#a2fbff" />
+        android:scaleType="fitXY"
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,7 +69,7 @@
             android:layout_alignParentLeft="true"/>
 
         <TextView
-            android:id="@+id/tv_now_taking_class_start_date"
+            android:id="@+id/tv_now_taking_class_start_date_time"
             android:layout_marginTop="5.5dp"
             android:layout_marginLeft="49dp"
             android:layout_marginRight="13dp"
@@ -95,7 +96,7 @@
             android:layout_alignParentLeft="true"/>
 
         <TextView
-            android:id="@+id/tv_now_taking_class_end_date_"
+            android:id="@+id/tv_now_taking_class_end_date_time"
             android:layout_marginTop="5.5dp"
             android:layout_marginLeft="49dp"
             android:layout_marginRight="13dp"
@@ -109,6 +110,7 @@
             android:layout_alignParentLeft="true"/>
 
         <TextView
+            android:id="@+id/tv_now_taking_class_current_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
