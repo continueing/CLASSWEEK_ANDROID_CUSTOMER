@@ -42,7 +42,8 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         Intent intent = getIntent();
 
         if(intent.getData() != null) {
-            myWebView.loadUrl("http://"+intent.getData().getHost()+intent.getData().getPath()+intent.getData().getQuery());
+            Log.e("return url", "http://"+intent.getData().getHost()+intent.getData().getPath()+"?"+intent.getData().getQuery());
+            myWebView.loadUrl("http://"+intent.getData().getHost()+intent.getData().getPath()+"?"+intent.getData().getQuery());
         }
         else {
             InicisPaymentInfo inicisPaymentInfo = (InicisPaymentInfo) intent.getSerializableExtra(BUNDLE_PARM_INICIS_PAYMENT_INFO);
@@ -124,7 +125,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 	    			    조건을 걸어 종료하도록 하였습니다.*/
                     if( url.startsWith("ispmobile://"))
                     {
-//                        finish();
+                        finish();
                     }
 
                 }catch(ActivityNotFoundException e)
@@ -169,6 +170,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         public void sendSuccess() {
             handler.post(new Runnable() {
                 public void run() {
+                    Log.e("AndroidBridge","success");
                     Toast.makeText(getApplicationContext(),"결제를 완료하셨습니다. 현재 수강중 페이지에서 확인하실 수 있습니다.",Toast.LENGTH_LONG).show();
                     finish();
                 }
@@ -177,6 +179,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
         public void sendFail() {
             handler.post(new Runnable() {
                 public void run() {
+                    Log.e("AndroidBridge","fail");
                     Toast.makeText(getApplicationContext(),"결제가 중단되었습니다..",Toast.LENGTH_LONG).show();
                     finish();
                 }
