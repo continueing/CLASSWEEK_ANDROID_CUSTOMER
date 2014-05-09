@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -43,7 +44,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 
         if(intent.getData() != null) {
             Log.e("return url", "http://"+intent.getData().getHost()+intent.getData().getPath()+"?"+intent.getData().getQuery());
-            myWebView.loadUrl("http://"+intent.getData().getHost()+intent.getData().getPath()+"?"+intent.getData().getQuery());
+            myWebView.loadUrl("http://" + intent.getData().getHost() + intent.getData().getPath() + "?" + intent.getData().getQuery());
         }
         else {
             InicisPaymentInfo inicisPaymentInfo = (InicisPaymentInfo) intent.getSerializableExtra(BUNDLE_PARM_INICIS_PAYMENT_INFO);
@@ -167,6 +168,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
 
     private class AndroidBridge {
 
+        @JavascriptInterface
         public void sendSuccess() {
             handler.post(new Runnable() {
                 public void run() {
@@ -176,11 +178,13 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                 }
             });
         }
+
+        @JavascriptInterface
         public void sendFail() {
             handler.post(new Runnable() {
                 public void run() {
                     Log.e("AndroidBridge","fail");
-                    Toast.makeText(getApplicationContext(),"결제가 중단되었습니다..",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"결제가 중단되었습니다.",Toast.LENGTH_LONG).show();
                     finish();
                 }
             });
