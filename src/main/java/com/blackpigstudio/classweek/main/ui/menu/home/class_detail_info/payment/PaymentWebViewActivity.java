@@ -55,7 +55,7 @@ public class PaymentWebViewActivity extends ActionBarActivity {
                             "P_NEXT_URL=" + inicisPaymentInfo.getNextUrl() + "&" +
                             "P_NOTI_URL=" + inicisPaymentInfo.getNotiUrl() + "&" +
                         "P_RETURN_URL="+"classweek"+inicisPaymentInfo.getReturnUrl().substring(4)+"&" +
-//                            "P_RETURN_URL=" + inicisPaymentInfo.getReturnUrl() + "&" +
+                            "P_OID=" + inicisPaymentInfo.getOId() + "&" +
                             "P_GOODS=" + inicisPaymentInfo.getGoods() + "&" +
                             "paymethod=wcard&" +
                             "inipaymobile_type=web";

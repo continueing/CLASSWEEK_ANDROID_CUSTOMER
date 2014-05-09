@@ -39,7 +39,7 @@ public class InicisPaymentInfo implements Serializable {
         amount = aJsonObject.getInt(P_AMT);
         userName = aJsonObject.getString(P_UNAME);
         noti = aJsonObject.getJSONObject(P_NOTI).toString();
-//        oId = aJsonObject.getString(oId);
+        oId = aJsonObject.getString(P_OID);
     }
 
 
@@ -77,6 +77,5 @@ public class InicisPaymentInfo implements Serializable {
     {
         return oId;
     }
-
 
 }
