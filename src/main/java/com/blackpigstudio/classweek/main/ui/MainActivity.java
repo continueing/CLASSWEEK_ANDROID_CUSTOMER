@@ -48,7 +48,7 @@ public class MainActivity extends ActionBarActivity
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (position) {
                 case 0:
-                    transaction.replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
+                    transaction.replace(R.id.container, new ClassRecommendationFragment()).commit();
                     break;
                 case 1:
                     transaction.replace(R.id.container, new NowTakingClassFragment()).commit();

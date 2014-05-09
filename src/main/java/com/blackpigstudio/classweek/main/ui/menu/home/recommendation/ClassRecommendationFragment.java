@@ -43,13 +43,6 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         setSpinnerItemIndex(SPINNER_ITEM_INDEX);
     }
 
-    public static ClassRecommendationFragment getInstance()
-    {
-        if(instance == null)
-            instance = new ClassRecommendationFragment();
-        return instance;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

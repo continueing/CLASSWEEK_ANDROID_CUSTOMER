@@ -53,7 +53,7 @@ abstract public class AbstractHomeFragment extends Fragment {
                 if(i != spinnerItemIndexOfThisFragment) {
                     switch (i) {
                         case 0:
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, ClassRecommendationFragment.getInstance()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ClassRecommendationFragment()).commit();
                             break;
                         case 1:
                         case 2:
