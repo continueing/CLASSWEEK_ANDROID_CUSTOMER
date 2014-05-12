@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,9 +21,7 @@ import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
-import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
-import com.google.analytics.tracking.android.EasyTracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +49,7 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =inflater.inflate(R.layout.fragment_contact, container, false);
+        getActivity().getActionBar().setTitle("문의하기");
         et_contact = (EditText) root.findViewById(R.id.et_contact);
         return root;
     }
@@ -113,7 +111,7 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
     public void onSuccess(JSONObject jsonObject) {
         releaseUIAfterRequest();
         et_contact.setText("");
-        Toast.makeText(getActivity(), "정상적으로 문의가 접수되었습니다. 최대한 빠르게 연락드리겠습니다. 감사합니다.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "정상적으로 문의가 접수되었습니다.\n최대한 빠르게 연락드리겠습니다.\n감사합니다.", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -25,6 +25,7 @@ public class TookBeforeClassFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().getActionBar().setTitle("종료된 클래스");
         ViewForTookBeforeClassFragment viewForTookBeforeClassFragment = new ViewForTookBeforeClassFragment(getActivity().getApplicationContext(),inflater,container);
         return viewForTookBeforeClassFragment.getRoot();
     }

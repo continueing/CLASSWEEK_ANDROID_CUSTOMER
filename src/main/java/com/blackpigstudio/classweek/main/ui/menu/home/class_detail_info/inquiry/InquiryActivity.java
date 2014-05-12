@@ -85,7 +85,7 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public void onSuccess(JSONObject jsonObject) {
         releaseUIAfterRequest();
-        Toast.makeText(getApplicationContext(),"정상적으로 문의가 접수되었습니다. 최대한 빠르게 연락드리겠습니다. 감사합니다.",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"정상적으로 문의가 접수되었습니다.\n최대한 빠르게 연락드리겠습니다.\n감사합니다.",Toast.LENGTH_LONG).show();
         finish();
     }
 

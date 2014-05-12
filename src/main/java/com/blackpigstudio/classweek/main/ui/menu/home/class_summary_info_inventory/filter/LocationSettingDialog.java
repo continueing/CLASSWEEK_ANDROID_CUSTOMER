@@ -44,8 +44,17 @@ public class LocationSettingDialog extends Dialog{
                 case R.id.rb_filter_location_gangnam:
                     ILocationReceiver.setLocation(getContext().getResources().getString(R.string.location_gangnam));
                     break;
-                case R.id.rb_filter_location_gangbuk:
-                    ILocationReceiver.setLocation(getContext().getResources().getString(R.string.location_gangbuk));
+                case R.id.rb_filter_location_jongro:
+                    ILocationReceiver.setLocation("종로");
+                    break;
+                case R.id.rb_filter_location_hongdae:
+                    ILocationReceiver.setLocation("홍대");
+                    break;
+                case R.id.rb_filter_location_itewon:
+                    ILocationReceiver.setLocation("종로");
+                    break;
+                case R.id.rb_filter_location_monkdong:
+                    ILocationReceiver.setLocation("목동");
                     break;
                 default:
                     AppTerminator.error(this, "onCheckedChangeListener.onCheckedChanged: unexpected location index");
