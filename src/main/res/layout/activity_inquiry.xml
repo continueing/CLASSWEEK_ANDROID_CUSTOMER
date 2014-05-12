@@ -13,7 +13,7 @@
       android:background="@android:color/transparent"
       android:padding="10dp"
       android:textCursorDrawable="@null"
-      android:hint="궁금하신 내용 전부다 말씀주세요~"
+      android:hint="궁금하신 내용 전부 다 말씀주세요~"
       android:gravity="top|left"/>
 
 </RelativeLayout>

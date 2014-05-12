@@ -108,6 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_home,"홈"));
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_register,"신청한 클래스"));
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_finish,"종료된 클래스"));
+        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_set,"문의하기"));
         //TODO : should implement setting page
 //        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_set,"설정"));
 

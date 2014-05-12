@@ -28,6 +28,7 @@ abstract public class AbstractViewForActivity {
     abstract protected void initViews();
     abstract protected void setEvent();
 
+
     public View getRoot(){return this.root;}
 
 

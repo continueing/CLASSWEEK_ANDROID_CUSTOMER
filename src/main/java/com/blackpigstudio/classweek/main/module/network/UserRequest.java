@@ -14,6 +14,7 @@ public class UserRequest {
     private static String URL_LOGIN =  "/login";
     private static String URL_SIGN_UP =  "/registration";
     private static String URL_UPDATE =  "/update";
+    private static String URL_CONTACT =  "/inquire";
     private Context context;
 
     public static String PARM_EMAIL = "email";
@@ -24,6 +25,8 @@ public class UserRequest {
     public static String PARM_BIRTH_DAY = "birthday";
     public static String PARM_PHONE_NUMBER = "phone_number";
     public static String PARM_GENDER = "gender";
+    public static String PARM_CONTENTS = "inquire_content";
+
 
 
     public UserRequest(Context aContext)
@@ -56,6 +59,13 @@ public class UserRequest {
         requestParams.put(PARM_PHONE_NUMBER,aPhone_number);
         requestParams.put(PARM_GENDER,aGender);
         HttpRequester.post(URL_BASE + URL_UPDATE,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
+
+    public void contact(String aContents, final HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put(PARM_CONTENTS, aContents);
+        HttpRequester.post(URL_BASE + URL_CONTACT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
 }

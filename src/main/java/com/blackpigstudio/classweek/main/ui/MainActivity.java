@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.ui.menu.contact.ContactFragment;
 import com.blackpigstudio.classweek.main.ui.navigation_drawer_menu.NavigationDrawerFragment;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment;
@@ -30,8 +32,8 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_main);
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
     }
@@ -55,6 +57,9 @@ public class MainActivity extends ActionBarActivity
                     break;
                 case 2:
                     transaction.replace(R.id.container, new TookBeforeClassFragment()).commit();
+                    break;
+                case 3:
+                    transaction.replace(R.id.container, new ContactFragment()).commit();
                     break;
                 default:
                     AppTerminator.error(this,"onNavigationDrawerItemSelected: there's no fragment");
