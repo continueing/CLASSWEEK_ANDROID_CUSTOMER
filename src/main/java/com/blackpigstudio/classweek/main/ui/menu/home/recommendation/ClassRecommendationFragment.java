@@ -4,11 +4,9 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
@@ -19,7 +17,6 @@ import com.blackpigstudio.classweek.main.module.listview.class_summary_info_list
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
-import com.blackpigstudio.classweek.main.ui.MainActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 
 import org.json.JSONArray;
@@ -32,9 +29,8 @@ import java.util.ArrayList;
  * A simple {@link android.support.v4.app.Fragment} subclass.
  *
  */
-public class ClassRecommendationFragment extends AbstractHomeFragment implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener{
+public class ClassRecommendationFragment extends AbstractHomeFragment implements OnClassSummeryInfoChooseListener{
     public static final int SPINNER_ITEM_INDEX = 0;
-    private static ClassRecommendationFragment instance;
     private ViewForClassRecommendationFragment view;
     ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems = null;
     ArrayList<String> imageUrls = null;
@@ -48,7 +44,6 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
                              Bundle savedInstanceState) {
         view = new ViewForClassRecommendationFragment( getActivity(), inflater,container, this);
         View result = view.getRoot();
-        requestRecommendedClassSummaryInfoFromServer();
         requestRecommendedSubcategoryFromServer();
         getActivity().getActionBar().setTitle(R.string.title_section1);
         return result;
@@ -57,7 +52,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     private void requestRecommendedClassSummaryInfoFromServer() {
         ClassRequest classRequest = new ClassRequest(getActivity());
         try {
-            classRequest.getRecommendedClassSummaryInfos(this);
+            classRequest.getRecommendedClassSummaryInfos(getRecommendedClassSummaryInfoListener);
         } catch (JSONException e) {
             AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail :"+ e.toString());
         }
@@ -66,16 +61,58 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     private void requestRecommendedSubcategoryFromServer() {
         ClassRequest classRequest = new ClassRequest(getActivity());
         try {
-            classRequest.getRecommendedSubcategories(getRecommendedSubcategories);
+            classRequest.getRecommendedSubcategories(getRecommendedSubcategoriesListener);
         } catch (JSONException e) {
-            AppTerminator.error(this, "classRequest.getRecommendedSubcategories fail :"+ e.toString());
+            AppTerminator.error(this, "classRequest.getRecommendedSubcategoriesListener fail :"+ e.toString());
         }
     }
 
 
 
+    HttpRequester.NetworkResponseListener getRecommendedClassSummaryInfoListener = new HttpRequester.NetworkResponseListener() {
+        @Override
+        public void onSuccess(JSONObject jsonObject) {
+            JSONArray jsonArray = null;
 
-    HttpRequester.NetworkResponseListener getRecommendedSubcategories = new HttpRequester.NetworkResponseListener() {
+            try {
+                jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
+            } catch (JSONException e) {
+                AppTerminator.error(this, "JSONObject.getJSONArray(): " + e.toString());
+            }
+
+            iClassSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
+
+            for(int i = 0 ; i < jsonArray.length() ; i++)
+            {
+                JSONObject jsonClassSummaryInfoObject = null;
+                try {
+                    jsonClassSummaryInfoObject = jsonArray.getJSONObject(i);
+                } catch (JSONException e) {
+                    AppTerminator.error(this, "jsonArray.getJSONObject: " + e.toString());
+                }
+
+                try {
+                    iClassSummaryInfoItems.add(new ClassSummaryInfo(jsonClassSummaryInfoObject));
+                } catch (JSONException e) {
+                    AppTerminator.error(this, "ClassSummaryInfo.new: " + e.toString());
+                }
+            }
+            view.setData(iClassSummaryInfoItems, imageUrls);
+
+        }
+
+        @Override
+        public void onFail(JSONObject jsonObject, int errorCode) {
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
+            }
+            else
+                AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
+        }
+    };
+
+
+    HttpRequester.NetworkResponseListener getRecommendedSubcategoriesListener = new HttpRequester.NetworkResponseListener() {
         @Override
         public void onSuccess(JSONObject jsonObject) {
 
@@ -104,7 +141,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
                     AppTerminator.error(this, "jsonSubcategoryObject.getString(\"image_url\"): " + e.toString());
                 }
             }
-            setDataIfPossible();
+            requestRecommendedClassSummaryInfoFromServer();
         }
 
         @Override
@@ -117,9 +154,6 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         }
     };
 
-
-
-
     @Override
     public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
         Intent intent = new Intent(getActivity(),ClassDetailInfoActivity.class);
@@ -128,50 +162,6 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         startActivity(intent);
     }
 
-    @Override
-    public void onSuccess(JSONObject jsonObject) {
-        JSONArray jsonArray = null;
-
-        try {
-            jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
-        } catch (JSONException e) {
-            AppTerminator.error(this, "JSONObject.getJSONArray(): " + e.toString());
-        }
-
-        iClassSummaryInfoItems = new ArrayList<IClassSummaryInfoItem>();
-
-        for(int i = 0 ; i < jsonArray.length() ; i++)
-        {
-            JSONObject jsonClassSummaryInfoObject = null;
-            try {
-                jsonClassSummaryInfoObject = jsonArray.getJSONObject(i);
-            } catch (JSONException e) {
-                AppTerminator.error(this, "jsonArray.getJSONObject: " + e.toString());
-            }
-
-            try {
-                iClassSummaryInfoItems.add(new ClassSummaryInfo(jsonClassSummaryInfoObject));
-            } catch (JSONException e) {
-                AppTerminator.error(this, "ClassSummaryInfo.new: " + e.toString());
-            }
-        }
-        setDataIfPossible();
-    }
-
-    @Override
-    public void onFail(JSONObject jsonObject, int errorCode) {
-        if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-            AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
-        }
-        else
-            AppTerminator.error(this, "classRequest.getRecommendedClassSummaryInfos fail : " + errorCode);
-    }
-
-    private void setDataIfPossible()
-    {
-        if(imageUrls != null && iClassSummaryInfoItems != null)
-            view.setData(iClassSummaryInfoItems, imageUrls);
-    }
 
 
 }
