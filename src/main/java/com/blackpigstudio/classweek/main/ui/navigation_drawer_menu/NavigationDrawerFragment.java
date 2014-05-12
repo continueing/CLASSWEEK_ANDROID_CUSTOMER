@@ -18,9 +18,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.network.HttpRequester;
+import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
+import com.blackpigstudio.classweek.main.module.network.UserRequest;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -94,6 +104,18 @@ public class NavigationDrawerFragment extends Fragment {
 
 
         mDrawerListView = (ListView)root.findViewById(R.id.lv_navigation_drawer_menu );
+        ImageView imageView = (ImageView)root.findViewById(R.id.iv_menu_logout);
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                UserPreference userPreference = new UserPreference(getActivity());
+                if(userPreference.isLoggedIn())
+                {
+                    requestLogout();
+                }
+                return true;
+            }
+        });
 
 
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,7 +130,7 @@ public class NavigationDrawerFragment extends Fragment {
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_home,"홈"));
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_register,"신청한 클래스"));
         arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_finish,"종료된 클래스"));
-        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_set,"문의하기"));
+        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_question,"문의하기"));
         //TODO : should implement setting page
 //        arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.ic_set,"설정"));
 
@@ -117,6 +139,34 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return root;
     }
+
+    private void requestLogout()
+    {
+        UserRequest userRequest = new UserRequest(getActivity());
+        try {
+            userRequest.logout(logoutListener);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "UserRequest.logout(): " + e.toString());
+        }
+    }
+
+    HttpRequester.NetworkResponseListener logoutListener = new HttpRequester.NetworkResponseListener() {
+        @Override
+        public void onSuccess(JSONObject jsonObject) {
+            UserPreference userPreference = new UserPreference(getActivity());
+            userPreference.logout();
+            Toast.makeText(getActivity(),"로그아웃 되셨습니다.",Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onFail(JSONObject jsonObject, int errorCode) {
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert), getActivity());
+            }
+            else
+                AppTerminator.error(this, "UserRequest.logout fail : " + errorCode);
+        }
+    };
 
     public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);

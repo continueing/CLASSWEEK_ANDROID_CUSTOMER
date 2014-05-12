@@ -15,6 +15,7 @@ public class UserRequest {
     private static String URL_SIGN_UP =  "/registration";
     private static String URL_UPDATE =  "/update";
     private static String URL_CONTACT =  "/inquire";
+    private static String URL_LOGOUT =  "/logout";
     private Context context;
 
     public static String PARM_EMAIL = "email";
@@ -68,4 +69,9 @@ public class UserRequest {
         HttpRequester.post(URL_BASE + URL_CONTACT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
     }
 
+    public void logout( final HttpRequester.NetworkResponseListener aNetworkResponseListener) throws JSONException
+    {
+        RequestParams requestParams = new RequestParams();
+        HttpRequester.post(URL_BASE + URL_LOGOUT,requestParams,new JsonResponseHandler(aNetworkResponseListener), this.context);
+    }
 }
