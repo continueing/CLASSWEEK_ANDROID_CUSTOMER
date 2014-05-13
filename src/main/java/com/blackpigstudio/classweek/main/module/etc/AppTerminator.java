@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.module;
+package com.blackpigstudio.classweek.main.module.etc;
 
 import android.app.Activity;
 import android.content.Context;

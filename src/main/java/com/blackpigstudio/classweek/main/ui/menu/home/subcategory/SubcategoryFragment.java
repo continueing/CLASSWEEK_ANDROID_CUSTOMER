@@ -10,8 +10,9 @@ import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.Subcategory;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
@@ -37,6 +38,7 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
     public static final String BUNDLE_PARM_OF_CATEGORY_NAME = "CATEGORY_NAME";
     private ViewForSubcategoryFragment view;
     private String category;
+    private EasyTracker easyTracker;
 
 
     public SubcategoryFragment() { }
@@ -69,6 +71,14 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
     @Override
     public void onSubCategoryChoose(String aSubcategoryForUrl, String aSubcategoryForKor) {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_VIEW,
+                        EventOfGoogleAnalytics.ACTION_SUBCATEGORY,
+                        category,
+                        0l
+                ).build()
+        );
         Intent intent = new Intent(getActivity().getApplicationContext(), ClassSummaryInfoInventoryActivity.class);
         intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_SUBCATEGORY_FOR_URL, aSubcategoryForUrl);
         intent.putExtra(ClassSummaryInfoInventoryActivity.BUNDLE_PARM_OF_CATEGORY_URL, category );
@@ -110,8 +120,8 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(getActivity());
-        easyTracker.set(Fields.SCREEN_NAME,SCREEN_NAME+"/"+category);
+        easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME + "/" + category);
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()

@@ -4,19 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.class_info.ClassDetailInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummaryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
@@ -33,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClassSummaryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
+public class ClassSummaryInfoInventoryActivity extends ActionBarActivity implements OnClassSummaryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
     public static final String SCREEN_NAME = "inventory";
     public static final int REQUEST_CODE_GET_QUERY = 0;
     private ViewForClassSummaryInfoInventoryActivity view;
@@ -51,7 +49,7 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     private String location=null;
     private String time=null;
     private String price=null;
-
+    private EasyTracker easyTracker;
 
 
     @Override
@@ -122,7 +120,15 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     }
 
     @Override
-    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
+    public void onClassSummaryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_VIEW,
+                        EventOfGoogleAnalytics.ACTION_CLASS,
+                        subcategory,
+                        (long) iClassSummaryInfoItem.getClassId()
+                ).build()
+        );
         Intent intent = new Intent(getApplicationContext(), ClassDetailInfoActivity.class);
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_CLASS_ID, iClassSummaryInfoItem.getClassId());
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());
@@ -189,8 +195,8 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(this);
-        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+subcategory);
+        easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME + "/" + subcategory);
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()
@@ -200,6 +206,6 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     @Override
     public void onStop() {
         super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);
+        easyTracker.activityStop(this);
     }
 }

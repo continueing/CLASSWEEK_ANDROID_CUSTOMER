@@ -8,11 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForFragment;
 import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummaryInfoChooseListener;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.ArrayAdapterForClassSummaryInfoListViewWithImageViewPager;
 
 import java.util.ArrayList;
@@ -26,11 +25,11 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
     private LayoutInflater layoutInflater;
     private ListView lv_class_summary_info;
     private ArrayAdapterForClassSummaryInfoListViewWithImageViewPager arrayAdapterForClassSummaryInfoListViewWithImageViewPager;
-    OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
+    OnClassSummaryInfoChooseListener onClassSummaryInfoChooseListener;
 
-    public ViewForClassRecommendationFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, OnClassSummeryInfoChooseListener anOnClassSummeryInfoChooseListener) {
+    public ViewForClassRecommendationFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, OnClassSummaryInfoChooseListener anOnClassSummaryInfoChooseListener) {
         super(context, layoutInflater, container);
-        this.onClassSummeryInfoChooseListener = anOnClassSummeryInfoChooseListener;
+        this.onClassSummaryInfoChooseListener = anOnClassSummaryInfoChooseListener;
     }
 
     @Override
@@ -61,7 +60,7 @@ public class ViewForClassRecommendationFragment extends AbstractViewForFragment 
         lv_class_summary_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(arrayAdapterForClassSummaryInfoListViewWithImageViewPager.getItem(i-1));
+                onClassSummaryInfoChooseListener.onClassSummaryInfoChoose(arrayAdapterForClassSummaryInfoListViewWithImageViewPager.getItem(i - 1));
             }
         });
     }

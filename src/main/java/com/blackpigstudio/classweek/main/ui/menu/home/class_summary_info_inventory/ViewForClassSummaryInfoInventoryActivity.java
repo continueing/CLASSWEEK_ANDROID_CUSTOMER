@@ -13,7 +13,7 @@ import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractVi
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ArrayAdapterForClassSummaryInfoListView;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummaryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.ViewForClassSummaryInfoListViewItem;
 
 import java.util.ArrayList;
@@ -23,15 +23,15 @@ import java.util.ArrayList;
  */
 public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForActivity{
     private ArrayAdapterForClassSummaryInfoListView arrayAdapterForClassSummaryInfoListView;
-    private OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener;
+    private OnClassSummaryInfoChooseListener onClassSummaryInfoChooseListener;
     private OnScrollOfListViewListener onScrollOfListViewListener;
     private ProgressbarFooter progressbarFooter;
     ListView lv_class_summary_info;
 
 
-    public ViewForClassSummaryInfoInventoryActivity(Context context, OnClassSummeryInfoChooseListener onClassSummeryInfoChooseListener, OnScrollOfListViewListener onScrollOfListViewListener) {
+    public ViewForClassSummaryInfoInventoryActivity(Context context, OnClassSummaryInfoChooseListener onClassSummaryInfoChooseListener, OnScrollOfListViewListener onScrollOfListViewListener) {
         super(context);
-        this.onClassSummeryInfoChooseListener = onClassSummeryInfoChooseListener;
+        this.onClassSummaryInfoChooseListener = onClassSummaryInfoChooseListener;
         this.onScrollOfListViewListener = onScrollOfListViewListener;
     }
 
@@ -55,7 +55,7 @@ public class ViewForClassSummaryInfoInventoryActivity extends AbstractViewForAct
         lv_class_summary_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onClassSummeryInfoChooseListener.onClassSummeryInfoChoose(((ViewForClassSummaryInfoListViewItem)view).getIClassSummaryInfoItem());
+                onClassSummaryInfoChooseListener.onClassSummaryInfoChoose(((ViewForClassSummaryInfoListViewItem) view).getIClassSummaryInfoItem());
             }
         });
 

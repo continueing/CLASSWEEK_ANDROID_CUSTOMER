@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 
 /**
  * Created by continueing on 2014. 3. 29..

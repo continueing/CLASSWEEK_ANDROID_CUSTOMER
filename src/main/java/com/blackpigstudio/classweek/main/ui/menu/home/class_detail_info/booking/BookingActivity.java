@@ -9,7 +9,8 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
@@ -22,8 +23,6 @@ import com.google.analytics.tracking.android.Tracker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener, HttpRequester.NetworkResponseListener {
     public static final String SCREEN_NAME = "booking";
     public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
@@ -33,6 +32,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     private boolean isScheduleDialogReady;
     private ClassInfo classInfo;
     private Schedule selectedSchedule;
+    private EasyTracker easyTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,15 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
 
     @Override
     public void onPaymentRequested() {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_TRANSACTION,
+                        EventOfGoogleAnalytics.ACTION_BOOK,
+                        selectedSchedule.getStartDateTime(),
+                        (long)Schedule.MONTH_SCHEDULE_TYPE
+                ).build()
+        );
+
         ClassRequest classRequest = new ClassRequest(getApplicationContext());
         try {
             classRequest.getPaymentInfo(classInfo.getClassId()+"", classInfo.getScheduleId()+"",selectedSchedule.getStartDateTimeForPayment(),selectedSchedule.getEndDateTimeForPayment(),this);
@@ -137,8 +146,8 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(this);
-        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classInfo.getClassId()+"/"+classInfo.getScheduleId());
+        easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME + "/" + classInfo.getClassId() + "/" + classInfo.getScheduleId());
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()

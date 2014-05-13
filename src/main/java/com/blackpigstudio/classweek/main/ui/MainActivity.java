@@ -12,13 +12,12 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.ui.menu.contact.ContactFragment;
 import com.blackpigstudio.classweek.main.ui.navigation_drawer_menu.NavigationDrawerFragment;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.NowTakingClassFragment;
 import com.blackpigstudio.classweek.main.ui.menu.took_before.TookBeforeClassFragment;
-import com.google.analytics.tracking.android.EasyTracker;
 
 
 public class MainActivity extends ActionBarActivity

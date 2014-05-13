@@ -9,12 +9,12 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.domain.Schedule;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
-import com.blackpigstudio.classweek.main.module.preference.UserPreference;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -31,6 +31,7 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     private ViewForInquiryActivity view;
     private ClassRequest classRequest;
     private int classId;
+    private EasyTracker easyTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,14 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_inquiry) {
+            easyTracker.send(
+                    MapBuilder.createEvent(
+                            EventOfGoogleAnalytics.CATEGORY_COMMUNICATION,
+                            EventOfGoogleAnalytics.ACTION_INQUIRE,
+                            "",
+                            (long)classId
+                    ).build()
+            );
             requestInquiry();
             return true;
         }
@@ -109,8 +118,8 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(this);
-        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classId);
+        easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME + "/" + classId);
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()

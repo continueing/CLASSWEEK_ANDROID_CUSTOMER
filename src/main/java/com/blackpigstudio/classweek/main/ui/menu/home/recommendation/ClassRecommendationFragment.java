@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.homeui.AbstractHomeFragment;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
-import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummeryInfoChooseListener;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.OnClassSummaryInfoChooseListener;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
@@ -21,7 +22,6 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDet
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,12 +33,13 @@ import java.util.ArrayList;
  * A simple {@link android.support.v4.app.Fragment} subclass.
  *
  */
-public class ClassRecommendationFragment extends AbstractHomeFragment implements OnClassSummeryInfoChooseListener{
+public class ClassRecommendationFragment extends AbstractHomeFragment implements OnClassSummaryInfoChooseListener {
     public static final String SCREEN_NAME = "recommendation";
     public static final int SPINNER_ITEM_INDEX = 0;
     private ViewForClassRecommendationFragment view;
     ArrayList<IClassSummaryInfoItem> iClassSummaryInfoItems = null;
     ArrayList<String> imageUrls = null;
+    private EasyTracker easyTracker;
 
     public ClassRecommendationFragment() {
         setSpinnerItemIndex(SPINNER_ITEM_INDEX);
@@ -162,8 +163,8 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(getActivity());
-        easyTracker.set(Fields.SCREEN_NAME,SCREEN_NAME);
+        easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()
@@ -173,11 +174,19 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     @Override
     public void onStop() {
         super.onStop();
-        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
+        easyTracker.activityStop(getActivity());
     }
 
     @Override
-    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
+    public void onClassSummaryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem) {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                EventOfGoogleAnalytics.CATEGORY_VIEW,
+                EventOfGoogleAnalytics.ACTION_CLASS,
+                "recommendation",
+                (long)iClassSummaryInfoItem.getClassId()
+                ).build()
+        );
         Intent intent = new Intent(getActivity(),ClassDetailInfoActivity.class);
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_CLASS_ID, iClassSummaryInfoItem.getClassId());
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());

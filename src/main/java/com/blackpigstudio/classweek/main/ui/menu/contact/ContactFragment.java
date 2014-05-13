@@ -2,7 +2,6 @@ package com.blackpigstudio.classweek.main.ui.menu.contact;
 
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,12 +12,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.domain.Schedule;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
@@ -40,6 +40,7 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
     public static final String SCREEN_NAME = "contact";
     private MenuItem mi_inquiry;
     private EditText et_contact;
+    private EasyTracker easyTracker;
 
     public ContactFragment() {
         // Required empty public constructor
@@ -76,6 +77,14 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
             UserPreference userPreference = new UserPreference(getActivity());
             if(userPreference.isLoggedIn())
             {
+                easyTracker.send(
+                        MapBuilder.createEvent(
+                                EventOfGoogleAnalytics.CATEGORY_COMMUNICATION,
+                                EventOfGoogleAnalytics.ACTION_CONTACT,
+                                "",
+                                (long)0
+                        ).build()
+                );
                 requestContact();
             }
             else
@@ -135,7 +144,7 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker = EasyTracker.getInstance(getActivity());
         easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
         easyTracker.send(MapBuilder
                         .createAppView()

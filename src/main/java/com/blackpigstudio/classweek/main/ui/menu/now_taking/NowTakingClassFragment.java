@@ -12,8 +12,7 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.MyClass;
-import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;

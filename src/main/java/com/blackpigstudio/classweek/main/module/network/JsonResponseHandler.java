@@ -2,7 +2,7 @@ package com.blackpigstudio.classweek.main.module.network;
 
 import android.util.Log;
 
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;

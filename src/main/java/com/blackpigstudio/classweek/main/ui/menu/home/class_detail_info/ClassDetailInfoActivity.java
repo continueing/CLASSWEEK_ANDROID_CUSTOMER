@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;

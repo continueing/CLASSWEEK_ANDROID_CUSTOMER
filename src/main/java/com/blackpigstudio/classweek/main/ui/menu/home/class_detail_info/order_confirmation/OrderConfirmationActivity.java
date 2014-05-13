@@ -9,7 +9,8 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassInfo;
 import com.blackpigstudio.classweek.main.domain.Schedule;
-import com.blackpigstudio.classweek.main.module.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
@@ -30,6 +31,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     UserPreference userPreference;
     private ClassInfo classInfo;
     private Schedule schedule;
+    private EasyTracker easyTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,15 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
 
     @Override
     public void onPaymentRequested() {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_TRANSACTION,
+                        EventOfGoogleAnalytics.ACTION_TRY_PAYMENT,
+                        ""+classInfo.getClassId(),
+                        (long)classInfo.getScheduleId()
+                ).build()
+        );
+
         UserRequest request = new UserRequest(getApplicationContext());
 
         String birthDate = makeBirthDateWithHyphen(view.getBirthDate());
@@ -115,8 +126,8 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(this);
-        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classInfo.getClassId()+"/"+classInfo.getScheduleId());
+        easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME + "/" + classInfo.getClassId() + "/" + classInfo.getScheduleId());
         easyTracker.send(MapBuilder
                         .createAppView()
                         .build()

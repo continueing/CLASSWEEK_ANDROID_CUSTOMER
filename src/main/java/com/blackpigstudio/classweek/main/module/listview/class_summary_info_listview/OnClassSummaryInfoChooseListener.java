@@ -3,8 +3,8 @@ package com.blackpigstudio.classweek.main.module.listview.class_summary_info_lis
 /**
  * Created by continueing on 2014. 4. 13..
  */
-public interface OnClassSummeryInfoChooseListener {
+public interface OnClassSummaryInfoChooseListener {
 
-    public void onClassSummeryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem);
+    public void onClassSummaryInfoChoose(IClassSummaryInfoItem iClassSummaryInfoItem);
 
 }
