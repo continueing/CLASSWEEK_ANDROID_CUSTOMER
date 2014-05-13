@@ -16,6 +16,10 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.ClassSummaryInfoInventoryActivity;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +32,7 @@ import java.util.ArrayList;
  *
  */
 public class SubcategoryFragment extends AbstractHomeFragment implements ViewForSubcategoryFragment.OnSubCategoryChooseListener, HttpRequester.NetworkResponseListener{
+    public static final String SCREEN_NAME = "subcategory";
     public static final String BUNDLE_PARM_OF_SPINNER_INDEX = "SPINNER_INDEX";
     public static final String BUNDLE_PARM_OF_CATEGORY_NAME = "CATEGORY_NAME";
     private ViewForSubcategoryFragment view;
@@ -100,6 +105,23 @@ public class SubcategoryFragment extends AbstractHomeFragment implements ViewFor
 
         view.addISubcategoryArrayList(iSubcategories);
         view.setProgressbarVisibility(false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Tracker easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker.set(Fields.SCREEN_NAME,SCREEN_NAME+"/"+category);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
     }
 
     @Override

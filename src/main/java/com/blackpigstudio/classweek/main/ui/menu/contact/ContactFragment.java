@@ -24,6 +24,10 @@ import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +37,7 @@ import org.json.JSONObject;
  *
  */
 public class ContactFragment extends Fragment implements HttpRequester.NetworkResponseListener {
+    public static final String SCREEN_NAME = "contact";
     private MenuItem mi_inquiry;
     private EditText et_contact;
 
@@ -125,6 +130,23 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
         {
             AppTerminator.error(this, "UserRequest.contact fail : " + errorCode);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Tracker easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
     }
 
 }

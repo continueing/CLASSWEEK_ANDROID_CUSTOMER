@@ -15,12 +15,16 @@ import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OrderConfirmationActivity extends ActionBarActivity implements ViewForOrderConfirmationActivity.IController, HttpRequester.NetworkResponseListener {
     private ViewForOrderConfirmationActivity view;
+    public static final String SCREEN_NAME = "orderConfirmation";
     public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
     public static final String BUNDLE_PARM_SELECTED_SCHEDULES = "SELECTED_SCHEDULES";
     UserPreference userPreference;
@@ -109,14 +113,18 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
-
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classInfo.getClassId()+"/"+classInfo.getScheduleId());
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }

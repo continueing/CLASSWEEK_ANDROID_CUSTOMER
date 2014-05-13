@@ -19,6 +19,10 @@ import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.listview.ViewForNowTakingClassListViewItem;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +35,7 @@ import java.util.ArrayList;
  *
  */
 public class NowTakingClassFragment extends Fragment implements HttpRequester.NetworkResponseListener {
+    public static final String SCREEN_NAME = "nowTaking";
     ViewForNowTakingClassesFragment view;
 
     public NowTakingClassFragment() {
@@ -102,5 +107,22 @@ public class NowTakingClassFragment extends Fragment implements HttpRequester.Ne
         {
             AppTerminator.error(this, "classRequest.myclasss fail : " + errorCode);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Tracker easyTracker = EasyTracker.getInstance(getActivity());
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
     }
 }

@@ -8,9 +8,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 public class FilterActivity extends ActionBarActivity implements ViewForFilterActivity.OnSubmitButtonClickListener, ViewForFilterActivity.OnLocationSettingDialogPopupRequestListener, LocationSettingDialog.ILocationReceiver {
-
+    public static final String SCREEN_NAME = "filter";
 
     public static final String BUNDLE_PARM_OF_URL_LOCATION_KEY = "LOCATION_KEY";
     public static final String BUNDLE_PARM_OF_URL_WEEK_DAY_KEY = "WEEK_DAY_KEY";
@@ -89,14 +92,18 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
-
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }

@@ -19,12 +19,16 @@ import android.widget.Toast;
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.InicisPaymentInfo;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.apache.http.util.EncodingUtils;
 
 import java.net.URISyntaxException;
 
 public class PaymentWebViewActivity extends ActionBarActivity {
+    public static final String SCREEN_NAME= "paymentWebView";
     public static final String BUNDLE_PARM_INICIS_PAYMENT_INFO= "INICIS_PAYMENT_INFO";
     private Handler handler = new Handler();
 
@@ -192,14 +196,18 @@ public class PaymentWebViewActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
-
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }

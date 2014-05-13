@@ -16,11 +16,15 @@ import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class InquiryActivity extends ActionBarActivity implements HttpRequester.NetworkResponseListener {
+    public static final String SCREEN_NAME = "inquiry";
     public static final String BUNDLE_PARM_CLASS_ID = "classes_id";
 
     private MenuItem mi_inquiry;
@@ -101,15 +105,20 @@ public class InquiryActivity extends ActionBarActivity implements HttpRequester.
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classId);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }

@@ -15,6 +15,9 @@ import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,8 +25,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class BookingActivity extends Activity implements ViewForBookingActivity.IViewListener, ClassTypeSelectionDialog.OnClassTypeSelectionListener, ScheduleSelectionDialog.OnScheduleSelectionListener, HttpRequester.NetworkResponseListener {
+    public static final String SCREEN_NAME = "booking";
     public static final String BUNDLE_PARM_CLASS_INFO = "CLASS_INFO";
-
     private ViewForBookingActivity view;
     private ClassTypeSelectionDialog classTypeSelectionDialog;
     private ScheduleSelectionDialog scheduleSelectionDialog;
@@ -90,18 +93,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
         view.enablePayment();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
 
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);
-    }
 
     @Override
     public void onSuccess(JSONObject jsonObject) {
@@ -141,4 +133,22 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
             AppTerminator.error(this, "userRequest.update fail : " + errorCode);
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+classInfo.getClassId()+"/"+classInfo.getScheduleId());
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
+
 }

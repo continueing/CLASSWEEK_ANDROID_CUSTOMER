@@ -23,7 +23,9 @@ import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDetailInfoActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_inventory.filter.FilterActivity;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ClassSummaryInfoInventoryActivity extends ActionBarActivity implements OnClassSummeryInfoChooseListener, HttpRequester.NetworkResponseListener, OnScrollOfListViewListener{
+    public static final String SCREEN_NAME = "inventory";
     public static final int REQUEST_CODE_GET_QUERY = 0;
     private ViewForClassSummaryInfoInventoryActivity view;
     public static final String BUNDLE_PARM_OF_CATEGORY_URL = "CATEGORY_FOR_URL";
@@ -184,15 +187,18 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        EasyTracker easyTracker = EasyTracker.getInstance(this);
-        easyTracker.activityStart(this);
-        easyTracker.send(MapBuilder.createEvent("funnel","subcategory","",1l).build());
+        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME+"/"+subcategory);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
