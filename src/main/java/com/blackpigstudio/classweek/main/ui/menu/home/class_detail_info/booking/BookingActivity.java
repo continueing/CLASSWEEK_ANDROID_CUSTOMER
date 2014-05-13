@@ -18,7 +18,6 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.ClassDet
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +55,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     public void onPaymentRequested() {
         easyTracker.send(
                 MapBuilder.createEvent(
-                        EventOfGoogleAnalytics.CATEGORY_TRANSACTION,
+                        EventOfGoogleAnalytics.CATEGORY_ACQUISITION,
                         EventOfGoogleAnalytics.ACTION_BOOK,
                         selectedSchedule.getStartDateTime(),
                         (long)Schedule.MONTH_SCHEDULE_TYPE

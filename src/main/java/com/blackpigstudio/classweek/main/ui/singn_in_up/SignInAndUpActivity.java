@@ -11,16 +11,20 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SignInAndUpActivity extends ActionBarActivity  {
+    public final static String  SCREEN_NAME = "signInAndUpActivity";
     public final static String INTENT_PARM_LOGIN_RESULT = "intent_parm_login_result";
     public final static String JSON_KEY_NAME = "name";
     public final static String JSON_KEY_GENDER = "gender";
@@ -30,6 +34,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     private MenuItem mi_submitSignInAndUp;
     private UserRequest userRequest;
     private ViewForSignInAndUpActivity view;
+    private EasyTracker easyTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,14 @@ public class SignInAndUpActivity extends ActionBarActivity  {
 
     private void requestSignUp()
     {
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_ACQUISITION,
+                        EventOfGoogleAnalytics.ACTION_SIGN_UP,
+                        "" ,
+                        (long)0
+                ).build()
+        );
         prepareUIForRequest();
         try {
             this.userRequest.signUp(view.getEmail(), view.getPassword(), view.getPasswordConfirm(), signUpListener);
@@ -195,16 +208,23 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         view.releaseAllEditTexts();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        easyTracker = EasyTracker.getInstance(this);
+        easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
+        easyTracker.send(MapBuilder
+                        .createAppView()
+                        .build()
+        );
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
+
+
 }

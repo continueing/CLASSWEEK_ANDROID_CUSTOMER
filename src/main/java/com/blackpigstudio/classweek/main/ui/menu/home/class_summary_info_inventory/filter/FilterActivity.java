@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -22,6 +23,7 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
 
     private ViewForFilterActivity viewForFilterActivity;
     private LocationSettingDialog locationSettingDialog;
+    private EasyTracker easyTracker;
 
 
     @Override
@@ -71,6 +73,16 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
         intent.putExtra(BUNDLE_PARM_OF_URL_PRICE_KEY, String.valueOf(aPrice));
 
         setResult(Activity.RESULT_OK,intent);
+
+        easyTracker.send(
+                MapBuilder.createEvent(
+                        EventOfGoogleAnalytics.CATEGORY_SEARCH,
+                        EventOfGoogleAnalytics.ACTION_FILTER,
+                        aLocation+"," + time + "," + weekDay ,
+                        (long)aPrice
+                ).build()
+        );
+
         finish();
     }
 
@@ -94,7 +106,7 @@ public class FilterActivity extends ActionBarActivity implements ViewForFilterAc
     @Override
     public void onStart() {
         super.onStart();
-        Tracker easyTracker = EasyTracker.getInstance(this);
+        easyTracker = EasyTracker.getInstance(this);
         easyTracker.set(Fields.SCREEN_NAME, SCREEN_NAME);
         easyTracker.send(MapBuilder
                         .createAppView()

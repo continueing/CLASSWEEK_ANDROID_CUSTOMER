@@ -18,7 +18,6 @@ import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +49,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
     public void onPaymentRequested() {
         easyTracker.send(
                 MapBuilder.createEvent(
-                        EventOfGoogleAnalytics.CATEGORY_TRANSACTION,
+                        EventOfGoogleAnalytics.CATEGORY_ACQUISITION,
                         EventOfGoogleAnalytics.ACTION_TRY_PAYMENT,
                         ""+classInfo.getClassId(),
                         (long)classInfo.getScheduleId()
