@@ -2,6 +2,7 @@ package com.blackpigstudio.classweek.main.ui.menu.contact;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -53,7 +55,6 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
         et_contact = (EditText) root.findViewById(R.id.et_contact);
         return root;
     }
-
 
 
 

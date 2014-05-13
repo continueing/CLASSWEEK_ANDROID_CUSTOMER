@@ -126,7 +126,6 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     @Override
     public void onSuccess(JSONObject jsonObject) {
         JSONObject jsonClassInfoObject = null;
-
         try {
             jsonClassInfoObject = jsonObject.getJSONObject(JsonResponseHandler.PARM_DATA);
         } catch (JSONException e) {
