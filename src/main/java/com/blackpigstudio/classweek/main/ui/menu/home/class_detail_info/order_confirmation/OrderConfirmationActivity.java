@@ -42,7 +42,7 @@ public class OrderConfirmationActivity extends ActionBarActivity implements View
         view = new ViewForOrderConfirmationActivity(getApplicationContext(),this);
         setContentView(view.getRoot());
         userPreference = new UserPreference(getApplicationContext());
-        view.setData(classInfo.getTitle(),classInfo.getTime()+"("+classInfo.getDuration()+")",schedule.getStartDateTime(), schedule.getEndDateTime(),classInfo.getOneMonthPrice()+"원",classInfo.getFrontImageUrl(),userPreference.getName(), userPreference.getBirth(), userPreference.getPhoneNumber(), userPreference.getSex());
+        view.setData(classInfo.getTitle(),classInfo.getTime()+"("+classInfo.getDuration()+")",schedule.getStartDateTime(), schedule.getEndDateTime(),classInfo.getOneMonthDiscountedPrice()+"원",classInfo.getFrontImageUrl(),userPreference.getName(), userPreference.getBirth(), userPreference.getPhoneNumber(), userPreference.getSex());
     }
 
     @Override

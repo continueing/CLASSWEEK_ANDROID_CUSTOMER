@@ -38,7 +38,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         classInfo = (ClassInfo)intent.getSerializableExtra(BUNDLE_PARM_CLASS_INFO);
-        classTypeSelectionDialog = new ClassTypeSelectionDialog(this,this, classInfo.getOneDayPrice(), classInfo.getOneMonthPrice(), classInfo.getNumberOfClassPerMonth());
+        classTypeSelectionDialog = new ClassTypeSelectionDialog(this,this, classInfo.getOneDayPrice(), classInfo.getOneMonthDiscountedPrice(), classInfo.getNumberOfClassPerMonth());
         scheduleSelectionDialog = new ScheduleSelectionDialog(this, this);
         scheduleSelectionDialog.setSchedules(classInfo.getSchedules());
         isScheduleDialogReady = false;
@@ -91,7 +91,7 @@ public class BookingActivity extends Activity implements ViewForBookingActivity.
     @Override
     public void onOneMonthSelected() {
        isScheduleDialogReady = true;
-       view.setClassTypeAndPriceTextView( classInfo.getNumberOfClassPerMonth() + "회(1개월)",classInfo.getOneMonthPrice());
+       view.setClassTypeAndPriceTextView( classInfo.getNumberOfClassPerMonth() + "회(1개월)",classInfo.getOneMonthDiscountedPrice());
     }
 
     @Override
