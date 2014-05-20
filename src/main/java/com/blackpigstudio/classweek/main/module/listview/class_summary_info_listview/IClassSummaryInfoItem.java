@@ -18,5 +18,4 @@ public interface IClassSummaryInfoItem extends IListViewItem {
     public String getFrontImageUrl();
     public int getScheduleId();
     public int getNumberOfClassPerMonth();
-
 }

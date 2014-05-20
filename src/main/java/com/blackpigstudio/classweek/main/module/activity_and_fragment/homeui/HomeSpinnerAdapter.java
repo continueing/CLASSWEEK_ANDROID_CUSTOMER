@@ -15,7 +15,7 @@ import com.blackpigstudio.classweek.R;
  */
 public class HomeSpinnerAdapter implements SpinnerAdapter {
     private LayoutInflater inflater;
-    public static final String[] categories= {"추천 클래스","음악","댄스"};
+    public static final String[] categories= {"추천 클래스","댄스","음악"};
     private static HomeSpinnerAdapter instance;
 
     public static HomeSpinnerAdapter getInstance(Context context)

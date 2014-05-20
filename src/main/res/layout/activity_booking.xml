@@ -24,7 +24,7 @@
                 android:textColor="#282a34"
                 android:gravity="center_vertical"
                 android:textSize="16sp"
-                android:text="결제하기"/>
+                android:text="클래스 예약"/>
             <Button
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"

@@ -60,12 +60,12 @@ abstract public class AbstractHomeFragment extends Fragment {
                             SubcategoryFragment subcategoryFragment= new SubcategoryFragment();
                             Bundle bundle = new Bundle();
                             bundle.putInt(SubcategoryFragment.BUNDLE_PARM_OF_SPINNER_INDEX,i);
-                            if(i == 1) // Music
-                            {
-                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_CATEGORY_NAME, "music");
-                            }else if(i == 2) // Dance
+                            if(i == 1) // Dance
                             {
                                 bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_CATEGORY_NAME, "dance");
+                            }else if(i == 2)  // Music
+                            {
+                                bundle.putString(SubcategoryFragment.BUNDLE_PARM_OF_CATEGORY_NAME, "music");
                             }
                             subcategoryFragment.setArguments(bundle);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, subcategoryFragment).commit();
