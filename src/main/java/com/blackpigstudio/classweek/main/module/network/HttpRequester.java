@@ -29,11 +29,14 @@ public class HttpRequester {
         client.setCookieStore(persistentCookieStore);
         client.post(getAbsoluteUrl(url), params, responseHandler);
         List<Cookie> cookieList =  persistentCookieStore.getCookies();
+        Log.i("cookie count", cookieList.size()+"");
         for( Cookie aCookie : cookieList)
         {
             Log.i("name", aCookie.getName());
             Log.i("value", aCookie.getValue());
         }
+
+
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {
