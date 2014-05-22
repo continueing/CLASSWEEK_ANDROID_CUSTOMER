@@ -1,10 +1,12 @@
-package com.blackpigstudio.classweek.main.ui;
+package com.blackpigstudio.classweek.main.ui.etc;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import com.blackpigstudio.classweek.R;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+import com.blackpigstudio.classweek.main.ui.MainActivity;
 
 public class SplashActivity extends Activity {
     private static final int SPLASH_TIME_OUT = 1000;
@@ -18,8 +20,16 @@ public class SplashActivity extends Activity {
 
             @Override
             public void run() {
-                Intent i;
-                i = new Intent( SplashActivity.this, MainActivity.class );
+                Intent i=null;
+                UserPreference userPreference = new UserPreference(getApplicationContext());
+                if(userPreference.isUserEntered() == false) {
+                    i = new Intent( SplashActivity.this, UserGuideActivity.class );
+                    userPreference.setUserEntered(true);
+                }
+                else
+                {
+                    i = new Intent( SplashActivity.this, MainActivity.class );
+                }
                 startActivity(i);
                 fileList();
                 finish();

@@ -15,6 +15,7 @@ public class UserPreference extends PreferenceHelper {
     private static final String KEY_EMAIL ="EMAIL";
     private static final String KEY_PASSWORD ="PASSWORD";
     private static final String KEY_IS_LOGIN ="IS_LOGIN";
+    private static final String KEY_IS_USER_ENTERED="IS_USER_ENTERED";
 
 
     public static final int VALUE_SEX_MALE = 1;
@@ -43,6 +44,19 @@ public class UserPreference extends PreferenceHelper {
     public void logout()
     {
         setBoolean(KEY_IS_LOGIN, false);
+    }
+
+    /*
+        state of user
+     */
+    public void setUserEntered(boolean aFlag)
+    {
+        setBoolean(KEY_IS_USER_ENTERED, aFlag);
+    }
+
+    public boolean isUserEntered()
+    {
+        return getBoolean(KEY_IS_USER_ENTERED, false);
     }
 
     /*

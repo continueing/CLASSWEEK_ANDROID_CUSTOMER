@@ -1,5 +1,6 @@
 package com.blackpigstudio.classweek.main.ui;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
+import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+import com.blackpigstudio.classweek.main.ui.etc.UserGuideActivity;
 import com.blackpigstudio.classweek.main.ui.menu.contact.ContactFragment;
 import com.blackpigstudio.classweek.main.ui.navigation_drawer_menu.NavigationDrawerFragment;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
