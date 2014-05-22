@@ -328,6 +328,153 @@
                             </LinearLayout>
                         </LinearLayout>
 
+                        <!--커리큘럼-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_content_curriculum"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
+                                    android:text="커리큘럼"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="26dp"
+                                android:layout_marginTop="8dp"
+                                android:orientation="vertical">
+                                <!--커리큘럼 넣는곳-->
+                                <LinearLayout
+                                    android:id="@+id/ll_class_detail_curriculum_week_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:text="1주차"
+                                        android:textSize="13sp"
+                                        android:textColor="#f25354"
+                                        android:gravity="top"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_curriculum_week_1"
+                                        android:singleLine="false"
+                                        android:inputType="textMultiLine|textImeMultiLine"
+                                        android:gravity="top"
+                                        android:maxLines="30"
+                                        android:lines="2"
+                                        android:text="허허허\허허허\n허허"
+                                        android:textColor="#8a8fa7"
+                                        android:textSize="13sp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="8dp"
+                                    android:id="@+id/ll_class_detail_curriculum_week_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:text="2주차"
+                                        android:textSize="13sp"
+                                        android:textColor="#f25354"
+                                        android:gravity="top"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_curriculum_week_2"
+                                        android:singleLine="false"
+                                        android:inputType="textMultiLine|textImeMultiLine"
+                                        android:gravity="top"
+                                        android:maxLines="30"
+                                        android:lines="2"
+                                        android:text="허허허\허허허\n허허"
+                                        android:textColor="#8a8fa7"
+                                        android:textSize="13sp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="8dp"
+                                    android:id="@+id/ll_class_detail_curriculum_week_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:text="3주차"
+                                        android:textSize="13sp"
+                                        android:textColor="#f25354"
+                                        android:gravity="top"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_curriculum_week_3"
+                                        android:singleLine="false"
+                                        android:inputType="textMultiLine|textImeMultiLine"
+                                        android:gravity="top"
+                                        android:maxLines="30"
+                                        android:lines="2"
+                                        android:text="허허허\허허허\n허허"
+                                        android:textColor="#8a8fa7"
+                                        android:textSize="13sp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="8dp"
+                                    android:id="@+id/ll_class_detail_curriculum_week_4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:text="4주차"
+                                        android:textSize="13sp"
+                                        android:textColor="#f25354"
+                                        android:gravity="top"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:id="@+id/tv_class_detail_curriculum_week_4"
+                                        android:singleLine="false"
+                                        android:inputType="textMultiLine|textImeMultiLine"
+                                        android:gravity="top"
+                                        android:maxLines="30"
+                                        android:lines="2"
+                                        android:text="허허허\허허허\n허허"
+                                        android:textColor="#8a8fa7"
+                                        android:textSize="13sp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
                         <!--준비사항-->
                         <LinearLayout
                             android:layout_width="match_parent"
