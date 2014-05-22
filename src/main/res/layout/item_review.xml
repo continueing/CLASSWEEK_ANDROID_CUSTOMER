@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="#fff4f5fa">
     <TextView
+        android:id="@+id/tv_item_review_contents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -26,30 +27,30 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true">
             <ImageView
-                android:id="@+id/rank_start_1"
+                android:id="@+id/iv_rank_star_1"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_rank_dim"/>
             <ImageView
-                android:id="@+id/rank_start_2"
+                android:id="@+id/iv_rank_star_2"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_rank_dim"
                 android:layout_marginLeft="5dp"/>
             <ImageView
-                android:id="@+id/rank_start_3"
+                android:id="@+id/iv_rank_star_3"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_rank_dim"
                 android:layout_marginLeft="5dp"/>
             <ImageView
-                android:id="@+id/rank_start_4"
+                android:id="@+id/iv_rank_star_4"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_rank_dim"
                 android:layout_marginLeft="5dp"/>
             <ImageView
-                android:id="@+id/rank_start_5"
+                android:id="@+id/iv_rank_star_5"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_rank_dim"
