@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff4f5fa">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:maxLines="5"
+        android:textColor="#8a8fa7"
+        android:textSize="13sp"
+        android:text="리뷰내용"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/rank_start_1"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ic_rank_dim"/>
+            <ImageView
+                android:id="@+id/rank_start_2"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ic_rank_dim"
+                android:layout_marginLeft="5dp"/>
+            <ImageView
+                android:id="@+id/rank_start_3"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ic_rank_dim"
+                android:layout_marginLeft="5dp"/>
+            <ImageView
+                android:id="@+id/rank_start_4"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ic_rank_dim"
+                android:layout_marginLeft="5dp"/>
+            <ImageView
+                android:id="@+id/rank_start_5"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ic_rank_dim"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_item_review_written_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:text="2010-03-02 15:29"
+            android:textSize="13sp"
+            android:gravity="center_vertical|right"
+            android:textColor="#ced1e1"/>
+    </RelativeLayout>
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffd8d9e3"/>
+</LinearLayout>

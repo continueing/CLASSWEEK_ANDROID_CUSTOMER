@@ -35,6 +35,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_location;
     private TextView tv_description;
     private TextView tv_prerequisite;
+    private Button bt_more_review;
     private TextView tv_refund_info;
     private TextView tv_progress_type;
 
@@ -73,6 +74,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_location.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_description = (TextView)findViewById(R.id.tv_class_detail_description);
         tv_prerequisite = (TextView)findViewById(R.id.tv_class_detail_prerequisite);
+        bt_more_review = (Button)findViewById(R.id.bt_class_detail_more_review);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
         tv_progress_type = (TextView)findViewById(R.id.tv_class_detail_progress_type);
 
@@ -106,6 +108,12 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
             @Override
             public void onClick(View v) {
                 iController.onLocationSearchRequested(tv_location.getText().toString());
+            }
+        });
+        bt_more_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iController.onMoreReviewRequested();
             }
         });
     }
@@ -177,5 +185,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         public void onInquiryChoose();
         public void onBookingChoose();
         public void onLocationSearchRequested(String aLocation);
+        public void onMoreReviewRequested();
     }
 }
