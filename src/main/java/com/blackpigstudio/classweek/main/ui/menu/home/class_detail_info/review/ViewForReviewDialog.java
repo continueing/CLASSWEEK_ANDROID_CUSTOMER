@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.Review;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.listview.OnScrollOfListViewListener;
 import com.blackpigstudio.classweek.main.module.listview.ProgressbarFooter;
+import com.blackpigstudio.classweek.main.module.listview.class_summary_info_listview.IClassSummaryInfoItem;
+
+import java.util.ArrayList;
 
 /**
  * Created by continueing on 2014. 5. 25..
@@ -20,6 +24,7 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
     private ListView lv_reviews;
     private ArrayAdapterForReviewListView arrayAdapterForReviewListView;
     private OnScrollOfListViewListener onScrollOfListViewListener;
+    private TextView tv_titleAndNumber;
 
     public ViewForReviewDialog(Context context, OnScrollOfListViewListener anOnScrollOfListViewListener) {
         super(context);
@@ -38,7 +43,7 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
         progressbarFooter.setVisibility(true); // should be placed before set adapter
         arrayAdapterForReviewListView = new ArrayAdapterForReviewListView(getContext(), R.layout.item_review);
         lv_reviews.setAdapter(arrayAdapterForReviewListView);
-
+        tv_titleAndNumber = (TextView) findViewById(R.id.tv_dialog_review_title_and_number);
         arrayAdapterForReviewListView.add(new Review());
         arrayAdapterForReviewListView.add(new Review());
         arrayAdapterForReviewListView.add(new Review());
@@ -69,5 +74,21 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
                 visibilityOfLastItem = aFirstVisibleItem + aVisibleItemCount >= aTotalItemCount;
             }
         });
+    }
+
+    public void setData(int numberOfReview)
+    {
+        tv_titleAndNumber.setText("리뷰 ("+numberOfReview+")");
+    }
+
+
+    public void setProgressbarVisibility(boolean aVisibility)
+    {
+        this.progressbarFooter.setVisibility(aVisibility);
+    }
+
+    public void addReviewItemArrayList(ArrayList<ViewForReviewItem.IReviewItem> iReviewItems)
+    {
+        this.arrayAdapterForReviewListView.addAll(iReviewItems);
     }
 }

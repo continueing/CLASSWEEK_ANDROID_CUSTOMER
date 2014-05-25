@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="334dp"
     android:layout_height="575dp">
     <TextView
-        android:id="@+id/tv_dialog_review_title"
+        android:id="@+id/tv_dialog_review_title_and_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:paddingLeft="21dp"
