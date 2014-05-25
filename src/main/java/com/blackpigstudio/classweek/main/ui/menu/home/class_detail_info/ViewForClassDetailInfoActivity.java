@@ -47,6 +47,15 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_practice_room;
     private TextView tv_instrument_rental;
 
+    private TextView tv_time_of_week;
+    private TextView tv_curriculum_week_1;
+    private TextView tv_curriculum_week_2;
+    private TextView tv_curriculum_week_3;
+    private TextView tv_curriculum_week_4;
+
+
+
+
 
     public ViewForClassDetailInfoActivity(Context context, IController anIController) {
         super(context);

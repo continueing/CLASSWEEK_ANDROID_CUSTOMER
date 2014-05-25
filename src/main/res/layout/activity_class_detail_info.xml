@@ -361,7 +361,7 @@
                                         android:gravity="top"
                                         android:maxLines="30"
                                         android:lines="2"
-                                        android:text="허허허\허허허\n허허"
+                                        android:text="허허허\n허허허\n허허\naa"
                                         android:textColor="#8a8fa7"
                                         android:textSize="13sp"
                                         android:layout_marginLeft="10dp"
