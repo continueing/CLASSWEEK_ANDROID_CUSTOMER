@@ -4,9 +4,13 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
@@ -28,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -73,6 +78,38 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         }
     }
 
+    private void requestPromotionNews()
+    {
+        ClassRequest classRequest = new ClassRequest(getActivity());
+        try {
+            classRequest.promotionNews(promotionNewsListener);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "classRequest.promotionNews fail :"+ e.toString());
+        }
+    }
+
+    HttpRequester.NetworkResponseListener promotionNewsListener = new HttpRequester.NetworkResponseListener() {
+        @Override
+        public void onSuccess(JSONObject jsonObject) {
+            int data_code = 2;
+            try {
+                data_code = jsonObject.getInt("data_code");
+            } catch (JSONException e) {
+                AppTerminator.error(this, "JSONObject.getInt(): " + e.toString());
+            }
+            showPromotionToast(data_code);
+        }
+
+        @Override
+        public void onFail(JSONObject jsonObject, int errorCode) {
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
+            }
+            else
+                AppTerminator.error(this, "classRequest.promotionNews fail : " + errorCode);
+        }
+    };
+
 
 
     HttpRequester.NetworkResponseListener getRecommendedClassSummaryInfoListener = new HttpRequester.NetworkResponseListener() {
@@ -104,7 +141,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
                 }
             }
             view.setData(iClassSummaryInfoItems, imageUrls);
-
+            requestPromotionNews();
         }
 
         @Override
@@ -192,6 +229,26 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());
         startActivity(intent);
     }
+
+    private void showPromotionToast(int aDataCode)
+    {
+        if(aDataCode != 2) {
+            View layout = LayoutInflater.from(getActivity()).inflate(R.layout.toast_promotion, (ViewGroup) view.getRoot().findViewById(R.id.ll_promotion_toast_layout));
+            Toast toast = new Toast(getActivity());
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+
+            ImageView imageView = (ImageView) layout.findViewById(R.id.iv_promotion_image);
+            if (aDataCode == 0) {
+                imageView.setImageResource(R.drawable.in_promotion_popup);
+            } else if (aDataCode == 1) {
+                imageView.setImageResource(R.drawable.not_in_promotion_popup);
+            }
+            toast.setView(layout);
+            toast.show();
+        }
+    }
+
 
 
 
