@@ -156,7 +156,7 @@
                                         android:textColor="#8a8fa7"
                                         android:text="-"/>
                                     <TextView
-                                        android:id="@+id/tv_class_detail_info_time_of_week"
+                                        android:id="@+id/tv_class_detail_info_num_of_class_per_week"
                                         android:layout_marginLeft="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -360,7 +360,6 @@
                                         android:inputType="textMultiLine|textImeMultiLine"
                                         android:gravity="top"
                                         android:maxLines="30"
-                                        android:lines="2"
                                         android:text="허허허\n허허허\n허허\naa"
                                         android:textColor="#8a8fa7"
                                         android:textSize="13sp"
@@ -388,7 +387,6 @@
                                         android:inputType="textMultiLine|textImeMultiLine"
                                         android:gravity="top"
                                         android:maxLines="30"
-                                        android:lines="2"
                                         android:text="허허허\허허허\n허허"
                                         android:textColor="#8a8fa7"
                                         android:textSize="13sp"
@@ -416,7 +414,6 @@
                                         android:inputType="textMultiLine|textImeMultiLine"
                                         android:gravity="top"
                                         android:maxLines="30"
-                                        android:lines="2"
                                         android:text="허허허\허허허\n허허"
                                         android:textColor="#8a8fa7"
                                         android:textSize="13sp"
@@ -444,7 +441,6 @@
                                         android:inputType="textMultiLine|textImeMultiLine"
                                         android:gravity="top"
                                         android:maxLines="30"
-                                        android:lines="2"
                                         android:text="허허허\허허허\n허허"
                                         android:textColor="#8a8fa7"
                                         android:textSize="13sp"
@@ -667,7 +663,7 @@
 
                         </LinearLayout>
 
-                        <!--리뷰정보-->
+                        <!--좋아요 리뷰-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -683,7 +679,7 @@
                                 <ImageView
                                     android:layout_width="20dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_content_refund"/>
+                                    android:src="@drawable/ic_content_good"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
@@ -691,22 +687,77 @@
                                     android:gravity="center_vertical|left"
                                     android:textSize="13sp"
                                     android:textColor="#1f2129"
-                                    android:text="리뷰"/>
+                                    android:text="좋아요!"/>
                             </LinearLayout>
                             <LinearLayout
+                                android:id="@+id/ll_class_detail_good_review_container"
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="26dp"
+                                android:paddingRight="16dp"
                                 android:layout_marginTop="8dp">
-                                <Button
-                                    android:id="@+id/bt_class_detail_more_review"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/btn_02_style"
-                                    android:text="리뷰보기"/>
+                                <View
+                                    android:id="@+id/v_class_detail_info_good_review_divider_line"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="#ffd8d9e3"/>
                             </LinearLayout>
                         </LinearLayout>
-                    
+
+                        <!--글쎄요 리뷰-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_content_bad"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="6dp"
+                                    android:gravity="center_vertical|left"
+                                    android:textSize="13sp"
+                                    android:textColor="#1f2129"
+                                    android:text="글쎄요~"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/ll_class_detail_bad_review_container"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="26dp"
+                                android:paddingRight="16dp"
+                                android:layout_marginTop="8dp">
+                                <View
+                                    android:id="@+id/v_class_detail_info_bad_review_divider_line"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="#ffd8d9e3"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/bt_class_detail_more_review"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1f2129"
+                            android:textSize="15sp"
+                            android:background="@drawable/btn_review_style"
+                            android:text="리뷰 전체보기"/>
+
                         <!--환불정보-->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -748,7 +799,6 @@
                                     android:singleLine="false"
                                     android:inputType="textMultiLine|textImeMultiLine"
                                     android:maxLines="30"
-                                    android:lines="2"
                                     android:text="7일 환불 가능상품(구매 시점으로부터 7일)\n유효기간 내에 사용하지 않은 경우 환불이 불가능함."/>
                             </LinearLayout>
                         </LinearLayout>
@@ -784,7 +834,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="26dp">
                                 <TextView
-                                    android:id="@+id/tv_class_detail_compnay_info"
+                                    android:id="@+id/tv_class_detail_company_introduction"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical|left"
@@ -793,7 +843,6 @@
                                     android:singleLine="false"
                                     android:inputType="textMultiLine|textImeMultiLine"
                                     android:maxLines="30"
-                                    android:lines="2"
                                     android:text="우리학원 최고입니다."/>
                             </LinearLayout>
                         </LinearLayout>

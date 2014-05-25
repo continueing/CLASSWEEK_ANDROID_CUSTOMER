@@ -6,14 +6,18 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassDetailInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.FacilityInfo;
+import com.blackpigstudio.classweek.main.domain.class_info.Review;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ViewForReviewDialog;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ViewForReviewItem;
 
 import java.util.ArrayList;
 
@@ -47,11 +51,17 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_practice_room;
     private TextView tv_instrument_rental;
 
-    private TextView tv_time_of_week;
+    private TextView tv_num_of_class_per_week;
+
     private TextView tv_curriculum_week_1;
     private TextView tv_curriculum_week_2;
     private TextView tv_curriculum_week_3;
     private TextView tv_curriculum_week_4;
+
+    private TextView tv_company_introduction;
+
+    private LinearLayout ll_good_reviews;
+    private LinearLayout ll_bad_reviews;
 
 
 
@@ -75,8 +85,8 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         bt_booking = (Button) findViewById(R.id.bt_detail_info_booking);
         tv_title = (TextView)findViewById(R.id.tv_class_detail_title);
         tv_start_time_1 = (TextView)findViewById(R.id.tv_class_detail_start_time_1);
-        tv_start_time_2 = (TextView)findViewById(R.id.tv_class_detail_start_time_2);;
-        tv_start_time_3 = (TextView)findViewById(R.id.tv_class_detail_start_time_3);;
+        tv_start_time_2 = (TextView)findViewById(R.id.tv_class_detail_start_time_2);
+        tv_start_time_3 = (TextView)findViewById(R.id.tv_class_detail_start_time_3);
         tv_one_day_price = (TextView)findViewById(R.id.tv_class_detail_one_day_price);
         tv_one_month_price = (TextView)findViewById(R.id.tv_class_detail_month_day_price);
         tv_location = (TextView)findViewById(R.id.tv_class_detail_location);
@@ -94,7 +104,14 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_parking_lot = (TextView)findViewById(R.id.tv_class_detail_facility_parking_lot);
         tv_practice_room = (TextView)findViewById(R.id.tv_class_detail_facility_practice_room);
         tv_instrument_rental = (TextView)findViewById(R.id.tv_class_detail_facility_instrument_rental);
-
+        tv_num_of_class_per_week = (TextView)findViewById(R.id.tv_class_detail_info_num_of_class_per_week);
+        tv_curriculum_week_1 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_1);
+        tv_curriculum_week_2 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_2);
+        tv_curriculum_week_3 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_3);
+        tv_curriculum_week_4 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_4);
+        tv_company_introduction = (TextView)findViewById(R.id.tv_class_detail_company_introduction);
+        ll_good_reviews = (LinearLayout)findViewById(R.id.ll_class_detail_good_review_container);
+        ll_bad_reviews = (LinearLayout)findViewById(R.id.ll_class_detail_bad_review_container);
     }
 
     @Override
@@ -137,10 +154,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
         tv_one_month_price.setText(aClassSummaryInfo.getOneMonthDiscountPrice() + "원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
-        if(aClassDetailInfo.isPersonal())
-            tv_progress_type.setText("개인 레슨");
-        else
-            tv_progress_type.setText("그룹 레슨");
+        tv_progress_type.setText(aClassDetailInfo.getLessonType());
         tv_location.setText(aClassDetailInfo.getAddress());
         tv_description.setText(aClassDetailInfo.getDescriptions());
         tv_prerequisite.setText(aClassDetailInfo.getPrerequisite());
@@ -161,12 +175,21 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
             tv_toilet.setVisibility(View.GONE);
 
         tv_refund_info.setText(aClassDetailInfo.getRefundInfo());
+        tv_num_of_class_per_week.setText("주 "+aClassDetailInfo.getNumOfClassPerWeek()+"회 수업");
+        tv_curriculum_week_1.setText(aClassDetailInfo.getCurriculum_week_1());
+        tv_curriculum_week_2.setText(aClassDetailInfo.getCurriculum_week_2());
+        tv_curriculum_week_3.setText(aClassDetailInfo.getCurriculum_week_3());
+        tv_curriculum_week_4.setText(aClassDetailInfo.getCurriculum_week_4());
+        tv_company_introduction.setText(aClassDetailInfo.getCompanyIntroduction());
+
 
         ArrayList<String> times = new ArrayList<String>();
         times.addAll(aClassSummaryInfo.getTimes());
         setTimeTextVies(times);
 
-
+        ViewForReviewItem reviewItem = new ViewForReviewItem(getContext());
+        reviewItem.setReview(new Review());
+        ll_bad_reviews.addView(reviewItem);
     }
 
     private void setTimeTextVies(ArrayList<String> times) {

@@ -43,12 +43,7 @@ public class ReviewDialog extends Dialog implements OnScrollOfListViewListener {
 
     @Override
     public void atScrollIsOnEndItem() {
-        ArrayList<ViewForReviewItem.IReviewItem> iReviewItems = new ArrayList<ViewForReviewItem.IReviewItem>();
-        iReviewItems.add(new Review());
-        iReviewItems.add(new Review());
-        iReviewItems.add(new Review());
-
-        view.addReviewItemArrayList(iReviewItems);
+        //TODO: request!! to retrieve reviews
     }
 
     @Override

@@ -17,6 +17,7 @@ public class ViewForReviewItem extends AbstractViewForListViewItem {
     ImageView iv_rank_stars[];
     TextView tv_written_date;
 
+
     public ViewForReviewItem(Context context) {
         super(context);
     }
@@ -68,6 +69,11 @@ public class ViewForReviewItem extends AbstractViewForListViewItem {
             }
         }
         tv_written_date.setText(reviewItem.getWrittenDate());
+    }
+
+    public void setReview(IListViewItem aIListViewItem)
+    {
+        setData(aIListViewItem);
     }
 
 

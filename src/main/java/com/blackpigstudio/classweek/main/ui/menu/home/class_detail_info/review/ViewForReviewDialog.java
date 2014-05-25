@@ -44,12 +44,7 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
         arrayAdapterForReviewListView = new ArrayAdapterForReviewListView(getContext(), R.layout.item_review);
         lv_reviews.setAdapter(arrayAdapterForReviewListView);
         tv_titleAndNumber = (TextView) findViewById(R.id.tv_dialog_review_title_and_number);
-        arrayAdapterForReviewListView.add(new Review());
-        arrayAdapterForReviewListView.add(new Review());
-        arrayAdapterForReviewListView.add(new Review());
-        arrayAdapterForReviewListView.add(new Review());
-        arrayAdapterForReviewListView.add(new Review());
-        arrayAdapterForReviewListView.add(new Review());
+
 
     }
 
