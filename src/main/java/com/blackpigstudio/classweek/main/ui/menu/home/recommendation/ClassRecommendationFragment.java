@@ -4,9 +4,11 @@ package com.blackpigstudio.classweek.main.ui.menu.home.recommendation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
@@ -28,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -53,6 +56,12 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         requestRecommendedSubcategoryFromServer();
         getActivity().getActionBar().setTitle(R.string.title_section1);
         return result;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showPromotionToast();
     }
 
     private void requestRecommendedClassSummaryInfoFromServer() {
@@ -191,6 +200,16 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_CLASS_ID, iClassSummaryInfoItem.getClassId());
         intent.putExtra(ClassDetailInfoActivity.BUNDLE_PARM_SCHEDULE_ID, iClassSummaryInfoItem.getScheduleId());
         startActivity(intent);
+    }
+
+    private void showPromotionToast()
+    {
+        View layout = LayoutInflater.from(getActivity()).inflate(R.layout.toast_promotion,null);
+        Toast toast = new Toast(getActivity());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
 
