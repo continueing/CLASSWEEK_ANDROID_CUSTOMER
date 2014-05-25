@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
@@ -89,7 +91,13 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
     HttpRequester.NetworkResponseListener promotionNewsListener = new HttpRequester.NetworkResponseListener() {
         @Override
         public void onSuccess(JSONObject jsonObject) {
-            showPromotionToast();
+            int data_code = 2;
+            try {
+                data_code = jsonObject.getInt("data_code");
+            } catch (JSONException e) {
+                AppTerminator.error(this, "JSONObject.getInt(): " + e.toString());
+            }
+            showPromotionToast(data_code);
         }
 
         @Override
@@ -222,15 +230,25 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         startActivity(intent);
     }
 
-    private void showPromotionToast()
+    private void showPromotionToast(int aDataCode)
     {
-        View layout = LayoutInflater.from(getActivity()).inflate(R.layout.toast_promotion,null);
-        Toast toast = new Toast(getActivity());
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(layout);
-        toast.show();
+        if(aDataCode != 2) {
+            View layout = LayoutInflater.from(getActivity()).inflate(R.layout.toast_promotion, (ViewGroup) view.getRoot().findViewById(R.id.ll_promotion_toast_layout));
+            Toast toast = new Toast(getActivity());
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+
+            ImageView imageView = (ImageView) layout.findViewById(R.id.iv_promotion_image);
+            if (aDataCode == 0) {
+                imageView.setImageResource(R.drawable.in_promotion_popup);
+            } else if (aDataCode == 1) {
+                imageView.setImageResource(R.drawable.not_in_promotion_popup);
+            }
+            toast.setView(layout);
+            toast.show();
+        }
     }
+
 
 
 
