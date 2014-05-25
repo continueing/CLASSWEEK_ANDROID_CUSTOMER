@@ -58,12 +58,6 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
         return result;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        showPromotionToast();
-    }
-
     private void requestRecommendedClassSummaryInfoFromServer() {
         ClassRequest classRequest = new ClassRequest(getActivity());
         try {
@@ -81,6 +75,32 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
             AppTerminator.error(this, "classRequest.getRecommendedSubcategoriesListener fail :"+ e.toString());
         }
     }
+
+    private void requestPromotionNews()
+    {
+        ClassRequest classRequest = new ClassRequest(getActivity());
+        try {
+            classRequest.promotionNews(promotionNewsListener);
+        } catch (JSONException e) {
+            AppTerminator.error(this, "classRequest.promotionNews fail :"+ e.toString());
+        }
+    }
+
+    HttpRequester.NetworkResponseListener promotionNewsListener = new HttpRequester.NetworkResponseListener() {
+        @Override
+        public void onSuccess(JSONObject jsonObject) {
+            showPromotionToast();
+        }
+
+        @Override
+        public void onFail(JSONObject jsonObject, int errorCode) {
+            if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
+                AppTerminator.finishActivityWithToast(getResources().getString(R.string.network_check_alert),getActivity());
+            }
+            else
+                AppTerminator.error(this, "classRequest.promotionNews fail : " + errorCode);
+        }
+    };
 
 
 
@@ -113,7 +133,7 @@ public class ClassRecommendationFragment extends AbstractHomeFragment implements
                 }
             }
             view.setData(iClassSummaryInfoItems, imageUrls);
-
+            requestPromotionNews();
         }
 
         @Override
