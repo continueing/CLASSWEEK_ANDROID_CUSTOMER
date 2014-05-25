@@ -60,7 +60,6 @@ public class ReviewDialog extends Dialog implements OnScrollOfListViewListener {
                         .createAppView()
                         .build()
         );
-        easyTracker.activityStart(getOwnerActivity());
     }
 
     @Override
