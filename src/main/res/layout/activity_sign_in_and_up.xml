@@ -26,6 +26,7 @@
             android:gravity="center_vertical"
             android:hint="이메일"
             android:lines="1"
+            android:singleLine="true"
             android:textCursorDrawable="@null"
             android:background="@null"
             android:textColorHint="#8a8fa7"
@@ -58,6 +59,7 @@
             android:password="true"
             android:hint="비밀번호"
             android:lines="1"
+            android:singleLine="true"
             android:background="@null"
             android:textCursorDrawable="@null"
             android:textColorHint="#8a8fa7"
@@ -91,6 +93,7 @@
             android:gravity="center_vertical"
             android:hint="비밀번호 확인"
             android:lines="1"
+            android:singleLine="true"
             android:background="@null"
             android:textColorHint="#8a8fa7"
             android:textColor="#000000" />
