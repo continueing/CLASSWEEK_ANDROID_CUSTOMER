@@ -120,9 +120,11 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
 
     public void setData(ClassDetailInfo aClassDetailInfo, ClassSummaryInfo aClassSummaryInfo, FacilityInfo aFacilityInfo)
     {
-        ClassDetailImagesViewPagerAdapter viewPagerAdapter = new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl());
-        vp_class_detail_images.setAdapter(viewPagerAdapter);
-        vp_indexer.init(vp_class_detail_images, viewPagerAdapter);
+        if(aClassDetailInfo.getDetailImageUrl().size() > 0) {
+            ClassDetailImagesViewPagerAdapter viewPagerAdapter = new ClassDetailImagesViewPagerAdapter(getContext(), aClassDetailInfo.getDetailImageUrl());
+            vp_class_detail_images.setAdapter(viewPagerAdapter);
+            vp_indexer.init(vp_class_detail_images, viewPagerAdapter);
+        }
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
         tv_one_month_price.setText(aClassSummaryInfo.getOneMonthDiscountPrice() + "원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
