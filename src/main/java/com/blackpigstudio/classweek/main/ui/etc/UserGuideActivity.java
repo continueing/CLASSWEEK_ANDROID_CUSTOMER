@@ -31,7 +31,7 @@ public class UserGuideActivity extends Activity {
         UserGuideImagesViewPagerAdapter viewPagerAdapter = new UserGuideImagesViewPagerAdapter(getApplicationContext());
         viewPager.setAdapter(viewPagerAdapter);
         ViewPagerIndexer viewPagerIndexer = (ViewPagerIndexer)findViewById(R.id.vpi_user_guide_images);
-        viewPagerIndexer.init(viewPager,viewPagerAdapter);
+        viewPagerIndexer.init(viewPager,viewPagerAdapter,R.drawable.navi_coach_dim, R.drawable.navi_coach_nor ,17);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class UserGuideActivity extends Activity {
             else if(position == 2)
                 imageView.setImageResource(R.drawable.img_coachmark_03);
 
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             ((ViewPager)container).addView(imageView, ((ViewPager)container).getChildCount() > position ? position : ((ViewPager)container).getChildCount());
             return imageView;
         }
