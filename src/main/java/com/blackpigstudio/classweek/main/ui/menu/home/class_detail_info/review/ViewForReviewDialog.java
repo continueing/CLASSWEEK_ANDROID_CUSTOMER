@@ -1,6 +1,7 @@
 package com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
@@ -21,12 +22,12 @@ import java.util.ArrayList;
  */
 public class ViewForReviewDialog extends AbstractViewForActivity{
     private ProgressbarFooter progressbarFooter;
+    private TextView tv_title;
     private ListView lv_reviews;
     private ArrayAdapterForReviewListView arrayAdapterForReviewListView;
     private OnScrollOfListViewListener onScrollOfListViewListener;
-    private TextView tv_titleAndNumber;
 
-    public ViewForReviewDialog(Context context, OnScrollOfListViewListener anOnScrollOfListViewListener) {
+    public ViewForReviewDialog(Context context, OnScrollOfListViewListener anOnScrollOfListViewListener ) {
         super(context);
         onScrollOfListViewListener = anOnScrollOfListViewListener;
     }
@@ -39,13 +40,11 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
     @Override
     protected void initViews() {
         lv_reviews = (ListView)findViewById(R.id.lv_dialog_reviews);
+        tv_title = (TextView) findViewById(R.id.tv_dialog_review_title);
         progressbarFooter = new ProgressbarFooter(lv_reviews, LayoutInflater.from(getContext()));
         progressbarFooter.setVisibility(true); // should be placed before set adapter
         arrayAdapterForReviewListView = new ArrayAdapterForReviewListView(getContext(), R.layout.item_review);
         lv_reviews.setAdapter(arrayAdapterForReviewListView);
-        tv_titleAndNumber = (TextView) findViewById(R.id.tv_dialog_review_title_and_number);
-
-
     }
 
     @Override
@@ -71,11 +70,10 @@ public class ViewForReviewDialog extends AbstractViewForActivity{
         });
     }
 
-    public void setData(int numberOfReview)
+    public void setData(String aCompanyName)
     {
-        tv_titleAndNumber.setText("리뷰 ("+numberOfReview+")");
+        tv_title.setText("전체 리뷰 보기("+aCompanyName + ")");
     }
-
 
     public void setProgressbarVisibility(boolean aVisibility)
     {

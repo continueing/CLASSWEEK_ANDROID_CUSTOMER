@@ -23,6 +23,9 @@ public class ClassDetailInfo implements Serializable {
     public static final String JSON_KEY_CURRICULUM_WEEK_3 = "curriculum_in_third_week";
     public static final String JSON_KEY_CURRICULUM_WEEK_4 = "curriculum_in_fourth_week";
     public static final String JSON_KEY_COMPANY_INTRODUCTION = "company_introduction";
+    public static final String JSON_KEY_GOOD_REVIEWS = "good_reviews";
+    public static final String JSON_KEY_BAD_REVIEWS = "bad_reviews";
+    public static final String JSON_KEY_COMPANY_ID = "company_id";
 
     private int classId;
     private ArrayList<String> imageUrls;
@@ -37,6 +40,10 @@ public class ClassDetailInfo implements Serializable {
     private String curriculum_week_3;
     private String curriculum_week_4;
     private String companyIntroduction;
+    private ArrayList<Review> goodReviews;
+    private ArrayList<Review> badReviews;
+    private int companyId;
+
 
 
 
@@ -59,6 +66,19 @@ public class ClassDetailInfo implements Serializable {
         this.curriculum_week_3 = aJsonObject.getString(JSON_KEY_CURRICULUM_WEEK_3);
         this.curriculum_week_4 = aJsonObject.getString(JSON_KEY_CURRICULUM_WEEK_4);
         this.companyIntroduction = aJsonObject.getString(JSON_KEY_COMPANY_INTRODUCTION);
+        this.goodReviews = extractReviewsFromJsonArray(aJsonObject.getJSONArray(JSON_KEY_GOOD_REVIEWS));
+        this.badReviews = extractReviewsFromJsonArray(aJsonObject.getJSONArray(JSON_KEY_BAD_REVIEWS));
+        this.companyId = aJsonObject.getInt(JSON_KEY_COMPANY_ID);
+    }
+
+    private ArrayList<Review> extractReviewsFromJsonArray(JSONArray aJsonReviewsArray) throws JSONException
+    {
+        ArrayList<Review> result = new ArrayList<Review>();
+        for(int i = 0 ; i < aJsonReviewsArray.length() ; i++)
+        {
+            result.add(new Review(aJsonReviewsArray.getJSONObject(i)));
+        }
+        return result;
     }
 
     public int getClassId()
@@ -123,4 +143,22 @@ public class ClassDetailInfo implements Serializable {
     public String getCompanyIntroduction() {
         return companyIntroduction;
     }
+
+    public ArrayList<Review> getGoodReviews() {
+        ArrayList<Review> result = new ArrayList<Review>();
+        result.addAll(result);
+        return goodReviews;
+    }
+
+    public ArrayList<Review> getBadReviews() {
+        ArrayList<Review> result = new ArrayList<Review>();
+        result.addAll(result);
+        return badReviews;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+
 }

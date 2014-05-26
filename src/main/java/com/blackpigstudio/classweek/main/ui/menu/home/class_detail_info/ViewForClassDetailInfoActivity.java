@@ -16,7 +16,6 @@ import com.blackpigstudio.classweek.main.domain.class_info.FacilityInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.Review;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
-import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ViewForReviewDialog;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ViewForReviewItem;
 
 import java.util.ArrayList;
@@ -139,7 +138,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         bt_more_review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iController.onMoreReviewRequested();
+                iController.onAllReviewLoadRequested();
             }
         });
     }
@@ -187,10 +186,20 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         times.addAll(aClassSummaryInfo.getTimes());
         setTimeTextVies(times);
 
-        ViewForReviewItem reviewItem = new ViewForReviewItem(getContext());
-        reviewItem.setReview(new Review());
-        ll_bad_reviews.addView(reviewItem);
+        addReviewsToContainer(aClassDetailInfo.getGoodReviews(), ll_good_reviews);
+        addReviewsToContainer(aClassDetailInfo.getBadReviews(), ll_bad_reviews);
     }
+
+    private void addReviewsToContainer(ArrayList<Review> aReviews, LinearLayout aContainer)
+    {
+        for(Review review : aReviews)
+        {
+            ViewForReviewItem viewForReviewItem = new ViewForReviewItem(getContext());
+            viewForReviewItem.setReview(review);
+            aContainer.addView(viewForReviewItem);
+        }
+    }
+
 
     private void setTimeTextVies(ArrayList<String> times) {
         tv_start_time_1.setText(times.get(0));
@@ -219,6 +228,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         public void onInquiryChoose();
         public void onBookingChoose();
         public void onLocationSearchRequested(String aLocation);
-        public void onMoreReviewRequested();
+        public void onAllReviewLoadRequested();
     }
 }

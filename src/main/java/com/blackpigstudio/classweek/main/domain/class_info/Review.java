@@ -14,15 +14,10 @@ public class Review implements ViewForReviewItem.IReviewItem
     public static final String JSON_KEY_CONTENTS = "contents";
     public static final String JSON_KEY_WRITTEN_DATE = "datetime";
 
-    private int rank = 3;
-    private String contents = "좋네요..";
-    private String writtenDate = "오늘 ㅎㅎㅎ";
+    private int rank;
+    private String contents;
+    private String writtenDate;
 
-
-    public Review()
-    {
-
-    }
 
     public Review(JSONObject aJsonObject) throws JSONException
     {

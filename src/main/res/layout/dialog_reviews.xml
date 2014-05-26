@@ -4,12 +4,12 @@
     android:orientation="vertical" android:layout_width="334dp"
     android:layout_height="575dp">
     <TextView
-        android:id="@+id/tv_dialog_review_title_and_number"
+        android:id="@+id/tv_dialog_review_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:paddingLeft="21dp"
         android:gravity="center_vertical|left"
-        android:text="리뷰(20)"
+        android:text="전체 리뷰 보기"
         android:textColor="#1f2129"
         android:background="#ffffff"/>
     <View

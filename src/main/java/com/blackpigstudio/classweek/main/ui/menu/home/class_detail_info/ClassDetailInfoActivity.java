@@ -54,7 +54,6 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         view = new ViewForClassDetailInfoActivity(getApplicationContext(), this);
         setContentView(view.getRoot());
         requestClassDetailInfoFromServer();
-        reviewDialog = new ReviewDialog(this);
     }
 
     public void requestClassDetailInfoFromServer()
@@ -107,7 +106,8 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     }
 
     @Override
-    public void onMoreReviewRequested() {
+    public void onAllReviewLoadRequested() {
+        reviewDialog = new ReviewDialog(this, classInfo.getClassDetailInfo().getCompanyId(),classInfo.getClassSummaryInfo().getCompany());
         reviewDialog.show();
     }
 
