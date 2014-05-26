@@ -49,6 +49,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_parking_lot;
     private TextView tv_practice_room;
     private TextView tv_instrument_rental;
+    private TextView tv_duration;
 
     private TextView tv_num_of_class_per_week;
 
@@ -95,6 +96,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         bt_more_review = (Button)findViewById(R.id.bt_class_detail_more_review);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
         tv_progress_type = (TextView)findViewById(R.id.tv_class_detail_progress_type);
+        tv_duration = (TextView)findViewById(R.id.tv_class_detail_duration);
 
         tv_toilet = (TextView)findViewById(R.id.tv_class_detail_facility_toilet);
         tv_fitting_room = (TextView)findViewById(R.id.tv_class_detail_facility_fitting_room);
@@ -180,7 +182,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_curriculum_week_3.setText(aClassDetailInfo.getCurriculum_week_3());
         tv_curriculum_week_4.setText(aClassDetailInfo.getCurriculum_week_4());
         tv_company_introduction.setText(aClassDetailInfo.getCompanyIntroduction());
-
+        tv_duration.setText(aClassSummaryInfo.getDuration());
 
         ArrayList<String> times = new ArrayList<String>();
         times.addAll(aClassSummaryInfo.getTimes());
