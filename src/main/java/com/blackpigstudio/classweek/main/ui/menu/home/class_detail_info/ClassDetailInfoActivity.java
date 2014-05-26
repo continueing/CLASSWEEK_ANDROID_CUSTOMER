@@ -18,6 +18,7 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking.
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ReviewDialog;
 import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
@@ -41,6 +42,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
     private int scheduleId;
     private ClassInfo classInfo = null;
     private InicisPaymentInfo inicisPaymentInfo = null;
+    ReviewDialog reviewDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,8 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         classId = intent.getIntExtra(BUNDLE_PARM_CLASS_ID, -1);
         scheduleId = intent.getIntExtra(BUNDLE_PARM_SCHEDULE_ID, -1);
         view = new ViewForClassDetailInfoActivity(getApplicationContext(), this);
-        requestClassDetailInfoFromServer();
         setContentView(view.getRoot());
+        requestClassDetailInfoFromServer();
     }
 
     public void requestClassDetailInfoFromServer()
@@ -101,6 +103,12 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         intent.setAction(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("geo:0,0?q=" + aLocation));
         startActivity(intent);
+    }
+
+    @Override
+    public void onAllReviewLoadRequested() {
+        reviewDialog = new ReviewDialog(this, classInfo.getClassDetailInfo().getCompanyId(),classInfo.getClassSummaryInfo().getCompany());
+        reviewDialog.show();
     }
 
     @Override

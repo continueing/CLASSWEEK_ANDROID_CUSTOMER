@@ -6,14 +6,17 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassDetailInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.ClassSummaryInfo;
 import com.blackpigstudio.classweek.main.domain.class_info.FacilityInfo;
+import com.blackpigstudio.classweek.main.domain.class_info.Review;
 import com.blackpigstudio.classweek.main.module.activity_and_fragment.AbstractViewForActivity;
 import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
+import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ViewForReviewItem;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,7 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_location;
     private TextView tv_description;
     private TextView tv_prerequisite;
+    private Button bt_more_review;
     private TextView tv_refund_info;
     private TextView tv_progress_type;
 
@@ -45,6 +49,21 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
     private TextView tv_parking_lot;
     private TextView tv_practice_room;
     private TextView tv_instrument_rental;
+
+    private TextView tv_num_of_class_per_week;
+
+    private TextView tv_curriculum_week_1;
+    private TextView tv_curriculum_week_2;
+    private TextView tv_curriculum_week_3;
+    private TextView tv_curriculum_week_4;
+
+    private TextView tv_company_introduction;
+
+    private LinearLayout ll_good_reviews;
+    private LinearLayout ll_bad_reviews;
+
+
+
 
 
     public ViewForClassDetailInfoActivity(Context context, IController anIController) {
@@ -65,14 +84,15 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         bt_booking = (Button) findViewById(R.id.bt_detail_info_booking);
         tv_title = (TextView)findViewById(R.id.tv_class_detail_title);
         tv_start_time_1 = (TextView)findViewById(R.id.tv_class_detail_start_time_1);
-        tv_start_time_2 = (TextView)findViewById(R.id.tv_class_detail_start_time_2);;
-        tv_start_time_3 = (TextView)findViewById(R.id.tv_class_detail_start_time_3);;
+        tv_start_time_2 = (TextView)findViewById(R.id.tv_class_detail_start_time_2);
+        tv_start_time_3 = (TextView)findViewById(R.id.tv_class_detail_start_time_3);
         tv_one_day_price = (TextView)findViewById(R.id.tv_class_detail_one_day_price);
         tv_one_month_price = (TextView)findViewById(R.id.tv_class_detail_month_day_price);
         tv_location = (TextView)findViewById(R.id.tv_class_detail_location);
         tv_location.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_description = (TextView)findViewById(R.id.tv_class_detail_description);
         tv_prerequisite = (TextView)findViewById(R.id.tv_class_detail_prerequisite);
+        bt_more_review = (Button)findViewById(R.id.bt_class_detail_more_review);
         tv_refund_info = (TextView)findViewById(R.id.tv_class_detail_refund_info);
         tv_progress_type = (TextView)findViewById(R.id.tv_class_detail_progress_type);
 
@@ -83,7 +103,14 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         tv_parking_lot = (TextView)findViewById(R.id.tv_class_detail_facility_parking_lot);
         tv_practice_room = (TextView)findViewById(R.id.tv_class_detail_facility_practice_room);
         tv_instrument_rental = (TextView)findViewById(R.id.tv_class_detail_facility_instrument_rental);
-
+        tv_num_of_class_per_week = (TextView)findViewById(R.id.tv_class_detail_info_num_of_class_per_week);
+        tv_curriculum_week_1 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_1);
+        tv_curriculum_week_2 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_2);
+        tv_curriculum_week_3 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_3);
+        tv_curriculum_week_4 = (TextView)findViewById(R.id.tv_class_detail_curriculum_week_4);
+        tv_company_introduction = (TextView)findViewById(R.id.tv_class_detail_company_introduction);
+        ll_good_reviews = (LinearLayout)findViewById(R.id.ll_class_detail_good_review_container);
+        ll_bad_reviews = (LinearLayout)findViewById(R.id.ll_class_detail_bad_review_container);
     }
 
     @Override
@@ -108,20 +135,25 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
                 iController.onLocationSearchRequested(tv_location.getText().toString());
             }
         });
+        bt_more_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iController.onAllReviewLoadRequested();
+            }
+        });
     }
 
     public void setData(ClassDetailInfo aClassDetailInfo, ClassSummaryInfo aClassSummaryInfo, FacilityInfo aFacilityInfo)
     {
-        ClassDetailImagesViewPagerAdapter viewPagerAdapter = new ClassDetailImagesViewPagerAdapter(getContext(),aClassDetailInfo.getDetailImageUrl());
-        vp_class_detail_images.setAdapter(viewPagerAdapter);
-        vp_indexer.init(vp_class_detail_images, viewPagerAdapter);
+        if(aClassDetailInfo.getDetailImageUrl().size() > 0) {
+            ClassDetailImagesViewPagerAdapter viewPagerAdapter = new ClassDetailImagesViewPagerAdapter(getContext(), aClassDetailInfo.getDetailImageUrl());
+            vp_class_detail_images.setAdapter(viewPagerAdapter);
+            vp_indexer.init(vp_class_detail_images, viewPagerAdapter);
+        }
         tv_title.setText(aClassSummaryInfo.getTitle());
         tv_one_day_price.setText(aClassSummaryInfo.getOneDayPrice()+"원 / 1회");
         tv_one_month_price.setText(aClassSummaryInfo.getOneMonthDiscountPrice() + "원 / " + aClassSummaryInfo.getNumberOfClassPerMonth() + "회");
-        if(aClassDetailInfo.isPersonal())
-            tv_progress_type.setText("개인 레슨");
-        else
-            tv_progress_type.setText("그룹 레슨");
+        tv_progress_type.setText(aClassDetailInfo.getLessonType());
         tv_location.setText(aClassDetailInfo.getAddress());
         tv_description.setText(aClassDetailInfo.getDescriptions());
         tv_prerequisite.setText(aClassDetailInfo.getPrerequisite());
@@ -142,13 +174,32 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
             tv_toilet.setVisibility(View.GONE);
 
         tv_refund_info.setText(aClassDetailInfo.getRefundInfo());
+        tv_num_of_class_per_week.setText("주 "+aClassDetailInfo.getNumOfClassPerWeek()+"회 수업");
+        tv_curriculum_week_1.setText(aClassDetailInfo.getCurriculum_week_1());
+        tv_curriculum_week_2.setText(aClassDetailInfo.getCurriculum_week_2());
+        tv_curriculum_week_3.setText(aClassDetailInfo.getCurriculum_week_3());
+        tv_curriculum_week_4.setText(aClassDetailInfo.getCurriculum_week_4());
+        tv_company_introduction.setText(aClassDetailInfo.getCompanyIntroduction());
+
 
         ArrayList<String> times = new ArrayList<String>();
         times.addAll(aClassSummaryInfo.getTimes());
         setTimeTextVies(times);
 
-
+        addReviewsToContainer(aClassDetailInfo.getGoodReviews(), ll_good_reviews);
+        addReviewsToContainer(aClassDetailInfo.getBadReviews(), ll_bad_reviews);
     }
+
+    private void addReviewsToContainer(ArrayList<Review> aReviews, LinearLayout aContainer)
+    {
+        for(Review review : aReviews)
+        {
+            ViewForReviewItem viewForReviewItem = new ViewForReviewItem(getContext());
+            viewForReviewItem.setReview(review);
+            aContainer.addView(viewForReviewItem);
+        }
+    }
+
 
     private void setTimeTextVies(ArrayList<String> times) {
         tv_start_time_1.setText(times.get(0));
@@ -177,5 +228,6 @@ public class ViewForClassDetailInfoActivity extends AbstractViewForActivity {
         public void onInquiryChoose();
         public void onBookingChoose();
         public void onLocationSearchRequested(String aLocation);
+        public void onAllReviewLoadRequested();
     }
 }
