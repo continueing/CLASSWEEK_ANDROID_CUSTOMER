@@ -23,7 +23,6 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_summary_info_invento
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -164,16 +163,22 @@ public class ClassSummaryInfoInventoryActivity extends ActionBarActivity impleme
         }
 
         view.addClassSummaryInfoItemArrayList(iClassSummaryInfoItems);
-        if(iClassSummaryInfoItems.size() >= 10 )
+        isFinalPage = checkIsFinalPage(iClassSummaryInfoItems.size());
+        isRequestingHttpNow = false;
+    }
+
+    private boolean checkIsFinalPage(int aSizeOfClassSummaryInfos)
+    {
+        if(aSizeOfClassSummaryInfos >= 10 ) // not yet
         {
             nextPage++;
+            return false;
         }
-        else
+        else // final
         {
-            isFinalPage = true;
             view.setProgressbarVisibility(false);
+            return true;
         }
-        isRequestingHttpNow = false;
     }
 
     @Override

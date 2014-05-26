@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_splash"
     android:paddingLeft="19dp"
-    tools:context="com.blackpigstudio.classweek.main.ui.SplashActivity">
+    tools:context="com.blackpigstudio.classweek.main.ui.etc.SplashActivity">
 
 
     <ImageView

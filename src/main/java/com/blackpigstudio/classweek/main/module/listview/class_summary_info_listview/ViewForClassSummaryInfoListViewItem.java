@@ -58,7 +58,10 @@ public class ViewForClassSummaryInfoListViewItem extends AbstractViewForListView
     @Override
     protected void setData(IListViewItem aIListViewItem) {
         iClassSummaryInfoItem = (IClassSummaryInfoItem)aIListViewItem;
-        siv_class_introduction.setImageUrl(iClassSummaryInfoItem.getFrontImageUrl());
+        if(iClassSummaryInfoItem.getFrontImageUrl().equals(""))
+            siv_class_introduction.setImageResource(android.R.color.transparent);
+        else
+            siv_class_introduction.setImageUrl(iClassSummaryInfoItem.getFrontImageUrl());
         tv_title.setText(iClassSummaryInfoItem.getTitle());
         tv_time.setText(iClassSummaryInfoItem.getTime());
         tv_company.setText(iClassSummaryInfoItem.getCompany() + "(" + iClassSummaryInfoItem.getShortLocation()+")");
