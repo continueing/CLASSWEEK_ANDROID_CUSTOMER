@@ -17,6 +17,8 @@ import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.listview.Vi
 public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageChangeListener {
     private ImageView []indexs;
     private int length;
+    private int drawableSel = R.drawable.navi_sel;
+    private int drawableNor = R.drawable.navi_nor;
 
     public ViewPagerIndexer(Context context) {
         super(context);
@@ -28,20 +30,28 @@ public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageCh
 
     public void init(ViewPager aViewPager, PagerAdapter aPagerAdapter)
     {
+        init(aViewPager,aPagerAdapter, R.drawable.navi_nor, R.drawable.navi_sel,15);
+    }
+
+    public void init(ViewPager aViewPager, PagerAdapter aPagerAdapter, int aDrawableNor, int aDrawableSel, int anInterval)
+    {
+        drawableSel = aDrawableSel;
+        drawableNor = aDrawableNor;
+
         aViewPager.setOnPageChangeListener(this);
         length = aPagerAdapter.getCount();
         indexs = new ImageView[length];
         for(int i=0 ; i < length;i++ )
         {
             indexs[i] = new ImageView(getContext());
-            indexs[i].setImageResource(R.drawable.navi_nor);
+            indexs[i].setImageResource(drawableNor);
             LayoutParams param = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             if(i != 0)
-                param.setMargins(15, 0, 0, 0);
+                param.setMargins(anInterval, 0, 0, 0);
             indexs[i].setLayoutParams(param);
             addView(indexs[i]);
         }
-        indexs[0].setImageResource(R.drawable.navi_sel);
+        indexs[0].setImageResource(drawableSel);
     }
 
     @Override
@@ -53,9 +63,9 @@ public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageCh
     public void onPageSelected(int position) {
         for(int i=0 ; i < length;i++ )
         {
-            indexs[i].setImageResource(R.drawable.navi_nor);
+            indexs[i].setImageResource(drawableNor);
         }
-        indexs[position].setImageResource(R.drawable.navi_sel);
+        indexs[position].setImageResource(drawableSel);
     }
 
     @Override

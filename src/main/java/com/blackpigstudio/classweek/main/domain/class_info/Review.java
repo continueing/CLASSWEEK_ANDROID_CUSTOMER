@@ -5,10 +5,12 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.V
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by continueing on 2014. 5. 22..
  */
-public class Review implements ViewForReviewItem.IReviewItem
+public class Review implements ViewForReviewItem.IReviewItem, Serializable
 {
     public static final String JSON_KEY_RANK = "score";
     public static final String JSON_KEY_CONTENTS = "contents";

@@ -63,9 +63,14 @@ public class ViewForReviewItem extends AbstractViewForListViewItem {
         }
         else
         {
-            for(int i = 0 ; i < reviewItem.getRank() ; i++ )
+            for(int i = 0 ; i < 5 ; i++ )
             {
-                iv_rank_stars[i].setImageResource(R.drawable.ic_rank_normal);
+                iv_rank_stars[i].setVisibility(VISIBLE);
+                if( i < reviewItem.getRank())
+                    iv_rank_stars[i].setImageResource(R.drawable.ic_rank_normal);
+                else
+                    iv_rank_stars[i].setImageResource(R.drawable.ic_rank_dim);
+
             }
         }
         tv_written_date.setText(reviewItem.getWrittenDate());
