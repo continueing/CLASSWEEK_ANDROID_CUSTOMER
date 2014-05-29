@@ -247,6 +247,6 @@
 
 3. 중개 서비스 이용에 대한 책임
 수업 신청 및 등록 완료 이후, 수업/수업내용과 관련된 책임은 실질적 서비스를 제공하는 학원이 부담하며, 수업/수업내용의 품질 및 이행에 대하여 전자상거래등에서의 소비자보호에 관한 법률에 근거하여 CLASSWEKK은 고객에게 최선을 다하겠습니다.</string>
-
+    <string name="title_activity_front">FrontActivity</string>
 
 </resources>

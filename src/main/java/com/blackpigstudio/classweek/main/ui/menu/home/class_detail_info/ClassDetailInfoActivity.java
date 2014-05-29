@@ -19,7 +19,7 @@ import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ReviewDialog;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.blackpigstudio.classweek.main.ui.admin.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;

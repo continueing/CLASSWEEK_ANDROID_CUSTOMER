@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.blackpigstudio.classweek.main.ui.admin.FrontActivity">
+    <ImageView
+        android:layout_marginTop="35dp"
+        android:layout_width="195dp"
+        android:layout_height="195dp"
+        android:src="@drawable/classweek_icon_admin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/bt_admin_front_skip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_01_style"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="건너 뛰기"/>
+    <Button
+        android:id="@+id/bt_admin_front_login"
+        android:layout_above="@id/bt_admin_front_skip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_01_style"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="로그인"/>
+    <Button
+        android:id="@+id/bt_admin_front_sign_up"
+        android:layout_above="@id/bt_admin_front_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@drawable/btn_02_style"
+        android:text="회원가입"/>
+
+   
+
+
+</RelativeLayout>

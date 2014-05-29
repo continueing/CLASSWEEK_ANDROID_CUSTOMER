@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.singn_in_up;
+package com.blackpigstudio.classweek.main.ui.admin;
 
 import android.content.Context;
 import android.view.LayoutInflater;

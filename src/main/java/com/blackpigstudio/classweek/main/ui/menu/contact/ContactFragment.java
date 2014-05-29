@@ -16,18 +16,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.blackpigstudio.classweek.main.ui.admin.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -17,7 +17,7 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.listview.ViewForNowTakingClassListViewItem;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.blackpigstudio.classweek.main.ui.admin.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
