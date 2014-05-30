@@ -16,8 +16,8 @@ import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
+import com.blackpigstudio.classweek.main.ui.admin.sign_up_page.SignUpActivity;
 import com.blackpigstudio.classweek.main.ui.menu.now_taking.listview.ViewForNowTakingClassListViewItem;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -99,7 +99,7 @@ public class NowTakingClassFragment extends Fragment implements HttpRequester.Ne
             Toast.makeText(getActivity(), getResources().getString(R.string.network_check_alert), Toast.LENGTH_LONG).show();
         }
         else if(errorCode ==  JsonResponseHandler.ERROR_CODE_HAVE_TO_LOGIN) {
-            Intent intent = new Intent(getActivity(), SignInAndUpActivity.class);
+            Intent intent = new Intent(getActivity(), SignUpActivity.class);
             startActivity(intent);
         }
         else

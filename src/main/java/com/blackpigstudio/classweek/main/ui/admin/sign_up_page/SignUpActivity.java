@@ -1,4 +1,4 @@
-package com.blackpigstudio.classweek.main.ui.singn_in_up;
+package com.blackpigstudio.classweek.main.ui.admin.sign_up_page;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,9 +23,9 @@ import com.google.analytics.tracking.android.MapBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignInAndUpActivity extends ActionBarActivity  {
+public class SignUpActivity extends ActionBarActivity  {
+    public final static int REQUEST_FOR_ACTIVITY_RESULT = 0;
     public final static String  SCREEN_NAME = "signInAndUpActivity";
-    public final static String INTENT_PARM_LOGIN_RESULT = "intent_parm_login_result";
     public final static String JSON_KEY_NAME = "name";
     public final static String JSON_KEY_GENDER = "gender";
     public final static String JSON_KEY_BIRTHDAY = "birthday";
@@ -33,7 +33,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
 
     private MenuItem mi_submitSignInAndUp;
     private UserRequest userRequest;
-    private ViewForSignInAndUpActivity view;
+    private ViewForSignUpActivity view;
     private EasyTracker easyTracker;
 
     @Override
@@ -42,7 +42,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         this.userRequest = new UserRequest(getApplicationContext());
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         getActionBar().setIcon(android.R.color.transparent);
-        view = new ViewForSignInAndUpActivity(getApplicationContext());
+        view = new ViewForSignUpActivity(getApplicationContext());
         setContentView(view.getRoot());
     }
 
@@ -56,7 +56,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_sign_in_and_up) {
-            requestLogin();
+            requestSignUp();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -68,7 +68,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         try {
             this.userRequest.login(view.getEmail(),view.getPassword(),loginListener);
         } catch (JSONException e) {
-            AppTerminator.error(SignInAndUpActivity.this, "requestLogin()- userRequest.login(view.getEmail(),view.getPassword(),this): " + e.toString());
+            AppTerminator.error(SignUpActivity.this, "requestLogin()- userRequest.login(view.getEmail(),view.getPassword(),this): " + e.toString());
         }
     }
 
@@ -86,7 +86,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         try {
             this.userRequest.signUp(view.getEmail(), view.getPassword(), view.getPasswordConfirm(), signUpListener);
         } catch (JSONException e) {
-            AppTerminator.error(SignInAndUpActivity.this, "requestSignUp()-userRequest.signUp(view.getEmail(),view.getPassword(), view.getPasswordConfirm(), this): " + e.toString());
+            AppTerminator.error(SignUpActivity.this, "requestSignUp()-userRequest.signUp(view.getEmail(),view.getPassword(), view.getPasswordConfirm(), this): " + e.toString());
         }
     }
 
@@ -98,9 +98,6 @@ public class SignInAndUpActivity extends ActionBarActivity  {
             userPreference.login(view.getEmail(),view.getPassword());
             storeUserData(jsonObject, userPreference);
 
-            Intent intent = new Intent();
-            intent.putExtra(INTENT_PARM_LOGIN_RESULT,true);
-            setResult(Activity.RESULT_OK,intent);
             Toast.makeText(getApplicationContext(),"로그인 하셨습니다.",Toast.LENGTH_LONG).show();
             finish();
         }
@@ -119,44 +116,43 @@ public class SignInAndUpActivity extends ActionBarActivity  {
             }
             else
             {
-                AppTerminator.error(SignInAndUpActivity.this,"userRequset.login fail " + errorCode);
+                AppTerminator.error(SignUpActivity.this,"userRequset.login fail " + errorCode);
             }
 
         }
     };
 
-    private void storeUserData(JSONObject aJsonObject, UserPreference aUserPreference)
-    {
-
-        try {
-            if(!aJsonObject.isNull(JSON_KEY_NAME))
-            {
-                aUserPreference.setName(aJsonObject.getString(JSON_KEY_NAME));
-            }
-            if(!aJsonObject.isNull(JSON_KEY_GENDER))
-            {
-                String gender = aJsonObject.getString(JSON_KEY_GENDER);
-                if(gender.equals('M'))
+        private void storeUserData(JSONObject aJsonObject, UserPreference aUserPreference)
+        {
+            try {
+                if(!aJsonObject.isNull(JSON_KEY_NAME))
                 {
-                    aUserPreference.setSex(aUserPreference.VALUE_SEX_MALE);
+                    aUserPreference.setName(aJsonObject.getString(JSON_KEY_NAME));
                 }
-                else
+                if(!aJsonObject.isNull(JSON_KEY_GENDER))
                 {
-                    aUserPreference.setSex(aUserPreference.VALUE_SEX_FEMALE);
+                    String gender = aJsonObject.getString(JSON_KEY_GENDER);
+                    if(gender.equals('M'))
+                    {
+                        aUserPreference.setSex(aUserPreference.VALUE_SEX_MALE);
+                    }
+                    else
+                    {
+                        aUserPreference.setSex(aUserPreference.VALUE_SEX_FEMALE);
+                    }
                 }
+                if(!aJsonObject.isNull(JSON_KEY_BIRTHDAY))
+                {
+                    aUserPreference.setBirthDate(aJsonObject.getString(JSON_KEY_BIRTHDAY));
+                }
+                if(!aJsonObject.isNull(JSON_KEY_PHONE_NUMBER))
+                {
+                    aUserPreference.setPhoneNumber(aJsonObject.getString(JSON_KEY_PHONE_NUMBER));
+                }
+            } catch (JSONException e) {
+                AppTerminator.error(this,e.getMessage());
             }
-            if(!aJsonObject.isNull(JSON_KEY_BIRTHDAY))
-            {
-                aUserPreference.setBirthDate(aJsonObject.getString(JSON_KEY_BIRTHDAY));
-            }
-            if(!aJsonObject.isNull(JSON_KEY_PHONE_NUMBER))
-            {
-                aUserPreference.setPhoneNumber(aJsonObject.getString(JSON_KEY_PHONE_NUMBER));
-            }
-        } catch (JSONException e) {
-            AppTerminator.error(this,e.getMessage());
         }
-    }
 
     HttpRequester.NetworkResponseListener signUpListener = new HttpRequester.NetworkResponseListener() {
         @Override
@@ -171,7 +167,7 @@ public class SignInAndUpActivity extends ActionBarActivity  {
         public void onFail(JSONObject jsonObject, int errorCode) {
             restoreUIAfterRequest();
             if(errorCode == JsonResponseHandler.ERROR_CODE_NETWORK_UNAVAILABLE) {
-                Toast.makeText(SignInAndUpActivity.this,getResources().getString(R.string.network_check_alert),Toast.LENGTH_LONG).show();
+                Toast.makeText(SignUpActivity.this,getResources().getString(R.string.network_check_alert),Toast.LENGTH_LONG).show();
             }
             else if(errorCode == JsonResponseHandler.ERROR_CODE_PASSWORDS_ARE_NOT_IDENTICAL)
             {

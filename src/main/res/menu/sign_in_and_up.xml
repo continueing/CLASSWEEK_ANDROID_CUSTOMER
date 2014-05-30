@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity" >
+    tools:context="com.blackpigstudio.classweek.main.ui.admin.sign_up_page.SignUpActivity" >
 
     <item android:id="@+id/action_sign_in_and_up"
         android:title="@string/action_sign_in_and_up"

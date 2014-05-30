@@ -5,20 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
-import com.blackpigstudio.classweek.main.ui.MainActivity;
-import com.loopj.android.image.SmartImageView;
-
-import java.util.ArrayList;
+import com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity;
 
 public class UserGuideActivity extends Activity {
 
@@ -37,7 +31,8 @@ public class UserGuideActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        Intent i = new Intent( this, MainActivity.class );
+        Intent i = new Intent( this, FrontActivity.class );
+        i.putExtra(FrontActivity.BUNDLE_PARM_IS_FIRST_ENTRANCE, true);
         startActivity(i);
     }
 
@@ -80,5 +75,6 @@ public class UserGuideActivity extends Activity {
             container.removeView((ImageView)object);
         }
     }
+
 
 }
