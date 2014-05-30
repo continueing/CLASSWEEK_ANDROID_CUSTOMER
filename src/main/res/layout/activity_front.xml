@@ -2,31 +2,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blackpigstudio.classweek.main.ui.admin.FrontActivity">
+    android:background="@drawable/bg_content"
+    tools:context="com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity">
     <ImageView
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="90dp"
         android:layout_width="195dp"
         android:layout_height="195dp"
         android:src="@drawable/classweek_icon_admin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-    <Button
-        android:id="@+id/bt_admin_front_skip"
+    <TextView
+        android:id="@+id/tv_admin_front_need_login"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_01_style"
+        android:gravity="center"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:textColor="#1f2129"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        android:text="회원 가입 혹은 로그인이 필요합니다.\n0.1초만에 회원가입하세요!"/>
+    <TextView
+        android:id="@+id/tv_admin_front_skip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textColor="#1f2129"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
         android:text="건너 뛰기"/>
+    <View
+        android:layout_above="@id/tv_admin_front_skip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="#37373d"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textSize="15sp"
+        android:text="로그인"/>
     <Button
         android:id="@+id/bt_admin_front_login"
-        android:layout_above="@id/bt_admin_front_skip"
+        android:layout_above="@id/tv_admin_front_skip"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/btn_01_style"
+        android:textColor="#ffffff"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:textSize="15sp"
         android:text="로그인"/>
     <Button
         android:id="@+id/bt_admin_front_sign_up"
@@ -36,6 +63,8 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:background="@drawable/btn_02_style"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
         android:text="회원가입"/>
 
    

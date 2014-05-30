@@ -33,7 +33,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.blackpigstudio.classweek.main.ui.admin.SignInAndUpActivity"
+            android:name=".main.ui.admin.sign_up_page.SignUpActivity"
             android:label="@string/title_activity_sign_in_and_up"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustPan" >
@@ -88,8 +88,15 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.blackpigstudio.classweek.main.ui.admin.FrontActivity"
-            android:label="@string/title_activity_front" >
+            android:name="com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_front"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.blackpigstudio.classweek.main.ui.admin.login_page.LoginActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_login" >
         </activity>
     </application>
 
