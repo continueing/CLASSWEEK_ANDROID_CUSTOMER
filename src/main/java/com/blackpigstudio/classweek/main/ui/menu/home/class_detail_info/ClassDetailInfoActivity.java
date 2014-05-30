@@ -14,12 +14,12 @@ import com.blackpigstudio.classweek.main.module.network.ClassRequest;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
+import com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.booking.BookingActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.inquiry.InquiryActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.order_confirmation.OrderConfirmationActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.payment.PaymentWebViewActivity;
 import com.blackpigstudio.classweek.main.ui.menu.home.class_detail_info.review.ReviewDialog;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -77,8 +77,7 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         }
         else
         {
-            Intent intent = new Intent(this, SignInAndUpActivity.class);
-            startActivity(intent);
+            callFrontActivity();
         }
     }
 
@@ -92,9 +91,15 @@ public class ClassDetailInfoActivity extends ActionBarActivity implements ViewFo
         }
         else
         {
-            Intent intent = new Intent(this, SignInAndUpActivity.class);
-            startActivity(intent);
+            callFrontActivity();
         }
+    }
+
+    private void callFrontActivity()
+    {
+        Intent intent = new Intent(this, FrontActivity.class);
+        intent.putExtra(FrontActivity.BUNDLE_PARM_IS_FIRST_ENTRANCE, false);
+        startActivity(intent);
     }
 
     @Override

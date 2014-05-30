@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity">
+    tools:context="com.blackpigstudio.classweek.main.ui.admin.sign_up_page.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

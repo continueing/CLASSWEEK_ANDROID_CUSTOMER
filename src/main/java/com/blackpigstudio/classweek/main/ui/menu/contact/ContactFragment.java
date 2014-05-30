@@ -16,18 +16,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.blackpigstudio.classweek.R;
-import com.blackpigstudio.classweek.main.domain.Schedule;
 import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.etc.EventOfGoogleAnalytics;
 import com.blackpigstudio.classweek.main.module.network.HttpRequester;
 import com.blackpigstudio.classweek.main.module.network.JsonResponseHandler;
 import com.blackpigstudio.classweek.main.module.network.UserRequest;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
-import com.blackpigstudio.classweek.main.ui.singn_in_up.SignInAndUpActivity;
+import com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +87,8 @@ public class ContactFragment extends Fragment implements HttpRequester.NetworkRe
             }
             else
             {
-                Intent intent = new Intent(getActivity(), SignInAndUpActivity.class);
+                Intent intent = new Intent(getActivity(), FrontActivity.class);
+                intent.putExtra(FrontActivity.BUNDLE_PARM_IS_FIRST_ENTRANCE, false);
                 startActivity(intent);
             }
             return true;
