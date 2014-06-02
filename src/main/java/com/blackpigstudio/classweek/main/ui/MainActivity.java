@@ -16,6 +16,7 @@ import com.blackpigstudio.classweek.R;
 import com.blackpigstudio.classweek.main.module.etc.AppTerminator;
 import com.blackpigstudio.classweek.main.module.preference.UserPreference;
 import com.blackpigstudio.classweek.main.ui.etc.UserGuideActivity;
+import com.blackpigstudio.classweek.main.ui.etc.exit_survey_dialog.ExitSurveyDialog;
 import com.blackpigstudio.classweek.main.ui.menu.contact.ContactFragment;
 import com.blackpigstudio.classweek.main.ui.navigation_drawer_menu.NavigationDrawerFragment;
 import com.blackpigstudio.classweek.main.ui.menu.home.recommendation.ClassRecommendationFragment;
@@ -92,12 +93,26 @@ public class MainActivity extends ActionBarActivity
             }
             else
             {
-                finish();
+                UserPreference userPreference = new UserPreference(getApplicationContext());
+                if(!userPreference.didUserParticipateSurvey())
+                    new ExitSurveyDialog(MainActivity.this, exitSurveyDismissListener).show();
+                else
+                    finish();
             }
             return true;
         }
         return super.onKeyUp(keyCode, event);
     }
+
+    ExitSurveyDialog.IDismissListener exitSurveyDismissListener = new ExitSurveyDialog.IDismissListener() {
+        @Override
+        public void onDismissed() {
+            UserPreference userPreference = new UserPreference(getApplicationContext());
+            userPreference.setUserSurveyParticipation(true);
+            Toast.makeText(getApplicationContext(),"소중한 피드백 감사합니다.\n좋은 하루 되세요^^~", Toast.LENGTH_LONG).show();
+            finish();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

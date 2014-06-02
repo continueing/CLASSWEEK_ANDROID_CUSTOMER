@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:id="@+id/ll_location_dialog_title"
+        android:id="@+id/ll_exit_survey_dialog_title"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,24 +18,24 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="#8a8fa7"
-            android:text="위치"/>
+            android:text="딱 한 번 부탁 드립니다."/>
         <TextView
             android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="#1f2129"
-            android:text="클래스를 수강하고 싶은 위치입니다."/>
+            android:text="클래스위크의 가장 부족한 점은 무엇인가요?"/>
     </LinearLayout>
     <View
-        android:id="@+id/v_location_dialog_line"
-        android:layout_below="@+id/ll_location_dialog_title"
+        android:id="@+id/v_dialog_line"
+        android:layout_below="@+id/ll_exit_survey_dialog_title"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#ffd8d9e3"/>
     <RadioGroup
-        android:id="@+id/rg_filter_location_list"
-        android:layout_below="@+id/v_location_dialog_line"
+        android:id="@+id/rg_exit_survey_list"
+        android:layout_below="@+id/v_dialog_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -44,24 +44,23 @@
         android:paddingBottom="8dp"
         android:gravity="center_horizontal">
         <RadioButton
-            android:id="@+id/rb_filter_location_gangnam"
+            android:id="@+id/rb_exit_survey_first"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="49.5dp"
+            android:layout_height="70dp"
             android:paddingLeft="21dp"
             android:paddingRight="21dp"
             android:textSize="15sp"
             android:button="@null"
             android:drawableRight="@drawable/btn_check_style"
             android:background="@drawable/bg_dropdown_style"
-            android:checked="true"
             android:gravity="center_vertical"
-            android:text="@string/location_gangnam"/>
+            android:text="나에게 맞는 수업을 찾지 못해서"/>
         <RadioButton
-            android:id="@+id/rb_filter_location_jongro"
+            android:id="@+id/rb_exit_survey_second"
             android:layout_width="match_parent"
             android:layout_marginTop="8dp"
-            android:layout_height="49.5dp"
+            android:layout_height="70dp"
             android:textSize="15sp"
             android:button="@null"
             android:paddingLeft="21dp"
@@ -69,12 +68,12 @@
             android:drawableRight="@drawable/btn_check_style"
             android:background="@drawable/bg_dropdown_style"
             android:gravity="center_vertical"
-            android:text="종로"/>
+            android:text="수업 상세 설명이 부족해서\n(ex. 커리큘럼, 리뷰)"/>
         <RadioButton
-            android:id="@+id/rb_filter_location_monkdong"
+            android:id="@+id/rb_exit_survey_third"
             android:layout_width="match_parent"
             android:layout_marginTop="8dp"
-            android:layout_height="49.5dp"
+            android:layout_height="70dp"
             android:textSize="15sp"
             android:button="@null"
             android:paddingLeft="21dp"
@@ -82,55 +81,36 @@
             android:drawableRight="@drawable/btn_check_style"
             android:background="@drawable/bg_dropdown_style"
             android:gravity="center_vertical"
-            android:text="목동"/>
-        <RadioButton
-            android:id="@+id/rb_filter_location_itewon"
-            android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_height="49.5dp"
-            android:textSize="15sp"
-            android:button="@null"
-            android:paddingLeft="21dp"
-            android:paddingRight="21dp"
-            android:drawableRight="@drawable/btn_check_style"
-            android:background="@drawable/bg_dropdown_style"
-            android:gravity="center_vertical"
-            android:text="이태원"/>
-        <RadioButton
-            android:id="@+id/rb_filter_location_hongdae"
-            android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_height="49.5dp"
-            android:textSize="15sp"
-            android:button="@null"
-            android:paddingLeft="21dp"
-            android:paddingRight="21dp"
-            android:drawableRight="@drawable/btn_check_style"
-            android:background="@drawable/bg_dropdown_style"
-            android:gravity="center_vertical"
-            android:text="홍대"/>
+            android:text="기타(다른 이유 때문)"/>
     </RadioGroup>
     <View
-        android:layout_below="@+id/rg_filter_location_list"
-        android:id="@+id/v_location_dialog_line_two"
+        android:layout_below="@+id/rg_exit_survey_list"
+        android:id="@+id/v_exit_survey_line_two"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
         android:background="#ffd8d9e3"/>
-    <LinearLayout
-        android:layout_below="@+id/v_location_dialog_line_two"
+    <RelativeLayout
+        android:layout_below="@+id/v_exit_survey_line_two"
         android:id="@+id/ll_most_bottom"
         android:layout_marginTop="14dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-        <Button
-            android:id="@+id/bt_filter_location_select"
+        android:layout_height="wrap_content">
+        <com.blackpigstudio.classweek.main.module.widget.button.SubmitButton
+            android:id="@+id/sbt_exit_survey_choice"
             android:layout_width="219dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"
             android:background="@drawable/btn_02_style"
+            android:enabled="false"
+            android:layout_centerInParent="true"
             android:text="확인"/>
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/pb_exit_survey_choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 </RelativeLayout>
