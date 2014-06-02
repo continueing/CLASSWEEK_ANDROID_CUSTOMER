@@ -109,6 +109,7 @@ public class NavigationDrawerFragment extends Fragment {
             public boolean onLongClick(View v) {
                 UserPreference userPreference = new UserPreference(getActivity());
                 userPreference.setUserEntered(false);
+                userPreference.setUserSurveyParticipation(false);
                 if(userPreference.isLoggedIn())
                 {
                     requestLogout();

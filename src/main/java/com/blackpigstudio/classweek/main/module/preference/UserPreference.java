@@ -16,6 +16,7 @@ public class UserPreference extends PreferenceHelper {
     private static final String KEY_PASSWORD ="PASSWORD";
     private static final String KEY_IS_LOGIN ="IS_LOGIN";
     private static final String KEY_IS_USER_ENTERED="IS_USER_ENTERED";
+    private static final String KEY_DID_PARTICIPATE_SURVEY ="DID_PARTICIPATE_SURVEY";
 
 
     public static final int VALUE_SEX_MALE = 1;
@@ -54,9 +55,19 @@ public class UserPreference extends PreferenceHelper {
         setBoolean(KEY_IS_USER_ENTERED, aFlag);
     }
 
+    public void setUserSurveyParticipation(boolean aFlag)
+    {
+        setBoolean(KEY_DID_PARTICIPATE_SURVEY, aFlag);
+    }
+
     public boolean isUserEntered()
     {
         return getBoolean(KEY_IS_USER_ENTERED, false);
+    }
+
+    public boolean didUserParticipateSurvey()
+    {
+        return getBoolean(KEY_DID_PARTICIPATE_SURVEY, false);
     }
 
     /*
