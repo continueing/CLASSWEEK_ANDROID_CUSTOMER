@@ -12,17 +12,17 @@ import com.blackpigstudio.classweek.main.ui.admin.sign_up_page.SignUpActivity;
 public class FrontActivity extends Activity implements ViewForFrontActivity.Controller {
     public static final String BUNDLE_PARM_IS_FIRST_ENTRANCE = "IS_FIRST_ENTRANCE";
     private ViewForFrontActivity view;
-    private boolean isFirstOperation;
+    private boolean isFirstEntrance;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        isFirstOperation = intent.getBooleanExtra(BUNDLE_PARM_IS_FIRST_ENTRANCE,false);
+        isFirstEntrance = intent.getBooleanExtra(BUNDLE_PARM_IS_FIRST_ENTRANCE,false);
         view = new ViewForFrontActivity(getApplicationContext(),this);
         setContentView(view.getRoot());
-        if(!isFirstOperation)
+        if(!isFirstEntrance)
         {
             view.hideSkipTextView();
             view.showNeedToLoginTextView();
@@ -32,7 +32,8 @@ public class FrontActivity extends Activity implements ViewForFrontActivity.Cont
 
     @Override
     public void onBackPressed() {
-        callMainActivity();
+        if(isFirstEntrance)
+            callMainActivity();
         finish();
     }
 
@@ -65,7 +66,7 @@ public class FrontActivity extends Activity implements ViewForFrontActivity.Cont
         UserPreference userPreference = new UserPreference(getApplicationContext());
         if(userPreference.isLoggedIn())
         {
-            if(isFirstOperation)
+            if(isFirstEntrance)
                 callMainActivity();
             finish();
         }
