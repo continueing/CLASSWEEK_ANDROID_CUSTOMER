@@ -15,26 +15,65 @@ import com.blackpigstudio.classweek.main.module.widget.button.ViewPagerIndexer;
 import com.blackpigstudio.classweek.main.ui.admin.front_page.FrontActivity;
 
 public class UserGuideActivity extends Activity {
+    private ImageView iv_close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_guide);
+        iv_close = (ImageView)findViewById(R.id.iv_user_guide_close);
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.vp_user_guide_images);
         UserGuideImagesViewPagerAdapter viewPagerAdapter = new UserGuideImagesViewPagerAdapter(getApplicationContext());
         viewPager.setAdapter(viewPagerAdapter);
         ViewPagerIndexer viewPagerIndexer = (ViewPagerIndexer)findViewById(R.id.vpi_user_guide_images);
         viewPagerIndexer.init(viewPager,viewPagerAdapter,R.drawable.navi_coach_dim, R.drawable.navi_coach_nor ,17);
+        viewPagerIndexer.setOnPageChangerListener(onPageChangeListener);
+
+        iv_close.setOnClickListener(onClickListener);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    public void onBackPressed() {
         Intent i = new Intent( this, FrontActivity.class );
         i.putExtra(FrontActivity.BUNDLE_PARM_IS_FIRST_ENTRANCE, true);
         startActivity(i);
+        finish();
     }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent( UserGuideActivity.this, FrontActivity.class );
+            i.putExtra(FrontActivity.BUNDLE_PARM_IS_FIRST_ENTRANCE, true);
+            startActivity(i);
+            finish();
+        }
+    };
+
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if(position == 2)
+            {
+                iv_close.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                iv_close.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 
 
     public static class UserGuideImagesViewPagerAdapter extends PagerAdapter {
