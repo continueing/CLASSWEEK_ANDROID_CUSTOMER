@@ -19,6 +19,7 @@ public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageCh
     private int length;
     private int drawableSel = R.drawable.navi_sel;
     private int drawableNor = R.drawable.navi_nor;
+    private ViewPager.OnPageChangeListener onPageChangeListener = null;
 
     public ViewPagerIndexer(Context context) {
         super(context);
@@ -54,9 +55,15 @@ public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageCh
         indexs[0].setImageResource(drawableSel);
     }
 
+    public void setOnPageChangerListener(ViewPager.OnPageChangeListener anOnPageChangerListener)
+    {
+        onPageChangeListener = anOnPageChangerListener;
+    }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        if(onPageChangeListener != null)
+            onPageChangeListener.onPageScrolled(position,positionOffset,positionOffsetPixels);
     }
 
     @Override
@@ -66,10 +73,13 @@ public class ViewPagerIndexer extends LinearLayout implements ViewPager.OnPageCh
             indexs[i].setImageResource(drawableNor);
         }
         indexs[position].setImageResource(drawableSel);
+        if(onPageChangeListener != null)
+            onPageChangeListener.onPageSelected(position);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
+        if(onPageChangeListener != null)
+            onPageChangeListener.onPageScrollStateChanged(state);
     }
 }
